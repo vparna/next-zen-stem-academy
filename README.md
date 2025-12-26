@@ -226,8 +226,20 @@ next-zen-stem-academy/
 1. **Home Page** (`/`) - Hero section, 3S philosophy, course preview
 2. **About Page** (`/about`) - Detailed information about the academy
 3. **Courses Page** (`/courses`) - Browse and filter courses
-4. **Login Page** (`/login`) - User authentication
-5. **Signup Page** (`/signup`) - New user registration
+4. **Course Detail Page** (`/courses/[id]`) - Detailed course information
+5. **Login Page** (`/login`) - User authentication
+6. **Signup Page** (`/signup`) - New user registration
+7. **Checkout Page** (`/checkout`) - Payment and enrollment
+8. **Dashboard** (`/dashboard`) - User dashboard with enrolled courses
+
+## 🔧 Additional Scripts
+
+### Seed Database with Sample Courses
+```bash
+npm run seed
+```
+
+This will populate your database with sample courses for testing.
 6. **Dashboard** (`/dashboard`) - User dashboard with enrolled courses
 
 ## 🔒 Security Features
