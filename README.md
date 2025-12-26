@@ -1,4 +1,4 @@
-# Next Zen STEM Academy
+# Next Gen STEM Academy
 
 A modern, scalable ed-tech platform where parents and students can discover courses, enroll, pay online, and manage their learning journey. Built with Next.js, TypeScript, MongoDB, and integrated with Stripe for payments.
 
@@ -45,7 +45,7 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 1. **Clone the repository**
    ```bash
    git clone https://github.com/vparna/next-zen-stem-academy.git
-   cd next-zen-stem-academy
+   cd next-gen-stem-academy
    ```
 
 2. **Install dependencies**
@@ -63,9 +63,9 @@ A modern, scalable ed-tech platform where parents and students can discover cour
    Update `.env.local` with your configuration:
    ```env
    # MongoDB Connection
-   MONGODB_URI=mongodb://localhost:27017/next-zen-stem-academy
+   MONGODB_URI=mongodb://localhost:27017/next-gen-stem-academy
    # For MongoDB Atlas:
-   # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/next-zen-stem-academy
+   # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/next-gen-stem-academy
    
    # JWT Secret (generate a secure random string)
    JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
@@ -96,7 +96,7 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 ## 📁 Project Structure
 
 ```
-next-zen-stem-academy/
+next-gen-stem-academy/
 ├── app/                          # Next.js app directory
 │   ├── api/                      # API routes
 │   │   ├── auth/                 # Authentication endpoints
@@ -309,8 +309,8 @@ This project is licensed under the MIT License.
 ## 📞 Contact
 
 For questions or support, please contact:
-- Email: info@nextzenstem.com
-- Website: [nextzenstem.com](http://localhost:3000)
+- Email: info@nextgenstem.com
+- Website: [nextgenstem.com](http://localhost:3000)
 
 ## 🔮 Future Enhancements
 

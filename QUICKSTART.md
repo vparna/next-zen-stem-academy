@@ -1,6 +1,6 @@
-# Quick Start Guide - Next Zen STEM Academy
+# Quick Start Guide - Next Gen STEM Academy
 
-This guide will help you get the Next Zen STEM Academy platform up and running quickly.
+This guide will help you get the Next Gen STEM Academy platform up and running quickly.
 
 ## Prerequisites
 
@@ -13,7 +13,7 @@ This guide will help you get the Next Zen STEM Academy platform up and running q
 
 ```bash
 git clone https://github.com/vparna/next-zen-stem-academy.git
-cd next-zen-stem-academy
+cd next-gen-stem-academy
 npm install
 ```
 
@@ -27,7 +27,7 @@ npm install
 2. Update `.env.local` with your credentials:
    ```env
    # MongoDB (use local or Atlas)
-   MONGODB_URI=mongodb://localhost:27017/next-zen-stem-academy
+   MONGODB_URI=mongodb://localhost:27017/next-gen-stem-academy
    
    # Generate a secure random string for JWT
    JWT_SECRET=your-secure-random-string-here

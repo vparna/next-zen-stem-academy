@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us - Next Zen STEM Academy',
-  description: 'Learn more about Next Zen STEM Academy and our 3S philosophy for innovative STEM education',
+  title: 'About Us - Next Gen STEM Academy',
+  description: 'Learn more about Next Gen STEM Academy and our 3S philosophy for innovative STEM education',
 };
 
 export default function AboutPage() {
@@ -11,7 +11,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Next Zen STEM Academy</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Next Gen STEM Academy</h1>
           <p className="text-xl text-blue-100">
             Transforming education through innovation, dedication, and our unique 3S philosophy
           </p>
@@ -24,7 +24,7 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-600 mb-4">
-              At Next Zen STEM Academy, we believe that every child has the potential to excel in STEM fields. 
+              At Next Gen STEM Academy, we believe that every child has the potential to excel in STEM fields. 
               Our mission is to provide world-class education that combines technical skills with creative 
               thinking and problem-solving abilities.
             </p>
@@ -111,7 +111,7 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            Why Choose Next Zen STEM Academy?
+            Why Choose Next Gen STEM Academy?
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

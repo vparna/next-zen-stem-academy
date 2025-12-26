@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-blue-600">Next Zen STEM</span>
+              <span className="text-2xl font-bold text-blue-600">Next Gen STEM</span>
             </Link>
           </div>
 
