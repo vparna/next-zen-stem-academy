@@ -9,6 +9,7 @@ interface User {
   firstName: string;
   lastName: string;
   email: string;
+  role?: string;
 }
 
 export default function DashboardPage() {
@@ -101,6 +102,32 @@ export default function DashboardPage() {
             <p className="text-gray-600">Manage children profiles</p>
           </Link>
         </div>
+
+        {/* Admin Actions */}
+        {user.role === 'admin' && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Admin Tools</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link
+                href="/admin/jobs"
+                className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition"
+              >
+                <div className="text-3xl mb-2">💼</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">Manage Jobs</h3>
+                <p className="text-gray-600 text-sm">Create and manage job postings</p>
+              </Link>
+
+              <Link
+                href="/admin/applications"
+                className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition"
+              >
+                <div className="text-3xl mb-2">📋</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">Review Applications</h3>
+                <p className="text-gray-600 text-sm">View and manage job applications</p>
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Enrolled Courses Section */}
         <div className="bg-white rounded-lg shadow p-6">

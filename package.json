@@ -8,7 +8,8 @@
     "build:gh-pages": "bash scripts/build-gh-pages.sh",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx scripts/seed-courses.ts"
+    "seed": "tsx scripts/seed-courses.ts",
+    "seed-jobs": "tsx scripts/seed-jobs.ts"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.6.0",
