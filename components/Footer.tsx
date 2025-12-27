@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -7,7 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-xl font-bold mb-4">NextGen Stem Academy</h3>
+            <Image 
+              src="/logo-white.svg" 
+              alt="NextGen Stem Academy Logo" 
+              width={180} 
+              height={54}
+              className="h-12 w-auto mb-4"
+            />
             <p className="text-gray-400 text-sm">
               Empowering young minds through innovative STEM education with our unique 3S philosophy.
             </p>

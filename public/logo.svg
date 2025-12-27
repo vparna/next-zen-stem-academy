@@ -1,0 +1,51 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circuit board pattern background -->
+  <g opacity="0.15">
+    <circle cx="15" cy="30" r="1.5" fill="#2563eb"/>
+    <circle cx="25" cy="20" r="1.5" fill="#2563eb"/>
+    <circle cx="35" cy="35" r="1.5" fill="#2563eb"/>
+    <line x1="15" y1="30" x2="25" y2="20" stroke="#2563eb" stroke-width="0.5"/>
+    <line x1="25" y1="20" x2="35" y2="35" stroke="#2563eb" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Hexagon shape (STEM symbol) -->
+  <g transform="translate(20, 15)">
+    <path d="M15 5 L25 10 L25 20 L15 25 L5 20 L5 10 Z" 
+          fill="#2563eb" 
+          stroke="#1e40af" 
+          stroke-width="1.5"/>
+    
+    <!-- Atom symbol inside hexagon -->
+    <circle cx="15" cy="15" r="2" fill="white"/>
+    <ellipse cx="15" cy="15" rx="8" ry="4" 
+             stroke="white" 
+             stroke-width="1.2" 
+             fill="none"
+             transform="rotate(0 15 15)"/>
+    <ellipse cx="15" cy="15" rx="8" ry="4" 
+             stroke="white" 
+             stroke-width="1.2" 
+             fill="none"
+             transform="rotate(60 15 15)"/>
+    <ellipse cx="15" cy="15" rx="8" ry="4" 
+             stroke="white" 
+             stroke-width="1.2" 
+             fill="none"
+             transform="rotate(-60 15 15)"/>
+  </g>
+  
+  <!-- Text: NextGen -->
+  <text x="55" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b">
+    NextGen
+  </text>
+  
+  <!-- Text: STEM Academy -->
+  <text x="55" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#2563eb">
+    STEM Academy
+  </text>
+  
+  <!-- Small decorative elements -->
+  <circle cx="135" cy="22" r="1.5" fill="#60a5fa"/>
+  <circle cx="143" cy="26" r="1" fill="#60a5fa"/>
+  <circle cx="138" cy="30" r="1.2" fill="#60a5fa"/>
+</svg>
