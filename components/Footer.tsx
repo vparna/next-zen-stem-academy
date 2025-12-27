@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Footer() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -9,7 +11,7 @@ export default function Footer() {
           {/* About Section */}
           <div>
             <Image 
-              src="/logo-white.svg" 
+              src={`${basePath}/logo-white.svg`}
               alt="NextGen Stem Academy Logo" 
               width={200} 
               height={60}
