@@ -11,7 +11,7 @@ const sampleCourses = [
     category: 'Robotics',
     description: 'Learn the basics of robotics, including sensors, motors, and programming.',
     fullDescription: 'This comprehensive robotics course introduces students to the exciting world of robotics. Students will learn about sensors, motors, actuators, and programming. Through hands-on projects, they will build and program their own robots, developing problem-solving and critical thinking skills.',
-    price: 299,
+    price: 99,
     duration: '12 weeks',
     ageGroup: '8-12 years',
     features: [
@@ -39,7 +39,7 @@ const sampleCourses = [
     category: 'Robotics',
     description: 'Build complex robots and learn advanced programming techniques.',
     fullDescription: 'Take your robotics skills to the next level with advanced concepts in automation, AI integration, and complex mechanical systems. Students will work on sophisticated projects and learn industry-standard tools.',
-    price: 399,
+    price: 129,
     duration: '16 weeks',
     ageGroup: '12-16 years',
     features: [
@@ -67,7 +67,7 @@ const sampleCourses = [
     category: 'Maths',
     description: 'Comprehensive mathematics program covering algebra, geometry, and problem-solving.',
     fullDescription: 'A complete mathematics course designed to build strong foundations and develop advanced problem-solving skills. Using interactive methods and real-world applications, students will master key mathematical concepts.',
-    price: 249,
+    price: 79,
     duration: '10 weeks',
     ageGroup: '10-14 years',
     features: [
@@ -95,7 +95,7 @@ const sampleCourses = [
     category: 'Maths',
     description: 'Prepare for mathematics olympiads with challenging problem sets.',
     fullDescription: 'Intensive preparation for mathematical olympiads and competitions. Students will tackle challenging problems, learn advanced techniques, and develop the strategic thinking required for competitive mathematics.',
-    price: 349,
+    price: 119,
     duration: '14 weeks',
     ageGroup: '12-16 years',
     features: [
@@ -124,7 +124,7 @@ const sampleCourses = [
     category: 'Chess',
     description: 'Learn chess fundamentals, basic strategies, and opening principles.',
     fullDescription: 'Perfect for beginners, this course covers all the basics of chess. Students will learn piece movements, basic tactics, opening principles, and develop strategic thinking skills through regular practice games.',
-    price: 199,
+    price: 69,
     duration: '8 weeks',
     ageGroup: '6-10 years',
     features: [
@@ -152,7 +152,7 @@ const sampleCourses = [
     category: 'Chess',
     description: 'Master advanced tactics, endgames, and competitive chess strategies.',
     fullDescription: 'For experienced players looking to reach the next level. This course covers advanced tactics, positional play, endgame mastery, and preparation for competitive tournaments.',
-    price: 249,
+    price: 89,
     duration: '12 weeks',
     ageGroup: '10-16 years',
     features: [

@@ -54,7 +54,7 @@ export default function CoursesPage() {
         name: 'Robotics Fundamentals',
         category: 'Robotics',
         description: 'Learn the basics of robotics, including sensors, motors, and programming.',
-        price: 299,
+        price: 99,
         duration: '12 weeks',
         ageGroup: '8-12 years',
       },
@@ -63,7 +63,7 @@ export default function CoursesPage() {
         name: 'Advanced Robotics',
         category: 'Robotics',
         description: 'Build complex robots and learn advanced programming techniques.',
-        price: 399,
+        price: 129,
         duration: '16 weeks',
         ageGroup: '12-16 years',
       },
@@ -72,7 +72,7 @@ export default function CoursesPage() {
         name: 'Mathematics Mastery',
         category: 'Maths',
         description: 'Comprehensive mathematics program covering algebra, geometry, and problem-solving.',
-        price: 249,
+        price: 79,
         duration: '10 weeks',
         ageGroup: '10-14 years',
       },
@@ -81,7 +81,7 @@ export default function CoursesPage() {
         name: 'Chess Beginner',
         category: 'Chess',
         description: 'Learn chess fundamentals, basic strategies, and opening principles.',
-        price: 199,
+        price: 69,
         duration: '8 weeks',
         ageGroup: '6-10 years',
       },
@@ -90,7 +90,7 @@ export default function CoursesPage() {
         name: 'Chess Advanced',
         category: 'Chess',
         description: 'Master advanced tactics, endgames, and competitive chess strategies.',
-        price: 249,
+        price: 89,
         duration: '12 weeks',
         ageGroup: '10-16 years',
       },
@@ -99,7 +99,7 @@ export default function CoursesPage() {
         name: 'Olympiad Mathematics',
         category: 'Maths',
         description: 'Prepare for mathematics olympiads with challenging problem sets.',
-        price: 349,
+        price: 119,
         duration: '14 weeks',
         ageGroup: '12-16 years',
       },
@@ -177,7 +177,7 @@ export default function CoursesPage() {
                         {course.category}
                       </span>
                       <span className="text-2xl font-bold text-gray-900">
-                        ${course.price}
+                        ${course.price}<span className="text-sm text-gray-600">/mo</span>
                       </span>
                     </div>
                     
@@ -221,7 +221,7 @@ export default function CoursesPage() {
             Ready to Enroll?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Sign up now and start your learning journey with Next Gen STEM Academy
+            Sign up now and start your learning journey with NextGen Stem Academy
           </p>
           <Link
             href="/signup"

@@ -1,6 +1,6 @@
-# Quick Start Guide - Next Gen STEM Academy
+# Quick Start Guide - NextGen Stem Academy
 
-This guide will help you get the Next Gen STEM Academy platform up and running quickly.
+This guide will help you get the NextGen Stem Academy platform up and running quickly.
 
 ## Prerequisites
 

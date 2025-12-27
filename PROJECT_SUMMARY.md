@@ -1,4 +1,4 @@
-# Next Gen STEM Academy - Project Summary
+# NextGen Stem Academy - Project Summary
 
 ## Project Overview
 

@@ -1,4 +1,4 @@
-# Next Gen STEM Academy
+# NextGen Stem Academy
 
 A modern, scalable ed-tech platform where parents and students can discover courses, enroll, pay online, and manage their learning journey. Built with Next.js, TypeScript, MongoDB, and integrated with Stripe for payments.
 
