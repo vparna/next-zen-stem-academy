@@ -16,6 +16,12 @@ if [ -d "app/courses/[id]" ]; then
   mv "app/courses/[id]" ./course-detail-backup-temp
 fi
 
+# Backup dynamic careers detail route
+if [ -d "app/careers/[id]" ]; then
+  echo "Backing up dynamic careers detail route..."
+  mv "app/careers/[id]" ./careers-detail-backup-temp
+fi
+
 # Run Next.js build
 echo "Building Next.js app..."
 npm run build
@@ -30,6 +36,12 @@ fi
 if [ -d "./course-detail-backup-temp" ]; then
   echo "Restoring dynamic course detail route..."
   mv ./course-detail-backup-temp "app/courses/[id]"
+fi
+
+# Restore dynamic careers detail route
+if [ -d "./careers-detail-backup-temp" ]; then
+  echo "Restoring dynamic careers detail route..."
+  mv ./careers-detail-backup-temp "app/careers/[id]"
 fi
 
 echo "Build complete!"
