@@ -17,13 +17,6 @@ interface Course {
   name: string;
 }
 
-interface User {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-}
-
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
@@ -35,7 +28,6 @@ export default function ChatPage() {
   const [currentUserId, setCurrentUserId] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     // Get current user
@@ -53,10 +45,77 @@ export default function ChatPage() {
       console.error('Failed to decode token:', e);
     }
 
+    const fetchCourses = async () => {
+      try {
+        // Get enrolled courses
+        const response = await fetch('/api/enrollments', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const enrollments = await response.json();
+          
+          // Get unique courses from enrollments
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const courseIds = [...new Set(enrollments.map((e: any) => e.courseId))];
+          
+          // Fetch course details
+          const coursesData = await Promise.all(
+            courseIds.map(async (courseId) => {
+              const courseResponse = await fetch(`/api/courses/${courseId}`, {
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                },
+              });
+              if (courseResponse.ok) {
+                return courseResponse.json();
+              }
+              return null;
+            })
+          );
+
+          const validCourses = coursesData.filter(c => c !== null);
+          setCourses(validCourses);
+          
+          // Auto-select first course if available
+          if (validCourses.length > 0) {
+            setSelectedCourse(validCourses[0]._id);
+          }
+        }
+      } catch {
+        setError('Error loading courses');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchCourses();
-  }, []);
+  }, [router]);
 
   useEffect(() => {
+    const fetchMessages = async () => {
+      if (!selectedCourse) return;
+
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`/api/messages?courseId=${selectedCourse}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Reverse to show oldest first
+          setMessages(data.reverse());
+        }
+      } catch {
+        // Silently fail for polling
+      }
+    };
+
     if (selectedCourse) {
       fetchMessages();
       // Poll for new messages every 5 seconds
@@ -71,74 +130,6 @@ export default function ChatPage() {
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const fetchCourses = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      
-      // Get enrolled courses
-      const response = await fetch('/api/enrollments', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const enrollments = await response.json();
-        
-        // Get unique courses from enrollments
-        const courseIds = [...new Set(enrollments.map((e: any) => e.courseId))];
-        
-        // Fetch course details
-        const coursesData = await Promise.all(
-          courseIds.map(async (courseId) => {
-            const courseResponse = await fetch(`/api/courses/${courseId}`, {
-              headers: {
-                'Authorization': `Bearer ${token}`,
-              },
-            });
-            if (courseResponse.ok) {
-              return courseResponse.json();
-            }
-            return null;
-          })
-        );
-
-        const validCourses = coursesData.filter(c => c !== null);
-        setCourses(validCourses);
-        
-        // Auto-select first course if available
-        if (validCourses.length > 0) {
-          setSelectedCourse(validCourses[0]._id);
-        }
-      }
-    } catch (err) {
-      setError('Error loading courses');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchMessages = async () => {
-    if (!selectedCourse) return;
-
-    try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`/api/messages?courseId=${selectedCourse}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // Reverse to show oldest first
-        setMessages(data.reverse());
-      }
-    } catch (err) {
-      console.error('Error fetching messages:', err);
-    }
   };
 
   const sendMessage = async (e: React.FormEvent) => {
@@ -168,12 +159,21 @@ export default function ChatPage() {
 
       if (response.ok) {
         setNewMessage('');
-        fetchMessages();
+        // Refresh messages
+        const messagesResponse = await fetch(`/api/messages?courseId=${selectedCourse}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        if (messagesResponse.ok) {
+          const data = await messagesResponse.json();
+          setMessages(data.reverse());
+        }
       } else {
         const data = await response.json();
         setError(data.error || 'Failed to send message');
       }
-    } catch (err) {
+    } catch {
       setError('Error sending message');
     } finally {
       setSending(false);

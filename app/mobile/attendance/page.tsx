@@ -26,56 +26,55 @@ export default function AttendancePage() {
   const router = useRouter();
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          router.push('/login');
+          return;
+        }
+
+        // Fetch children first
+        const childrenResponse = await fetch('/api/children', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (childrenResponse.ok) {
+          const childrenData = await childrenResponse.json();
+          setChildren(childrenData);
+        }
+
+        // Fetch attendance
+        let url = '/api/attendance';
+        if (selectedChild !== 'all') {
+          url += `?childId=${selectedChild}`;
+        } else {
+          url += '?active=true';
+        }
+
+        const response = await fetch(url, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setAttendances(data);
+        } else {
+          setError('Failed to load attendance');
+        }
+      } catch {
+        setError('Error loading attendance');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchData();
-  }, [selectedChild]);
-
-  const fetchData = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        router.push('/login');
-        return;
-      }
-
-      // Fetch children first
-      const childrenResponse = await fetch('/api/children', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (childrenResponse.ok) {
-        const childrenData = await childrenResponse.json();
-        setChildren(childrenData);
-      }
-
-      // Fetch attendance
-      let url = '/api/attendance';
-      if (selectedChild !== 'all') {
-        url += `?childId=${selectedChild}`;
-      } else {
-        url += '?active=true';
-      }
-
-      const response = await fetch(url, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setAttendances(data);
-      } else {
-        setError('Failed to load attendance');
-      }
-    } catch (err) {
-      setError('Error loading attendance');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  }, [selectedChild, router]);
   const getChildName = (childId: string) => {
     const child = children.find(c => c._id === childId);
     return child ? child.name : 'Unknown';

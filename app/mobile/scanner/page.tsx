@@ -101,7 +101,7 @@ export default function ScannerPage() {
         setError(data.error || `Failed to ${scanMode === 'checkin' ? 'check in' : 'check out'}`);
         setMessage('');
       }
-    } catch (err) {
+    } catch {
       setError('Error processing QR code');
       setMessage('');
     }
@@ -200,8 +200,8 @@ export default function ScannerPage() {
           <h3 className="text-lg font-semibold text-gray-800 mb-3">Instructions</h3>
           <ol className="list-decimal list-inside space-y-2 text-gray-600 text-sm">
             <li>Select check-in or check-out mode</li>
-            <li>Click "Start Scanner" to activate camera</li>
-            <li>Point camera at student's QR code</li>
+            <li>Click &quot;Start Scanner&quot; to activate camera</li>
+            <li>Point camera at student&apos;s QR code</li>
             <li>Wait for automatic scan and confirmation</li>
             <li>Repeat for next student</li>
           </ol>

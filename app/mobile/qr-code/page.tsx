@@ -26,38 +26,38 @@ export default function QRCodePage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetchChildren();
-  }, []);
-
-  const fetchChildren = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        router.push('/login');
-        return;
-      }
-
-      const response = await fetch('/api/children', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setChildren(data);
-        if (data.length > 0) {
-          setSelectedChild(data[0]._id);
+    const fetchChildren = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          router.push('/login');
+          return;
         }
-      } else {
-        setError('Failed to load children');
+
+        const response = await fetch('/api/children', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setChildren(data);
+          if (data.length > 0) {
+            setSelectedChild(data[0]._id);
+          }
+        } else {
+          setError('Failed to load children');
+        }
+      } catch {
+        setError('Error loading children');
+      } finally {
+        setLoading(false);
       }
-    } catch (err) {
-      setError('Error loading children');
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+
+    fetchChildren();
+  }, [router]);
 
   const generateQRCode = async () => {
     if (!selectedChild) return;
@@ -80,7 +80,7 @@ export default function QRCodePage() {
         const errorData = await response.json();
         setError(errorData.error || 'Failed to generate QR code');
       }
-    } catch (err) {
+    } catch {
       setError('Error generating QR code');
     } finally {
       setGenerating(false);

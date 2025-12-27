@@ -22,16 +22,9 @@ export default function MobilePage() {
       return;
     }
 
-    // Decode token to get user info (simple decode, not verification)
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      // Fetch full user profile
-      fetchUserProfile(token);
-    } catch (e) {
-      console.error('Failed to decode token:', e);
-      router.push('/login');
-    }
-  }, []);
+    // Fetch full user profile
+    fetchUserProfile(token);
+  }, [router]);
 
   const fetchUserProfile = async (token: string) => {
     try {
@@ -175,18 +168,14 @@ export default function MobilePage() {
           </h3>
           <ul className="space-y-2 text-sm text-blue-800">
             {isTeacher ? (
-              <>
-                <li>• Use the QR Scanner to check students in/out</li>
-                <li>• View attendance history for all students</li>
-                <li>• Chat with parents about course progress</li>
-              </>
+              <li>• Use the QR Scanner to check students in/out</li>
+              <li>• View attendance history for all students</li>
+              <li>• Chat with parents about course progress</li>
             ) : (
-              <>
-                <li>• Generate QR codes for your children</li>
-                <li>• Show QR code to teacher for check-in/out</li>
-                <li>• View attendance history for each child</li>
-                <li>• Chat with teachers about courses</li>
-              </>
+              <li>• Generate QR codes for your children</li>
+              <li>• Show QR code to teacher for check-in/out</li>
+              <li>• View attendance history for each child</li>
+              <li>• Chat with teachers about courses</li>
             )}
           </ul>
         </div>
