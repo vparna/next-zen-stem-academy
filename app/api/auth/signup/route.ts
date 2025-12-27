@@ -4,7 +4,7 @@ import { hashPassword, generateToken } from '@/lib/auth/jwt';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password, firstName, lastName, phone } = await req.json();
+    const { email, password, firstName, lastName, phone, role } = await req.json();
     
     // Validate required fields
     if (!email || !password || !firstName || !lastName) {
@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
       firstName,
       lastName,
       phone,
+      role: role || 'parent',
     });
     
     // Generate token
@@ -49,6 +50,7 @@ export async function POST(req: NextRequest) {
         firstName,
         lastName,
         phone,
+        role: role || 'parent',
       },
     }, { status: 201 });
   } catch (error) {
