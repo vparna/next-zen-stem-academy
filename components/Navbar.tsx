@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   return (
     <nav className="bg-white shadow-md">
@@ -14,7 +15,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image 
-                src="/logo.svg" 
+                src={`${basePath}/logo.svg`}
                 alt="NextGen Stem Academy Logo" 
                 width={200} 
                 height={60}
