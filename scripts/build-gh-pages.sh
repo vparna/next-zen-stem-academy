@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/bin/bash -euo pipefail
 # Build script for GitHub Pages deployment
 # This temporarily moves API routes and dynamic routes since GitHub Pages doesn't support server-side code
-
-set -e
 
 echo "Starting GitHub Pages build..."
 

@@ -9,10 +9,6 @@ const nextConfig: NextConfig = {
   basePath: '/next-zen-stem-academy',
   // Skip trailing slash for compatibility
   trailingSlash: true,
-  // Exclude API routes from export
-  experimental: {
-    // This is not a standard option but worth trying
-  },
 };
 
 export default nextConfig;
