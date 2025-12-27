@@ -62,7 +62,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
         category: 'Robotics',
         description: 'Learn the basics of robotics, including sensors, motors, and programming.',
         fullDescription: 'This comprehensive robotics course introduces students to the exciting world of robotics. Students will learn about sensors, motors, actuators, and programming. Through hands-on projects, they will build and program their own robots, developing problem-solving and critical thinking skills.',
-        price: 299,
+        price: 99,
         duration: '12 weeks',
         ageGroup: '8-12 years',
         features: [
@@ -170,7 +170,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 <div className="text-4xl font-bold text-blue-600 mb-2">
                   ${course.price}
                 </div>
-                <p className="text-gray-600">One-time payment</p>
+                <p className="text-gray-600">per month</p>
               </div>
               <button
                 onClick={handleEnroll}

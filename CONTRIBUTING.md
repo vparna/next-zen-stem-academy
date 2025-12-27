@@ -1,6 +1,6 @@
-# Contributing to Next Zen STEM Academy
+# Contributing to NextGen Stem Academy
 
-Thank you for your interest in contributing to Next Zen STEM Academy! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to NextGen Stem Academy! This document provides guidelines and instructions for contributing to the project.
 
 ## Code of Conduct
 
@@ -24,7 +24,7 @@ See [QUICKSTART.md](./QUICKSTART.md) for detailed setup instructions.
 ## Project Structure
 
 ```
-next-zen-stem-academy/
+next-gen-stem-academy/
 ├── app/                    # Next.js app directory
 │   ├── api/               # API routes
 │   ├── (pages)/           # Application pages
@@ -254,4 +254,4 @@ If you have questions about contributing:
 - Check existing documentation
 - Review similar features in the codebase
 
-Thank you for contributing to Next Zen STEM Academy! 🎓✨
+Thank you for contributing to NextGen Stem Academy! 🎓✨

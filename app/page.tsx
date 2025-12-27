@@ -8,7 +8,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Welcome to Next Zen STEM Academy
+              Welcome to NextGen Stem Academy
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
               Empowering young minds through innovative STEM education
@@ -136,7 +136,7 @@ export default function Home() {
             Ready to Start Your STEM Journey?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Join thousands of students already learning with Next Zen STEM Academy
+            Join thousands of students already learning with NextGen Stem Academy
           </p>
           <Link
             href="/signup"

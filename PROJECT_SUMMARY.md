@@ -1,4 +1,4 @@
-# Next Zen STEM Academy - Project Summary
+# NextGen Stem Academy - Project Summary
 
 ## Project Overview
 
@@ -49,7 +49,7 @@ A complete, production-ready ed-tech platform built with modern web technologies
 ## 📁 Project Structure
 
 ```
-next-zen-stem-academy/
+next-gen-stem-academy/
 ├── app/                          # Next.js 16 App Router
 │   ├── api/                      # Backend API Routes
 │   │   ├── auth/                 # Authentication endpoints
