@@ -2,11 +2,32 @@
 
 This repository is configured to deploy to GitHub Pages using GitHub Actions.
 
+## Initial Setup (One-Time Configuration)
+
+### 1. Enable GitHub Pages
+
+1. Go to your repository on GitHub: https://github.com/vparna/next-zen-stem-academy
+2. Click on **Settings** tab
+3. Scroll down to **Pages** in the left sidebar
+4. Under **Source**, select **GitHub Actions**
+5. Save the changes
+
+### 2. Trigger Initial Deployment
+
+After merging this PR to the `main` branch:
+- The GitHub Actions workflow will automatically run
+- It will build and deploy the site to GitHub Pages
+- Check the **Actions** tab to monitor the deployment progress
+
+### 3. Access Your Deployed Site
+
+Once deployment completes, your site will be available at:
+
+**Live URL**: https://vparna.github.io/next-zen-stem-academy
+
 ## Deployment Status
 
 The site is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
-
-**Live URL**: https://vparna.github.io/next-zen-stem-academy
 
 ## Important Limitations
 
@@ -44,10 +65,11 @@ The GitHub Actions workflow:
 
 1. Checks out the code
 2. Installs dependencies
-3. Temporarily removes API routes and dynamic routes
-4. Builds the static site
-5. Restores the removed routes (for local development)
-6. Deploys the `out` directory to GitHub Pages
+3. Creates dummy environment variables for build
+4. Temporarily removes API routes and dynamic routes (that require server-side rendering)
+5. Builds the static site with `output: 'export'`
+6. Restores the removed routes (for local development)
+7. Deploys the `out` directory to GitHub Pages
 
 ## Local Testing
 
@@ -67,7 +89,11 @@ npx serve out
 
 The following files configure GitHub Pages deployment:
 
-- `.github/workflows/deploy.yml` - GitHub Actions workflow
-- `next.config.ts` - Next.js configuration with `output: 'export'` and `basePath`
+- `.github/workflows/deploy.yml` - GitHub Actions workflow for automated deployment
+- `next.config.ts` - Next.js configuration with:
+  - `output: 'export'` - Enables static export
+  - `basePath: '/next-zen-stem-academy'` - Configures the base path for the GitHub Pages subdirectory
+  - `images.unoptimized: true` - Disables image optimization (not supported in static export)
+  - `trailingSlash: true` - Adds trailing slashes to URLs for GitHub Pages compatibility
 - `scripts/build-gh-pages.sh` - Custom build script that excludes server-side code
 - `public/.nojekyll` - Prevents GitHub Pages from processing files with Jekyll
