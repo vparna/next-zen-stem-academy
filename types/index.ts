@@ -7,6 +7,8 @@ export interface User {
   firstName: string;
   lastName: string;
   phone?: string;
+  role: 'parent' | 'teacher' | 'admin';
+  qrCode?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -17,6 +19,7 @@ export interface Child {
   name: string;
   age: number;
   grade?: string;
+  qrCode?: string;
   createdAt: Date;
 }
 
@@ -81,4 +84,28 @@ export interface Payment {
 export interface AuthResponse {
   token: string;
   user: Omit<User, 'password'>;
+}
+
+export interface Attendance {
+  _id?: ObjectId;
+  childId: ObjectId;
+  userId: ObjectId; // Parent ID
+  courseId?: ObjectId;
+  checkInTime: Date;
+  checkOutTime?: Date;
+  checkInTeacherId: ObjectId;
+  checkOutTeacherId?: ObjectId;
+  status: 'checked-in' | 'completed';
+  notes?: string;
+}
+
+export interface Message {
+  _id?: ObjectId;
+  senderId: ObjectId;
+  receiverId: ObjectId;
+  courseId?: ObjectId;
+  content: string;
+  read: boolean;
+  readAt?: Date;
+  createdAt: Date;
 }
