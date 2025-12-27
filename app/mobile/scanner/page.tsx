@@ -101,7 +101,8 @@ export default function ScannerPage() {
         setError(data.error || `Failed to ${scanMode === 'checkin' ? 'check in' : 'check out'}`);
         setMessage('');
       }
-    } catch {
+    } catch (e) {
+      console.error('Failed to process QR code:', e);
       setError('Error processing QR code');
       setMessage('');
     }

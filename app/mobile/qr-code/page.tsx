@@ -49,7 +49,8 @@ export default function QRCodePage() {
         } else {
           setError('Failed to load children');
         }
-      } catch {
+      } catch (e) {
+        console.error('Failed to load children:', e);
         setError('Error loading children');
       } finally {
         setLoading(false);
@@ -80,7 +81,8 @@ export default function QRCodePage() {
         const errorData = await response.json();
         setError(errorData.error || 'Failed to generate QR code');
       }
-    } catch {
+    } catch (e) {
+      console.error('Failed to generate QR code:', e);
       setError('Error generating QR code');
     } finally {
       setGenerating(false);

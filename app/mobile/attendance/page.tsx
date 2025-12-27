@@ -66,7 +66,8 @@ export default function AttendancePage() {
         } else {
           setError('Failed to load attendance');
         }
-      } catch {
+      } catch (e) {
+        console.error('Failed to load attendance:', e);
         setError('Error loading attendance');
       } finally {
         setLoading(false);

@@ -84,7 +84,8 @@ export default function ChatPage() {
             setSelectedCourse(validCourses[0]._id);
           }
         }
-      } catch {
+      } catch (e) {
+        console.error('Failed to load courses:', e);
         setError('Error loading courses');
       } finally {
         setLoading(false);
@@ -111,8 +112,9 @@ export default function ChatPage() {
           // Reverse to show oldest first
           setMessages(data.reverse());
         }
-      } catch {
-        // Silently fail for polling
+      } catch (e) {
+        // Silently fail for polling - errors expected during normal operation
+        console.debug('Failed to fetch messages:', e);
       }
     };
 
@@ -143,7 +145,9 @@ export default function ChatPage() {
     try {
       const token = localStorage.getItem('token');
       
+      // TODO: Implement teacher selection
       // For now, send to a generic receiver (in a real app, you'd select a specific teacher)
+      // This should be replaced with actual teacher lookup based on course enrollment
       const response = await fetch('/api/messages', {
         method: 'POST',
         headers: {
@@ -173,7 +177,8 @@ export default function ChatPage() {
         const data = await response.json();
         setError(data.error || 'Failed to send message');
       }
-    } catch {
+    } catch (e) {
+      console.error('Failed to send message:', e);
       setError('Error sending message');
     } finally {
       setSending(false);
