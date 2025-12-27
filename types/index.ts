@@ -109,3 +109,37 @@ export interface Message {
   readAt?: Date;
   createdAt: Date;
 }
+
+export interface Job {
+  _id?: ObjectId;
+  jobId: string; // Unique job identifier (e.g., "JOB-001")
+  title: string;
+  description: string;
+  requirements: string[];
+  responsibilities: string[];
+  location: string;
+  jobType: 'full-time' | 'part-time' | 'contract' | 'internship';
+  department: string;
+  experienceLevel: 'entry' | 'mid' | 'senior';
+  salaryRange?: string;
+  active: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface JobApplication {
+  _id?: ObjectId;
+  jobId: ObjectId;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  resumeUrl: string;
+  resumeFileName: string;
+  coverLetter?: string;
+  linkedinUrl?: string;
+  portfolioUrl?: string;
+  status: 'pending' | 'under-review' | 'shortlisted' | 'rejected' | 'accepted';
+  reviewNotes?: string;
+  createdAt: Date;
+}
