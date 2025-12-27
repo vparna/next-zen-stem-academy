@@ -228,9 +228,14 @@ next-gen-stem-academy/
 3. **Courses Page** (`/courses`) - Browse and filter courses
 4. **Course Detail Page** (`/courses/[id]`) - Detailed course information
 5. **Login Page** (`/login`) - User authentication
-6. **Signup Page** (`/signup`) - New user registration
+6. **Signup Page** (`/signup`) - New user registration with role selection
 7. **Checkout Page** (`/checkout`) - Payment and enrollment
 8. **Dashboard** (`/dashboard`) - User dashboard with enrolled courses
+9. **Mobile App** (`/mobile`) - Mobile attendance and chat app (see MOBILE_APP_README.md)
+   - `/mobile/qr-code` - Parent QR code display
+   - `/mobile/scanner` - Teacher QR scanner
+   - `/mobile/attendance` - Attendance history
+   - `/mobile/chat` - Course-based messaging
 
 ## 🔧 Additional Scripts
 
@@ -314,6 +319,8 @@ For questions or support, please contact:
 
 ## 🔮 Future Enhancements
 
+- [x] **Mobile Attendance App** - QR code-based check-in/check-out system (see MOBILE_APP_README.md)
+- [x] **Course Chat** - Messaging between parents and teachers (see MOBILE_APP_README.md)
 - [ ] Multi-child discount support
 - [ ] Coupon system
 - [ ] Email notifications
@@ -321,7 +328,6 @@ For questions or support, please contact:
 - [ ] Progress tracking
 - [ ] Video lessons integration
 - [ ] Live class scheduling
-- [ ] Parent-teacher messaging
 - [ ] Assignment submissions
 - [ ] Quiz and assessments
 

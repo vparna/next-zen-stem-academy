@@ -13,6 +13,7 @@ export default function SignupPage() {
     firstName: '',
     lastName: '',
     phone: '',
+    role: 'parent',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,7 @@ export default function SignupPage() {
           firstName: formData.firstName,
           lastName: formData.lastName,
           phone: formData.phone,
+          role: formData.role,
         }),
       });
 
@@ -157,6 +159,22 @@ export default function SignupPage() {
                 className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="Phone number"
               />
+            </div>
+            
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
+                I am a
+              </label>
+              <select
+                id="role"
+                name="role"
+                value={formData.role}
+                onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              >
+                <option value="parent">Parent/Guardian</option>
+                <option value="teacher">Teacher</option>
+              </select>
             </div>
             
             <div>
