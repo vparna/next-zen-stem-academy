@@ -5,10 +5,11 @@ import { withAuth } from '@/middleware/auth';
 // GET /api/jobs/[id] - Get a specific job
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const job = await findJobById(params.id);
+    const { id } = await params;
+    const job = await findJobById(id);
     
     if (!job) {
       return NextResponse.json(
@@ -30,7 +31,7 @@ export async function GET(
 // PUT /api/jobs/[id] - Update a job (admin only)
 async function putHandler(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = (req as any).user;
@@ -43,9 +44,10 @@ async function putHandler(
       );
     }
     
+    const { id } = await params;
     const body = await req.json();
     
-    const success = await updateJob(params.id, body);
+    const success = await updateJob(id, body);
     
     if (!success) {
       return NextResponse.json(
@@ -67,7 +69,7 @@ async function putHandler(
 // DELETE /api/jobs/[id] - Delete a job (admin only)
 async function deleteHandler(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = (req as any).user;
@@ -80,7 +82,8 @@ async function deleteHandler(
       );
     }
     
-    const success = await deleteJob(params.id);
+    const { id } = await params;
+    const success = await deleteJob(id);
     
     if (!success) {
       return NextResponse.json(

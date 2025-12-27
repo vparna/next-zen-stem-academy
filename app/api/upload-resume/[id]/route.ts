@@ -5,11 +5,12 @@ import { ObjectId } from 'mongodb';
 // GET /api/upload-resume/[id] - Download resume file
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const db = await getDatabase();
-    const resume = await db.collection('resumes').findOne({ _id: new ObjectId(params.id) });
+    const resume = await db.collection('resumes').findOne({ _id: new ObjectId(id) });
     
     if (!resume) {
       return NextResponse.json(

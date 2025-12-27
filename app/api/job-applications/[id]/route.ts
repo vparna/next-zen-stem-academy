@@ -5,7 +5,7 @@ import { withAuth } from '@/middleware/auth';
 // GET /api/job-applications/[id] - Get a specific application (admin only)
 async function getHandler(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = (req as any).user;
@@ -18,7 +18,8 @@ async function getHandler(
       );
     }
     
-    const application = await findApplicationById(params.id);
+    const { id } = await params;
+    const application = await findApplicationById(id);
     
     if (!application) {
       return NextResponse.json(
@@ -40,7 +41,7 @@ async function getHandler(
 // PUT /api/job-applications/[id] - Update application status (admin only)
 async function putHandler(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = (req as any).user;
@@ -53,6 +54,7 @@ async function putHandler(
       );
     }
     
+    const { id } = await params;
     const body = await req.json();
     const { status, reviewNotes } = body;
     
@@ -63,7 +65,7 @@ async function putHandler(
       );
     }
     
-    const success = await updateApplicationStatus(params.id, status, reviewNotes);
+    const success = await updateApplicationStatus(id, status, reviewNotes);
     
     if (!success) {
       return NextResponse.json(
@@ -85,7 +87,7 @@ async function putHandler(
 // DELETE /api/job-applications/[id] - Delete an application (admin only)
 async function deleteHandler(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const user = (req as any).user;
@@ -98,7 +100,8 @@ async function deleteHandler(
       );
     }
     
-    const success = await deleteApplication(params.id);
+    const { id } = await params;
+    const success = await deleteApplication(id);
     
     if (!success) {
       return NextResponse.json(

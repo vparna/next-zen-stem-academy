@@ -18,7 +18,8 @@ interface Job {
   salaryRange?: string;
 }
 
-export default function JobDetailsPage({ params }: { params: { id: string } }) {
+export default function JobDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const [resolvedParams, setResolvedParams] = useState<{ id: string } | null>(null);
   const router = useRouter();
   const [job, setJob] = useState<Job | null>(null);
   const [loading, setLoading] = useState(true);
@@ -41,12 +42,23 @@ export default function JobDetailsPage({ params }: { params: { id: string } }) {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
-    fetchJob();
-  }, [params.id]);
+    const resolveParams = async () => {
+      const p = await params;
+      setResolvedParams(p);
+    };
+    resolveParams();
+  }, [params]);
+
+  useEffect(() => {
+    if (resolvedParams) {
+      fetchJob();
+    }
+  }, [resolvedParams]);
 
   const fetchJob = async () => {
+    if (!resolvedParams) return;
     try {
-      const response = await fetch(`/api/jobs/${params.id}`);
+      const response = await fetch(`/api/jobs/${resolvedParams.id}`);
       const data = await response.json();
       
       if (response.ok) {
