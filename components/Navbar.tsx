@@ -16,10 +16,10 @@ export default function Navbar() {
               <Image 
                 src="/logo.svg" 
                 alt="NextGen Stem Academy Logo" 
-                width={180} 
-                height={54}
+                width={200} 
+                height={60}
                 priority
-                className="h-12 w-auto"
+                style={{ height: '48px', width: 'auto' }}
               />
             </Link>
           </div>

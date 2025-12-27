@@ -11,9 +11,9 @@ export default function Footer() {
             <Image 
               src="/logo-white.svg" 
               alt="NextGen Stem Academy Logo" 
-              width={180} 
-              height={54}
-              className="h-12 w-auto mb-4"
+              width={200} 
+              height={60}
+              style={{ height: '48px', width: 'auto', marginBottom: '1rem' }}
             />
             <p className="text-gray-400 text-sm">
               Empowering young minds through innovative STEM education with our unique 3S philosophy.
@@ -69,8 +69,8 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>Email: info@nextgenstem.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
-              <li>Address: 123 STEM Street, Tech City</li>
+              <li>Phone: (425) 374-1463</li>
+              <li>Address: 21304 State Route 9 SE, Woodinville WA 98072</li>
             </ul>
           </div>
         </div>
