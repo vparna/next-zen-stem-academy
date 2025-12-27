@@ -198,7 +198,12 @@ The careers page is accessible from:
 - Resume files are validated for type (PDF, DOC, DOCX) and size (max 5MB)
 - Admin endpoints are protected with JWT authentication
 - Only users with `role: 'admin'` can access admin features
-- File uploads are stored as base64 in MongoDB (consider moving to cloud storage for production)
+- File uploads are stored as base64 in MongoDB
+  - **Note**: Base64 storage is suitable for MVP but has limitations:
+    - Increases file size by ~33%
+    - MongoDB documents have a 16MB size limit
+    - Not optimal for high-volume production use
+  - **Recommended for production**: Use cloud storage (AWS S3, Google Cloud Storage, Azure Blob Storage) or MongoDB GridFS
 
 ## Future Enhancements
 

@@ -40,7 +40,7 @@ export async function updateApplicationStatus(
   const db = await getDatabase();
   const objectId = typeof id === 'string' ? new ObjectId(id) : id;
   
-  const updates: any = { status };
+  const updates: Partial<Pick<JobApplication, 'status' | 'reviewNotes'>> = { status };
   if (reviewNotes !== undefined) {
     updates.reviewNotes = reviewNotes;
   }
