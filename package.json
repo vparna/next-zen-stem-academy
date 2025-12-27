@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:gh-pages": "bash scripts/build-gh-pages.sh",
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx scripts/seed-courses.ts"
