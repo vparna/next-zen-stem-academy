@@ -169,12 +169,16 @@ export async function sendEmail(
   }
 
   try {
+    // For text version, use the provided text or a simple message
+    // Note: We don't strip HTML here as templates are controlled and safe
+    const textVersion = template.text || 'Please view this email in an HTML-capable email client.';
+    
     const mailOptions = {
       from: `"NextGen STEM Academy" <${process.env.EMAIL_USER}>`,
       to,
       subject: template.subject,
       html: template.html,
-      text: template.text || template.html.replace(/<[^>]*>/g, ''), // Strip HTML for text version
+      text: textVersion,
     };
 
     await transporter.sendMail(mailOptions);
