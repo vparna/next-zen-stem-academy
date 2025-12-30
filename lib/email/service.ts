@@ -137,7 +137,8 @@ export const emailTemplates = {
 export async function sendEmail(
   to: string,
   template: EmailTemplate,
-  userId?: ObjectId
+  userId?: ObjectId,
+  emailType?: EmailNotification['type']
 ): Promise<boolean> {
   const db = await getDatabase();
   
@@ -145,7 +146,7 @@ export async function sendEmail(
   const emailNotification: Omit<EmailNotification, '_id'> = {
     userId: userId || new ObjectId(),
     email: to,
-    type: 'enrollment', // Default, should be passed as parameter in production
+    type: emailType || 'enrollment',
     subject: template.subject,
     content: template.html,
     status: 'pending',
@@ -236,5 +237,5 @@ export async function sendNotificationEmail(
       return false;
   }
 
-  return await sendEmail(email, template, userId);
+  return await sendEmail(email, template, userId, type);
 }

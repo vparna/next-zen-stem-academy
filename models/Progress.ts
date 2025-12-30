@@ -41,9 +41,32 @@ export async function updateProgress(
   const enrollmentObjId = typeof enrollmentId === 'string' ? new ObjectId(enrollmentId) : enrollmentId;
   const lessonObjId = typeof lessonId === 'string' ? new ObjectId(lessonId) : lessonId;
   
+  // Ensure required fields are present for upsert
+  const updateDoc: any = {
+    ...updates,
+    enrollmentId: enrollmentObjId,
+    lessonId: lessonObjId,
+  };
+  
+  // Add required fields if creating new document
+  const setOnInsert: any = {
+    createdAt: new Date(),
+  };
+  
+  // Ensure userId and courseId are set if provided in updates
+  if (updates.userId) {
+    setOnInsert.userId = updates.userId;
+  }
+  if (updates.courseId) {
+    setOnInsert.courseId = updates.courseId;
+  }
+  
   const result = await db.collection<Progress>(COLLECTION_NAME).updateOne(
     { enrollmentId: enrollmentObjId, lessonId: lessonObjId },
-    { $set: updates },
+    { 
+      $set: updateDoc,
+      $setOnInsert: setOnInsert
+    },
     { upsert: true }
   );
   

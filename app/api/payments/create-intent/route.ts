@@ -20,13 +20,14 @@ async function handler(req: NextRequest) {
 
     let finalAmount = amount;
     let discountApplied = 0;
-    let appliedCoupon = couponCode;
+    const appliedCoupon = couponCode;
 
     // Apply multi-child discount (10% off for 2+ children, 15% off for 3+ children)
     if (childrenCount && childrenCount >= 2) {
-      const multiChildDiscount = childrenCount >= 3 ? 0.15 : 0.10;
-      discountApplied += amount * multiChildDiscount;
-      finalAmount = amount - (amount * multiChildDiscount);
+      const multiChildDiscountRate = childrenCount >= 3 ? 0.15 : 0.10;
+      const multiChildDiscount = amount * multiChildDiscountRate;
+      discountApplied += multiChildDiscount;
+      finalAmount -= multiChildDiscount;
     }
 
     // Create Stripe payment intent
