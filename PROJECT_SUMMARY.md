@@ -16,7 +16,7 @@ A complete, production-ready ed-tech platform built with modern web technologies
 ✅ **User Management** - Profile, children, and enrollment management
 ✅ **Tech Stack** - React (Next.js), Tailwind CSS, Node.js, MongoDB, JWT, Stripe
 ✅ **SEO Friendly** - Next.js SSR and meta tags
-✅ **Deployment Ready** - Vercel configuration included
+✅ **Deployment Ready** - GitHub Pages (static) and Vercel (full-stack) configurations included
 
 ## 📊 Technical Implementation
 
@@ -97,14 +97,20 @@ next-gen-stem-academy/
 ├── scripts/                    # Utility Scripts
 │   └── seed-courses.ts        # Database seeding
 ├── public/                     # Static Assets
+├── .github/                    # GitHub workflows
+│   └── workflows/
+│       └── deploy.yml          # GitHub Pages deployment
+├── scripts/                    # Build and utility scripts
+│   └── build-gh-pages.sh      # GitHub Pages build script
 ├── .env.example               # Environment template
 ├── .env.local                 # Local environment (gitignored)
 ├── .gitignore                 # Git ignore rules
 ├── package.json               # Dependencies
 ├── tsconfig.json              # TypeScript config
 ├── tailwind.config.ts         # Tailwind config
-├── next.config.ts             # Next.js config
-├── vercel.json                # Vercel deployment
+├── next.config.ts             # Next.js config (with GitHub Pages support)
+├── vercel.json                # Vercel deployment (optional)
+├── GITHUB_PAGES.md            # GitHub Pages documentation
 ├── README.md                  # Main documentation
 ├── QUICKSTART.md              # Quick start guide
 └── CONTRIBUTING.md            # Contribution guide

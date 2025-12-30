@@ -257,7 +257,31 @@ This will populate your database with sample courses for testing.
 
 ## 🚢 Deployment
 
-### Deploy to Vercel
+### Deploy to GitHub Pages (Static Site)
+
+This project is configured to automatically deploy to GitHub Pages. The deployment is triggered on every push to the `main` branch.
+
+**Live URL**: [https://vparna.github.io/next-zen-stem-academy](https://vparna.github.io/next-zen-stem-academy)
+
+#### Important Limitations
+
+GitHub Pages only supports **static file hosting**. This means:
+- ✅ **Works**: Frontend pages, UI components, and static content
+- ❌ **Does NOT work**: API routes, authentication, payments, database operations
+
+The deployed site shows demo/sample data instead of real database content.
+
+#### Deployment Process
+
+1. **Automatic Deployment**: Push changes to the `main` branch
+2. **GitHub Actions**: The workflow automatically builds and deploys
+3. **Monitor**: Check the "Actions" tab on GitHub for deployment status
+
+For detailed information about GitHub Pages deployment, see [GITHUB_PAGES.md](./GITHUB_PAGES.md).
+
+### Deploy to Vercel (Full Functionality)
+
+For a fully functional deployment with authentication, payments, and database integration:
 
 1. **Push your code to GitHub**
 
