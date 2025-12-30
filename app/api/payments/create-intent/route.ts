@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
 async function handler(req: NextRequest) {
   try {
     const user = (req as any).user;
-    const { amount, courseId, courseName } = await req.json();
+    const { amount, courseId, courseName, couponCode, childrenCount } = await req.json();
 
     if (!amount || !courseId) {
       return NextResponse.json(
@@ -18,20 +18,38 @@ async function handler(req: NextRequest) {
       );
     }
 
+    let finalAmount = amount;
+    let discountApplied = 0;
+    let appliedCoupon = couponCode;
+
+    // Apply multi-child discount (10% off for 2+ children, 15% off for 3+ children)
+    if (childrenCount && childrenCount >= 2) {
+      const multiChildDiscount = childrenCount >= 3 ? 0.15 : 0.10;
+      discountApplied += amount * multiChildDiscount;
+      finalAmount = amount - (amount * multiChildDiscount);
+    }
+
     // Create Stripe payment intent
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100), // Convert to cents
+      amount: Math.round(finalAmount * 100), // Convert to cents
       currency: 'usd',
       metadata: {
         userId: user.userId,
         courseId,
         courseName: courseName || 'Course',
+        originalAmount: amount.toString(),
+        discountApplied: discountApplied.toString(),
+        couponCode: appliedCoupon || '',
+        childrenCount: childrenCount?.toString() || '0',
       },
     });
 
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
       paymentIntentId: paymentIntent.id,
+      originalAmount: amount,
+      discountApplied,
+      finalAmount,
     });
   } catch (error: any) {
     console.error('Error creating payment intent:', error);

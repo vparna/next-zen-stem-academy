@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { updateEnrollment } from '@/models/Enrollment';
+import { updateEnrollment, getEnrollmentById } from '@/models/Enrollment';
+import { getCourseById } from '@/models/Course';
+import { findUserById } from '@/models/User';
+import { incrementCouponUsage } from '@/models/Coupon';
+import { sendNotificationEmail } from '@/lib/email/service';
+import { ObjectId } from 'mongodb';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2025-12-15.clover',
@@ -38,12 +43,46 @@ export async function POST(req: NextRequest) {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log('Payment succeeded:', paymentIntent.id);
         
-        // Update enrollment status
-        // In a real implementation, you would:
-        // 1. Find the enrollment by paymentIntentId
-        // 2. Update the payment status to 'paid'
-        // 3. Update the enrollment status to 'active'
-        // 4. Send confirmation email
+        const { userId, courseId, courseName, couponCode } = paymentIntent.metadata;
+        
+        // If enrollment exists, update it
+        // In production, you'd store enrollmentId in metadata during payment intent creation
+        // For now, we'll send email notification
+        
+        if (userId && courseId) {
+          const user = await findUserById(userId);
+          const course = await getCourseById(courseId);
+          
+          if (user && course) {
+            // Send payment confirmation email
+            await sendNotificationEmail(
+              new ObjectId(userId),
+              user.email,
+              'payment',
+              {
+                userName: `${user.firstName} ${user.lastName}`,
+                courseName: course.name,
+                amount: paymentIntent.amount / 100, // Convert from cents
+              }
+            );
+            
+            // Send enrollment confirmation email
+            await sendNotificationEmail(
+              new ObjectId(userId),
+              user.email,
+              'enrollment',
+              {
+                userName: `${user.firstName} ${user.lastName}`,
+                courseName: course.name,
+              }
+            );
+          }
+          
+          // Increment coupon usage if coupon was applied
+          if (couponCode) {
+            await incrementCouponUsage(couponCode);
+          }
+        }
         
         break;
       }
@@ -52,7 +91,7 @@ export async function POST(req: NextRequest) {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log('Payment failed:', paymentIntent.id);
         
-        // Update enrollment to failed status
+        // Update enrollment to failed status if needed
         
         break;
       }
