@@ -1,8 +1,12 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/middleware/auth';
 import { createEnrollment } from '@/models/Enrollment';
 import { getCourseById } from '@/models/Course';
 import { ObjectId } from 'mongodb';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 async function handler(req: NextRequest) {
   try {

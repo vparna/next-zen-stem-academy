@@ -1,7 +1,11 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth/jwt';
 import { createMessage, getMessagesByCourse, getConversationMessages, getUnreadMessageCount } from '@/models/Message';
 import { ObjectId } from 'mongodb';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // POST - Send a message
 export async function POST(request: NextRequest) {

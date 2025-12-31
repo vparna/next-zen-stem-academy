@@ -1,6 +1,10 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getDatabase } from '@/lib/db/mongodb';
 import { ObjectId } from 'mongodb';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // GET /api/upload-resume/[id] - Download resume file
 export async function GET(

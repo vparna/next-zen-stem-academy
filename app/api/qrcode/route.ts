@@ -1,7 +1,11 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth/jwt';
 import { generateQRCode, generateQRData } from '@/lib/qrcode';
 import { getChildById } from '@/models/Child';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // GET - Generate QR code for a child
 export async function GET(request: NextRequest) {

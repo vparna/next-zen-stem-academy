@@ -1,6 +1,10 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createUser, findUserByEmail } from '@/models/User';
 import { hashPassword, generateToken } from '@/lib/auth/jwt';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {

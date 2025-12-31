@@ -1,6 +1,10 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { findApplicationById, updateApplicationStatus, deleteApplication } from '@/models/JobApplication';
 import { withAuth } from '@/middleware/auth';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // GET /api/job-applications/[id] - Get a specific application (admin only)
 async function getHandler(

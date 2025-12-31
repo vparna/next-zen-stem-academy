@@ -1,13 +1,24 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { withAuth } from '@/middleware/auth';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-12-15.clover',
-});
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
+
+// Lazy Stripe initialization
+function getStripeClient(): Stripe {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error('STRIPE_SECRET_KEY environment variable is not set');
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2025-12-15.clover',
+  });
+}
 
 async function handler(req: NextRequest) {
   try {
+    const stripe = getStripeClient();
     const user = (req as any).user;
     const { amount, courseId, courseName, couponCode, childrenCount } = await req.json();
 

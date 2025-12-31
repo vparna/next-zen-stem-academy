@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/middleware/auth';
+import { ObjectId } from 'mongodb';
 import { 
   getQuizzesByCourseId, 
   createQuizAttempt, 
@@ -7,7 +8,9 @@ import {
   getQuizById,
   gradeQuizAttempt 
 } from '@/models/Quiz';
-import { ObjectId } from 'mongodb';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 async function getHandler(req: NextRequest) {
   try {
