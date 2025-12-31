@@ -9,7 +9,8 @@
     "lint": "eslint",
     "seed": "tsx scripts/seed-courses.ts",
     "seed-jobs": "tsx scripts/seed-jobs.ts",
-    "validate-env": "tsx scripts/validate-env.ts"
+    "validate-env": "tsx scripts/validate-env.ts",
+    "pre-deploy-check": "tsx scripts/pre-deploy-check.ts"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.6.0",
