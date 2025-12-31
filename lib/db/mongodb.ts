@@ -43,7 +43,8 @@ function getClientPromise(): Promise<MongoClient> {
   return clientPromise;
 }
 
-export default getClientPromise();
+// Export the function, not the result of calling it
+export default getClientPromise;
 
 export async function getDatabase(): Promise<Db> {
   const client = await getClientPromise();
