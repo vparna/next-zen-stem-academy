@@ -97,7 +97,17 @@ npm run build
 npm start
 ```
 
-## Deploying to Vercel
+## Deploying to GitHub Pages (Static Site)
+
+This project is automatically deployed to GitHub Pages on every push to `main`.
+
+**Live URL**: [https://vparna.github.io/next-zen-stem-academy](https://vparna.github.io/next-zen-stem-academy)
+
+**Note**: GitHub Pages deployment shows a static demo version. For full functionality (authentication, payments, database), deploy to Vercel (see below).
+
+## Deploying to Vercel (Full Functionality)
+
+For a fully functional deployment with database and API routes:
 
 1. Push your code to GitHub
 2. Go to [vercel.com](https://vercel.com)
