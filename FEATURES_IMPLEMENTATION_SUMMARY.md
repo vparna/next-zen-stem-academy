@@ -344,7 +344,7 @@ This document summarizes the comprehensive implementation of 9 major feature set
 ### Required Environment Variables
 ```env
 # Existing
-MONGODB_URI=mongodb://localhost:27017/next-zen-stem-academy
+MONGODB_URI=mongodb://localhost:27017/NextGen
 JWT_SECRET=your-jwt-secret
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxx
 STRIPE_SECRET_KEY=sk_test_xxx

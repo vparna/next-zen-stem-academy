@@ -77,9 +77,9 @@ A modern, scalable ed-tech platform where parents and students can discover cour
    Update `.env.local` with your configuration:
    ```env
    # MongoDB Connection
-   MONGODB_URI=mongodb://localhost:27017/next-gen-stem-academy
+   MONGODB_URI=mongodb://localhost:27017/NextGen
    # For MongoDB Atlas:
-   # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/next-gen-stem-academy
+   # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/NextGen?retryWrites=true&w=majority
    
    # JWT Secret (generate a secure random string)
    JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
@@ -335,11 +335,13 @@ npm run lint
 ## 📝 Environment Variables
 
 Required environment variables:
-- `MONGODB_URI` - MongoDB connection string
+- `MONGODB_URI` - MongoDB connection string (Database name: `NextGen`)
 - `JWT_SECRET` - Secret key for JWT tokens
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - Stripe publishable key
 - `STRIPE_SECRET_KEY` - Stripe secret key
 - `NEXT_PUBLIC_APP_URL` - Application URL
+
+For production deployment on Vercel, configure these as Vercel Environment Variables using the Vercel dashboard. The MongoDB URI should point to your MongoDB Atlas cluster with the database name `NextGen`.
 
 ## 🤝 Contributing
 
