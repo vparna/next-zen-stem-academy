@@ -1,5 +1,9 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getDatabase } from '@/lib/db/mongodb';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // POST /api/upload-resume - Upload resume file
 export async function POST(req: NextRequest) {

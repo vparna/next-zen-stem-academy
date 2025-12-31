@@ -1,6 +1,10 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth/jwt';
 import { markMessageAsRead } from '@/models/Message';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // POST - Mark message as read
 export async function POST(request: NextRequest) {

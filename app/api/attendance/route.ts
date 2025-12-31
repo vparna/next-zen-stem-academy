@@ -5,6 +5,9 @@ import { parseQRData } from '@/lib/qrcode';
 import { ObjectId } from 'mongodb';
 import { getChildById } from '@/models/Child';
 
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
+
 // POST - Check in a student
 export async function POST(request: NextRequest) {
   try {

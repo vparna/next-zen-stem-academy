@@ -1,6 +1,10 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/middleware/auth';
 import { findUserById, updateUser } from '@/models/User';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 async function getHandler(req: NextRequest) {
   try {

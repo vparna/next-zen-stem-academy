@@ -1,7 +1,11 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/middleware/auth';
 import { validateCoupon, calculateDiscount } from '@/models/Coupon';
 import { ObjectId } from 'mongodb';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 async function handler(req: NextRequest) {
   try {

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/middleware/auth';
+import { ObjectId } from 'mongodb';
 import { 
   createCertificate, 
   getCertificateByEnrollment, 
@@ -7,10 +8,12 @@ import {
   generateCertificateNumber 
 } from '@/models/Certificate';
 import { getEnrollmentById, updateEnrollment } from '@/models/Enrollment';
-import { getCourseById } from '@/models/Course';
 import { findUserById } from '@/models/User';
-import { ObjectId } from 'mongodb';
+import { getCourseById } from '@/models/Course';
 import { sendNotificationEmail } from '@/lib/email/service';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 async function getHandler(req: NextRequest) {
   try {

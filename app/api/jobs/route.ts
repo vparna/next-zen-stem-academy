@@ -1,6 +1,10 @@
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createJob, findAllJobs } from '@/models/Job';
 import { withAuth } from '@/middleware/auth';
+
+// Force dynamic rendering for this API route
+export const dynamic = 'force-dynamic';
 
 // GET /api/jobs - Get all jobs (optionally filter by active)
 export async function GET(req: NextRequest) {
