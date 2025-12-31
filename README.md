@@ -2,6 +2,8 @@
 
 A modern, scalable ed-tech platform where parents and students can discover courses, enroll, pay online, and manage their learning journey. Built with Next.js, TypeScript, MongoDB, and integrated with Stripe for payments.
 
+> **⚠️ Deployment Note**: This application requires server-side rendering (SSR) and cannot be deployed on GitHub Pages. Please use **Vercel** (recommended), Netlify, or other platforms that support Next.js SSR. See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
+
 ## 🎯 Features
 
 ### Core Features
