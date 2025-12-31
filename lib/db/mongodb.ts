@@ -8,14 +8,14 @@ let clientPromise: Promise<MongoClient> | null = null;
 function getClientPromise(): Promise<MongoClient> {
   // Validate environment variable at runtime
   if (!process.env.MONGODB_URI) {
-    throw new Error('Please add your MongoDB URI to .env.local');
+    throw new Error('MONGODB_URI environment variable is not set. Please add it to your .env.local file (for local development) or Vercel environment variables (for deployment).');
   }
 
   const uri: string = process.env.MONGODB_URI;
 
   // Validate URI format
   if (!uri.startsWith('mongodb://') && !uri.startsWith('mongodb+srv://')) {
-    throw new Error('Invalid MongoDB URI format. Must start with "mongodb://" or "mongodb+srv://"');
+    throw new Error('Invalid MongoDB URI format. Must start with "mongodb://" or "mongodb+srv://". Current value starts with: ' + uri.substring(0, 10));
   }
 
   if (clientPromise) {
