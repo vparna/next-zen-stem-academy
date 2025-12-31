@@ -2,11 +2,40 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState('');
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check authentication status
+    const token = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
+    
+    if (token && userData) {
+      setIsLoggedIn(true);
+      try {
+        const user = JSON.parse(userData);
+        setUserName(user.firstName || 'User');
+      } catch (e) {
+        console.error('Error parsing user data:', e);
+      }
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setIsLoggedIn(false);
+    setUserName('');
+    setIsMenuOpen(false);
+    router.push('/');
+  };
 
   return (
     <nav className="bg-white shadow-md">
@@ -39,15 +68,37 @@ export default function Navbar() {
             <Link href="/careers" className="text-gray-700 hover:text-blue-600 transition">
               Careers
             </Link>
-            <Link href="/login" className="text-gray-700 hover:text-blue-600 transition">
-              Login
+            <Link href="/support" className="text-gray-700 hover:text-blue-600 transition">
+              Support
             </Link>
-            <Link
-              href="/signup"
-              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
-            >
-              Sign Up
-            </Link>
+            {isLoggedIn ? (
+              <>
+                <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 transition">
+                  Dashboard
+                </Link>
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-700">Hi, {userName}</span>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="text-gray-700 hover:text-blue-600 transition">
+                  Login
+                </Link>
+                <Link
+                  href="/signup"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -108,19 +159,49 @@ export default function Navbar() {
                 Careers
               </Link>
               <Link
-                href="/login"
+                href="/support"
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 transition"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Login
+                Support
               </Link>
-              <Link
-                href="/signup"
-                className="bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sign Up
-              </Link>
+              {isLoggedIn ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <div className="px-3 py-2 text-gray-700">
+                    Hi, {userName}
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-600 text-white px-3 py-2 rounded-md hover:bg-red-700 transition text-center"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/signup"
+                    className="bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700 transition text-center"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}
