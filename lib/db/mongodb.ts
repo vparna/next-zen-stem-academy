@@ -2,7 +2,6 @@ import { MongoClient, Db } from 'mongodb';
 
 const options = {};
 
-let client: MongoClient;
 let clientPromise: Promise<MongoClient> | null = null;
 
 // Lazy initialization function
@@ -30,13 +29,13 @@ function getClientPromise(): Promise<MongoClient> {
     };
 
     if (!globalWithMongo._mongoClientPromise) {
-      client = new MongoClient(uri, options);
+      const client = new MongoClient(uri, options);
       globalWithMongo._mongoClientPromise = client.connect();
     }
     clientPromise = globalWithMongo._mongoClientPromise;
   } else {
     // In production mode, it's best to not use a global variable.
-    client = new MongoClient(uri, options);
+    const client = new MongoClient(uri, options);
     clientPromise = client.connect();
   }
 
