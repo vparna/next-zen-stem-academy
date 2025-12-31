@@ -7,8 +7,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userName, setUserName] = useState('');
+  const [authState, setAuthState] = useState<{isLoggedIn: boolean; userName: string}>({
+    isLoggedIn: false,
+    userName: ''
+  });
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const router = useRouter();
 
@@ -18,10 +20,12 @@ export default function Navbar() {
     const userData = localStorage.getItem('user');
     
     if (token && userData) {
-      setIsLoggedIn(true);
       try {
         const user = JSON.parse(userData);
-        setUserName(user.firstName || 'User');
+        setAuthState({
+          isLoggedIn: true,
+          userName: user.firstName || 'User'
+        });
       } catch (e) {
         console.error('Error parsing user data:', e);
       }
@@ -31,8 +35,10 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    setIsLoggedIn(false);
-    setUserName('');
+    setAuthState({
+      isLoggedIn: false,
+      userName: ''
+    });
     setIsMenuOpen(false);
     router.push('/');
   };
@@ -71,13 +77,13 @@ export default function Navbar() {
             <Link href="/support" className="text-gray-700 hover:text-blue-600 transition">
               Support
             </Link>
-            {isLoggedIn ? (
+            {authState.isLoggedIn ? (
               <>
                 <Link href="/dashboard" className="text-gray-700 hover:text-blue-600 transition">
                   Dashboard
                 </Link>
                 <div className="flex items-center gap-2">
-                  <span className="text-gray-700">Hi, {userName}</span>
+                  <span className="text-gray-700">Hi, {authState.userName}</span>
                   <button
                     onClick={handleLogout}
                     className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
@@ -165,7 +171,7 @@ export default function Navbar() {
               >
                 Support
               </Link>
-              {isLoggedIn ? (
+              {authState.isLoggedIn ? (
                 <>
                   <Link
                     href="/dashboard"
@@ -175,7 +181,7 @@ export default function Navbar() {
                     Dashboard
                   </Link>
                   <div className="px-3 py-2 text-gray-700">
-                    Hi, {userName}
+                    Hi, {authState.userName}
                   </div>
                   <button
                     onClick={handleLogout}

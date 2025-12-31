@@ -45,11 +45,11 @@ export default function SupportPage() {
                 <ol className="list-decimal list-inside space-y-2 text-gray-700 ml-4">
                   <li>Browse available courses from the <Link href="/courses" className="text-blue-600 hover:underline">Courses page</Link></li>
                   <li>Click on a course to view details</li>
-                  <li>Click "Enroll Now" button (you'll be prompted to login if not already logged in)</li>
+                  <li>Click &quot;Enroll Now&quot; button (you&apos;ll be prompted to login if not already logged in)</li>
                   <li>Review the order summary on the checkout page</li>
                   <li>Enter your credit card details in the Stripe payment form</li>
-                  <li>Click "Pay" to complete the enrollment</li>
-                  <li>You'll receive a confirmation email and can access the course from your dashboard</li>
+                  <li>Click &quot;Pay&quot; to complete the enrollment</li>
+                  <li>You&apos;ll receive a confirmation email and can access the course from your dashboard</li>
                 </ol>
               </div>
 
@@ -134,8 +134,8 @@ export default function SupportPage() {
                   </p>
                   <ol className="list-decimal list-inside space-y-1 text-gray-600 ml-4">
                     <li>Add a course to your cart</li>
-                    <li>On the checkout page, look for the "Coupon Code" field</li>
-                    <li>Enter your code and click "Apply"</li>
+                    <li>On the checkout page, look for the &quot;Coupon Code&quot; field</li>
+                    <li>Enter your code and click &quot;Apply&quot;</li>
                     <li>The discount will be reflected in your total</li>
                   </ol>
                 </div>
@@ -171,8 +171,8 @@ export default function SupportPage() {
                 </ul>
                 <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-gray-700">
-                    <strong>Troubleshooting:</strong> If you're getting a 404 error when clicking "My Profile", 
-                    ensure you're logged in and try clearing your browser cache. If the issue persists, contact support.
+                    <strong>Troubleshooting:</strong> If you&apos;re getting a 404 error when clicking &quot;My Profile&quot;, 
+                    ensure you&apos;re logged in and try clearing your browser cache. If the issue persists, contact support.
                   </p>
                 </div>
               </div>
@@ -180,13 +180,13 @@ export default function SupportPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">My Children</h3>
                 <p className="text-gray-700 mb-3">
-                  Manage your children's information from the <Link href="/dashboard" className="text-blue-600 hover:underline">Dashboard</Link>:
+                  Manage your children&apos;s information from the <Link href="/dashboard" className="text-blue-600 hover:underline">Dashboard</Link>:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
                   <li>Add new children to your account</li>
-                  <li>View children's information (name, age, grade)</li>
+                  <li>View children&apos;s information (name, age, grade)</li>
                   <li>Enroll children in courses</li>
-                  <li>Track each child's progress</li>
+                  <li>Track each child&apos;s progress</li>
                 </ul>
                 <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                   <p className="text-gray-700 mb-2">
@@ -204,7 +204,7 @@ export default function SupportPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Sign In & Sign Up Issues</h3>
                 <p className="text-gray-700 mb-3">
-                  Once you're logged in, the Sign In and Sign Up buttons are automatically hidden and replaced with:
+                  Once you&apos;re logged in, the Sign In and Sign Up buttons are automatically hidden and replaced with:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 ml-4">
                   <li>Your name displayed in the navigation bar</li>
@@ -233,7 +233,7 @@ export default function SupportPage() {
                     <strong>Solutions:</strong>
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
-                    <li>Ensure you're logged in to your account</li>
+                    <li>Ensure you&apos;re logged in to your account</li>
                     <li>Clear your browser cache and cookies</li>
                     <li>Try accessing the pages directly: /dashboard/profile and /dashboard/children</li>
                     <li>Log out and log back in</li>
@@ -266,7 +266,7 @@ export default function SupportPage() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Cannot View Enrolled Courses</h3>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="text-gray-700 mb-2">
-                    <strong>Problem:</strong> Enrolled in a course but can't see it
+                    <strong>Problem:</strong> Enrolled in a course but can&apos;t see it
                   </p>
                   <p className="text-gray-700 mb-2">
                     <strong>Solutions:</strong>
@@ -292,7 +292,7 @@ export default function SupportPage() {
                   </p>
                   <ul className="list-disc list-inside space-y-1 text-gray-600 ml-4">
                     <li>Verify you have added children to your account</li>
-                    <li>Ensure you're selecting multiple enrollments</li>
+                    <li>Ensure you&apos;re selecting multiple enrollments</li>
                     <li>Check that your coupon code is valid and not expired</li>
                     <li>Verify coupon code is entered correctly (case-sensitive)</li>
                     <li>Remember: only one discount type can be applied at a time</li>

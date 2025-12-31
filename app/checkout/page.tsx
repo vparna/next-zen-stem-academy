@@ -99,8 +99,8 @@ function CheckoutContent() {
       setClientSecret(intentData.clientSecret);
       setShowPaymentForm(true);
       
-    } catch (error: any) {
-      setError(error.message || 'Failed to initiate payment');
+    } catch (err) {
+      setError((err as Error).message || 'Failed to initiate payment');
     } finally {
       setProcessing(false);
     }
@@ -147,8 +147,8 @@ function CheckoutContent() {
       alert(`Payment successful! Enrollment ID: ${enrollData.enrollmentId}`);
       router.push('/dashboard');
       
-    } catch (error: any) {
-      setError(error.message || 'Payment failed. Please try again.');
+    } catch (err) {
+      setError((err as Error).message || 'Payment failed. Please try again.');
     } finally {
       setProcessing(false);
     }

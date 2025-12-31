@@ -183,7 +183,7 @@ export default function DashboardPage() {
             </div>
           ) : enrollments.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
-              <p className="text-lg">You haven't enrolled in any courses yet.</p>
+              <p className="text-lg">You haven&apos;t enrolled in any courses yet.</p>
               <Link
                 href="/courses"
                 className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
