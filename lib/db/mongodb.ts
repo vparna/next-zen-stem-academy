@@ -8,12 +8,12 @@ let cachedDbName: string | null = null;
 // Extract database name from MongoDB URI
 function extractDatabaseName(uri: string): string {
   try {
-    // Match the database name between the last / and either ? or end of string
-    // Handles both: mongodb://host:port/dbname and mongodb://host:port/dbname?options
-    const match = uri.match(/\/([^\/\?]+)(\?|$)/);
+    // First check if URI has a path after the host
+    // mongodb://host:port/dbname or mongodb+srv://host/dbname
+    const pathMatch = uri.match(/^mongodb(\+srv)?:\/\/[^\/]+\/([^\/\?]+)(\?.*)?$/);
     
-    if (match && match[1]) {
-      const dbName = match[1];
+    if (pathMatch && pathMatch[2]) {
+      const dbName = pathMatch[2];
       // Validate database name is not empty and not just whitespace
       if (dbName.trim().length === 0) {
         throw new Error('Database name in MONGODB_URI is empty');
