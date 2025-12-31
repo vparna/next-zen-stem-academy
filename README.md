@@ -2,6 +2,8 @@
 
 A modern, scalable ed-tech platform where parents and students can discover courses, enroll, pay online, and manage their learning journey. Built with Next.js, TypeScript, MongoDB, and integrated with Stripe for payments.
 
+> **⚠️ Deployment Note**: This application requires server-side rendering (SSR) and cannot be deployed on GitHub Pages. Please use **Vercel** (recommended), Netlify, or other platforms that support Next.js SSR. See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
+
 ## 🎯 Features
 
 ### Core Features
@@ -333,6 +335,39 @@ Required environment variables:
 - `NEXT_PUBLIC_APP_URL` - Application URL
 
 For production deployment on Vercel, configure these as Vercel Environment Variables using the Vercel dashboard. The MongoDB URI should point to your MongoDB Atlas cluster with the database name `NextGen`.
+
+## 🚀 Deployment to Vercel
+
+This application is designed to be deployed on **Vercel** (or other platforms that support Next.js server-side rendering).
+
+### Quick Deployment
+
+1. **Quick Start**: Follow the [VERCEL_QUICKSTART.md](VERCEL_QUICKSTART.md) guide for step-by-step instructions
+2. **Detailed Guide**: See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for comprehensive deployment information
+
+### Why Vercel?
+
+- ✅ Native Next.js support with zero configuration
+- ✅ Automatic deployments from GitHub
+- ✅ Built-in environment variable management
+- ✅ Serverless API routes work out of the box
+- ✅ Free tier available for testing
+
+### Deployment Checklist
+
+- [ ] Set up MongoDB Atlas database
+- [ ] Configure environment variables in Vercel:
+  - `MONGODB_URI`
+  - `JWT_SECRET`
+  - `NEXT_PUBLIC_APP_URL`
+  - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` (optional)
+  - `STRIPE_SECRET_KEY` (optional)
+  - `STRIPE_WEBHOOK_SECRET` (optional)
+- [ ] Deploy to Vercel
+- [ ] Test signup/login functionality
+- [ ] Configure custom domain (optional)
+
+**Note**: GitHub Pages is **not supported** because this application requires server-side rendering and API routes.
 
 ## 🤝 Contributing
 
