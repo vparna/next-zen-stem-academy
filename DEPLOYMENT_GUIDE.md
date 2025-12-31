@@ -23,10 +23,32 @@ Vercel is the recommended platform for deploying this Next.js application becaus
 4. Whitelist all IP addresses (0.0.0.0/0) for Vercel serverless functions
 5. Get your connection string: `mongodb+srv://username:password@cluster.mongodb.net/NextGen?retryWrites=true&w=majority`
 
+**Important**: Make sure the database name `NextGen` is included in the connection string.
+
 **Option B: Local MongoDB (Development Only)**
 1. Install MongoDB locally
 2. Start MongoDB: `mongod --dbpath /path/to/data`
 3. Connection string: `mongodb://localhost:27017/NextGen`
+
+#### 1.5. Initialize the Database Schema
+
+After setting up MongoDB, you must initialize the database with required collections and indexes:
+
+```bash
+# Set your MongoDB connection string
+export MONGODB_URI="mongodb+srv://username:password@cluster.mongodb.net/NextGen?retryWrites=true&w=majority"
+
+# Run the initialization script
+npm run init-db
+```
+
+This script will:
+- ✅ Create all 16 required collections
+- ✅ Set up indexes for optimized queries
+- ✅ Seed initial data (6 courses and 5 job listings)
+- ✅ Validate the database structure
+
+**See [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md) for detailed instructions and troubleshooting.**
 
 #### 2. Deploy to Vercel
 
@@ -75,13 +97,29 @@ Vercel is the recommended platform for deploying this Next.js application becaus
 
 #### 4. Test Your Deployment
 
-1. Visit your deployed URL
-2. Try to sign up with a new account
-3. Verify that:
-   - ✅ Signup form submits successfully
-   - ✅ User is redirected to dashboard
-   - ✅ User data is stored in MongoDB
-   - ✅ JWT token is generated and stored
+1. **Verify Database Setup**
+   - Log in to [MongoDB Atlas](https://cloud.mongodb.com)
+   - Navigate to your cluster → Browse Collections
+   - Confirm the "NextGen" database exists
+   - Confirm all 16 collections are visible
+   - Check that courses (6) and jobs (5) are seeded
+
+2. **Test the Application**
+   - Visit your deployed URL
+   - Try to sign up with a new account
+   - Verify that:
+     - ✅ Signup form submits successfully
+     - ✅ User is redirected to dashboard
+     - ✅ User data is stored in MongoDB (check users collection)
+     - ✅ JWT token is generated and stored
+   - Navigate to `/courses` to see seeded courses
+   - Navigate to `/careers` to see job listings
+
+3. **Troubleshooting**
+   - If collections don't appear, ensure you ran `npm run init-db`
+   - If connection fails, verify MONGODB_URI environment variable
+   - If no data appears, check MongoDB Atlas network access settings
+   - See [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md) for detailed troubleshooting
 
 ### Continuous Deployment
 

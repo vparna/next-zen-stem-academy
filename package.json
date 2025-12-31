@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "init-db": "tsx scripts/init-database.ts",
     "seed": "tsx scripts/seed-courses.ts",
     "seed-jobs": "tsx scripts/seed-jobs.ts",
     "validate-env": "tsx scripts/validate-env.ts",

@@ -108,12 +108,24 @@ A modern, scalable ed-tech platform where parents and students can discover cour
    mongod
    ```
 
-5. **Run the development server**
+5. **Initialize the database** (Required for first-time setup)
+   ```bash
+   npm run init-db
+   ```
+   
+   This will:
+   - Create all required collections
+   - Set up indexes for optimized queries
+   - Seed initial data (courses and jobs)
+   
+   **Note**: For MongoDB Atlas setup and troubleshooting, see [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md)
+
+6. **Run the development server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
+7. **Open your browser**
    
    Navigate to [http://localhost:3000](http://localhost:3000)
 
@@ -185,7 +197,42 @@ next-gen-stem-academy/
 
 ## 🗄️ Database Schema
 
-### Users Collection
+The application uses MongoDB with the database name **NextGen**. The following collections are automatically created when you run the initialization script:
+
+### Core Collections
+
+- **users** - User accounts and authentication
+- **courses** - Available courses (Robotics, Maths, Chess)
+- **enrollments** - Student course enrollments
+- **children** - Parent-child relationships
+
+### Learning & Assessment
+
+- **lessons** - Course lessons and content
+- **quizzes** - Quiz questions and assessments
+- **assignments** - Course assignments
+- **assignment_submissions** - Student assignment submissions
+- **progress** - Student learning progress
+- **certificates** - Course completion certificates
+
+### Communication & Scheduling
+
+- **live_classes** - Live class schedules
+- **messages** - Internal messaging system
+- **attendances** - Class attendance tracking
+
+### Career Module
+
+- **jobs** - Career opportunities listings
+- **job_applications** - Job application submissions
+
+### Other
+
+- **coupons** - Discount coupons
+
+### Example Schema Structures
+
+#### Users Collection
 ```typescript
 {
   _id: ObjectId,
@@ -199,7 +246,7 @@ next-gen-stem-academy/
 }
 ```
 
-### Courses Collection
+#### Courses Collection
 ```typescript
 {
   _id: ObjectId,
@@ -211,11 +258,14 @@ next-gen-stem-academy/
   duration: string,
   ageGroup: string,
   features: string[],
+  syllabus: string[],
   active: boolean,
   createdAt: Date,
   updatedAt: Date
 }
 ```
+
+For complete database setup instructions, including initialization and troubleshooting, see [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md).
 
 ### Enrollments Collection
 ```typescript
@@ -263,12 +313,46 @@ next-gen-stem-academy/
 
 ## 🔧 Additional Scripts
 
-### Seed Database with Sample Courses
+### Initialize Database (First-Time Setup)
+```bash
+npm run init-db
+```
+
+This comprehensive script will:
+- Create all required MongoDB collections (16 total)
+- Set up indexes for optimized query performance
+- Seed initial data (6 courses and 5 job listings)
+- Validate the database structure
+
+**This is the recommended way to set up your database.** For detailed instructions, see [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md).
+
+### Seed Only Courses (Optional)
 ```bash
 npm run seed
 ```
 
-This will populate your database with sample courses for testing.
+This will populate your database with sample courses for testing (if not already done by `init-db`).
+
+### Seed Only Jobs (Optional)
+```bash
+npm run seed-jobs
+```
+
+This will populate your database with sample job listings for the careers page.
+
+### Validate Environment Variables
+```bash
+npm run validate-env
+```
+
+This will check that all required environment variables are properly configured.
+
+### Pre-Deployment Check
+```bash
+npm run pre-deploy-check
+```
+
+This will run validation checks before deploying to production.
 6. **Dashboard** (`/dashboard`) - User dashboard with enrolled courses
 
 ## 🔒 Security Features
