@@ -499,12 +499,13 @@ async function createIndexes(db: Db, collectionName: string, indexes: any[]) {
       await collection.createIndex(index.key, index.options);
       const indexKeys = Object.keys(index.key).join(', ');
       console.log(`  ✓ Created index on ${collectionName}: ${indexKeys}`);
-    } catch (error: any) {
-      if (error.code === 85) {
+    } catch (error: unknown) {
+      if (error && typeof error === 'object' && 'code' in error && error.code === 85) {
         // Index already exists
         console.log(`  - Index already exists on ${collectionName}: ${Object.keys(index.key).join(', ')}`);
       } else {
-        console.error(`  ✗ Error creating index on ${collectionName}:`, error.message);
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        console.error(`  ✗ Error creating index on ${collectionName}:`, message);
       }
     }
   }
@@ -536,7 +537,7 @@ async function initializeDatabase() {
     const db = client.db(dbName);
     
     console.log(`📊 Database: ${dbName}\n`);
-    console.log('=' .repeat(60));
+    console.log('='.repeat(60));
 
     // Step 1: Create collections
     console.log('\n📦 STEP 1: Creating Collections');
