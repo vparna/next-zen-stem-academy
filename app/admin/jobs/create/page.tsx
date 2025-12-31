@@ -11,7 +11,7 @@ export default function CreateJobPage() {
     jobId: '',
     title: '',
     description: '',
-    location: '',
+    location: 'Woodinville, Washington State',
     jobType: 'full-time',
     department: '',
     experienceLevel: 'entry',
@@ -223,7 +223,7 @@ export default function CreateJobPage() {
                   value={formData.location}
                   onChange={handleInputChange}
                   required
-                  placeholder="e.g., New York, NY or Remote"
+                  placeholder="e.g., Woodinville, Washington State"
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
