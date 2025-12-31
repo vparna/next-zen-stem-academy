@@ -301,6 +301,10 @@ This application can also be deployed to other platforms that support Next.js se
 
 **Note**: GitHub Pages is not suitable for this application as it only supports static files and cannot run API routes required for authentication, payments, and database operations.
 
+### About the GitHub Actions Workflow
+
+The repository contains a `.github/workflows/deploy.yml` file from a previous GitHub Pages deployment configuration. This workflow is **no longer used** and can be safely ignored or removed. Vercel handles deployments automatically when you connect your GitHub repository to Vercel, so no GitHub Actions are needed.
+
 ## 🧪 Development
 
 ### Running the Development Server

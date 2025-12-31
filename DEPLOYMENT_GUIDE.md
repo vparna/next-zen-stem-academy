@@ -47,11 +47,11 @@ Vercel is the recommended platform for deploying this Next.js application becaus
    
    | Variable Name | Value | Description |
    |--------------|-------|-------------|
-   | `MONGODB_URI` | `mongodb+srv://...` | Your MongoDB connection string with database name `NextGen` |
-   | `JWT_SECRET` | `your-secret-key-here` | A random secret key for JWT tokens (use a strong random string) |
-   | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | `pk_live_...` or `pk_test_...` | Stripe publishable key |
-   | `STRIPE_SECRET_KEY` | `sk_live_...` or `sk_test_...` | Stripe secret key |
-   | `STRIPE_WEBHOOK_SECRET` | `whsec_...` | Stripe webhook secret |
+   | `MONGODB_URI` | `mongodb+srv://username:password@cluster.mongodb.net/YourDatabaseName?retryWrites=true&w=majority` | Your MongoDB connection string. Replace `YourDatabaseName` with your preferred database name (e.g., `NextGen` or any name you choose) |
+   | `JWT_SECRET` | `your-secret-key-here` | A random secret key for JWT tokens (use a strong random string, minimum 32 characters) |
+   | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | `pk_test_...` (dev) or `pk_live_...` (prod) | Stripe publishable key. Use test keys for development/staging, live keys for production only |
+   | `STRIPE_SECRET_KEY` | `sk_test_...` (dev) or `sk_live_...` (prod) | Stripe secret key. Use test keys for development/staging, live keys for production only |
+   | `STRIPE_WEBHOOK_SECRET` | `whsec_...` | Stripe webhook secret (optional for basic testing) |
    | `NEXT_PUBLIC_APP_URL` | `https://your-app.vercel.app` | Your Vercel deployment URL |
    
    **How to add environment variables in Vercel:**
@@ -170,13 +170,13 @@ For local development with full functionality:
 Before deploying to production:
 
 - [ ] Use a strong, random `JWT_SECRET` (min 32 characters)
-- [ ] Use production Stripe keys (not test keys)
-- [ ] Whitelist Vercel IP addresses in MongoDB Atlas
-- [ ] Enable MongoDB authentication
-- [ ] Use environment variables for all secrets (never commit them)
+- [ ] Use production Stripe keys for production environment only (use test keys for development/staging)
+- [ ] Whitelist Vercel IP addresses (0.0.0.0/0) in MongoDB Atlas for serverless functions
+- [ ] Enable MongoDB authentication with strong passwords
+- [ ] Use environment variables for all secrets (never commit them to git)
 - [ ] Set up Stripe webhooks for payment verification
-- [ ] Test signup and login functionality
-- [ ] Test payment processing
+- [ ] Test signup and login functionality in staging before production
+- [ ] Test payment processing with test keys before using live keys
 - [ ] Monitor application logs for errors
 
 ## 📈 Monitoring
