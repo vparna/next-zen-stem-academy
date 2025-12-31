@@ -26,7 +26,7 @@ const sampleJobs = [
       'Collaborate with other instructors to enhance program quality',
       'Communicate with parents about student progress'
     ],
-    location: 'New York, NY',
+    location: 'Woodinville, Washington State',
     jobType: 'full-time',
     department: 'Education',
     experienceLevel: 'mid',
@@ -53,7 +53,7 @@ const sampleJobs = [
       'Create supplementary materials and practice problems',
       'Maintain positive relationships with students and families'
     ],
-    location: 'Remote',
+    location: 'Woodinville, Washington State',
     jobType: 'part-time',
     department: 'Education',
     experienceLevel: 'entry',
@@ -80,7 +80,7 @@ const sampleJobs = [
       'Maintain records of student progress and achievements',
       'Create a positive and encouraging learning environment'
     ],
-    location: 'San Francisco, CA',
+    location: 'Woodinville, Washington State',
     jobType: 'part-time',
     department: 'Education',
     experienceLevel: 'mid',
@@ -108,7 +108,7 @@ const sampleJobs = [
       'Support marketing and outreach efforts',
       'Assist with budget tracking and resource allocation'
     ],
-    location: 'New York, NY',
+    location: 'Woodinville, Washington State',
     jobType: 'full-time',
     department: 'Operations',
     experienceLevel: 'mid',
@@ -135,7 +135,7 @@ const sampleJobs = [
       'Conduct market research and competitor analysis',
       'Track and report on marketing metrics'
     ],
-    location: 'Remote',
+    location: 'Woodinville, Washington State',
     jobType: 'internship',
     department: 'Marketing',
     experienceLevel: 'entry',
