@@ -1,0 +1,245 @@
+import nodemailer from 'nodemailer';
+import { getDatabase } from '@/lib/db/mongodb';
+import { EmailNotification } from '@/types';
+import { ObjectId } from 'mongodb';
+
+const COLLECTION_NAME = 'email_notifications';
+
+// Create email transporter
+const createTransporter = () => {
+  // Check if email service is configured
+  if (!process.env.EMAIL_HOST || !process.env.EMAIL_USER) {
+    console.warn('Email service not configured. Emails will be logged but not sent.');
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: parseInt(process.env.EMAIL_PORT || '587'),
+    secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+};
+
+export interface EmailTemplate {
+  subject: string;
+  html: string;
+  text?: string;
+}
+
+// Email templates
+export const emailTemplates = {
+  enrollment: (userName: string, courseName: string): EmailTemplate => ({
+    subject: `Enrollment Confirmation - ${courseName}`,
+    html: `
+      <h2>Welcome to ${courseName}!</h2>
+      <p>Hi ${userName},</p>
+      <p>Thank you for enrolling in <strong>${courseName}</strong>. We're excited to have you join us!</p>
+      <p>You can access your course materials from your dashboard.</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Welcome to ${courseName}! Hi ${userName}, Thank you for enrolling in ${courseName}. We're excited to have you join us! You can access your course materials from your dashboard. Best regards, NextGen STEM Academy Team`,
+  }),
+
+  payment: (userName: string, courseName: string, amount: number): EmailTemplate => ({
+    subject: `Payment Confirmation - ${courseName}`,
+    html: `
+      <h2>Payment Received</h2>
+      <p>Hi ${userName},</p>
+      <p>We've successfully received your payment of <strong>$${amount.toFixed(2)}</strong> for <strong>${courseName}</strong>.</p>
+      <p>You can now access all course materials from your dashboard.</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Payment Received. Hi ${userName}, We've successfully received your payment of $${amount.toFixed(2)} for ${courseName}. You can now access all course materials from your dashboard. Best regards, NextGen STEM Academy Team`,
+  }),
+
+  courseStart: (userName: string, courseName: string, startDate: Date): EmailTemplate => ({
+    subject: `Course Starting Soon - ${courseName}`,
+    html: `
+      <h2>Your Course is Starting!</h2>
+      <p>Hi ${userName},</p>
+      <p>Your course <strong>${courseName}</strong> begins on <strong>${startDate.toLocaleDateString()}</strong>.</p>
+      <p>Make sure you're ready to start learning! Log in to your dashboard to access course materials.</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Your Course is Starting! Hi ${userName}, Your course ${courseName} begins on ${startDate.toLocaleDateString()}. Make sure you're ready to start learning! Log in to your dashboard to access course materials. Best regards, NextGen STEM Academy Team`,
+  }),
+
+  assignmentDue: (userName: string, assignmentTitle: string, dueDate: Date): EmailTemplate => ({
+    subject: `Assignment Due Soon - ${assignmentTitle}`,
+    html: `
+      <h2>Assignment Reminder</h2>
+      <p>Hi ${userName},</p>
+      <p>This is a reminder that your assignment <strong>${assignmentTitle}</strong> is due on <strong>${dueDate.toLocaleDateString()}</strong>.</p>
+      <p>Don't forget to submit your work on time!</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Assignment Reminder. Hi ${userName}, This is a reminder that your assignment ${assignmentTitle} is due on ${dueDate.toLocaleDateString()}. Don't forget to submit your work on time! Best regards, NextGen STEM Academy Team`,
+  }),
+
+  gradePosted: (userName: string, assignmentTitle: string, score: number): EmailTemplate => ({
+    subject: `Grade Posted - ${assignmentTitle}`,
+    html: `
+      <h2>Your Grade is Available</h2>
+      <p>Hi ${userName},</p>
+      <p>Your instructor has graded your assignment <strong>${assignmentTitle}</strong>.</p>
+      <p>Your score: <strong>${score}</strong></p>
+      <p>Log in to your dashboard to view detailed feedback.</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Your Grade is Available. Hi ${userName}, Your instructor has graded your assignment ${assignmentTitle}. Your score: ${score}. Log in to your dashboard to view detailed feedback. Best regards, NextGen STEM Academy Team`,
+  }),
+
+  certificateIssued: (userName: string, courseName: string, certificateUrl: string): EmailTemplate => ({
+    subject: `Certificate Issued - ${courseName}`,
+    html: `
+      <h2>Congratulations! 🎉</h2>
+      <p>Hi ${userName},</p>
+      <p>You've successfully completed <strong>${courseName}</strong>!</p>
+      <p>Your certificate is now available. <a href="${certificateUrl}">Download Certificate</a></p>
+      <p>We're proud of your achievement!</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Congratulations! Hi ${userName}, You've successfully completed ${courseName}! Your certificate is now available at: ${certificateUrl}. We're proud of your achievement! Best regards, NextGen STEM Academy Team`,
+  }),
+
+  liveClassReminder: (userName: string, classTitle: string, scheduledAt: Date, meetingLink: string): EmailTemplate => ({
+    subject: `Live Class Reminder - ${classTitle}`,
+    html: `
+      <h2>Live Class Starting Soon</h2>
+      <p>Hi ${userName},</p>
+      <p>Your live class <strong>${classTitle}</strong> is scheduled for <strong>${scheduledAt.toLocaleString()}</strong>.</p>
+      <p><a href="${meetingLink}">Join Live Class</a></p>
+      <p>See you there!</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Live Class Starting Soon. Hi ${userName}, Your live class ${classTitle} is scheduled for ${scheduledAt.toLocaleString()}. Join at: ${meetingLink}. See you there! Best regards, NextGen STEM Academy Team`,
+  }),
+
+  courseCompletion: (userName: string, courseName: string, progress: number): EmailTemplate => ({
+    subject: `Congratulations on Completing ${courseName}!`,
+    html: `
+      <h2>Course Completed! 🎓</h2>
+      <p>Hi ${userName},</p>
+      <p>Congratulations! You've completed <strong>${courseName}</strong> with ${progress}% progress.</p>
+      <p>Your certificate will be issued shortly and will be available in your dashboard.</p>
+      <p>Keep up the great work!</p>
+      <p>Best regards,<br>NextGen STEM Academy Team</p>
+    `,
+    text: `Course Completed! Hi ${userName}, Congratulations! You've completed ${courseName} with ${progress}% progress. Your certificate will be issued shortly and will be available in your dashboard. Keep up the great work! Best regards, NextGen STEM Academy Team`,
+  }),
+};
+
+// Send email function
+export async function sendEmail(
+  to: string,
+  template: EmailTemplate,
+  userId?: ObjectId,
+  emailType?: EmailNotification['type']
+): Promise<boolean> {
+  const db = await getDatabase();
+  
+  // Log email to database
+  const emailNotification: Omit<EmailNotification, '_id'> = {
+    userId: userId || new ObjectId(),
+    email: to,
+    type: emailType || 'enrollment',
+    subject: template.subject,
+    content: template.html,
+    status: 'pending',
+    createdAt: new Date(),
+  };
+
+  const result = await db.collection<EmailNotification>(COLLECTION_NAME).insertOne(emailNotification);
+  const emailId = result.insertedId;
+
+  const transporter = createTransporter();
+  
+  // If transporter is not configured, just log and return
+  if (!transporter) {
+    console.log('Email would be sent:', { to, subject: template.subject });
+    await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
+      { _id: emailId },
+      { $set: { status: 'sent', sentAt: new Date() } }
+    );
+    return true;
+  }
+
+  try {
+    // For text version, use the provided text or a simple message
+    // Note: We don't strip HTML here as templates are controlled and safe
+    const textVersion = template.text || 'Please view this email in an HTML-capable email client.';
+    
+    const mailOptions = {
+      from: `"NextGen STEM Academy" <${process.env.EMAIL_USER}>`,
+      to,
+      subject: template.subject,
+      html: template.html,
+      text: textVersion,
+    };
+
+    await transporter.sendMail(mailOptions);
+    
+    // Update email status to sent
+    await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
+      { _id: emailId },
+      { $set: { status: 'sent', sentAt: new Date() } }
+    );
+    
+    return true;
+  } catch (error: any) {
+    console.error('Error sending email:', error);
+    
+    // Update email status to failed
+    await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
+      { _id: emailId },
+      { $set: { status: 'failed', error: error.message } }
+    );
+    
+    return false;
+  }
+}
+
+// Helper function to send notification emails
+export async function sendNotificationEmail(
+  userId: ObjectId,
+  email: string,
+  type: EmailNotification['type'],
+  templateData: any
+): Promise<boolean> {
+  let template: EmailTemplate;
+
+  switch (type) {
+    case 'enrollment':
+      template = emailTemplates.enrollment(templateData.userName, templateData.courseName);
+      break;
+    case 'payment':
+      template = emailTemplates.payment(templateData.userName, templateData.courseName, templateData.amount);
+      break;
+    case 'course-start':
+      template = emailTemplates.courseStart(templateData.userName, templateData.courseName, templateData.startDate);
+      break;
+    case 'assignment-due':
+      template = emailTemplates.assignmentDue(templateData.userName, templateData.assignmentTitle, templateData.dueDate);
+      break;
+    case 'grade-posted':
+      template = emailTemplates.gradePosted(templateData.userName, templateData.assignmentTitle, templateData.score);
+      break;
+    case 'certificate-issued':
+      template = emailTemplates.certificateIssued(templateData.userName, templateData.courseName, templateData.certificateUrl);
+      break;
+    case 'live-class-reminder':
+      template = emailTemplates.liveClassReminder(templateData.userName, templateData.classTitle, templateData.scheduledAt, templateData.meetingLink);
+      break;
+    case 'course-completion':
+      template = emailTemplates.courseCompletion(templateData.userName, templateData.courseName, templateData.progress);
+      break;
+    default:
+      return false;
+  }
+
+  return await sendEmail(email, template, userId, type);
+}

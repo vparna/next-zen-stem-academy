@@ -4,6 +4,7 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 
 ## 🎯 Features
 
+### Core Features
 - **Modern Web Application**: Built with Next.js 16 and React 19 for optimal performance and SEO
 - **3S Philosophy**: Skills, Science, and Success - our unique approach to STEM education
 - **Course Management**: Browse and enroll in Robotics, Mathematics, and Chess courses
@@ -12,6 +13,19 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 - **User Dashboard**: Manage profile, children, and enrolled courses
 - **Responsive Design**: Mobile-first design with Tailwind CSS
 - **TypeScript**: Full type safety across the application
+
+### Advanced Features (New!)
+- **Multi-Child Discounts**: Automatic discounts when enrolling multiple children (10-15% off)
+- **Coupon System**: Flexible coupon codes with percentage and fixed-amount discounts
+- **Email Notifications**: Automated emails for enrollment, payments, certificates, and more
+- **Course Certificates**: Auto-generated completion certificates with unique numbers
+- **Progress Tracking**: Track student progress through course lessons and modules
+- **Video Lessons**: Support for YouTube, Vimeo, and custom video hosting
+- **Live Classes**: Schedule and manage live online classes with meeting links
+- **Assignments**: Create and grade assignments with file and text submissions
+- **Quizzes**: Auto-graded quizzes with multiple question types and attempt limits
+
+📖 **For detailed information about advanced features, see [FEATURES_GUIDE.md](FEATURES_GUIDE.md)**
 
 ## 🚀 Tech Stack
 
@@ -321,15 +335,15 @@ For questions or support, please contact:
 
 - [x] **Mobile Attendance App** - QR code-based check-in/check-out system (see MOBILE_APP_README.md)
 - [x] **Course Chat** - Messaging between parents and teachers (see MOBILE_APP_README.md)
-- [ ] Multi-child discount support
-- [ ] Coupon system
-- [ ] Email notifications
-- [ ] Course completion certificates
-- [ ] Progress tracking
-- [ ] Video lessons integration
-- [ ] Live class scheduling
-- [ ] Assignment submissions
-- [ ] Quiz and assessments
+- [x] **Multi-child discount support** - Automatic discounts for families with multiple children (see FEATURES_GUIDE.md)
+- [x] **Coupon system** - Flexible coupon codes with percentage and fixed discounts (see FEATURES_GUIDE.md)
+- [x] **Email notifications** - Automated emails for key events (enrollment, payments, certificates, etc.)
+- [x] **Course completion certificates** - Auto-generated certificates with unique numbers (see FEATURES_GUIDE.md)
+- [x] **Progress tracking** - Track student progress through lessons and modules (see FEATURES_GUIDE.md)
+- [x] **Video lessons integration** - Support for YouTube, Vimeo, and custom video hosting (see FEATURES_GUIDE.md)
+- [x] **Live class scheduling** - Schedule and manage live online classes (see FEATURES_GUIDE.md)
+- [x] **Assignment submissions** - Create assignments and accept submissions with grading (see FEATURES_GUIDE.md)
+- [x] **Quiz and assessments** - Auto-graded quizzes with multiple question types (see FEATURES_GUIDE.md)
 
 ---
 
