@@ -8,7 +8,16 @@
 
 import { MongoClient, Db } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/NextGen';
+// Check if MONGODB_URI is set
+if (!process.env.MONGODB_URI) {
+  console.error('\n❌ ERROR: MONGODB_URI environment variable is not set!');
+  console.error('\nFor deployment, ensure MONGODB_URI is configured in your platform settings (e.g., Vercel environment variables).');
+  console.error('For local development, create a .env.local file with MONGODB_URI.');
+  console.error('\nExample: MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/NextGen?retryWrites=true&w=majority\n');
+  process.exit(1);
+}
+
+const MONGODB_URI = process.env.MONGODB_URI;
 const DB_NAME = 'NextGen';
 
 // Extract database name from URI if specified
