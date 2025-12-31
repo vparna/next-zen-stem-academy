@@ -30,9 +30,17 @@ Vercel is the recommended platform for deploying this Next.js application becaus
 2. Start MongoDB: `mongod --dbpath /path/to/data`
 3. Connection string: `mongodb://localhost:27017/NextGen`
 
-#### 1.5. Initialize the Database Schema
+#### 1.5. Database Schema Initialization
 
-After setting up MongoDB, you must initialize the database with required collections and indexes:
+**Good news!** The database initialization now happens **automatically during deployment**. When you deploy to Vercel, all database collections will be created automatically.
+
+The deployment build process will:
+- ✅ Create all 16 required collections
+- ✅ Set up indexes for optimized queries
+- ✅ Seed initial data (6 courses and 5 job listings)
+- ✅ Validate the database structure
+
+**Manual initialization (optional)**: If you need to initialize the database manually for local development or testing:
 
 ```bash
 # Set your MongoDB connection string
@@ -41,12 +49,6 @@ export MONGODB_URI="mongodb+srv://username:password@cluster.mongodb.net/NextGen?
 # Run the initialization script
 npm run init-db
 ```
-
-This script will:
-- ✅ Create all 16 required collections
-- ✅ Set up indexes for optimized queries
-- ✅ Seed initial data (6 courses and 5 job listings)
-- ✅ Validate the database structure
 
 **See [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md) for detailed instructions and troubleshooting.**
 
@@ -116,9 +118,9 @@ This script will:
    - Navigate to `/careers` to see job listings
 
 3. **Troubleshooting**
-   - If collections don't appear, ensure you ran `npm run init-db`
-   - If connection fails, verify MONGODB_URI environment variable
-   - If no data appears, check MongoDB Atlas network access settings
+   - If collections don't appear, check Vercel deployment logs to see if the database initialization ran successfully
+   - If connection fails, verify MONGODB_URI environment variable in Vercel settings
+   - If no data appears, check MongoDB Atlas network access settings (ensure 0.0.0.0/0 is whitelisted)
    - See [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md) for detailed troubleshooting
 
 ### Continuous Deployment
