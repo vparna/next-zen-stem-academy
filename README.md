@@ -271,31 +271,9 @@ This will populate your database with sample courses for testing.
 
 ## 🚢 Deployment
 
-### Deploy to GitHub Pages (Static Site)
+### Deploy to Vercel (Recommended)
 
-This project is configured to automatically deploy to GitHub Pages. The deployment is triggered on every push to the `main` branch.
-
-**Live URL**: [https://vparna.github.io/next-zen-stem-academy](https://vparna.github.io/next-zen-stem-academy)
-
-#### Important Limitations
-
-GitHub Pages only supports **static file hosting**. This means:
-- ✅ **Works**: Frontend pages, UI components, and static content
-- ❌ **Does NOT work**: API routes, authentication, payments, database operations
-
-The deployed site shows demo/sample data instead of real database content.
-
-#### Deployment Process
-
-1. **Automatic Deployment**: Push changes to the `main` branch
-2. **GitHub Actions**: The workflow automatically builds and deploys
-3. **Monitor**: Check the "Actions" tab on GitHub for deployment status
-
-For detailed information about GitHub Pages deployment, see [GITHUB_PAGES.md](./GITHUB_PAGES.md).
-
-### Deploy to Vercel (Full Functionality)
-
-For a fully functional deployment with authentication, payments, and database integration:
+This application requires server-side rendering for full functionality including authentication, payments, and database integration. Deploy to Vercel or similar platforms that support Next.js server-side features:
 
 1. **Push your code to GitHub**
 
@@ -313,6 +291,19 @@ For a fully functional deployment with authentication, payments, and database in
 4. **Configure Stripe**
    - Get API keys from [stripe.com](https://stripe.com)
    - Add to Vercel environment variables
+
+### Alternative Platforms
+
+This application can also be deployed to other platforms that support Next.js server-side rendering:
+- **Netlify**: Supports Next.js with serverless functions
+- **AWS Amplify**: Full-featured hosting with database support
+- **Render**: Easy deployment with persistent services
+
+**Note**: GitHub Pages is not suitable for this application as it only supports static files and cannot run API routes required for authentication, payments, and database operations.
+
+### About the GitHub Actions Workflow
+
+The repository contains a `.github/workflows/deploy.yml` file from a previous GitHub Pages deployment configuration. This workflow is **no longer used** and can be safely ignored or removed. Vercel handles deployments automatically when you connect your GitHub repository to Vercel, so no GitHub Actions are needed.
 
 ## 🧪 Development
 
