@@ -197,7 +197,11 @@ next-gen-stem-academy/
 
 ## 🗄️ Database Schema
 
-The application uses MongoDB with the database name **NextGen**. The following collections are automatically created when you run the initialization script:
+The application uses MongoDB with the database name **NextGen**. 
+
+**🎉 NEW: Automatic Database Deployment!** All 16 database collections are now automatically created during the build/deployment process. No manual initialization required! See [DATABASE_AUTO_DEPLOY.md](DATABASE_AUTO_DEPLOY.md) for details.
+
+The following collections are automatically created:
 
 ### Core Collections
 
@@ -313,10 +317,12 @@ For complete database setup instructions, including initialization and troublesh
 
 ## 🔧 Additional Scripts
 
-### Initialize Database (First-Time Setup)
+### Initialize Database (Optional - For Local Development)
 ```bash
 npm run init-db
 ```
+
+**Note:** Database initialization now happens **automatically during deployment**! You only need to run this manually for local development or troubleshooting.
 
 This comprehensive script will:
 - Create all required MongoDB collections (16 total)
@@ -324,7 +330,8 @@ This comprehensive script will:
 - Seed initial data (6 courses and 5 job listings)
 - Validate the database structure
 
-**This is the recommended way to set up your database.** For detailed instructions, see [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md).
+**For automatic deployment information, see [DATABASE_AUTO_DEPLOY.md](DATABASE_AUTO_DEPLOY.md).**  
+**For detailed manual setup instructions, see [MONGODB_SETUP_GUIDE.md](MONGODB_SETUP_GUIDE.md).**
 
 ### Seed Only Courses (Optional)
 ```bash
