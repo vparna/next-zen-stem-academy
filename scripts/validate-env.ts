@@ -98,18 +98,36 @@ function validateEnvironmentVariables(): void {
   // Check required variables
   console.log('✅ Required Variables:');
   for (const envVar of requiredEnvVars) {
-    const value = process.env[envVar.name];
+    const rawValue = process.env[envVar.name];
     
-    if (!value) {
+    if (!rawValue) {
       console.error(`  ❌ ${envVar.name}: MISSING`);
       console.error(`     ${envVar.description}`);
       hasErrors = true;
-    } else if (envVar.validationFn && !envVar.validationFn(value)) {
-      console.error(`  ❌ ${envVar.name}: INVALID`);
-      console.error(`     ${envVar.description}`);
-      hasErrors = true;
     } else {
-      console.log(`  ✓ ${envVar.name}: OK`);
+      // Trim whitespace and check for invisible characters
+      const value = rawValue.trim();
+      const hasInvisibleChars = rawValue !== value || /[\r\n\t]/.test(rawValue);
+      
+      if (!value) {
+        console.error(`  ❌ ${envVar.name}: EMPTY (contains only whitespace)`);
+        console.error(`     ${envVar.description}`);
+        hasErrors = true;
+      } else if (envVar.validationFn && !envVar.validationFn(value)) {
+        console.error(`  ❌ ${envVar.name}: INVALID`);
+        console.error(`     ${envVar.description}`);
+        if (envVar.name === 'MONGODB_URI') {
+          console.error(`     Current value length: ${value.length}`);
+          console.error(`     Starts with: "${value.substring(0, Math.min(30, value.length))}..."`);
+        }
+        hasErrors = true;
+      } else {
+        if (hasInvisibleChars) {
+          console.warn(`  ⚠ ${envVar.name}: OK (but contains whitespace/newlines - will be trimmed)`);
+        } else {
+          console.log(`  ✓ ${envVar.name}: OK`);
+        }
+      }
     }
   }
   
