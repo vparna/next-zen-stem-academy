@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "tsx scripts/seed-courses.ts",
-    "seed-jobs": "tsx scripts/seed-jobs.ts"
+    "seed-jobs": "tsx scripts/seed-jobs.ts",
+    "validate-env": "tsx scripts/validate-env.ts",
+    "pre-deploy-check": "tsx scripts/pre-deploy-check.ts"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.6.0",
@@ -33,6 +35,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.2.3",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
