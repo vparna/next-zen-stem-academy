@@ -395,6 +395,21 @@ This application can also be deployed to other platforms that support Next.js se
 
 **Note**: GitHub Pages is not suitable for this application as it only supports static files and cannot run API routes required for authentication, payments, and database operations.
 
+### Troubleshooting Deployment Issues
+
+If you encounter MongoDB connection errors during deployment, especially errors like:
+```
+Invalid MongoDB URI format. Must start with "mongodb://" or "mongodb+srv://"
+```
+
+See the detailed troubleshooting guide: [MONGODB_URI_TROUBLESHOOTING.md](MONGODB_URI_TROUBLESHOOTING.md)
+
+Common issues:
+- **Truncated URI**: Make sure the full MongoDB connection string is copied to Vercel
+- **Special characters**: URL-encode special characters in passwords (e.g., `@` becomes `%40`)
+- **Whitespace**: Remove any line breaks or extra spaces from environment variables
+- **Missing database name**: Ensure `/NextGen` is included in the URI path
+
 ### About the GitHub Actions Workflow
 
 The repository contains a `.github/workflows/deploy.yml` file from a previous GitHub Pages deployment configuration. This workflow is **no longer used** and can be safely ignored or removed. Vercel handles deployments automatically when you connect your GitHub repository to Vercel, so no GitHub Actions are needed.

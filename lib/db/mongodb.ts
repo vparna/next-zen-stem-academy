@@ -37,11 +37,23 @@ function getClientPromise(): Promise<MongoClient> {
     throw new Error('MONGODB_URI environment variable is not set. Please add it to your .env.local file (for local development) or Vercel environment variables (for deployment).');
   }
 
-  const uri: string = process.env.MONGODB_URI;
+  // Trim whitespace, newlines, and other invisible characters that might have been copied accidentally
+  const uri: string = process.env.MONGODB_URI.trim().replace(/[\r\n\t]/g, '');
 
-  // Validate URI format
+  // Check if URI is empty after trimming
+  if (!uri) {
+    throw new Error('MONGODB_URI environment variable is empty or contains only whitespace. Please check your environment variable configuration in Vercel or .env.local file.');
+  }
+
+  // Validate URI format with detailed error message
   if (!uri.startsWith('mongodb://') && !uri.startsWith('mongodb+srv://')) {
-    throw new Error('Invalid MongoDB URI format. Must start with "mongodb://" or "mongodb+srv://". Current value starts with: ' + uri.substring(0, 10));
+    const uriLength = uri.length;
+    const uriPreview = uri.substring(0, Math.min(50, uri.length));
+    throw new Error(
+      `Invalid MongoDB URI format. Must start with "mongodb://" or "mongodb+srv://". ` +
+      `Current value (length: ${uriLength}, preview: "${uriPreview}${uriLength > 50 ? '...' : ''}") does not match expected format. ` +
+      `Please check your MONGODB_URI environment variable in Vercel dashboard or .env.local file for typos, truncation, or unwanted characters.`
+    );
   }
 
   // Extract and cache the database name (only once)
