@@ -30,6 +30,7 @@ export function verifyToken(token: string): JWTPayload | null {
     const JWT_SECRET = getJWTSecret();
     return jwt.verify(token, JWT_SECRET) as JWTPayload;
   } catch {
+    // Token verification failed - could be expired, invalid, or malformed
     return null;
   }
 }
