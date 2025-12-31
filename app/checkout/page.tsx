@@ -297,9 +297,11 @@ function CheckoutContent() {
                           </div>
                         </div>
 
-                        <div className="bg-blue-50 border border-blue-200 rounded p-3 text-sm text-gray-600">
-                          <strong>Test Card:</strong> Use 4242 4242 4242 4242 with any future expiry and any CVC for testing
-                        </div>
+                        {process.env.NODE_ENV === 'development' && (
+                          <div className="bg-blue-50 border border-blue-200 rounded p-3 text-sm text-gray-600">
+                            <strong>Test Card:</strong> Use 4242 4242 4242 4242 with any future expiry and any CVC for testing
+                          </div>
+                        )}
                       </div>
                     </div>
                   </form>

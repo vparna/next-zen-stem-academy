@@ -11,10 +11,14 @@ export default function Navbar() {
     isLoggedIn: false,
     userName: ''
   });
+  const [isClient, setIsClient] = useState(false);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const router = useRouter();
 
   useEffect(() => {
+    // Set client-side flag first
+    setIsClient(true);
+    
     // Check authentication status
     const token = localStorage.getItem('token');
     const userData = localStorage.getItem('user');
