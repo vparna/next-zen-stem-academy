@@ -1,14 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Server-side rendering enabled for API routes and MongoDB support
+  // Note: This configuration is for Vercel deployment, not GitHub Pages
   images: {
     unoptimized: true,
   },
-  // GitHub Pages serves from a repo subpath like /repo-name/
-  basePath: '/next-zen-stem-academy',
-  // Skip trailing slash for compatibility
-  trailingSlash: true,
 };
 
 export default nextConfig;
