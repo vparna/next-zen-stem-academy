@@ -27,7 +27,7 @@ npm install
 2. Update `.env.local` with your credentials:
    ```env
    # MongoDB (use local or Atlas)
-   MONGODB_URI=mongodb://localhost:27017/next-gen-stem-academy
+   MONGODB_URI=mongodb://localhost:27017/NextGen
    
    # Generate a secure random string for JWT
    JWT_SECRET=your-secure-random-string-here

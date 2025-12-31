@@ -77,9 +77,9 @@ A modern, scalable ed-tech platform where parents and students can discover cour
    Update `.env.local` with your configuration:
    ```env
    # MongoDB Connection
-   MONGODB_URI=mongodb://localhost:27017/next-gen-stem-academy
+   MONGODB_URI=mongodb://localhost:27017/NextGen
    # For MongoDB Atlas:
-   # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/next-gen-stem-academy
+   # MONGODB_URI=mongodb+srv://Vercel-Admin-NextGen:1yLXJlV42S5rdzgc@nextgen.3wpuxv4.mongodb.net/NextGen?retryWrites=true&w=majority
    
    # JWT Secret (generate a secure random string)
    JWT_SECRET=your-super-secret-jwt-key-change-this-in-production

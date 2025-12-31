@@ -3,7 +3,7 @@
 
 import { MongoClient, ObjectId } from 'mongodb';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/next-zen-stem-academy';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/NextGen';
 
 const sampleJobs = [
   {
