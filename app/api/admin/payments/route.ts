@@ -92,7 +92,7 @@ async function handler(req: NextRequest) {
       payments: paymentsData,
       total: paymentsData.length,
       totalRevenue: paymentsData
-        .filter(p => p.status === 'succeeded' || p.status === 'paid')
+        .filter(p => p.status === 'succeeded')
         .reduce((sum, p) => sum + p.amount, 0),
     });
   } catch (error) {
