@@ -11,6 +11,7 @@
     "init-db": "tsx scripts/init-database.ts",
     "seed": "tsx scripts/seed-courses.ts",
     "seed-jobs": "tsx scripts/seed-jobs.ts",
+    "create-admin": "tsx scripts/create-admin.ts",
     "validate-env": "tsx scripts/validate-env.ts",
     "pre-deploy-check": "tsx scripts/pre-deploy-check.ts"
   },

@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken } from '@/lib/auth/jwt';
+import { findUserById } from '@/models/User';
 
-export function withAuth(handler: Function) {
+export function withAdminAuth(handler: Function) {
   return async (req: NextRequest) => {
     try {
       const authHeader = req.headers.get('authorization');
@@ -23,13 +24,24 @@ export function withAuth(handler: Function) {
         );
       }
       
+      // Check if user has admin role
+      const user = await findUserById(payload.userId);
+      
+      if (!user || user.role !== 'admin') {
+        return NextResponse.json(
+          { error: 'Forbidden - Admin access required' },
+          { status: 403 }
+        );
+      }
+      
       // Add user info to request
       // Note: We use 'as any' here as NextRequest doesn't support custom properties.
       // This is a common pattern in Next.js middleware for passing authenticated user data.
-      (req as any).user = payload;
+      (req as any).user = { ...payload, role: user.role };
       
       return handler(req);
     } catch (error) {
+      console.error('Admin auth error:', error);
       return NextResponse.json(
         { error: 'Internal server error' },
         { status: 500 }

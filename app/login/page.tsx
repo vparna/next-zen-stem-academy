@@ -37,8 +37,12 @@ export default function LoginPage() {
         // Dispatch custom event to notify other components
         window.dispatchEvent(new Event('authChange'));
         
-        // Redirect to dashboard
-        router.push('/dashboard');
+        // Redirect based on role
+        if (data.user.role === 'admin') {
+          router.push('/admin/dashboard');
+        } else {
+          router.push('/dashboard');
+        }
       } else {
         setError(data.error || 'Login failed');
       }
