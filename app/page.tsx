@@ -9,6 +9,8 @@ export default function Home() {
   useEffect(() => {
     // Function to check authentication status
     const checkAuth = () => {
+      if (typeof window === 'undefined') return;
+      
       const token = localStorage.getItem('token');
       const userData = localStorage.getItem('user');
       setIsLoggedIn(!!(token && userData));
@@ -18,14 +20,10 @@ export default function Home() {
     checkAuth();
     
     // Listen for custom auth change events
-    const handleAuthChange = () => {
-      checkAuth();
-    };
-    
-    window.addEventListener('authChange', handleAuthChange);
+    window.addEventListener('authChange', checkAuth);
     
     return () => {
-      window.removeEventListener('authChange', handleAuthChange);
+      window.removeEventListener('authChange', checkAuth);
     };
   }, []);
 

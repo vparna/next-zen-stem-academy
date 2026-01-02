@@ -17,6 +17,8 @@ export default function Navbar() {
   useEffect(() => {
     // Function to check authentication status
     const checkAuth = () => {
+      if (typeof window === 'undefined') return;
+      
       const token = localStorage.getItem('token');
       const userData = localStorage.getItem('user');
       
@@ -45,18 +47,12 @@ export default function Navbar() {
     // Check authentication status on mount
     checkAuth();
     
-    // Listen for custom auth change events
-    const handleAuthChange = () => {
-      checkAuth();
-    };
-    
-    window.addEventListener('authChange', handleAuthChange);
-    
-    // Listen for storage changes from other tabs
+    // Listen for custom auth change events and storage changes from other tabs
+    window.addEventListener('authChange', checkAuth);
     window.addEventListener('storage', checkAuth);
     
     return () => {
-      window.removeEventListener('authChange', handleAuthChange);
+      window.removeEventListener('authChange', checkAuth);
       window.removeEventListener('storage', checkAuth);
     };
   }, []);
