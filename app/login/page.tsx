@@ -34,6 +34,9 @@ export default function LoginPage() {
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
         
+        // Dispatch custom event to notify other components
+        window.dispatchEvent(new Event('authChange'));
+        
         // Redirect to dashboard
         router.push('/dashboard');
       } else {

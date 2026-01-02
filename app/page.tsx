@@ -7,10 +7,26 @@ export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check authentication status
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    setIsLoggedIn(!!(token && userData));
+    // Function to check authentication status
+    const checkAuth = () => {
+      const token = localStorage.getItem('token');
+      const userData = localStorage.getItem('user');
+      setIsLoggedIn(!!(token && userData));
+    };
+    
+    // Check authentication status on mount
+    checkAuth();
+    
+    // Listen for custom auth change events
+    const handleAuthChange = () => {
+      checkAuth();
+    };
+    
+    window.addEventListener('authChange', handleAuthChange);
+    
+    return () => {
+      window.removeEventListener('authChange', handleAuthChange);
+    };
   }, []);
 
   return (
