@@ -15,7 +15,7 @@ export interface StoredQRCode {
 }
 
 const STORAGE_KEY = 'offline_qr_codes';
-const QR_CODE_VALIDITY_HOURS = 24;
+const QR_CODE_VALIDITY_HOURS = 8; // Reduced from 24 to 8 hours for better security
 
 /**
  * Store QR code offline

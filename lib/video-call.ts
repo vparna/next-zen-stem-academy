@@ -29,10 +29,22 @@ export interface VideoCallOptions {
 
 /**
  * Generate a unique room name for video call
+ * Uses crypto API for secure random generation
  */
 export function generateRoomName(): string {
   const timestamp = Date.now();
-  const random = Math.random().toString(36).substring(2, 8);
+  
+  // Use crypto API for secure random generation
+  let random: string;
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+    const array = new Uint32Array(1);
+    window.crypto.getRandomValues(array);
+    random = array[0].toString(36);
+  } else {
+    // Fallback for older browsers
+    random = Math.random().toString(36).substring(2, 8);
+  }
+  
   return `room-${timestamp}-${random}`;
 }
 

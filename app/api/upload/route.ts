@@ -4,6 +4,21 @@ import { verifyToken } from '@/lib/auth/jwt';
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic';
 
+/**
+ * WARNING: This is a demo implementation using base64 storage.
+ * 
+ * DO NOT USE IN PRODUCTION!
+ * 
+ * For production, integrate with cloud storage:
+ * - AWS S3
+ * - Google Cloud Storage
+ * - Cloudflare R2
+ * - Azure Blob Storage
+ * 
+ * Set environment variable to enable production storage:
+ * USE_CLOUD_STORAGE=true
+ */
+
 // POST - Upload file (simplified base64 storage for demo)
 export async function POST(request: NextRequest) {
   try {

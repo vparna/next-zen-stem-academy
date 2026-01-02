@@ -93,16 +93,23 @@ export function calculateDistance(
 
 /**
  * Verify location is within acceptable range of school
+ * Considers GPS accuracy to avoid false negatives
  */
 export function verifyLocationInRange(
   currentLat: number,
   currentLon: number,
   schoolLat: number,
   schoolLon: number,
-  maxDistanceMeters: number = 100
+  maxDistanceMeters: number = 100,
+  gpsAccuracy: number = 0
 ): boolean {
   const distance = calculateDistance(currentLat, currentLon, schoolLat, schoolLon);
-  return distance <= maxDistanceMeters;
+  
+  // If GPS accuracy is poor, add it to the acceptable range
+  // This prevents false negatives due to GPS inaccuracy
+  const effectiveRange = maxDistanceMeters + Math.min(gpsAccuracy, 50); // Cap accuracy bonus at 50m
+  
+  return distance <= effectiveRange;
 }
 
 /**

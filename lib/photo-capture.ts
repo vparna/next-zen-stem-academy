@@ -90,11 +90,21 @@ export function compressImage(dataUrl: string, maxWidth: number = 800): Promise<
 
 /**
  * Store captured photo
+ * Checks storage capacity before storing
  */
 export function storePhoto(photo: CapturedPhoto): void {
   if (typeof window === 'undefined') return;
 
   try {
+    // Check available storage space
+    const estimatedSize = photo.dataUrl.length;
+    const maxSize = 2 * 1024 * 1024; // 2MB per photo
+    
+    if (estimatedSize > maxSize) {
+      console.warn('Photo too large to store locally. Consider compression.');
+      return;
+    }
+
     const key = `photo_${photo.timestamp}`;
     localStorage.setItem(key, JSON.stringify(photo));
     
@@ -103,7 +113,19 @@ export function storePhoto(photo: CapturedPhoto): void {
     index.push(key);
     localStorage.setItem('photo_index', JSON.stringify(index));
   } catch (error) {
-    console.error('Failed to store photo:', error);
+    if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+      console.error('Storage quota exceeded. Cleaning up old photos...');
+      cleanupOldPhotos();
+      // Try storing again after cleanup
+      try {
+        const key = `photo_${photo.timestamp}`;
+        localStorage.setItem(key, JSON.stringify(photo));
+      } catch (retryError) {
+        console.error('Failed to store photo even after cleanup:', retryError);
+      }
+    } else {
+      console.error('Failed to store photo:', error);
+    }
   }
 }
 

@@ -64,24 +64,33 @@ export async function GET(request: NextRequest) {
           status: 'checked-in'
         });
 
-        // Calculate average duration
-        const completedRecords = await db.collection('attendances')
-          .find({ ...filter, status: 'completed', checkOutTime: { $exists: true } })
-          .toArray();
-
-        let totalDuration = 0;
-        let recordsWithDuration = 0;
-
-        for (const record of completedRecords) {
-          if (record.checkOutTime && record.checkInTime) {
-            const duration = new Date(record.checkOutTime).getTime() - new Date(record.checkInTime).getTime();
-            totalDuration += duration;
-            recordsWithDuration++;
+        // Calculate average duration using MongoDB aggregation
+        const durationStats = await db.collection('attendances').aggregate([
+          { 
+            $match: { 
+              ...filter, 
+              status: 'completed', 
+              checkOutTime: { $exists: true } 
+            } 
+          },
+          {
+            $project: {
+              duration: {
+                $subtract: ['$checkOutTime', '$checkInTime']
+              }
+            }
+          },
+          {
+            $group: {
+              _id: null,
+              avgDuration: { $avg: '$duration' },
+              count: { $sum: 1 }
+            }
           }
-        }
+        ]).toArray();
 
-        const averageDurationMinutes = recordsWithDuration > 0 
-          ? Math.round(totalDuration / recordsWithDuration / 60000)
+        const averageDurationMinutes = durationStats.length > 0 && durationStats[0].avgDuration
+          ? Math.round(durationStats[0].avgDuration / 60000)
           : 0;
 
         return NextResponse.json({
