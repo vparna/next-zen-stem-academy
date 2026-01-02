@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen STEM Academy - Marketing Research & Financial Projections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .presentation {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+            margin: 40px 0;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            page-break-after: always;
+        }
+
+        .slide h1 {
+            color: #667eea;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .slide h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .slide h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 20px 0 10px 0;
+        }
+
+        .slide p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .slide ul {
+            font-size: 1.2em;
+            line-height: 2;
+            margin-left: 40px;
+            color: #333;
+        }
+
+        .slide li {
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .highlight h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .highlight p {
+            font-size: 1.4em;
+            color: white;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h4 {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+
+        .subtitle {
+            color: #764ba2;
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .timestamp {
+            color: #666;
+            font-size: 1em;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .metric {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 1.1em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .status-positive {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .status-negative {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .chart-bar {
+            background: #667eea;
+            height: 30px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media print {
+            .slide {
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide">
+            <h1>NextGen STEM Academy</h1>
+            <p class="subtitle">Marketing Research & Financial Projections</p>
+            <div style="text-align: center; margin-top: 60px;">
+                <div class="metric">
+                    <span class="metric-value">Feb 2026</span>
+                    <div class="metric-label">Launch Date</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$147K</span>
+                    <div class="metric-label">Year 1 Revenue</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">Month 8</span>
+                    <div class="metric-label">Break-Even</div>
+                </div>
+            </div>
+            <p class="timestamp">Document Prepared: January 2026</p>
+        </div>
+
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide">
+            <h2>Executive Summary</h2>
+            <div class="highlight">
+                <h3>Key Financial Milestones</h3>
+                <p><strong>Break-Even:</strong> Month 8 (September 2026)</p>
+                <p><strong>Positive Cash Flow:</strong> Month 9 (October 2026)</p>
+                <p><strong>Investment Required:</strong> $60,000</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h4>Year 1 Projections</h4>
+                    <p><strong>Revenue:</strong> $147,600</p>
+                    <p><strong>Expenses:</strong> $136,380</p>
+                    <p><strong>Net Income:</strong> <span class="status-positive">$11,220</span></p>
+                </div>
+                <div class="card">
+                    <h4>Year 2 Projections</h4>
+                    <p><strong>Revenue:</strong> $425,280</p>
+                    <p><strong>Expenses:</strong> $184,860</p>
+                    <p><strong>Net Income:</strong> <span class="status-positive">$240,420</span></p>
+                </div>
+                <div class="card">
+                    <h4>Student Capacity</h4>
+                    <p><strong>Month 6:</strong> 90 students</p>
+                    <p><strong>Month 12:</strong> 150 students</p>
+                    <p><strong>Year 2:</strong> 185 students</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Market Analysis -->
+        <div class="slide">
+            <h2>Market Analysis</h2>
+            <h3>Target Market</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Demographics</h4>
+                    <p>Age: 6-16 years</p>
+                    <p>Income: $50K-$150K+</p>
+                    <p>Location: Urban/Suburban</p>
+                </div>
+                <div class="card">
+                    <h4>Market Size</h4>
+                    <p>Addressable: 5,000 families</p>
+                    <p>Year 1 Penetration: 3%</p>
+                    <p>Year 2 Penetration: 8%</p>
+                </div>
+                <div class="card">
+                    <h4>Growth Drivers</h4>
+                    <p>STEM career focus</p>
+                    <p>Robotics competitions</p>
+                    <p>Academic excellence</p>
+                </div>
+            </div>
+            <h3>Competitive Advantages</h3>
+            <ul>
+                <li><strong>3S Philosophy:</strong> Skills, Science, Success</li>
+                <li><strong>Hybrid Model:</strong> Online and in-person options</li>
+                <li><strong>Integrated Platform:</strong> Modern learning management system</li>
+                <li><strong>Multi-Course Discounts:</strong> 10-15% for multiple children</li>
+                <li><strong>Certifications:</strong> Course completion certificates</li>
+            </ul>
+        </div>
+
+        <!-- Slide 4: Student Enrollment Projections -->
+        <div class="slide">
+            <h2>Student Enrollment Projections</h2>
+            <h3>Monthly Growth Trajectory</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>New Enrollments</th>
+                        <th>Total Students</th>
+                        <th>Phase</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Feb 2026</td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>Launch</td>
+                    </tr>
+                    <tr>
+                        <td>Mar 2026</td>
+                        <td>20</td>
+                        <td>35</td>
+                        <td>Early Growth</td>
+                    </tr>
+                    <tr>
+                        <td>May 2026</td>
+                        <td>22</td>
+                        <td>75</td>
+                        <td>Acceleration</td>
+                    </tr>
+                    <tr>
+                        <td>Jul 2026</td>
+                        <td>20</td>
+                        <td>110</td>
+                        <td>Summer Peak</td>
+                    </tr>
+                    <tr>
+                        <td>Sep 2026</td>
+                        <td>15</td>
+                        <td>150</td>
+                        <td><strong>Capacity Reached</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Course Distribution</h3>
+            <div style="margin: 20px 0;">
+                <div class="chart-bar" style="width: 40%;">Robotics - 40%</div>
+                <div class="chart-bar" style="width: 35%; background: #764ba2;">Mathematics - 35%</div>
+                <div class="chart-bar" style="width: 25%; background: #9f7aea;">Chess - 25%</div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Revenue Projections -->
+        <div class="slide">
+            <h2>Revenue Projections</h2>
+            <h3>Pricing Structure</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Duration</th>
+                        <th>Price</th>
+                        <th>Age Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Robotics Fundamentals</td>
+                        <td>12 weeks</td>
+                        <td>$99</td>
+                        <td>8-12 years</td>
+                    </tr>
+                    <tr>
+                        <td>Advanced Robotics</td>
+                        <td>16 weeks</td>
+                        <td>$129</td>
+                        <td>12-16 years</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics Mastery</td>
+                        <td>10 weeks</td>
+                        <td>$79</td>
+                        <td>10-14 years</td>
+                    </tr>
+                    <tr>
+                        <td>Olympiad Mathematics</td>
+                        <td>14 weeks</td>
+                        <td>$119</td>
+                        <td>12-16 years</td>
+                    </tr>
+                    <tr>
+                        <td>Chess Beginner</td>
+                        <td>8 weeks</td>
+                        <td>$69</td>
+                        <td>6-10 years</td>
+                    </tr>
+                    <tr>
+                        <td>Chess Advanced</td>
+                        <td>12 weeks</td>
+                        <td>$89</td>
+                        <td>10-16 years</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight">
+                <p><strong>Average Course Price:</strong> $95</p>
+                <p><strong>Multi-Child Discount:</strong> 12.5% average</p>
+                <p><strong>Effective Price per Enrollment:</strong> $83</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Monthly Revenue Forecast -->
+        <div class="slide">
+            <h2>Monthly Revenue Forecast - Year 1</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Students</th>
+                        <th>Gross Revenue</th>
+                        <th>Net Revenue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Feb 2026</td>
+                        <td>15</td>
+                        <td>$1,900</td>
+                        <td>$1,710</td>
+                    </tr>
+                    <tr>
+                        <td>Apr 2026</td>
+                        <td>53</td>
+                        <td>$6,555</td>
+                        <td>$5,899</td>
+                    </tr>
+                    <tr>
+                        <td>Jun 2026</td>
+                        <td>90</td>
+                        <td>$11,115</td>
+                        <td>$9,003</td>
+                    </tr>
+                    <tr>
+                        <td>Aug 2026</td>
+                        <td>135</td>
+                        <td>$16,720</td>
+                        <td>$15,048</td>
+                    </tr>
+                    <tr style="background: #e6f3ff;">
+                        <td><strong>Sep 2026</strong></td>
+                        <td><strong>150</strong></td>
+                        <td><strong>$18,525</strong></td>
+                        <td><strong>$16,672</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 2026</td>
+                        <td>150</td>
+                        <td>$18,525</td>
+                        <td>$16,672</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 30px;">
+                <div class="metric">
+                    <span class="metric-value">$147,600</span>
+                    <div class="metric-label">Year 1 Total Revenue</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$425,280</span>
+                    <div class="metric-label">Year 2 Total Revenue</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Expense Breakdown -->
+        <div class="slide">
+            <h2>Detailed Expense Breakdown</h2>
+            <h3>Fixed Monthly Expenses</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Monthly</th>
+                        <th>Annual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Facility Rent</td>
+                        <td>$3,500</td>
+                        <td>$42,000</td>
+                    </tr>
+                    <tr>
+                        <td>Electricity</td>
+                        <td>$450</td>
+                        <td>$5,400</td>
+                    </tr>
+                    <tr>
+                        <td>Water & Utilities</td>
+                        <td>$80</td>
+                        <td>$960</td>
+                    </tr>
+                    <tr>
+                        <td>Internet & Phone</td>
+                        <td>$200</td>
+                        <td>$2,400</td>
+                    </tr>
+                    <tr>
+                        <td>Garbage/Waste</td>
+                        <td>$75</td>
+                        <td>$900</td>
+                    </tr>
+                    <tr>
+                        <td>Security</td>
+                        <td>$300</td>
+                        <td>$3,600</td>
+                    </tr>
+                    <tr>
+                        <td>Insurance</td>
+                        <td>$500</td>
+                        <td>$6,000</td>
+                    </tr>
+                    <tr>
+                        <td>Technology & Software</td>
+                        <td>$400</td>
+                        <td>$4,800</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing</td>
+                        <td>$1,200</td>
+                        <td>$14,400</td>
+                    </tr>
+                    <tr>
+                        <td>Administrative</td>
+                        <td>$300</td>
+                        <td>$3,600</td>
+                    </tr>
+                    <tr style="background: #e6f3ff; font-weight: bold;">
+                        <td><strong>Total Fixed</strong></td>
+                        <td><strong>$7,005</strong></td>
+                        <td><strong>$84,060</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 8: Teacher Costs -->
+        <div class="slide">
+            <h2>Variable Expenses - Teacher Costs</h2>
+            <div class="highlight">
+                <h3>Instructor Compensation Model</h3>
+                <p><strong>Rate:</strong> $40/hour per instructor</p>
+                <p><strong>Student-to-Instructor Ratio:</strong> 10:1</p>
+                <p><strong>Hours per Week:</strong> 3 hours (includes prep time)</p>
+            </div>
+            <h3>Monthly Instructor Costs by Growth Phase</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Students</th>
+                        <th>Instructors Needed</th>
+                        <th>Monthly Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Feb 2026</td>
+                        <td>15</td>
+                        <td>2</td>
+                        <td>$960</td>
+                    </tr>
+                    <tr>
+                        <td>May 2026</td>
+                        <td>75</td>
+                        <td>8</td>
+                        <td>$3,840</td>
+                    </tr>
+                    <tr>
+                        <td>Aug 2026</td>
+                        <td>135</td>
+                        <td>14</td>
+                        <td>$6,720</td>
+                    </tr>
+                    <tr style="background: #e6f3ff;">
+                        <td><strong>Sep 2026+</strong></td>
+                        <td><strong>150</strong></td>
+                        <td><strong>15</strong></td>
+                        <td><strong>$7,200</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center; margin-top: 30px;">
+                <div class="metric">
+                    <span class="metric-value">$52,320</span>
+                    <div class="metric-label">Year 1 Teacher Costs</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-value">$100,800</span>
+                    <div class="metric-label">Year 2 Teacher Costs</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: One-Time Setup Costs -->
+        <div class="slide">
+            <h2>One-Time Setup Investment</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Cost</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Furniture & Equipment</td>
+                        <td>$15,000</td>
+                        <td>Desks, chairs, computers, whiteboards</td>
+                    </tr>
+                    <tr>
+                        <td>Robotics Kits</td>
+                        <td>$8,000</td>
+                        <td>30 starter kits for classes</td>
+                    </tr>
+                    <tr>
+                        <td>Chess Sets & Boards</td>
+                        <td>$1,500</td>
+                        <td>25 quality tournament sets</td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics Materials</td>
+                        <td>$2,000</td>
+                        <td>Books, manipulatives, calculators</td>
+                    </tr>
+                    <tr>
+                        <td>Signage & Branding</td>
+                        <td>$3,000</td>
+                        <td>External sign, interior branding</td>
+                    </tr>
+                    <tr>
+                        <td>Legal & Licensing</td>
+                        <td>$2,500</td>
+                        <td>Business registration, permits</td>
+                    </tr>
+                    <tr>
+                        <td>Initial Marketing</td>
+                        <td>$5,000</td>
+                        <td>Website, promotional materials</td>
+                    </tr>
+                    <tr style="background: #e6f3ff; font-weight: bold;">
+                        <td><strong>Total Setup</strong></td>
+                        <td><strong>$37,000</strong></td>
+                        <td><strong>One-time investment</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 10: Break-Even Analysis -->
+        <div class="slide">
+            <h2>Break-Even Analysis</h2>
+            <div class="highlight">
+                <h3>Break-Even Calculation</h3>
+                <p><strong>Fixed Monthly Costs:</strong> $7,005</p>
+                <p><strong>Variable Cost per Student:</strong> $48/month</p>
+                <p><strong>Revenue per Student:</strong> $111/month</p>
+                <p><strong>Contribution Margin:</strong> $63/student</p>
+            </div>
+            <div style="text-align: center; margin: 40px 0;">
+                <div class="metric">
+                    <span class="metric-value">112</span>
+                    <div class="metric-label">Students Needed to Break-Even</div>
+                </div>
+            </div>
+            <h3>Key Milestones</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Month 8 - Sep 2026</h4>
+                    <p><strong>Break-Even Point Reached</strong></p>
+                    <p>150 students enrolled</p>
+                    <p>Monthly profit: $2,467</p>
+                </div>
+                <div class="card">
+                    <h4>Month 9 - Oct 2026</h4>
+                    <p><strong>Positive Cash Flow</strong></p>
+                    <p>Consistent profitability</p>
+                    <p>Reducing cumulative deficit</p>
+                </div>
+                <div class="card">
+                    <h4>Month 18 - Jul 2027</h4>
+                    <p><strong>Cumulative Break-Even</strong></p>
+                    <p>All startup costs recovered</p>
+                    <p>Strong positive position</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Monthly Profitability -->
+        <div class="slide">
+            <h2>Monthly Profitability Analysis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Revenue</th>
+                        <th>Expenses</th>
+                        <th>Net Income</th>
+                        <th>Cumulative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Setup</td>
+                        <td>$0</td>
+                        <td>$37,000</td>
+                        <td class="status-negative">-$37,000</td>
+                        <td class="status-negative">-$37,000</td>
+                    </tr>
+                    <tr>
+                        <td>Feb 2026</td>
+                        <td>$1,710</td>
+                        <td>$7,965</td>
+                        <td class="status-negative">-$6,255</td>
+                        <td class="status-negative">-$43,255</td>
+                    </tr>
+                    <tr>
+                        <td>Apr 2026</td>
+                        <td>$5,899</td>
+                        <td>$9,885</td>
+                        <td class="status-negative">-$3,986</td>
+                        <td class="status-negative">-$52,233</td>
+                    </tr>
+                    <tr>
+                        <td>Jun 2026</td>
+                        <td>$9,003</td>
+                        <td>$11,325</td>
+                        <td class="status-negative">-$2,322</td>
+                        <td class="status-negative">-$57,021</td>
+                    </tr>
+                    <tr>
+                        <td>Aug 2026</td>
+                        <td>$15,048</td>
+                        <td>$13,725</td>
+                        <td class="status-positive">+$1,323</td>
+                        <td class="status-negative">-$55,757</td>
+                    </tr>
+                    <tr style="background: #d4edda;">
+                        <td><strong>Sep 2026</strong></td>
+                        <td><strong>$16,672</strong></td>
+                        <td><strong>$14,205</strong></td>
+                        <td class="status-positive"><strong>+$2,467</strong></td>
+                        <td class="status-negative"><strong>-$53,290</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Dec 2026</td>
+                        <td>$16,672</td>
+                        <td>$14,205</td>
+                        <td class="status-positive">+$2,467</td>
+                        <td class="status-negative">-$45,889</td>
+                    </tr>
+                    <tr>
+                        <td>Jan 2027</td>
+                        <td>$16,672</td>
+                        <td>$14,205</td>
+                        <td class="status-positive">+$2,467</td>
+                        <td class="status-negative">-$43,422</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 12: Cash Flow Projections -->
+        <div class="slide">
+            <h2>Cash Flow Projections - 2 Year Outlook</h2>
+            <h3>Year 1 Summary</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Total Revenue</h4>
+                    <p class="status-positive" style="font-size: 1.8em;">$147,600</p>
+                </div>
+                <div class="card">
+                    <h4>Total Expenses</h4>
+                    <p class="status-negative" style="font-size: 1.8em;">$136,380</p>
+                </div>
+                <div class="card">
+                    <h4>Net Income</h4>
+                    <p class="status-positive" style="font-size: 1.8em;">+$11,220</p>
+                </div>
+            </div>
+            <h3>Year 2 Summary</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Total Revenue</h4>
+                    <p class="status-positive" style="font-size: 1.8em;">$425,280</p>
+                </div>
+                <div class="card">
+                    <h4>Total Expenses</h4>
+                    <p class="status-negative" style="font-size: 1.8em;">$184,860</p>
+                </div>
+                <div class="card">
+                    <h4>Net Income</h4>
+                    <p class="status-positive" style="font-size: 1.8em;">+$240,420</p>
+                </div>
+            </div>
+            <div class="highlight" style="margin-top: 30px;">
+                <h3>End of Year 2 Position</h3>
+                <p><strong>Cumulative Cash Flow: +$186,618</strong></p>
+                <p>Fully profitable and self-sustaining</p>
+            </div>
+        </div>
+
+        <!-- Slide 13: Capital Requirements -->
+        <div class="slide">
+            <h2>Capital Requirements & Funding</h2>
+            <div class="highlight">
+                <h3>Recommended Initial Investment</h3>
+                <p style="font-size: 2em;"><strong>$60,000</strong></p>
+            </div>
+            <h3>Investment Allocation</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Setup Costs (Equipment, Materials, etc.)</td>
+                        <td>$37,000</td>
+                        <td>62%</td>
+                    </tr>
+                    <tr>
+                        <td>Operating Reserve (6-month runway)</td>
+                        <td>$23,000</td>
+                        <td>38%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Funding Scenarios</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Conservative</h4>
+                    <p><strong>$50,000</strong></p>
+                    <p>Achieves break-even with 15% buffer</p>
+                </div>
+                <div class="card" style="border-left-color: #28a745;">
+                    <h4>Recommended</h4>
+                    <p><strong>$60,000</strong></p>
+                    <p>Comfortable 6-month runway</p>
+                </div>
+                <div class="card">
+                    <h4>Growth Optimal</h4>
+                    <p><strong>$75,000</strong></p>
+                    <p>Enables expansion and aggressive marketing</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Key Performance Indicators -->
+        <div class="slide">
+            <h2>Key Performance Indicators (KPIs)</h2>
+            <h3>Enrollment Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Month 6</th>
+                        <th>Month 12</th>
+                        <th>Year 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Students</td>
+                        <td>90</td>
+                        <td>150</td>
+                        <td>185</td>
+                    </tr>
+                    <tr>
+                        <td>Retention Rate</td>
+                        <td>85%</td>
+                        <td>92%</td>
+                        <td>95%</td>
+                    </tr>
+                    <tr>
+                        <td>Conversion Rate</td>
+                        <td>15%</td>
+                        <td>25%</td>
+                        <td>30%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Financial Metrics</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Month 6</th>
+                        <th>Month 12</th>
+                        <th>Year 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monthly Revenue</td>
+                        <td>$9,003</td>
+                        <td>$16,672</td>
+                        <td>$35,440</td>
+                    </tr>
+                    <tr>
+                        <td>Gross Margin</td>
+                        <td>38%</td>
+                        <td>48%</td>
+                        <td>57%</td>
+                    </tr>
+                    <tr>
+                        <td>Net Margin</td>
+                        <td>-26%</td>
+                        <td>8%</td>
+                        <td>52%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Slide 15: Risk Analysis -->
+        <div class="slide">
+            <h2>Risk Analysis & Mitigation</h2>
+            <div class="grid">
+                <div class="card" style="border-left-color: #dc3545;">
+                    <h4>Risk: Slower Enrollment</h4>
+                    <p><strong>Level:</strong> High</p>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-left: 20px; font-size: 0.95em;">
+                        <li>Aggressive first 90 days marketing</li>
+                        <li>Early-bird discounts</li>
+                        <li>Referral incentives ($50)</li>
+                        <li>Free trial classes</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left-color: #ffc107;">
+                    <h4>Risk: Higher Operating Costs</h4>
+                    <p><strong>Level:</strong> Medium</p>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-left: 20px; font-size: 0.95em;">
+                        <li>Long-term lease negotiation</li>
+                        <li>Energy-efficient equipment</li>
+                        <li>Bulk material purchasing</li>
+                        <li>Part-time instructor mix</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-left-color: #ffc107;">
+                    <h4>Risk: Competition</h4>
+                    <p><strong>Level:</strong> Medium</p>
+                    <p><strong>Mitigation:</strong></p>
+                    <ul style="margin-left: 20px; font-size: 0.95em;">
+                        <li>3S philosophy differentiation</li>
+                        <li>Superior platform & curriculum</li>
+                        <li>Strong community building</li>
+                        <li>Focus on outcomes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Sensitivity Analysis -->
+        <div class="slide">
+            <h2>Sensitivity Analysis</h2>
+            <h3>Three Scenarios: Impact on Profitability</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scenario</th>
+                        <th>Break-Even Month</th>
+                        <th>Year 1 Net Income</th>
+                        <th>Year 2 Net Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #d4edda;">
+                        <td><strong>Best Case (+20%)</strong></td>
+                        <td>Month 6 (June 2026)</td>
+                        <td class="status-positive">+$38,640</td>
+                        <td class="status-positive">+$312,504</td>
+                    </tr>
+                    <tr style="background: #fff3cd;">
+                        <td><strong>Base Case (As Projected)</strong></td>
+                        <td>Month 8 (Sep 2026)</td>
+                        <td class="status-positive">+$11,220</td>
+                        <td class="status-positive">+$240,420</td>
+                    </tr>
+                    <tr style="background: #f8d7da;">
+                        <td><strong>Worst Case (-20%)</strong></td>
+                        <td>Month 11 (Dec 2026)</td>
+                        <td class="status-negative">-$16,200</td>
+                        <td class="status-positive">+$168,336</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="highlight" style="margin-top: 30px;">
+                <p><strong>Key Insight:</strong> Even in worst-case scenario, business becomes profitable in Year 2 with cumulative positive cash flow by Month 18</p>
+            </div>
+        </div>
+
+        <!-- Slide 17: Recommendations - Pre-Launch -->
+        <div class="slide">
+            <h2>Recommendations: Pre-Launch Actions</h2>
+            <h3>January 2026 - Critical Tasks</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>✓ Funding</h4>
+                    <p>Secure $60,000 in capital</p>
+                    <p>Establish $20K line of credit</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Facility</h4>
+                    <p>Finalize lease agreement</p>
+                    <p>Complete build-out</p>
+                    <p>Set up utilities & security</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Staffing</h4>
+                    <p>Hire 3-5 core instructors</p>
+                    <p>Background checks</p>
+                    <p>Training programs</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Marketing</h4>
+                    <p>Launch website</p>
+                    <p>Social media campaigns</p>
+                    <p>School partnerships</p>
+                    <p>Open house events</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Operations</h4>
+                    <p>Finalize course schedules</p>
+                    <p>Set up payment processing</p>
+                    <p>Communication channels</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Technology</h4>
+                    <p>Platform setup & testing</p>
+                    <p>Enrollment system</p>
+                    <p>Parent portal access</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Launch Strategy -->
+        <div class="slide">
+            <h2>Launch Strategy - February 2026</h2>
+            <h3>Phase 1: Soft Launch (Month 1)</h3>
+            <ul>
+                <li><strong>Target:</strong> 15-20 students (early adopters)</li>
+                <li><strong>Focus:</strong> Parent satisfaction and testimonials</li>
+                <li><strong>Activities:</strong> 
+                    <ul style="margin-left: 30px;">
+                        <li>Implement referral program</li>
+                        <li>Gather detailed feedback</li>
+                        <li>Document success stories</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Phase 2: Growth Acceleration (Months 2-3)</h3>
+            <ul>
+                <li><strong>Target:</strong> 20-25 new enrollments per month</li>
+                <li><strong>Marketing:</strong> Increase spend to $1,500/month</li>
+                <li><strong>Tactics:</strong>
+                    <ul style="margin-left: 30px;">
+                        <li>Launch referral incentives</li>
+                        <li>Share testimonials on social media</li>
+                        <li>Partner with local schools</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Phase 3: Stabilization (Months 4-6)</h3>
+            <ul>
+                <li><strong>Focus:</strong> Quality maintenance at scale</li>
+                <li><strong>Activities:</strong> Community events, workshops, optimization</li>
+            </ul>
+        </div>
+
+        <!-- Slide 19: Growth Phase -->
+        <div class="slide">
+            <h2>Growth Phase Strategy (Months 7-12)</h2>
+            <h3>Key Focus Areas</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Quality at Scale</h4>
+                    <p>Maintain excellence while scaling to 150 students</p>
+                    <p>Regular quality audits</p>
+                </div>
+                <div class="card">
+                    <h4>Instructor Development</h4>
+                    <p>Training program implementation</p>
+                    <p>Performance reviews</p>
+                </div>
+                <div class="card">
+                    <h4>Course Expansion</h4>
+                    <p>Advanced courses based on demand</p>
+                    <p>Introduce certifications</p>
+                </div>
+                <div class="card">
+                    <h4>Community Building</h4>
+                    <p>Build waitlist for popular courses</p>
+                    <p>Host competitions & events</p>
+                </div>
+                <div class="card">
+                    <h4>System Optimization</h4>
+                    <p>Streamline operations</p>
+                    <p>Enhance parent communication</p>
+                </div>
+                <div class="card">
+                    <h4>Expansion Planning</h4>
+                    <p>Evaluate second location</p>
+                    <p>Strategic partnerships</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Success Metrics to Monitor -->
+        <div class="slide">
+            <h2>Success Metrics to Monitor</h2>
+            <h3>Monthly Review Metrics</h3>
+            <ul>
+                <li>Enrollment numbers vs. projections</li>
+                <li>Revenue and expense tracking</li>
+                <li>Instructor performance and student satisfaction</li>
+                <li>Marketing ROI and conversion rates</li>
+                <li>Cash flow position</li>
+            </ul>
+            <h3>Quarterly Strategic Reviews</h3>
+            <ul>
+                <li>Financial performance vs. budget</li>
+                <li>KPI achievement rates</li>
+                <li>Strategic plan progress</li>
+                <li>Competitive landscape changes</li>
+                <li>Expansion readiness assessment</li>
+            </ul>
+            <h3>Critical Success Indicators</h3>
+            <div class="grid" style="margin-top: 20px;">
+                <div class="card">
+                    <h4>Student Retention</h4>
+                    <p><strong>Target:</strong> 90%+</p>
+                    <p>Indicates quality & satisfaction</p>
+                </div>
+                <div class="card">
+                    <h4>Referral Rate</h4>
+                    <p><strong>Target:</strong> 35%+</p>
+                    <p>Word-of-mouth success</p>
+                </div>
+                <div class="card">
+                    <h4>Course Fill Rate</h4>
+                    <p><strong>Target:</strong> 85%+</p>
+                    <p>Healthy demand indicator</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Conclusion -->
+        <div class="slide">
+            <h2>Conclusion & Investment Recommendation</h2>
+            <div class="highlight">
+                <h3>Investment Recommendation</h3>
+                <p style="font-size: 2em; color: white;"><strong>✓ PROCEED</strong></p>
+            </div>
+            <h3>Why This Business Will Succeed</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>✓ Strong Market Demand</h4>
+                    <p>Growing STEM education market with 15% annual growth</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Competitive Advantages</h4>
+                    <p>Unique 3S philosophy, modern platform, quality curriculum</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Realistic Projections</h4>
+                    <p>Conservative enrollment estimates with proven pricing</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Fast Break-Even</h4>
+                    <p>Positive cash flow by Month 9, strong Year 2 profitability</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Scalability</h4>
+                    <p>Model proven to scale from 15 to 150+ students</p>
+                </div>
+                <div class="card">
+                    <h4>✓ Strong ROI</h4>
+                    <p>$60K investment yields $186K+ by end of Year 2</p>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 1.3em; margin-top: 40px; color: #667eea;">
+                <strong>NextGen STEM Academy is positioned to become a profitable and sustainable education business.</strong>
+            </p>
+        </div>
+
+        <!-- Slide 22: Next Steps -->
+        <div class="slide">
+            <h2>Immediate Next Steps</h2>
+            <div class="grid">
+                <div class="card" style="border-left-color: #28a745;">
+                    <h4>Step 1: Secure Funding</h4>
+                    <p><strong>Timeline:</strong> Immediate</p>
+                    <p>Finalize $60,000 capital raise</p>
+                    <p>Establish banking relationships</p>
+                    <p>Set up business accounts</p>
+                </div>
+                <div class="card" style="border-left-color: #28a745;">
+                    <h4>Step 2: Facility Setup</h4>
+                    <p><strong>Timeline:</strong> January 2026</p>
+                    <p>Execute lease agreement</p>
+                    <p>Complete build-out</p>
+                    <p>Install equipment & technology</p>
+                </div>
+                <div class="card" style="border-left-color: #ffc107;">
+                    <h4>Step 3: Team Building</h4>
+                    <p><strong>Timeline:</strong> January 2026</p>
+                    <p>Recruit & hire instructors</p>
+                    <p>Complete training programs</p>
+                    <p>Establish operational procedures</p>
+                </div>
+                <div class="card" style="border-left-color: #ffc107;">
+                    <h4>Step 4: Marketing Launch</h4>
+                    <p><strong>Timeline:</strong> Late January 2026</p>
+                    <p>Launch enrollment campaigns</p>
+                    <p>Host open houses</p>
+                    <p>Build community partnerships</p>
+                </div>
+                <div class="card" style="border-left-color: #667eea;">
+                    <h4>Step 5: Soft Launch</h4>
+                    <p><strong>Timeline:</strong> February 1, 2026</p>
+                    <p>Begin with 15-20 students</p>
+                    <p>Focus on quality delivery</p>
+                    <p>Gather early feedback</p>
+                </div>
+                <div class="card" style="border-left-color: #667eea;">
+                    <h4>Step 6: Monitor & Optimize</h4>
+                    <p><strong>Timeline:</strong> Ongoing</p>
+                    <p>Track KPIs weekly/monthly</p>
+                    <p>Adjust strategies as needed</p>
+                    <p>Scale according to plan</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 1.5em; color: #667eea;"><strong>Ready to Launch February 2026!</strong></p>
+            </div>
+        </div>
+
+        <!-- Slide 23: Contact & Thank You -->
+        <div class="slide">
+            <h1>Thank You</h1>
+            <p class="subtitle">Questions & Discussion</p>
+            <div style="text-align: center; margin-top: 80px;">
+                <h3 style="color: #667eea;">NextGen STEM Academy</h3>
+                <p style="font-size: 1.3em; margin: 20px 0;">Building Tomorrow's Innovators Today</p>
+                <p style="font-size: 1.2em; color: #666; margin: 10px 0;">📧 info@nextgenstem.com</p>
+                <p style="font-size: 1.2em; color: #666; margin: 10px 0;">🌐 www.nextgenstem.com</p>
+            </div>
+            <div class="highlight" style="margin-top: 60px;">
+                <h3>Document Summary</h3>
+                <p><strong>Break-Even:</strong> Month 8 (September 2026)</p>
+                <p><strong>Positive Cash Flow:</strong> Month 9 (October 2026)</p>
+                <p><strong>Investment Required:</strong> $60,000</p>
+                <p><strong>2-Year Projected Profit:</strong> $251,640</p>
+            </div>
+            <p style="text-align: center; margin-top: 40px; color: #999;">
+                <em>Marketing Research & Financial Projections - January 2026</em>
+            </p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        Presentation Mode
+    </div>
+
+    <script>
+        // Optional: Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+                window.scrollBy(0, window.innerHeight);
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+                window.scrollBy(0, -window.innerHeight);
+            }
+        });
+
+        // Print instructions
+        console.log('💡 Tip: Use Arrow keys or Page Up/Down to navigate slides');
+        console.log('💡 Use Ctrl+P (Cmd+P on Mac) to print or save as PDF');
+    </script>
+</body>
+</html>
