@@ -1,6 +1,18 @@
+'use client';
+
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check authentication status
+    const token = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
+    setIsLoggedIn(!!(token && userData));
+  }, []);
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -20,12 +32,14 @@ export default function Home() {
               >
                 Explore Courses
               </Link>
-              <Link
-                href="/signup"
-                className="bg-blue-700 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-900 transition border-2 border-white text-center"
-              >
-                Get Started
-              </Link>
+              {!isLoggedIn && (
+                <Link
+                  href="/signup"
+                  className="bg-blue-700 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-900 transition border-2 border-white text-center"
+                >
+                  Get Started
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -159,12 +173,14 @@ export default function Home() {
           <p className="text-xl mb-8 text-blue-100">
             Join thousands of students already learning with NextGen Stem Academy
           </p>
-          <Link
-            href="/signup"
-            className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-blue-50 transition inline-block"
-          >
-            Enroll Now
-          </Link>
+          {!isLoggedIn && (
+            <Link
+              href="/signup"
+              className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-blue-50 transition inline-block"
+            >
+              Enroll Now
+            </Link>
+          )}
         </div>
       </section>
     </div>

@@ -74,11 +74,7 @@ export default function DashboardPage() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    router.push('/');
-  };
+
 
   if (loading) {
     return (
@@ -100,19 +96,11 @@ export default function DashboardPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                Welcome back, {user.firstName}!
-              </h1>
-              <p className="text-gray-600 mt-1">{user.email}</p>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
-            >
-              Logout
-            </button>
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Welcome back, {user.firstName}!
+            </h1>
+            <p className="text-gray-600 mt-1">{user.email}</p>
           </div>
         </div>
 
