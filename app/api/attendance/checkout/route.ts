@@ -4,6 +4,7 @@ import { checkOut } from '@/models/Attendance';
 import { parseQRData } from '@/lib/qrcode';
 import { ObjectId } from 'mongodb';
 import { getAttendancesByChildId } from '@/models/Attendance';
+import { getChildById } from '@/models/Child';
 
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic';
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { qrData } = body;
+    const { qrData, location, photoUrl } = body;
 
     if (!qrData) {
       return NextResponse.json(
@@ -44,6 +45,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Invalid QR code' },
         { status: 400 }
+      );
+    }
+
+    // Get child info
+    const child = await getChildById(parsedData.id);
+    if (!child) {
+      return NextResponse.json(
+        { error: 'Child not found' },
+        { status: 404 }
       );
     }
 
@@ -62,7 +72,9 @@ export async function POST(request: NextRequest) {
     const success = await checkOut(
       activeAttendance._id,
       new Date(),
-      new ObjectId(decoded.userId)
+      new ObjectId(decoded.userId),
+      location,
+      photoUrl
     );
 
     if (!success) {
@@ -75,6 +87,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { 
         success: true,
+        childName: child.name,
+        checkOutTime: new Date().toISOString(),
         message: 'Check-out successful'
       },
       { status: 200 }

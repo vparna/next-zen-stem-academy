@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { qrData, courseId, notes } = body;
+    const { qrData, courseId, notes, location, photoUrl } = body;
 
     if (!qrData) {
       return NextResponse.json(
@@ -65,12 +65,16 @@ export async function POST(request: NextRequest) {
       checkInTeacherId: new ObjectId(decoded.userId),
       status: 'checked-in',
       notes: notes || undefined,
+      checkInLocation: location || undefined,
+      checkInPhotoUrl: photoUrl || undefined,
     });
 
     return NextResponse.json(
       { 
         success: true, 
         attendanceId: attendanceId.toString(),
+        childName: child.name,
+        checkInTime: new Date().toISOString(),
         message: 'Check-in successful'
       },
       { status: 201 }

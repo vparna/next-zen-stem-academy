@@ -63,13 +63,25 @@ export async function updateAttendance(
 export async function checkOut(
   id: string | ObjectId,
   checkOutTime: Date,
-  teacherId: ObjectId
+  teacherId: ObjectId,
+  location?: { latitude: number; longitude: number; accuracy: number },
+  photoUrl?: string
 ): Promise<boolean> {
-  return updateAttendance(id, {
+  const updates: Partial<Omit<Attendance, '_id'>> = {
     checkOutTime,
     checkOutTeacherId: teacherId,
     status: 'completed'
-  });
+  };
+  
+  if (location) {
+    updates.checkOutLocation = location;
+  }
+  
+  if (photoUrl) {
+    updates.checkOutPhotoUrl = photoUrl;
+  }
+  
+  return updateAttendance(id, updates);
 }
 
 export async function getActiveAttendances(): Promise<Attendance[]> {
