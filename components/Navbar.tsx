@@ -11,29 +11,50 @@ export default function Navbar() {
     isLoggedIn: false,
     userName: ''
   });
-  const [isClient, setIsClient] = useState(false);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const router = useRouter();
 
   useEffect(() => {
-    // Set client-side flag first
-    setIsClient(true);
-    
-    // Check authentication status
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
-    if (token && userData) {
-      try {
-        const user = JSON.parse(userData);
+    // Function to check authentication status
+    const checkAuth = () => {
+      if (typeof window === 'undefined') return;
+      
+      const token = localStorage.getItem('token');
+      const userData = localStorage.getItem('user');
+      
+      if (token && userData) {
+        try {
+          const user = JSON.parse(userData);
+          setAuthState({
+            isLoggedIn: true,
+            userName: user.firstName || 'User'
+          });
+        } catch (e) {
+          console.error('Error parsing user data:', e);
+          setAuthState({
+            isLoggedIn: false,
+            userName: ''
+          });
+        }
+      } else {
         setAuthState({
-          isLoggedIn: true,
-          userName: user.firstName || 'User'
+          isLoggedIn: false,
+          userName: ''
         });
-      } catch (e) {
-        console.error('Error parsing user data:', e);
       }
-    }
+    };
+    
+    // Check authentication status on mount
+    checkAuth();
+    
+    // Listen for custom auth change events and storage changes from other tabs
+    window.addEventListener('authChange', checkAuth);
+    window.addEventListener('storage', checkAuth);
+    
+    return () => {
+      window.removeEventListener('authChange', checkAuth);
+      window.removeEventListener('storage', checkAuth);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -44,6 +65,10 @@ export default function Navbar() {
       userName: ''
     });
     setIsMenuOpen(false);
+    
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new Event('authChange'));
+    
     router.push('/');
   };
 
