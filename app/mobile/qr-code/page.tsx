@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { storeQRCodeOffline, getStoredQRCodeForChild, isOnline } from '@/lib/offline-qr';
+import { initializeNotifications, getNotificationPreference } from '@/lib/notifications';
 
 interface Child {
   _id: string;
@@ -23,7 +25,27 @@ export default function QRCodePage() {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState('');
+  const [isOffline, setIsOffline] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    // Initialize notifications
+    initializeNotifications();
+
+    // Check online status
+    setIsOffline(!isOnline());
+
+    const handleOnline = () => setIsOffline(false);
+    const handleOffline = () => setIsOffline(true);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchChildren = async () => {
@@ -42,9 +64,10 @@ export default function QRCodePage() {
 
         if (response.ok) {
           const data = await response.json();
-          setChildren(data);
-          if (data.length > 0) {
-            setSelectedChild(data[0]._id);
+          const childrenArray = data.children || data;
+          setChildren(childrenArray);
+          if (childrenArray.length > 0) {
+            setSelectedChild(childrenArray[0]._id);
           }
         } else {
           setError('Failed to load children');
@@ -67,6 +90,24 @@ export default function QRCodePage() {
     setError('');
 
     try {
+      // Try offline first if available
+      if (isOffline) {
+        const stored = getStoredQRCodeForChild(selectedChild);
+        if (stored) {
+          setQRCodeData({
+            qrCode: stored.qrCodeImage,
+            childId: stored.childId,
+            childName: stored.childName,
+          });
+          setGenerating(false);
+          return;
+        } else {
+          setError('No offline QR code available. Please connect to the internet.');
+          setGenerating(false);
+          return;
+        }
+      }
+
       const token = localStorage.getItem('token');
       const response = await fetch(`/api/qrcode?childId=${selectedChild}`, {
         headers: {
@@ -77,13 +118,28 @@ export default function QRCodePage() {
       if (response.ok) {
         const data = await response.json();
         setQRCodeData(data);
+        
+        // Store for offline use
+        storeQRCodeOffline(data.childId, data.childName, data.qrCode);
       } else {
         const errorData = await response.json();
         setError(errorData.error || 'Failed to generate QR code');
       }
     } catch (e) {
       console.error('Failed to generate QR code:', e);
-      setError('Error generating QR code');
+      
+      // Try offline fallback
+      const stored = getStoredQRCodeForChild(selectedChild);
+      if (stored) {
+        setQRCodeData({
+          qrCode: stored.qrCodeImage,
+          childId: stored.childId,
+          childName: stored.childName,
+        });
+        setError('Using offline QR code');
+      } else {
+        setError('Error generating QR code');
+      }
     } finally {
       setGenerating(false);
     }
@@ -121,6 +177,14 @@ export default function QRCodePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 pb-20">
       <div className="max-w-md mx-auto pt-8">
+        {/* Offline Indicator */}
+        {isOffline && (
+          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg flex items-center gap-2">
+            <span className="text-yellow-600">⚠️</span>
+            <p className="text-sm text-yellow-800">Offline Mode - Using cached data</p>
+          </div>
+        )}
+
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Student QR Code</h1>

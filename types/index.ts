@@ -103,6 +103,18 @@ export interface Attendance {
   checkOutTeacherId?: ObjectId;
   status: 'checked-in' | 'completed';
   notes?: string;
+  checkInLocation?: {
+    latitude: number;
+    longitude: number;
+    accuracy: number;
+  };
+  checkOutLocation?: {
+    latitude: number;
+    longitude: number;
+    accuracy: number;
+  };
+  checkInPhotoUrl?: string;
+  checkOutPhotoUrl?: string;
 }
 
 export interface Message {
@@ -114,6 +126,15 @@ export interface Message {
   read: boolean;
   readAt?: Date;
   createdAt: Date;
+  attachments?: MessageAttachment[];
+  messageType?: 'text' | 'homework' | 'file';
+}
+
+export interface MessageAttachment {
+  fileName: string;
+  fileUrl: string;
+  fileType: string;
+  fileSize: number;
 }
 
 export interface Job {
