@@ -24,6 +24,8 @@ export function withAuth(handler: Function) {
       }
       
       // Add user info to request
+      // Note: We use 'as any' here as NextRequest doesn't support custom properties.
+      // This is a common pattern in Next.js middleware for passing authenticated user data.
       (req as any).user = payload;
       
       return handler(req);

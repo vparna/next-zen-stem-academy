@@ -21,12 +21,14 @@ async function createAdminUser() {
     
     if (existingAdmin) {
       console.log('ℹ️  Admin user already exists with email: admin@nextgen.com');
-      console.log('   You can login with: admin@nextgen.com / admin123');
+      console.log('   You can login with this account.');
+      console.log('\n⚠️  If you forgot the password, please reset it through the database directly.');
       return;
     }
     
-    // Create admin user
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    // Generate a random password
+    const randomPassword = Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10);
+    const hashedPassword = await bcrypt.hash(randomPassword, 10);
     
     await usersCollection.insertOne({
       email: 'admin@nextgen.com',
@@ -41,8 +43,9 @@ async function createAdminUser() {
     
     console.log('✅ Admin user created successfully!');
     console.log('   Email: admin@nextgen.com');
-    console.log('   Password: admin123');
-    console.log('\n⚠️  Please change the password after first login!');
+    console.log(`   Password: ${randomPassword}`);
+    console.log('\n⚠️  IMPORTANT: Save this password securely! It will not be shown again.');
+    console.log('   Please change the password after first login!');
     
   } catch (error) {
     console.error('❌ Error creating admin user:', error);

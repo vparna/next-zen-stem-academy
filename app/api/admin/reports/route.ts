@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { withAdminAuth } from '@/middleware/adminAuth';
 import { getDatabase } from '@/lib/db/mongodb';
 import { User, Child, Enrollment, Attendance, Progress, Course } from '@/types';
+import { ObjectId } from 'mongodb';
 
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic';
@@ -14,8 +15,9 @@ async function handler(req: NextRequest) {
     
     // If userId is provided, get detailed report for that student
     if (userId) {
+      const objectId = new ObjectId(userId);
       const user = await db.collection<User>('users')
-        .findOne({ _id: userId as any });
+        .findOne({ _id: objectId });
       
       if (!user) {
         return NextResponse.json(
