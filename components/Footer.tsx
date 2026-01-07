@@ -41,6 +41,11 @@ export default function Footer() {
                   Courses
                 </Link>
               </li>
+              <li>
+                <Link href="/hours" className="text-gray-400 hover:text-white transition">
+                  Hours
+                </Link>
+              </li>
             </ul>
           </div>
 
