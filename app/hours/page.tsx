@@ -6,14 +6,15 @@ export const metadata: Metadata = {
 };
 
 export default function HoursPage() {
+  const timezone = 'PT'; // Pacific Time (accounts for both PST and PDT)
   const scheduleData = [
     { day: 'Sunday', hours: 'Closed', status: 'closed' },
-    { day: 'Monday', hours: '3:15 PM - 6:00 PM PST', status: 'open' },
-    { day: 'Tuesday', hours: '3:15 PM - 6:00 PM PST', status: 'open' },
-    { day: 'Wednesday', hours: '3:15 PM - 6:00 PM PST', status: 'open' },
-    { day: 'Thursday', hours: '3:15 PM - 6:00 PM PST', status: 'open' },
-    { day: 'Friday', hours: '3:15 PM - 6:00 PM PST', status: 'open' },
-    { day: 'Saturday', hours: '10:00 AM - 12:00 PM PST', status: 'open' },
+    { day: 'Monday', hours: `3:15 PM - 6:00 PM ${timezone}`, status: 'open' },
+    { day: 'Tuesday', hours: `3:15 PM - 6:00 PM ${timezone}`, status: 'open' },
+    { day: 'Wednesday', hours: `3:15 PM - 6:00 PM ${timezone}`, status: 'open' },
+    { day: 'Thursday', hours: `3:15 PM - 6:00 PM ${timezone}`, status: 'open' },
+    { day: 'Friday', hours: `3:15 PM - 6:00 PM ${timezone}`, status: 'open' },
+    { day: 'Saturday', hours: `10:00 AM - 12:00 PM ${timezone}`, status: 'open' },
   ];
 
   return (
@@ -99,7 +100,7 @@ export default function HoursPage() {
               Important Information
             </h3>
             <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li>All times are in Pacific Standard Time (PST)</li>
+              <li>All times are in Pacific Time (PT)</li>
               <li>Hours may vary during holidays - please call ahead</li>
               <li>We recommend arriving 10 minutes early for your scheduled class</li>
               <li>For special scheduling needs, please contact us in advance</li>
