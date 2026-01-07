@@ -103,6 +103,9 @@ export default function Navbar() {
             <Link href="/careers" className="text-gray-700 hover:text-blue-600 transition">
               Careers
             </Link>
+            <Link href="/hours" className="text-gray-700 hover:text-blue-600 transition">
+              Hours
+            </Link>
             <Link href="/support" className="text-gray-700 hover:text-blue-600 transition">
               Support
             </Link>
@@ -192,6 +195,13 @@ export default function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Careers
+              </Link>
+              <Link
+                href="/hours"
+                className="text-gray-700 hover:text-blue-600 px-3 py-2 transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Hours
               </Link>
               <Link
                 href="/support"
