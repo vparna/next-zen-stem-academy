@@ -166,7 +166,7 @@ export default function Home() {
               Join Our Team
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Are you passionate about STEM education? We're looking for talented individuals to help us empower the next generation of innovators.
+              Are you passionate about education? We're looking for talented individuals to help us empower the next generation of innovators.
             </p>
             <Link
               href="/careers"
@@ -182,7 +182,7 @@ export default function Home() {
       <section className="bg-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Start Your STEM Journey?
+            Ready to Start Your Learning Journey?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
             Join thousands of students already learning with Next Zen Academy

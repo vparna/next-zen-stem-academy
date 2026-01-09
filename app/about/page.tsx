@@ -118,7 +118,7 @@ export default function AboutPage() {
             <div className="p-6 border border-gray-200 rounded-lg">
               <h3 className="text-xl font-semibold mb-3 text-gray-900">Expert Instructors</h3>
               <p className="text-gray-600">
-                Learn from experienced educators who are passionate about STEM and dedicated to student success.
+                Learn from experienced educators who are passionate about education and dedicated to student success.
               </p>
             </div>
 
