@@ -185,7 +185,7 @@ export default function Home() {
             Ready to Start Your STEM Journey?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Join thousands of students already learning with NextGen Stem Academy
+            Join thousands of students already learning with Next Zen Academy
           </p>
           {!isLoggedIn && (
             <Link

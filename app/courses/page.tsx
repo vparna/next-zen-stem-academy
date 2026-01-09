@@ -221,7 +221,7 @@ export default function CoursesPage() {
             Ready to Enroll?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Sign up now and start your learning journey with NextGen Stem Academy
+            Sign up now and start your learning journey with Next Zen Academy
           </p>
           <Link
             href="/signup"

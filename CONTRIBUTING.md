@@ -1,6 +1,6 @@
-# Contributing to NextGen Stem Academy
+# Contributing to Next Zen Academy
 
-Thank you for your interest in contributing to NextGen Stem Academy! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to Next Zen Academy! This document provides guidelines and instructions for contributing to the project.
 
 ## Code of Conduct
 
@@ -254,4 +254,4 @@ If you have questions about contributing:
 - Check existing documentation
 - Review similar features in the codebase
 
-Thank you for contributing to NextGen Stem Academy! 🎓✨
+Thank you for contributing to Next Zen Academy! 🎓✨

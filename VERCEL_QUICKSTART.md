@@ -1,6 +1,6 @@
 # Vercel Deployment Quick Start
 
-This guide will help you deploy the NextGen STEM Academy website to Vercel in just a few minutes.
+This guide will help you deploy the Next Zen Academy website to Vercel in just a few minutes.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ Before you begin, make sure you have:
 ## Step 1: Set Up MongoDB Atlas (5 minutes)
 
 1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and sign up/sign in
-2. Create a new project (e.g., "NextGen STEM Academy")
+2. Create a new project (e.g., "Next Zen Academy")
 3. Build a database:
    - Choose **M0 FREE** tier
    - Select your preferred cloud provider and region
