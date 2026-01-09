@@ -1,4 +1,4 @@
-# NextGen Stem Academy
+# Next Zen Academy
 
 A modern, scalable ed-tech platform where parents and students can discover courses, enroll, pay online, and manage their learning journey. Built with Next.js, TypeScript, MongoDB, and integrated with Stripe for payments.
 
@@ -16,7 +16,7 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 
 ### Core Features
 - **Modern Web Application**: Built with Next.js 16 and React 19 for optimal performance and SEO
-- **3S Philosophy**: Skills, Science, and Success - our unique approach to STEM education
+- **3S Philosophy**: Skills, Science, and Success - our unique approach to education
 - **Course Management**: Browse and enroll in Robotics, Mathematics, and Chess courses
 - **User Authentication**: Secure JWT-based authentication system
 - **Payment Integration**: Stripe integration for secure online payments
@@ -69,7 +69,7 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 1. **Clone the repository**
    ```bash
    git clone https://github.com/vparna/next-zen-stem-academy.git
-   cd next-gen-stem-academy
+   cd next-zen-academy
    ```
 
 2. **Install dependencies**
@@ -132,7 +132,7 @@ A modern, scalable ed-tech platform where parents and students can discover cour
 ## 📁 Project Structure
 
 ```
-next-gen-stem-academy/
+next-zen-academy/
 ├── app/                          # Next.js app directory
 │   ├── api/                      # API routes
 │   │   ├── auth/                 # Authentication endpoints
@@ -494,8 +494,8 @@ This project is licensed under the MIT License.
 ## 📞 Contact
 
 For questions or support, please contact:
-- Email: info@nextgenstem.com
-- Website: [nextgenstem.com](http://localhost:3000)
+- Email: info@nextzenacademy.com
+- Website: [www.nextzenacademy.com](https://www.nextzenacademy.com)
 
 ## 🔮 Future Enhancements
 

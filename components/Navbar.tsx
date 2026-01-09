@@ -80,7 +80,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center">
               <Image 
                 src={`${basePath}/logo.svg`}
-                alt="NextGen Stem Academy Logo" 
+                alt="Next Zen Academy Logo" 
                 width={200} 
                 height={60}
                 priority

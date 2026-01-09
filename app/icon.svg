@@ -27,7 +27,7 @@
            transform="rotate(-60 16 15)"/>
   
   <!-- Small text -->
-  <text x="16" y="26" font-family="Arial, sans-serif" font-size="5" font-weight="bold" fill="white" text-anchor="middle">
-    STEM
+  <text x="16" y="26" font-family="Arial, sans-serif" font-size="4.5" font-weight="bold" fill="white" text-anchor="middle">
+    NZA
   </text>
 </svg>

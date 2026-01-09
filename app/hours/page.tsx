@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Center Hours - NextGen Stem Academy',
+  title: 'Center Hours - Next Zen Academy',
   description: 'Visit us during our center hours. We are open Monday-Friday and Saturday with flexible scheduling options.',
 };
 
@@ -88,7 +88,7 @@ export default function HoursPage() {
               </h3>
               <p className="text-gray-700">
                 Phone: (425) 374-1463<br />
-                Email: info@nextgenstem.com
+                Email: info@nextzenacademy.com
               </p>
             </div>
           </div>
