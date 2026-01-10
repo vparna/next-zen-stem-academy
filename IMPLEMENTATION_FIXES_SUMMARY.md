@@ -159,7 +159,7 @@ This document summarizes all the fixes and improvements made to address the 6 is
    - **Discount Issues:** Troubleshooting discount application
 
 5. **Contact Support**
-   - Email: support@nextgenstemacademy.com
+   - Email: support@nextzenacademy.com
    - Phone: 1-800-STEM-EDU
    - Support hours
 
