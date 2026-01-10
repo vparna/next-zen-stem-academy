@@ -112,7 +112,7 @@ export default function DashboardPage() {
           >
             <div className="text-4xl mb-3">📚</div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Browse Courses</h3>
-            <p className="text-gray-600">Explore our range of STEM courses</p>
+            <p className="text-gray-600">Explore our range of courses</p>
           </Link>
 
           <Link

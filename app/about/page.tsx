@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us - NextGen Stem Academy',
-  description: 'Learn more about NextGen Stem Academy and our 3S philosophy for innovative STEM education',
+  title: 'About Us - Next Zen Academy',
+  description: 'Learn more about Next Zen Academy and our 3S philosophy for innovative education',
 };
 
 export default function AboutPage() {
@@ -11,7 +11,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About NextGen Stem Academy</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Next Zen Academy</h1>
           <p className="text-xl text-blue-100">
             Transforming education through innovation, dedication, and our unique 3S philosophy
           </p>
@@ -24,7 +24,7 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-600 mb-4">
-              At NextGen Stem Academy, we believe that every child has the potential to excel in STEM fields. 
+              At Next Zen Academy, we believe that every child has the potential to excel. 
               Our mission is to provide world-class education that combines technical skills with creative 
               thinking and problem-solving abilities.
             </p>
@@ -111,14 +111,14 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            Why Choose NextGen Stem Academy?
+            Why Choose Next Zen Academy?
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="p-6 border border-gray-200 rounded-lg">
               <h3 className="text-xl font-semibold mb-3 text-gray-900">Expert Instructors</h3>
               <p className="text-gray-600">
-                Learn from experienced educators who are passionate about STEM and dedicated to student success.
+                Learn from experienced educators who are passionate about education and dedicated to student success.
               </p>
             </div>
 

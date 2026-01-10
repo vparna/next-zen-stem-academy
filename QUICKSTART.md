@@ -1,6 +1,6 @@
-# Quick Start Guide - NextGen Stem Academy
+# Quick Start Guide - Next Zen Academy
 
-This guide will help you get the NextGen Stem Academy platform up and running quickly.
+This guide will help you get the Next Zen Academy platform up and running quickly.
 
 ## Prerequisites
 

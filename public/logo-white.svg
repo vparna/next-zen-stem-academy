@@ -34,14 +34,14 @@
              transform="rotate(-60 15 15)"/>
   </g>
   
-  <!-- Text: NextGen -->
+  <!-- Text: Next Zen -->
   <text x="55" y="28" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">
-    NextGen
+    Next Zen
   </text>
   
-  <!-- Text: STEM Academy -->
+  <!-- Text: Academy -->
   <text x="55" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#93c5fd">
-    STEM Academy
+    Academy
   </text>
   
   <!-- Small decorative elements -->

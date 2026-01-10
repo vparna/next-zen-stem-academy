@@ -125,7 +125,7 @@ export default function CoursesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Courses</h1>
           <p className="text-xl text-blue-100">
-            Explore our comprehensive range of STEM courses designed for young learners
+            Explore our comprehensive range of courses designed for young learners
           </p>
         </div>
       </section>
@@ -221,7 +221,7 @@ export default function CoursesPage() {
             Ready to Enroll?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Sign up now and start your learning journey with NextGen Stem Academy
+            Sign up now and start your learning journey with Next Zen Academy
           </p>
           <Link
             href="/signup"

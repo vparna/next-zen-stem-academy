@@ -1,4 +1,4 @@
-# Deployment Guide for NextGen STEM Academy
+# Deployment Guide for Next Zen Academy
 
 ## Overview
 

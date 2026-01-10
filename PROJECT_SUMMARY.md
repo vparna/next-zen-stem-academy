@@ -1,4 +1,4 @@
-# NextGen Stem Academy - Project Summary
+# Next Zen Academy - Project Summary
 
 ## Project Overview
 

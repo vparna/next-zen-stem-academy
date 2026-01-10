@@ -34,10 +34,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Welcome to NextGen Stem Academy
+              Welcome to Next Zen Academy
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Empowering young minds through innovative STEM education
+              Empowering young minds through innovative education
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -67,7 +67,7 @@ export default function Home() {
               Our 3S Philosophy
             </h2>
             <p className="text-xl text-gray-600">
-              A holistic approach to STEM education
+              A holistic approach to education
             </p>
           </div>
 
@@ -166,7 +166,7 @@ export default function Home() {
               Join Our Team
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Are you passionate about STEM education? We're looking for talented individuals to help us empower the next generation of innovators.
+              Are you passionate about education? We're looking for talented individuals to help us empower the next generation of innovators.
             </p>
             <Link
               href="/careers"
@@ -182,10 +182,10 @@ export default function Home() {
       <section className="bg-blue-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Start Your STEM Journey?
+            Ready to Start Your Learning Journey?
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Join thousands of students already learning with NextGen Stem Academy
+            Join thousands of students already learning with Next Zen Academy
           </p>
           {!isLoggedIn && (
             <Link

@@ -22,15 +22,15 @@ Create `.env.local` for development and `.env.production` for production:
 # .env.production
 
 # App Configuration
-NEXT_PUBLIC_APP_NAME="NextGen STEM Academy"
+NEXT_PUBLIC_APP_NAME="Next Zen Academy"
 NEXT_PUBLIC_APP_VERSION="1.0.0"
-NEXT_PUBLIC_BASE_URL="https://nextzenstem.com"
+NEXT_PUBLIC_BASE_URL="https://www.nextzenacademy.com"
 
 # API Configuration
-NEXT_PUBLIC_API_URL="https://nextzenstem.com/api"
+NEXT_PUBLIC_API_URL="https://www.nextzenacademy.com/api"
 
 # MongoDB
-MONGODB_URI="mongodb+srv://username:password@cluster.mongodb.net/nextzenstem"
+MONGODB_URI="mongodb+srv://username:password@cluster.mongodb.net/nextzenacademy"
 
 # Authentication
 JWT_SECRET="your-super-secret-jwt-key-change-this-in-production"
@@ -71,7 +71,7 @@ SMTP_HOST="smtp.gmail.com"
 SMTP_PORT="587"
 SMTP_USER="your-email@gmail.com"
 SMTP_PASSWORD="your-app-specific-password"
-SMTP_FROM="NextGen STEM Academy <noreply@nextzenstem.com>"
+SMTP_FROM="Next Zen Academy <noreply@nextzenacademy.com>"
 
 # Analytics (optional)
 # NEXT_PUBLIC_GA_TRACKING_ID=""
