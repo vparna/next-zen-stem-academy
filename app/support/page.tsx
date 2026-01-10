@@ -312,7 +312,7 @@ export default function SupportPage() {
           <div className="flex flex-wrap justify-center gap-6">
             <div className="bg-blue-700 rounded-lg p-6 text-left">
               <h3 className="font-semibold text-lg mb-2">📧 Email Support</h3>
-              <p className="text-blue-100">support@nextgenstemacademy.com</p>
+              <p className="text-blue-100">support@nextzenacademy.com</p>
               <p className="text-sm text-blue-200 mt-2">Response within 24 hours</p>
             </div>
             <div className="bg-blue-700 rounded-lg p-6 text-left">
