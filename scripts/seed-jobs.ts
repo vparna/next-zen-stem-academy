@@ -114,33 +114,6 @@ const sampleJobs = [
     experienceLevel: 'mid',
     salaryRange: '$40,000 - $55,000',
     active: true,
-  },
-  {
-    jobId: 'JOB-005',
-    title: 'Marketing Intern',
-    description: 'Join our marketing team as an intern to gain hands-on experience in digital marketing, content creation, and social media management for an education technology organization. This is a great opportunity for students or recent graduates.',
-    requirements: [
-      'Currently pursuing or recently completed degree in Marketing, Communications, or related field',
-      'Strong writing and communication skills',
-      'Familiarity with social media platforms',
-      'Basic knowledge of digital marketing concepts',
-      'Creative mindset and attention to detail',
-      'Ability to work 15-20 hours per week'
-    ],
-    responsibilities: [
-      'Create engaging social media content',
-      'Assist with email marketing campaigns',
-      'Help manage the company blog and website content',
-      'Support event promotion and coordination',
-      'Conduct market research and competitor analysis',
-      'Track and report on marketing metrics'
-    ],
-    location: 'Woodinville, Washington State',
-    jobType: 'internship',
-    department: 'Marketing',
-    experienceLevel: 'entry',
-    salaryRange: '$15 - $20 per hour',
-    active: true,
   }
 ];
 
