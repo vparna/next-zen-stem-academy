@@ -9,6 +9,8 @@ export interface User {
   phone?: string;
   role: 'parent' | 'teacher' | 'admin';
   qrCode?: string;
+  resetPasswordToken?: string;
+  resetPasswordExpires?: Date;
   createdAt: Date;
   updatedAt: Date;
 }

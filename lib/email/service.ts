@@ -131,6 +131,22 @@ export const emailTemplates = {
     `,
     text: `Course Completed! Hi ${userName}, Congratulations! You've completed ${courseName} with ${progress}% progress. Your certificate will be issued shortly and will be available in your dashboard. Keep up the great work! Best regards, Next Zen Academy Team`,
   }),
+
+  passwordReset: (userName: string, resetLink: string): EmailTemplate => ({
+    subject: 'Password Reset Request - Next Zen Academy',
+    html: `
+      <h2>Password Reset Request</h2>
+      <p>Hi ${userName},</p>
+      <p>We received a request to reset your password for your Next Zen Academy account.</p>
+      <p>Click the link below to reset your password. This link will expire in 1 hour:</p>
+      <p><a href="${resetLink}" style="display: inline-block; padding: 10px 20px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 5px;">Reset Password</a></p>
+      <p>Or copy and paste this link into your browser:</p>
+      <p>${resetLink}</p>
+      <p>If you didn't request a password reset, please ignore this email or contact support if you have concerns.</p>
+      <p>Best regards,<br>Next Zen Academy Team</p>
+    `,
+    text: `Password Reset Request. Hi ${userName}, We received a request to reset your password for your Next Zen Academy account. Click the link below to reset your password. This link will expire in 1 hour: ${resetLink}. If you didn't request a password reset, please ignore this email or contact support if you have concerns. Best regards, Next Zen Academy Team`,
+  }),
 };
 
 // Send email function
