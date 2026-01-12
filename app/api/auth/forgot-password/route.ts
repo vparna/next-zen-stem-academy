@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     
     // Send email
     const template = emailTemplates.passwordReset(user.firstName, resetLink);
-    await sendEmail(email, template, user._id, 'payment'); // Reusing 'payment' type as closest match
+    await sendEmail(email, template, user._id, 'password-reset');
     
     return NextResponse.json({
       message: 'If an account exists with this email, a password reset link has been sent.',

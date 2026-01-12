@@ -253,6 +253,9 @@ export async function sendNotificationEmail(
     case 'course-completion':
       template = emailTemplates.courseCompletion(templateData.userName, templateData.courseName, templateData.progress);
       break;
+    case 'password-reset':
+      template = emailTemplates.passwordReset(templateData.userName, templateData.resetLink);
+      break;
     default:
       return false;
   }

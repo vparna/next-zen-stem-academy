@@ -349,7 +349,7 @@ export interface EmailNotification {
   _id?: ObjectId;
   userId: ObjectId;
   email: string;
-  type: 'enrollment' | 'payment' | 'course-start' | 'assignment-due' | 'grade-posted' | 'certificate-issued' | 'live-class-reminder' | 'course-completion';
+  type: 'enrollment' | 'payment' | 'course-start' | 'assignment-due' | 'grade-posted' | 'certificate-issued' | 'live-class-reminder' | 'course-completion' | 'password-reset';
   subject: string;
   content: string;
   status: 'pending' | 'sent' | 'failed';
