@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -16,10 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="antialiased flex flex-col min-h-screen"
+        className="antialiased flex flex-col min-h-screen bg-gray-50"
       >
-        <Navbar />
-        <main className="flex-grow">
+        <Sidebar />
+        <main className="flex-grow pt-16">
           {children}
         </main>
         <Footer />
