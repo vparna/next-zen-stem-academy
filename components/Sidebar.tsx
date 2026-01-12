@@ -57,8 +57,9 @@ export default function Sidebar() {
   }, []);
 
   // Close sidebar when route changes
+  // Using Promise.resolve() to defer state update and avoid React warning
+  // This is a valid pattern for state updates triggered by external changes (route navigation)
   useEffect(() => {
-    // Use a microtask to avoid setting state during render
     Promise.resolve().then(() => {
       setIsOpen(false);
     });
@@ -241,27 +242,30 @@ export default function Sidebar() {
               </Link>
             ))}
 
+            {/* Dashboard link - appears in both top bar and sidebar for easy access when logged in */}
             {authState.isLoggedIn && (
-              <Link
-                href="/dashboard"
-                className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 group ${
-                  isActive('/dashboard')
-                    ? 'bg-white text-purple-600 shadow-lg scale-105'
-                    : 'text-white hover:bg-white/20 hover:scale-105'
-                }`}
-              >
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                  📊
-                </span>
-                <span className="font-medium">Dashboard</span>
-                {isActive('/dashboard') && (
-                  <span className="ml-auto">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                    </svg>
+              <>
+                <Link
+                  href="/dashboard"
+                  className={`flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-300 group ${
+                    isActive('/dashboard')
+                      ? 'bg-white text-purple-600 shadow-lg scale-105'
+                      : 'text-white hover:bg-white/20 hover:scale-105'
+                  }`}
+                >
+                  <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                    📊
                   </span>
-                )}
-              </Link>
+                  <span className="font-medium">Dashboard</span>
+                  {isActive('/dashboard') && (
+                    <span className="ml-auto">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </span>
+                  )}
+                </Link>
+              </>
             )}
           </nav>
 
