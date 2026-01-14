@@ -242,7 +242,10 @@ export async function sendEmail(
     );
     
     // Throw the error so the caller knows the email failed
-    throw new Error(`Failed to send email: ${error.message}`);
+    const userFacingError = process.env.NODE_ENV === 'production'
+      ? 'Failed to send email'
+      : `Failed to send email: ${error.message}`;
+    throw new Error(userFacingError);
   }
 }
 
