@@ -95,17 +95,22 @@ async function postHandler(req: NextRequest) {
     const course = await getCourseById(enrollment.courseId);
     
     if (userDetails && course) {
-      const certificateUrl = `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/certificates/${certificateId}`;
-      await sendNotificationEmail(
-        enrollment.userId,
-        userDetails.email,
-        'certificate-issued',
-        {
-          userName: `${userDetails.firstName} ${userDetails.lastName}`,
-          courseName: course.name,
-          certificateUrl,
-        }
-      );
+      try {
+        const certificateUrl = `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/certificates/${certificateId}`;
+        await sendNotificationEmail(
+          enrollment.userId,
+          userDetails.email,
+          'certificate-issued',
+          {
+            userName: `${userDetails.firstName} ${userDetails.lastName}`,
+            courseName: course.name,
+            certificateUrl,
+          }
+        );
+      } catch (emailError) {
+        // Log error but don't fail the certificate issuance
+        console.error('Failed to send certificate notification email:', emailError);
+      }
     }
     
     return NextResponse.json({
