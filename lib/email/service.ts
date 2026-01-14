@@ -9,19 +9,35 @@ const COLLECTION_NAME = 'email_notifications';
 const createTransporter = () => {
   // Check if email service is configured
   if (!process.env.EMAIL_HOST || !process.env.EMAIL_USER) {
-    console.warn('Email service not configured. Emails will be logged but not sent.');
+    console.warn('Email service not configured. EMAIL_HOST and EMAIL_USER must be set.');
+    return null;
+  }
+  
+  if (!process.env.EMAIL_PASSWORD) {
+    console.warn('EMAIL_PASSWORD not configured. Email service will not work.');
     return null;
   }
 
-  return nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: parseInt(process.env.EMAIL_PORT || '587'),
-    secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
+  try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST,
+      port: parseInt(process.env.EMAIL_PORT || '587'),
+      secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+      // Add timeout and connection options for better error handling
+      connectionTimeout: 10000, // 10 seconds
+      greetingTimeout: 10000,
+      socketTimeout: 20000,
+    });
+    
+    return transporter;
+  } catch (error) {
+    console.error('Error creating email transporter:', error);
+    return null;
+  }
 };
 
 export interface EmailTemplate {
@@ -174,14 +190,15 @@ export async function sendEmail(
 
   const transporter = createTransporter();
   
-  // If transporter is not configured, just log and return
+  // If transporter is not configured, throw an error
   if (!transporter) {
-    console.log('Email would be sent:', { to, subject: template.subject });
+    const errorMsg = 'Email service not configured. Please set EMAIL_HOST and EMAIL_USER environment variables.';
+    console.error(errorMsg);
     await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
       { _id: emailId },
-      { $set: { status: 'sent', sentAt: new Date() } }
+      { $set: { status: 'failed', error: errorMsg } }
     );
-    return true;
+    throw new Error(errorMsg);
   }
 
   try {
@@ -197,7 +214,8 @@ export async function sendEmail(
       text: textVersion,
     };
 
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', { messageId: info.messageId, to, subject: template.subject });
     
     // Update email status to sent
     await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
@@ -207,7 +225,13 @@ export async function sendEmail(
     
     return true;
   } catch (error: any) {
-    console.error('Error sending email:', error);
+    console.error('Error sending email:', {
+      error: error.message,
+      code: error.code,
+      command: error.command,
+      to,
+      subject: template.subject
+    });
     
     // Update email status to failed
     await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
@@ -215,7 +239,8 @@ export async function sendEmail(
       { $set: { status: 'failed', error: error.message } }
     );
     
-    return false;
+    // Throw the error so the caller knows the email failed
+    throw new Error(`Failed to send email: ${error.message}`);
   }
 }
 

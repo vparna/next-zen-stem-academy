@@ -47,12 +47,27 @@ export async function POST(req: NextRequest) {
     const resetLink = `${appUrl}/reset-password?token=${resetToken}&email=${encodeURIComponent(email)}`;
     
     // Send email
-    const template = emailTemplates.passwordReset(user.firstName, resetLink);
-    await sendEmail(email, template, user._id, 'password-reset');
-    
-    return NextResponse.json({
-      message: 'If an account exists with this email, a password reset link has been sent.',
-    });
+    try {
+      const template = emailTemplates.passwordReset(user.firstName, resetLink);
+      await sendEmail(email, template, user._id, 'password-reset');
+      
+      console.log('Password reset email sent successfully to:', email);
+      
+      return NextResponse.json({
+        message: 'If an account exists with this email, a password reset link has been sent.',
+      });
+    } catch (emailError: any) {
+      console.error('Failed to send password reset email:', emailError);
+      
+      // Return error to help debug email issues
+      return NextResponse.json(
+        { 
+          error: 'Failed to send password reset email. Please check email configuration or try again later.',
+          details: emailError.message 
+        },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error('Forgot password error:', error);
     
