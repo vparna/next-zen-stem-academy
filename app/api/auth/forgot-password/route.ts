@@ -60,9 +60,11 @@ export async function POST(req: NextRequest) {
       console.error('Failed to send password reset email:', emailError);
       
       // Return error to help debug email issues
-      // Only include details in non-production environments
+      // Use generic message in production to avoid exposing system details
       const errorResponse: { error: string; details?: string } = {
-        error: 'Failed to send password reset email. Please check email configuration or try again later.',
+        error: process.env.NODE_ENV === 'production' 
+          ? 'Unable to process password reset request at this time. Please try again later or contact support.'
+          : 'Failed to send password reset email. Please check email configuration or try again later.',
       };
       
       if (process.env.NODE_ENV !== 'production') {

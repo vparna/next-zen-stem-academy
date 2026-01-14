@@ -192,7 +192,9 @@ export async function sendEmail(
   
   // If transporter is not configured, throw an error
   if (!transporter) {
-    const errorMsg = 'Email service not configured. Please set EMAIL_HOST and EMAIL_USER environment variables.';
+    const errorMsg = process.env.NODE_ENV === 'production'
+      ? 'Email service unavailable'
+      : 'Email service not configured. Please set EMAIL_HOST, EMAIL_USER, and EMAIL_PASSWORD environment variables.';
     console.error(errorMsg);
     await db.collection<EmailNotification>(COLLECTION_NAME).updateOne(
       { _id: emailId },
