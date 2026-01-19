@@ -158,7 +158,7 @@ export default function InterestPage() {
                 <div className="text-6xl mb-4">✅</div>
                 <h3 className="text-3xl font-bold text-green-600 mb-3">Thank You!</h3>
                 <p className="text-gray-600 text-lg mb-6">
-                  We've received your interest. Our team will contact you soon!
+                  We&apos;ve received your interest. Our team will contact you soon!
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
@@ -245,7 +245,7 @@ export default function InterestPage() {
                     {/* Child Name */}
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">
-                        Child's Name
+                        Child&apos;s Name
                       </label>
                       <input
                         type="text"
@@ -260,7 +260,7 @@ export default function InterestPage() {
                     {/* Child Age */}
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">
-                        Child's Age
+                        Child&apos;s Age
                       </label>
                       <input
                         type="number"
