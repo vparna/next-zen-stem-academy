@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/db/mongodb';
+import { getDatabase } from '@/lib/db/mongodb';
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Connect to database
-    const { db } = await connectToDatabase();
+    const db = await getDatabase();
 
     // Create interest record
     const interest = {
