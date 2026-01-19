@@ -39,7 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# Marketing materials - generated files
-marketing/qr-code.png
-marketing/qr-code.svg
