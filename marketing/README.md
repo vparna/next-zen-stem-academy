@@ -4,15 +4,22 @@ This folder contains marketing materials for Next Zen Academy, including flyers,
 
 ## 📋 Contents
 
-### 1. Marketing Flyer (`flyer.html`)
+### 1. Marketing Flyer (`flyer.html` and `flyer.jpeg`)
 A beautiful, professional WhatsApp marketing flyer featuring:
 - **Next Zen Academy logo** prominently displayed
-- **"Coming Soon" banner** to create excitement
-- **Three main courses**: Robotics 🤖, Chess ♟️, and Mathematics 🔢
-- **QR Code** that directs users to the interest expression page
+- **"Coming Soon" banner** prominently featured to create excitement
+- **Three main courses**: 
+  - Robotics 🤖 - Kids building and programming robots
+  - Mathematics 🔢 - Children mastering math concepts
+  - Science Lab 🔬 - Students conducting experiments
+- **Small QR Code** that directs users to the interest expression page
 - **Eye-catching design** with gradient backgrounds and animations
 - **Benefits section** highlighting our 3S Philosophy
-- **Contact information** and social media links
+- **Updated contact information**:
+  - Email: admin@nextzenacademy.com
+  - Phone: (425) 374-1463
+  - Website: www.nextzenacademy.com
+- **Available in JPEG format** (`flyer.jpeg`) ready for sharing
 
 ### 2. Interest Page (`/interest`)
 A dedicated webpage where users land after scanning the QR code:
@@ -45,7 +52,14 @@ A dedicated webpage where users land after scanning the QR code:
 4. Save the PDF as `next-zen-academy-flyer.pdf`
 5. Share this PDF on WhatsApp, email, or social media
 
-### Option 3: Convert to Image
+### Option 3: Use Pre-generated JPEG (Recommended)
+The flyer is already available as a high-quality JPEG file:
+1. Simply use `flyer.jpeg` for immediate sharing
+2. The JPEG is optimized at 95% quality (212 KB)
+3. Dimensions: 1280x1614 pixels
+4. Perfect for WhatsApp, email, and social media
+
+### Option 4: Convert to Image (if you modify the HTML)
 1. Open `flyer.html` in a web browser
 2. Use a screenshot tool or browser extension to capture the full page
 3. Recommended tools:
@@ -54,33 +68,36 @@ A dedicated webpage where users land after scanning the QR code:
    - **Browser extensions**: Full Page Screen Capture, Fireshot
 4. Save as PNG or JPEG for easy sharing on WhatsApp
 
-### Option 4: Use Screenshot Tools
+### Option 5: Regenerate JPEG from HTML
+If you modify the HTML and need to regenerate the JPEG:
 ```bash
-# On macOS (install webkit2png if needed)
-webkit2png -F flyer.html
+# Make sure dependencies are installed
+npm install
 
-# Using Node.js (puppeteer) - if installed
-node -e "const puppeteer = require('puppeteer'); (async () => { const browser = await puppeteer.launch(); const page = await browser.newPage(); await page.goto('file://' + __dirname + '/flyer.html'); await page.pdf({path: 'flyer.pdf', format: 'A4'}); await browser.close(); })();"
+# The flyer uses a pre-generated QR code (qr-code.png)
+# If you need to regenerate the QR code:
+node marketing/generate-qr.js https://nextzenacademy.com/interest
+
+# Then use a browser automation tool or screenshot utility to convert HTML to JPEG
 ```
 
 ## 📱 QR Code Configuration
 
-The QR code is automatically generated and points to:
-- **Development**: `http://localhost:3000/interest`
-- **Production**: `https://yourdomain.com/interest`
+The QR code is pre-generated and embedded as a static image (`qr-code.png`) in the flyer.
+- **URL**: https://nextzenacademy.com/interest
+- **Size**: Smaller than previous version (120x120px in the flyer)
+- **Format**: PNG with high error correction
+- **Location**: Prominently displayed with "Coming Soon" banner above it
 
-The QR code URL is automatically determined based on where the page is hosted.
+### Regenerating the QR Code
+If you need to update the QR code URL, use the generation script:
 
-### Updating the QR Code URL
-If you need to manually set the QR code URL, edit the `flyer.html` file:
-
-```javascript
-// Find this line in the script section:
-const interestPageUrl = window.location.origin + '/interest';
-
-// Replace with your custom URL:
-const interestPageUrl = 'https://your-actual-domain.com/interest';
+```bash
+# From the project root directory
+node marketing/generate-qr.js https://your-new-url.com/interest
 ```
+
+This will create both PNG and SVG versions of the QR code in the marketing folder.
 
 ## 📊 Lead Tracking
 
@@ -124,8 +141,8 @@ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 ### Updating Contact Information
 Find the footer section in `flyer.html` and update:
 ```html
-<div class="contact-item">📧 info@nextzenacademy.com</div>
-<div class="contact-item">📱 +1 (234) 567-8900</div>
+<div class="contact-item">📧 admin@nextzenacademy.com</div>
+<div class="contact-item">📱 (425) 374-1463</div>
 <div class="contact-item">🌐 www.nextzenacademy.com</div>
 ```
 

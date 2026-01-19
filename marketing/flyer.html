@@ -220,8 +220,8 @@
 
     .qr-container {
       background: white;
-      padding: 30px;
-      border-radius: 20px;
+      padding: 15px;
+      border-radius: 15px;
       display: inline-block;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       position: relative;
@@ -230,8 +230,8 @@
     }
 
     .qr-code {
-      width: 200px;
-      height: 200px;
+      width: 120px;
+      height: 120px;
       display: block;
       margin: 0 auto;
     }
@@ -394,19 +394,19 @@
         <div class="course-card">
           <span class="course-icon">🤖</span>
           <h3 class="course-name">Robotics</h3>
-          <p class="course-description">Build, code, and innovate with cutting-edge robotics technology</p>
-        </div>
-        
-        <div class="course-card">
-          <span class="course-icon">♟️</span>
-          <h3 class="course-name">Chess</h3>
-          <p class="course-description">Master strategic thinking and problem-solving through chess</p>
+          <p class="course-description">Kids building and programming robots, learning engineering and coding through hands-on projects</p>
         </div>
         
         <div class="course-card">
           <span class="course-icon">🔢</span>
           <h3 class="course-name">Mathematics</h3>
-          <p class="course-description">Develop logical thinking and mathematical excellence</p>
+          <p class="course-description">Children mastering math concepts through interactive problem-solving and logical thinking activities</p>
+        </div>
+        
+        <div class="course-card">
+          <span class="course-icon">🔬</span>
+          <h3 class="course-name">Science Lab</h3>
+          <p class="course-description">Students conducting experiments, exploring chemistry, physics, and biology in our hands-on lab</p>
         </div>
       </div>
 
@@ -416,7 +416,7 @@
         <div class="qr-container">
           <img 
             class="qr-code" 
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ctext x='100' y='100' font-size='14' text-anchor='middle' fill='%23666'%3EQRCODE%3C/text%3E%3Crect x='10' y='10' width='180' height='180' fill='none' stroke='%23333' stroke-width='2'/%3E%3C/svg%3E"
+            src="qr-code.png"
             alt="Scan QR Code"
             id="qrcode"
           />
@@ -449,8 +449,8 @@
     <div class="footer">
       <div class="footer-content">
         <div class="contact-info">
-          <div class="contact-item">📧 info@nextzenacademy.com</div>
-          <div class="contact-item">📱 +1 (234) 567-8900</div>
+          <div class="contact-item">📧 admin@nextzenacademy.com</div>
+          <div class="contact-item">📱 (425) 374-1463</div>
           <div class="contact-item">🌐 www.nextzenacademy.com</div>
         </div>
         <div>
@@ -461,50 +461,6 @@
     </div>
   </div>
 
-  <!-- QR Code Generation Script -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script>
-    // Generate QR code when page loads
-    window.addEventListener('DOMContentLoaded', function() {
-      const qrcodeContainer = document.getElementById('qrcode');
-      
-      // Clear placeholder
-      qrcodeContainer.src = '';
-      
-      // Create a temporary container for QR generation
-      const tempDiv = document.createElement('div');
-      tempDiv.style.display = 'none';
-      document.body.appendChild(tempDiv);
-      
-      // Generate QR code
-      // Replace with your actual deployed URL
-      const interestPageUrl = window.location.origin.includes('localhost') 
-        ? 'http://localhost:3000/interest'
-        : window.location.origin + '/interest';
-      
-      new QRCode(tempDiv, {
-        text: interestPageUrl,
-        width: 200,
-        height: 200,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-      
-      // Wait for QR code to be generated, then extract as image
-      setTimeout(() => {
-        const qrImage = tempDiv.querySelector('img');
-        if (qrImage) {
-          qrcodeContainer.src = qrImage.src;
-        } else {
-          const qrCanvas = tempDiv.querySelector('canvas');
-          if (qrCanvas) {
-            qrcodeContainer.src = qrCanvas.toDataURL();
-          }
-        }
-        document.body.removeChild(tempDiv);
-      }, 100);
-    });
-  </script>
+  <!-- QR Code is statically generated and embedded as qr-code.png -->
 </body>
 </html>
