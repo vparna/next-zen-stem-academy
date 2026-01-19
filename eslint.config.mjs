@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Marketing folder (static HTML files and Node.js scripts)
+    "marketing/**",
   ]),
 ]);
 
