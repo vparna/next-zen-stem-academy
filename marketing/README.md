@@ -160,6 +160,9 @@ Add new course cards in the courses grid:
 - MongoDB Atlas or equivalent database
 - Public URL for the interest page
 
+### Security Note
+The flyer HTML files load the QRCode.js library from a CDN for dynamic QR code generation. When converting to PDF or image for distribution, the QR code is embedded in the final output, so the CDN dependency is only needed during the conversion process, not by end users.
+
 ## 📞 Support
 
 For questions or issues with marketing materials:
