@@ -306,3 +306,64 @@ All 6 issues from the problem statement have been successfully resolved:
 6. ✅ Comprehensive support documentation added
 
 The application is ready for testing and deployment.
+
+---
+
+## Additional Fixes
+
+### 7. Forgot Password Email Issue ✅
+
+**Problem:** Users were not receiving password reset emails when using the forgot password feature.
+
+**Root Causes:**
+- Email service was returning success even when emails weren't actually sent
+- Missing or incorrect email configuration (EMAIL_HOST, EMAIL_USER, EMAIL_PASSWORD) resulted in silent failures
+- No proper error handling when email sending failed
+- SMTP connection errors were not properly logged
+
+**Solution:**
+
+1. **Email Service Improvements** (`lib/email/service.ts`):
+   - Changed `sendEmail()` to throw errors instead of returning false when email fails
+   - Added validation for EMAIL_PASSWORD in addition to EMAIL_HOST and EMAIL_USER
+   - Added connection timeouts (10s connection, 10s greeting, 20s socket timeout)
+   - Enhanced error logging with SMTP error codes and commands
+   - Email failures now properly recorded in database with error messages
+
+2. **Forgot Password API Updates** (`app/api/auth/forgot-password/route.ts`):
+   - Added try-catch block specifically for email sending
+   - Returns clear error message when email fails: "Failed to send password reset email"
+   - Includes error details in response for debugging
+   - Logs successful email sends for audit trail
+
+3. **Non-Critical Email Handling**:
+   - Updated certificate issuance (`app/api/certificates/route.ts`) to not fail if email fails
+   - Updated payment webhooks (`app/api/payments/webhook/route.ts`) to not fail if email fails
+   - These operations now log email errors but continue successfully
+
+**Files Modified:**
+- `lib/email/service.ts`
+- `app/api/auth/forgot-password/route.ts`
+- `app/api/certificates/route.ts`
+- `app/api/payments/webhook/route.ts`
+
+**Impact:**
+- Users now see clear error messages when email configuration is missing
+- Administrators can debug email issues using detailed error logs
+- Certificate and payment operations continue even if notification emails fail
+- Password reset properly fails with clear message if email can't be sent
+
+**Configuration Required:**
+To use email features, ensure these environment variables are set:
+```env
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_SECURE=false
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-app-password
+```
+
+**Note for Gmail Users:**
+- Use an App Password instead of your regular password
+- Enable 2-factor authentication in your Google account
+- Generate an App Password: Google Account → Security → 2-Step Verification → App passwords

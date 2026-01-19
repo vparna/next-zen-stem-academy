@@ -64,28 +64,33 @@ export async function POST(req: NextRequest) {
           const course = await getCourseById(courseId);
           
           if (user && course) {
-            // Send payment confirmation email
-            await sendNotificationEmail(
-              new ObjectId(userId),
-              user.email,
-              'payment',
-              {
-                userName: `${user.firstName} ${user.lastName}`,
-                courseName: course.name,
-                amount: paymentIntent.amount / 100, // Convert from cents
-              }
-            );
-            
-            // Send enrollment confirmation email
-            await sendNotificationEmail(
-              new ObjectId(userId),
-              user.email,
-              'enrollment',
-              {
-                userName: `${user.firstName} ${user.lastName}`,
-                courseName: course.name,
-              }
-            );
+            try {
+              // Send payment confirmation email
+              await sendNotificationEmail(
+                new ObjectId(userId),
+                user.email,
+                'payment',
+                {
+                  userName: `${user.firstName} ${user.lastName}`,
+                  courseName: course.name,
+                  amount: paymentIntent.amount / 100, // Convert from cents
+                }
+              );
+              
+              // Send enrollment confirmation email
+              await sendNotificationEmail(
+                new ObjectId(userId),
+                user.email,
+                'enrollment',
+                {
+                  userName: `${user.firstName} ${user.lastName}`,
+                  courseName: course.name,
+                }
+              );
+            } catch (emailError) {
+              // Log error but don't fail the payment processing
+              console.error('Failed to send payment/enrollment notification emails:', emailError);
+            }
           }
           
           // Increment coupon usage if coupon was applied
