@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us - Next Zen Academy',
-  description: 'Learn more about Next Zen Academy and our 3S philosophy for innovative education',
+  title: 'About Us - NextZen STEM Academy',
+  description: 'Intelligence Beyond Academics - Learn about our mission, vision, and core values at NextZen STEM Academy',
 };
 
 export default function AboutPage() {
@@ -11,9 +11,9 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About Next Zen Academy</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">About NextZen STEM Academy</h1>
           <p className="text-xl text-blue-100">
-            Transforming education through innovation, dedication, and our unique 3S philosophy
+            Intelligence Beyond Academics
           </p>
         </div>
       </section>
@@ -22,86 +22,86 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">🌱 Mission</h2>
             <p className="text-lg text-gray-600 mb-4">
-              At Next Zen Academy, we believe that every child has the potential to excel. 
-              Our mission is to provide world-class education that combines technical skills with creative 
-              thinking and problem-solving abilities.
+              At NextZen STEM Academy, our mission is to nurture curious, confident, and compassionate learners by blending modern STEM education with mindfulness, values, and balance.
             </p>
             <p className="text-lg text-gray-600">
-              Through our innovative 3S philosophy—Skills, Science, and Success—we create an environment 
-              where students can explore, experiment, and excel in Robotics, Mathematics, and Chess.
+              We create a safe and inspiring environment where children learn to think deeply, explore freely, and grow joyfully—preparing them for both life and the future.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 3S Philosophy Detail */}
+      {/* Vision Section */}
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">🌅 Vision</h2>
+            <p className="text-lg text-gray-600 mb-4">
+              Our vision is to future-proof the next generation by raising balanced thinkers and responsible innovators who are ready to thrive in a rapidly changing world.
+            </p>
+            <p className="text-lg text-gray-600">
+              We envision a community where children grow with clarity, creativity, resilience, and purpose, carrying both wisdom and innovation into tomorrow.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            The 3S Philosophy
+            ❤️ Core Values
           </h2>
           
-          <div className="space-y-12">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1">
-                <h3 className="text-2xl font-semibold text-blue-600 mb-4">Skills Development</h3>
-                <p className="text-gray-600 mb-4">
-                  We focus on building practical, hands-on skills that students can apply in real-world 
-                  scenarios. From coding and robotics to advanced mathematics and strategic thinking, 
-                  our curriculum is designed to prepare students for the future.
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Hands-on learning experiences</li>
-                  <li>Project-based curriculum</li>
-                  <li>Industry-relevant skills</li>
-                  <li>Peer collaboration</li>
-                </ul>
-              </div>
-              <div className="flex-1 bg-blue-100 p-8 rounded-lg">
-                <p className="text-6xl text-center">🎓</p>
-              </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="text-4xl mb-4">🌱</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">1️⃣ Curiosity</h3>
+              <p className="text-gray-600">
+                We encourage children to ask questions, explore ideas, and discover the joy of learning through hands-on experiences.
+              </p>
             </div>
 
-            <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-              <div className="flex-1">
-                <h3 className="text-2xl font-semibold text-blue-600 mb-4">Scientific Thinking</h3>
-                <p className="text-gray-600 mb-4">
-                  We nurture curiosity and scientific thinking by encouraging students to ask questions, 
-                  conduct experiments, and discover solutions independently. Our approach develops critical 
-                  thinking and analytical skills.
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Inquiry-based learning</li>
-                  <li>Experimental approach</li>
-                  <li>Critical analysis</li>
-                  <li>Evidence-based reasoning</li>
-                </ul>
-              </div>
-              <div className="flex-1 bg-green-100 p-8 rounded-lg">
-                <p className="text-6xl text-center">🔬</p>
-              </div>
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="text-4xl mb-4">⚖️</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">2️⃣ Balance</h3>
+              <p className="text-gray-600">
+                We believe true success comes from nurturing both the mind and the heart—combining learning with mindfulness, play, and well-being.
+              </p>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-1">
-                <h3 className="text-2xl font-semibold text-blue-600 mb-4">Success Mindset</h3>
-                <p className="text-gray-600 mb-4">
-                  We believe that success is a journey, not a destination. Through personalized guidance, 
-                  continuous feedback, and celebration of achievements, we help students build confidence 
-                  and develop a growth mindset.
-                </p>
-                <ul className="list-disc list-inside text-gray-600 space-y-2">
-                  <li>Personalized learning paths</li>
-                  <li>Regular progress tracking</li>
-                  <li>Confidence building</li>
-                  <li>Goal-oriented approach</li>
-                </ul>
-              </div>
-              <div className="flex-1 bg-yellow-100 p-8 rounded-lg">
-                <p className="text-6xl text-center">✨</p>
-              </div>
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="text-4xl mb-4">❤️</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">3️⃣ Integrity</h3>
+              <p className="text-gray-600">
+                We model honesty, kindness, and respect, helping children develop strong values and ethical decision-making.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="text-4xl mb-4">💪</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">4️⃣ Resilience</h3>
+              <p className="text-gray-600">
+                We teach children to embrace challenges, learn from mistakes, and grow with confidence and perseverance.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="text-4xl mb-4">💡</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">5️⃣ Innovation</h3>
+              <p className="text-gray-600">
+                We empower young minds to think creatively, solve problems, and use technology responsibly to shape a better future.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm">
+              <div className="text-4xl mb-4">🤝</div>
+              <h3 className="text-2xl font-semibold text-blue-600 mb-4">6️⃣ Community</h3>
+              <p className="text-gray-600">
+                We value strong partnerships with families, educators, and the community—growing together through trust and collaboration.
+              </p>
             </div>
           </div>
         </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-            Why Choose Next Zen Academy?
+            Why Choose NextZen STEM Academy?
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
