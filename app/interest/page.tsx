@@ -128,6 +128,8 @@ export default function InterestPage() {
                       src="/kids-robotics.svg" 
                       alt="Kids with robots" 
                       className="w-full h-32 object-contain"
+                      width="400"
+                      height="300"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-blue-600 text-center mb-2">Robotics</h4>
@@ -143,6 +145,8 @@ export default function InterestPage() {
                       src="/kids-chess.svg" 
                       alt="Kids playing chess" 
                       className="w-full h-32 object-contain"
+                      width="400"
+                      height="300"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-purple-600 text-center mb-2">Chess</h4>
@@ -158,6 +162,8 @@ export default function InterestPage() {
                       src="/kids-math.svg" 
                       alt="Kids solving math" 
                       className="w-full h-32 object-contain"
+                      width="400"
+                      height="300"
                     />
                   </div>
                   <h4 className="text-xl font-bold text-indigo-600 text-center mb-2">Mathematics</h4>

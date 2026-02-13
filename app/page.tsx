@@ -62,6 +62,8 @@ export default function Home() {
                 src="/kids-stem-hero.svg" 
                 alt="Kids learning robotics, chess, and math" 
                 className="w-full max-w-md md:max-w-lg"
+                width="800"
+                height="400"
               />
             </div>
           </div>
@@ -127,6 +129,8 @@ export default function Home() {
                   src="/kids-robotics.svg" 
                   alt="Kids building robots" 
                   className="w-full h-48 object-contain"
+                  width="400"
+                  height="300"
                 />
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-gray-900">Robotics</h3>
@@ -147,6 +151,8 @@ export default function Home() {
                   src="/kids-math.svg" 
                   alt="Kids solving math problems" 
                   className="w-full h-48 object-contain"
+                  width="400"
+                  height="300"
                 />
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-gray-900">Mathematics</h3>
@@ -167,6 +173,8 @@ export default function Home() {
                   src="/kids-chess.svg" 
                   alt="Kids playing chess" 
                   className="w-full h-48 object-contain"
+                  width="400"
+                  height="300"
                 />
               </div>
               <h3 className="text-2xl font-semibold mb-3 text-gray-900">Chess</h3>
