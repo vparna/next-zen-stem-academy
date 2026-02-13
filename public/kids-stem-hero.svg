@@ -1,0 +1,169 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient circles -->
+  <circle cx="700" cy="100" r="80" fill="#E0E7FF" opacity="0.4"/>
+  <circle cx="150" cy="350" r="100" fill="#DBEAFE" opacity="0.3"/>
+  <circle cx="600" cy="320" r="70" fill="#FEF3C7" opacity="0.4"/>
+  
+  <!-- Center robot being built -->
+  <g transform="translate(340, 150)">
+    <!-- Robot body -->
+    <rect x="20" y="40" width="80" height="90" rx="10" fill="#60A5FA" stroke="#2563EB" stroke-width="3"/>
+    <!-- Robot head -->
+    <rect x="25" y="0" width="70" height="50" rx="8" fill="#93C5FD" stroke="#2563EB" stroke-width="3"/>
+    <!-- Eyes (animated look) -->
+    <circle cx="45" cy="20" r="7" fill="#1E40AF"/>
+    <circle cx="75" cy="20" r="7" fill="#1E40AF"/>
+    <circle cx="47" cy="20" r="3" fill="#FFFFFF"/>
+    <circle cx="77" cy="20" r="3" fill="#FFFFFF"/>
+    <!-- Smile -->
+    <path d="M 45 33 Q 60 38 75 33" stroke="#1E40AF" stroke-width="2" fill="none"/>
+    <!-- Antenna with signal -->
+    <line x1="60" y1="0" x2="60" y2="-15" stroke="#2563EB" stroke-width="3"/>
+    <circle cx="60" cy="-18" r="5" fill="#EF4444"/>
+    <circle cx="60" cy="-18" r="8" fill="none" stroke="#EF4444" stroke-width="1" opacity="0.5"/>
+    <!-- Arms -->
+    <rect x="5" y="55" width="15" height="45" rx="7" fill="#60A5FA" stroke="#2563EB" stroke-width="2"/>
+    <rect x="100" y="55" width="15" height="45" rx="7" fill="#60A5FA" stroke="#2563EB" stroke-width="2"/>
+    <!-- Hands -->
+    <circle cx="12" cy="100" r="8" fill="#60A5FA" stroke="#2563EB" stroke-width="2"/>
+    <circle cx="108" cy="100" r="8" fill="#60A5FA" stroke="#2563EB" stroke-width="2"/>
+    <!-- Legs -->
+    <rect x="35" y="130" width="18" height="40" rx="7" fill="#3B82F6" stroke="#2563EB" stroke-width="2"/>
+    <rect x="67" y="130" width="18" height="40" rx="7" fill="#3B82F6" stroke="#2563EB" stroke-width="2"/>
+    <!-- Control panel details -->
+    <circle cx="60" cy="70" r="10" fill="#FCD34D" stroke="#F59E0B" stroke-width="2"/>
+    <rect x="40" y="90" width="12" height="18" rx="3" fill="#34D399"/>
+    <rect x="68" y="90" width="12" height="18" rx="3" fill="#F87171"/>
+    <circle cx="46" cy="115" r="3" fill="#60A5FA"/>
+    <circle cx="60" cy="115" r="3" fill="#60A5FA"/>
+    <circle cx="74" cy="115" r="3" fill="#60A5FA"/>
+  </g>
+  
+  <!-- Kid 1 - Girl with tools (left) -->
+  <g transform="translate(140, 180)">
+    <!-- Head -->
+    <circle cx="35" cy="28" r="24" fill="#FDB4B4"/>
+    <!-- Hair with ponytail -->
+    <ellipse cx="35" cy="15" rx="26" ry="16" fill="#8B4513"/>
+    <ellipse cx="60" cy="22" rx="10" ry="16" fill="#8B4513"/>
+    <circle cx="60" cy="22" r="5" fill="#EC4899"/>
+    <!-- Eyes -->
+    <circle cx="28" cy="28" r="3" fill="#000"/>
+    <circle cx="42" cy="28" r="3" fill="#000"/>
+    <!-- Smile -->
+    <path d="M 27 35 Q 35 39 43 35" stroke="#000" stroke-width="2" fill="none"/>
+    <!-- Body -->
+    <rect x="15" y="52" width="40" height="55" rx="20" fill="#EC4899"/>
+    <!-- Arms -->
+    <path d="M 15 65 L 0 75" stroke="#FDB4B4" stroke-width="11" stroke-linecap="round"/>
+    <path d="M 55 65 Q 75 70 80 65" stroke="#FDB4B4" stroke-width="11" stroke-linecap="round"/>
+    <!-- Tool in hand - wrench -->
+    <g transform="translate(-8, 70) rotate(-30)">
+      <rect x="0" y="0" width="25" height="5" rx="2" fill="#9CA3AF" stroke="#6B7280" stroke-width="1"/>
+      <circle cx="22" cy="2.5" r="4" fill="none" stroke="#6B7280" stroke-width="2"/>
+    </g>
+    <!-- Legs -->
+    <rect x="21" y="105" width="12" height="35" rx="6" fill="#1E40AF"/>
+    <rect x="37" y="105" width="12" height="35" rx="6" fill="#1E40AF"/>
+  </g>
+  
+  <!-- Kid 2 - Boy with chess piece (right) -->
+  <g transform="translate(560, 190)">
+    <!-- Head -->
+    <circle cx="32" cy="25" r="22" fill="#FBBF77"/>
+    <!-- Hair -->
+    <path d="M 15 22 Q 32 5 49 22" fill="#2D1810" stroke="#2D1810" stroke-width="2"/>
+    <!-- Eyes -->
+    <circle cx="25" cy="25" r="2.5" fill="#000"/>
+    <circle cx="39" cy="25" r="2.5" fill="#000"/>
+    <!-- Smile -->
+    <path d="M 24 32 Q 32 36 40 32" stroke="#000" stroke-width="2" fill="none"/>
+    <!-- Body -->
+    <rect x="14" y="47" width="36" height="50" rx="18" fill="#10B981"/>
+    <!-- Arms -->
+    <path d="M 14 60 L 0 72" stroke="#FBBF77" stroke-width="10" stroke-linecap="round"/>
+    <path d="M 50 60 L 65 72" stroke="#FBBF77" stroke-width="10" stroke-linecap="round"/>
+    <!-- Chess piece (knight) in hand -->
+    <g transform="translate(60, 65)">
+      <path d="M 0 12 L 5 0 L 10 12 Z" fill="#2D1810" stroke="#000" stroke-width="1"/>
+      <circle cx="5" cy="3" r="2.5" fill="#2D1810"/>
+      <rect x="0" y="12" width="10" height="3" rx="1" fill="#8B4513"/>
+    </g>
+    <!-- Legs -->
+    <rect x="19" y="95" width="11" height="32" rx="5.5" fill="#059669"/>
+    <rect x="34" y="95" width="11" height="32" rx="5.5" fill="#059669"/>
+  </g>
+  
+  <!-- Kid 3 - Child with math equation (bottom left) -->
+  <g transform="translate(80, 260)">
+    <!-- Head -->
+    <circle cx="25" cy="18" r="18" fill="#FFD4A3"/>
+    <!-- Hair with cap -->
+    <ellipse cx="25" cy="8" rx="20" ry="10" fill="#3B82F6"/>
+    <rect x="5" y="8" width="40" height="7" rx="3" fill="#2563EB"/>
+    <!-- Eyes -->
+    <circle cx="20" cy="18" r="2" fill="#000"/>
+    <circle cx="30" cy="18" r="2" fill="#000"/>
+    <!-- Smile -->
+    <path d="M 19 23 Q 25 26 31 23" stroke="#000" stroke-width="1.5" fill="none"/>
+    <!-- Body -->
+    <rect x="12" y="36" width="26" height="38" rx="13" fill="#8B5CF6"/>
+    <!-- Arms -->
+    <path d="M 12 45 L 0 52" stroke="#FFD4A3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M 38 45 Q 50 48 55 42" stroke="#FFD4A3" stroke-width="8" stroke-linecap="round"/>
+    <!-- Paper with math -->
+    <g transform="translate(48, 38)">
+      <rect x="0" y="0" width="22" height="16" rx="2" fill="#FFFFFF" stroke="#3B82F6" stroke-width="1.5"/>
+      <text x="11" y="11" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#3B82F6" text-anchor="middle">2+3=5</text>
+    </g>
+    <!-- Legs -->
+    <rect x="16" y="72" width="8" height="24" rx="4" fill="#6D28D9"/>
+    <rect x="26" y="72" width="8" height="24" rx="4" fill="#6D28D9"/>
+  </g>
+  
+  <!-- Floating elements -->
+  <!-- Gears -->
+  <g transform="translate(250, 80)">
+    <circle cx="0" cy="0" r="15" fill="#F59E0B" opacity="0.7"/>
+    <circle cx="0" cy="0" r="10" fill="#FFFFFF"/>
+    <circle cx="0" cy="0" r="5" fill="#F59E0B"/>
+  </g>
+  
+  <g transform="translate(520, 90)">
+    <circle cx="0" cy="0" r="12" fill="#8B5CF6" opacity="0.6"/>
+    <circle cx="0" cy="0" r="8" fill="#FFFFFF"/>
+    <circle cx="0" cy="0" r="4" fill="#8B5CF6"/>
+  </g>
+  
+  <!-- Stars/sparkles -->
+  <g fill="#FBBF24">
+    <path d="M 200 100 l 4 9 l 9 1 l -7 6 l 2 9 l -8 -5 l -8 5 l 2 -9 l -7 -6 l 9 -1 z"/>
+    <path d="M 600 120 l 3 7 l 7 1 l -5 5 l 2 7 l -7 -4 l -7 4 l 2 -7 l -5 -5 l 7 -1 z"/>
+    <path d="M 480 320 l 2.5 5 l 5 0.7 l -4 4 l 1.5 5 l -5 -3 l -5 3 l 1.5 -5 l -4 -4 l 5 -0.7 z"/>
+    <path d="M 150 130 l 2 4 l 4 0.5 l -3 3 l 1 4 l -4 -2 l -4 2 l 1 -4 l -3 -3 l 4 -0.5 z"/>
+  </g>
+  
+  <!-- Mathematical symbols -->
+  <text x="680" y="200" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="#8B5CF6" opacity="0.5">+</text>
+  <text x="100" y="150" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#10B981" opacity="0.5">×</text>
+  <text x="720" y="280" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#F59E0B" opacity="0.5">=</text>
+  
+  <!-- Chess pieces silhouettes -->
+  <g transform="translate(650, 350)" opacity="0.4">
+    <path d="M 5 20 L 10 5 L 15 20 Z" fill="#6B7280"/>
+    <rect x="3" y="20" width="14" height="3" rx="1" fill="#6B7280"/>
+  </g>
+  
+  <g transform="translate(700, 345)" opacity="0.4">
+    <circle cx="8" cy="10" r="6" fill="#6B7280"/>
+    <rect x="5" y="16" width="6" height="8" fill="#6B7280"/>
+    <rect x="2" y="24" width="12" height="3" rx="1" fill="#6B7280"/>
+  </g>
+  
+  <!-- Books stack -->
+  <g transform="translate(220, 340)">
+    <rect x="0" y="10" width="35" height="8" rx="1" fill="#3B82F6" stroke="#2563EB" stroke-width="1"/>
+    <rect x="2" y="3" width="35" height="8" rx="1" fill="#8B5CF6" stroke="#6D28D9" stroke-width="1"/>
+    <rect x="-2" y="17" width="35" height="8" rx="1" fill="#10B981" stroke="#059669" stroke-width="1"/>
+  </g>
+</svg>
