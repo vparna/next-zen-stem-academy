@@ -123,7 +123,15 @@ export default function InterestPage() {
               <div className="grid md:grid-cols-3 gap-6">
                 {/* Robotics */}
                 <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-                  <div className="text-5xl mb-4 text-center">🤖</div>
+                  <div className="mb-4 flex justify-center">
+                    <img 
+                      src="/kids-robotics.svg" 
+                      alt="Kids with robots" 
+                      className="w-full h-32 object-contain"
+                      width="400"
+                      height="300"
+                    />
+                  </div>
                   <h4 className="text-xl font-bold text-blue-600 text-center mb-2">Robotics</h4>
                   <p className="text-gray-600 text-center text-sm">
                     Build, code, and innovate with cutting-edge robotics technology
@@ -132,7 +140,15 @@ export default function InterestPage() {
 
                 {/* Chess */}
                 <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-                  <div className="text-5xl mb-4 text-center">♟️</div>
+                  <div className="mb-4 flex justify-center">
+                    <img 
+                      src="/kids-chess.svg" 
+                      alt="Kids playing chess" 
+                      className="w-full h-32 object-contain"
+                      width="400"
+                      height="300"
+                    />
+                  </div>
                   <h4 className="text-xl font-bold text-purple-600 text-center mb-2">Chess</h4>
                   <p className="text-gray-600 text-center text-sm">
                     Master strategic thinking and problem-solving through chess
@@ -141,7 +157,15 @@ export default function InterestPage() {
 
                 {/* Mathematics */}
                 <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-                  <div className="text-5xl mb-4 text-center">🔢</div>
+                  <div className="mb-4 flex justify-center">
+                    <img 
+                      src="/kids-math.svg" 
+                      alt="Kids solving math" 
+                      className="w-full h-32 object-contain"
+                      width="400"
+                      height="300"
+                    />
+                  </div>
                   <h4 className="text-xl font-bold text-indigo-600 text-center mb-2">Mathematics</h4>
                   <p className="text-gray-600 text-center text-sm">
                     Develop logical thinking and mathematical excellence

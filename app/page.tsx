@@ -30,30 +30,41 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Welcome to Next Zen Academy
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
-              Empowering young minds through innovative education
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/courses"
-                className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-blue-50 transition text-center"
-              >
-                Explore Courses
-              </Link>
-              {!isLoggedIn && (
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="text-center md:text-left">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Welcome to Next Zen Academy
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 text-blue-100">
+                Empowering young minds through innovative education
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Link
-                  href="/signup"
-                  className="bg-blue-700 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-900 transition border-2 border-white text-center"
+                  href="/courses"
+                  className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-blue-50 transition text-center"
                 >
-                  Get Started
+                  Explore Courses
                 </Link>
-              )}
+                {!isLoggedIn && (
+                  <Link
+                    href="/signup"
+                    className="bg-blue-700 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-900 transition border-2 border-white text-center"
+                  >
+                    Get Started
+                  </Link>
+                )}
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <img 
+                src="/kids-stem-hero.svg" 
+                alt="Kids learning robotics, chess, and math" 
+                className="w-full max-w-md md:max-w-lg"
+                width="800"
+                height="400"
+              />
             </div>
           </div>
         </div>
@@ -112,8 +123,16 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-              <div className="text-5xl mb-4">🤖</div>
+            <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition bg-white">
+              <div className="mb-4 flex justify-center">
+                <img 
+                  src="/kids-robotics.svg" 
+                  alt="Kids building robots" 
+                  className="w-full h-48 object-contain"
+                  width="400"
+                  height="300"
+                />
+              </div>
               <h3 className="text-2xl font-semibold mb-3 text-gray-900">Robotics</h3>
               <p className="text-gray-600 mb-4">
                 Learn to build and program robots while developing problem-solving skills.
@@ -126,8 +145,16 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-              <div className="text-5xl mb-4">🔢</div>
+            <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition bg-white">
+              <div className="mb-4 flex justify-center">
+                <img 
+                  src="/kids-math.svg" 
+                  alt="Kids solving math problems" 
+                  className="w-full h-48 object-contain"
+                  width="400"
+                  height="300"
+                />
+              </div>
               <h3 className="text-2xl font-semibold mb-3 text-gray-900">Mathematics</h3>
               <p className="text-gray-600 mb-4">
                 Master mathematical concepts through interactive and engaging methods.
@@ -140,8 +167,16 @@ export default function Home() {
               </Link>
             </div>
 
-            <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
-              <div className="text-5xl mb-4">♟️</div>
+            <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition bg-white">
+              <div className="mb-4 flex justify-center">
+                <img 
+                  src="/kids-chess.svg" 
+                  alt="Kids playing chess" 
+                  className="w-full h-48 object-contain"
+                  width="400"
+                  height="300"
+                />
+              </div>
               <h3 className="text-2xl font-semibold mb-3 text-gray-900">Chess</h3>
               <p className="text-gray-600 mb-4">
                 Develop strategic thinking and decision-making skills through chess.
