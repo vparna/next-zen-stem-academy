@@ -1,10 +1,66 @@
-# Next Zen Academy Marketing Materials
+# NextZen STEM Academy Marketing Materials
 
-This folder contains marketing materials for Next Zen Academy, including flyers, promotional content, banners, and QR codes for WhatsApp and social media campaigns.
+This folder contains marketing materials for NextZen STEM Academy, including flyers, banners, promotional content, and QR codes for print and digital campaigns.
 
 ## 📋 Contents
 
-### 1. Large Marketing Banner - 8ft x 2ft (`banner-8x2.*`)
+---
+
+### 🌟 NEW: Official Marketing Flyer (`flyer-nextzen-stem-academy.*`)
+The official NextZen STEM Academy marketing flyer matching the approved brand design:
+- **Design**: Deep blue space-themed header, sky/nature gradient body, teal footer
+- **Content**:
+  - **NextZen STEM Academy** logo with lotus + atom icon
+  - **Tagline**: *"Ancient Wisdom. Modern STEM. Future Leaders."*
+  - **Three programs**: Preschool & Pre-K | STEM Programs (Ages 4–14) | Hands-On Learning & Mindfulness
+  - **Four activities**: Robotics & Coding | Creative Arts | Math & Science Labs | Outdoor Exploration
+  - **"OPENING SOON"** call-to-action with "Schedule a Tour Today!"
+  - **Contact**: Woodinville/Bothell, WA | (425) 325-0431 | www.NextZenAcademy.com
+- **Available formats**:
+  - `flyer-nextzen-stem-academy.html` – Editable source file
+  - `flyer-nextzen-stem-academy.jpeg` – Ready-to-share image (850px wide)
+
+---
+
+### 🖼️ NEW: 8ft × 2ft Landscape Banner (`banner-8x2ft.*`)
+A wide-format print-ready banner for events, storefronts and trade shows:
+- **Dimensions**: 8 feet wide × 2 feet tall (96" × 24")
+- **Print resolution**: 14400 × 3600 px at 150 DPI
+- **HTML preview**: 1440 × 360 px (4:1 ratio)
+- **Layout** (3-column landscape):
+  - **Left column**: NextZen logo + tagline on deep blue space background
+  - **Center column**: Three program circles (top) + four activity icons strip (bottom)
+  - **Right column**: "OPENING SOON" CTA + contact footer on green nature background
+- **Available formats**:
+  - `banner-8x2ft.html` – Editable source file
+  - `banner-8x2ft.jpeg` – Print-ready JPEG
+
+**Best for**: Trade show booths, school entrance banners, community center displays, retail window signage
+
+---
+
+### 🟩 NEW: 3ft 11in × 3ft 11in Square Banner (`banner-square-47x47in.*`)
+A square format banner with **6 mounting grommet holes** for banner frames and pop-up stands:
+- **Dimensions**: 3 feet 11 inches × 3 feet 11 inches (47" × 47")
+- **Print resolution**: 7050 × 7050 px at 150 DPI
+- **HTML preview**: 700 × 700 px (1:1 ratio)
+- **Grommet holes** (6 total for secure mounting):
+  - Top-left corner
+  - **Top-center** (midpoint of top edge)
+  - Top-right corner
+  - Bottom-left corner
+  - **Bottom-center** (midpoint of bottom edge)
+  - Bottom-right corner
+- **Layout**: Same content sections as the flyer, adapted for square format
+- **Available formats**:
+  - `banner-square-47x47in.html` – Editable source file
+  - `banner-square-47x47in.jpeg` – Print-ready JPEG
+
+**Best for**: Banner frames, A-frame stands, hanging displays, entrance posts, pole banners
+
+---
+
+### ℹ️ Original Banner – 8ft × 2ft (`banner-8x2.*`)
 A professional, high-resolution banner designed for printing and display:
 - **Dimensions**: 8 feet wide × 2 feet tall (96" × 24")
 - **Resolution**: 14400 × 3600 pixels at 150 DPI (print-ready quality)
