@@ -1,10 +1,46 @@
 # Next Zen Academy Marketing Materials
 
-This folder contains marketing materials for Next Zen Academy, including flyers, promotional content, and QR codes for WhatsApp and social media campaigns.
+This folder contains marketing materials for Next Zen Academy, including flyers, promotional content, banners, and QR codes for WhatsApp and social media campaigns.
 
 ## 📋 Contents
 
-### 1. Marketing Flyer (`flyer.html` and `flyer.jpeg`)
+### 1. Large Marketing Banner - 8ft x 2ft (`banner-8x2.*`)
+A professional, high-resolution banner designed for printing and display:
+- **Dimensions**: 8 feet wide × 2 feet tall (96" × 24")
+- **Resolution**: 14400 × 3600 pixels at 150 DPI (print-ready quality)
+- **Features**:
+  - **Next Zen Academy logo** with modern design
+  - **"COMING SOON!" message** in bold, eye-catching gold styling
+  - **3S Philosophy tagline**: Skills • Science • Success
+  - **Three main courses** displayed prominently:
+    - Robotics 🤖 - Build & program robots
+    - Mathematics 🔢 - Master math concepts
+    - Chess ♟️ - Strategic thinking
+  - **Contact information** at the bottom
+  - **Gradient purple background** with subtle animations
+- **Available formats**:
+  - `banner-8x2.html` - Source HTML file (editable)
+  - `banner-8x2.jpeg` - JPEG format (1.2 MB, recommended for most uses)
+  - `banner-8x2.png` - PNG format (12 MB, highest quality)
+  - `banner-8x2-preview.jpeg` - Preview version (1440×360px for quick viewing)
+
+**Usage**: Perfect for:
+- Trade shows and educational fairs
+- School displays and bulletin boards
+- Store fronts and community centers
+- Print shops (high-resolution, print-ready)
+- Digital displays and projectors
+
+**Regenerating the banner**: If you modify the HTML file:
+```bash
+# Generate full-size banner images
+node marketing/generate-banner-image.js
+
+# Generate preview version
+node marketing/generate-banner-preview.js
+```
+
+### 2. Marketing Flyer (`flyer.html` and `flyer.jpeg`)
 A beautiful, professional WhatsApp marketing flyer featuring:
 - **Next Zen Academy logo** prominently displayed
 - **"Coming Soon" banner** prominently featured to create excitement
@@ -21,7 +57,7 @@ A beautiful, professional WhatsApp marketing flyer featuring:
   - Website: www.nextzenacademy.com
 - **Available in JPEG format** (`flyer.jpeg`) ready for sharing
 
-### 2. Interest Page (`/interest`)
+### 3. Interest Page (`/interest`)
 A dedicated webpage where users land after scanning the QR code:
 - **Course showcase** with detailed descriptions
 - **Interest form** to collect lead information
