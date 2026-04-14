@@ -25,6 +25,59 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.ui-pill-btn {
+  @apply inline-flex items-center justify-center px-7 py-3 rounded-full font-semibold transition duration-300;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+}
+
+.hero-orb {
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(80px);
+  animation: pulse-orb 7s ease-in-out infinite;
+}
+
+.hero-orb-left {
+  top: -7rem;
+  left: -7rem;
+  background: rgba(139, 92, 246, 0.65);
+}
+
+.hero-orb-right {
+  right: -7rem;
+  bottom: -9rem;
+  background: rgba(34, 211, 238, 0.6);
+  animation-delay: 1.8s;
+}
+
+@keyframes pulse-orb {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.12) translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-pill-btn {
+    transition: none;
+  }
+
+  .hero-orb {
+    animation: none;
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
