@@ -7,9 +7,9 @@ import { useState, useEffect } from 'react';
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const highlights = [
-    { title: 'Live Expert Mentors', description: 'Small-group sessions with dedicated instructors.', icon: '👩‍🏫' },
-    { title: 'Project-Based Learning', description: 'Build, test, and present real outcomes every week.', icon: '🛠️' },
-    { title: 'Progress You Can Track', description: 'Parents get clear milestones and visible growth.', icon: '📈' },
+    { title: 'Live Expert Mentors', description: 'Small-group sessions with dedicated instructors.' },
+    { title: 'Project-Based Learning', description: 'Build, test, and present real outcomes every week.' },
+    { title: 'Progress You Can Track', description: 'Parents get clear milestones and visible growth.' },
   ];
 
   const courses = [
@@ -100,10 +100,7 @@ export default function Home() {
                   priority
                 />
               </div>
-              <div className="hidden sm:flex absolute -bottom-5 -left-4 md:-left-10 bg-white text-slate-900 rounded-2xl shadow-xl px-5 py-3 items-center gap-3">
-                <span className="text-2xl" role="img" aria-label="five star rating">
-                  ⭐
-                </span>
+              <div className="hidden sm:flex absolute -bottom-5 -left-4 md:-left-10 bg-white text-slate-900 rounded-2xl shadow-xl px-5 py-3 items-center">
                 <div>
                   <p className="text-sm font-semibold">Rated by happy families (4.9/5)</p>
                   <p className="text-xs text-slate-500">Interactive classes with visible progress</p>
@@ -133,7 +130,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             {highlights.map((item) => (
               <div key={item.title} className="bg-white rounded-3xl p-7 shadow-lg shadow-blue-100/50 border border-slate-100 hover:-translate-y-1 transition-transform">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl mb-4" aria-hidden="true">{item.icon}</div>
+                <div className="w-12 h-1 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 mb-6" aria-hidden="true" />
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-slate-600">{item.description}</p>
               </div>

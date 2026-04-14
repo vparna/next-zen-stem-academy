@@ -26,7 +26,7 @@ body {
 }
 
 .ui-pill-btn {
-  @apply inline-flex items-center justify-center px-7 py-3 rounded-full font-semibold transition duration-300 hover:-translate-y-0.5;
+  @apply inline-flex items-center justify-center px-7 py-3 rounded-full font-semibold transition duration-300;
 }
 
 .glass-card {
@@ -71,10 +71,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .ui-pill-btn {
     transition: none;
-  }
-
-  .ui-pill-btn:hover {
-    transform: none;
   }
 
   .hero-orb {
