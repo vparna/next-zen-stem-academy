@@ -105,7 +105,7 @@ export default function Home() {
                   ⭐
                 </span>
                 <div>
-                  <p className="text-sm font-semibold">Rated by happy families</p>
+                  <p className="text-sm font-semibold">Rated by happy families (4.9/5)</p>
                   <p className="text-xs text-slate-500">Interactive classes with visible progress</p>
                 </div>
               </div>

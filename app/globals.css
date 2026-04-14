@@ -68,6 +68,20 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .ui-pill-btn {
+    transition: none;
+  }
+
+  .ui-pill-btn:hover {
+    transform: none;
+  }
+
+  .hero-orb {
+    animation: none;
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
