@@ -36,6 +36,8 @@ export default function Home() {
     },
   ];
 
+  const quickHighlights = ['Hands-on Labs', 'Weekly Challenges', 'Parent Reports', 'Flexible Schedules'];
+
   useEffect(() => {
     // Function to check authentication status
     const checkAuth = () => {
@@ -99,7 +101,9 @@ export default function Home() {
                 />
               </div>
               <div className="hidden sm:flex absolute -bottom-5 -left-4 md:-left-10 bg-white text-slate-900 rounded-2xl shadow-xl px-5 py-3 items-center gap-3">
-                <span className="text-2xl">⭐</span>
+                <span className="text-2xl" role="img" aria-label="highly rated">
+                  ⭐
+                </span>
                 <div>
                   <p className="text-sm font-semibold">Rated by happy families</p>
                   <p className="text-xs text-slate-500">Interactive classes with visible progress</p>
@@ -108,7 +112,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['Hands-on Labs', 'Weekly Challenges', 'Parent Reports', 'Flexible Schedules'].map((item) => (
+            {quickHighlights.map((item) => (
               <div
                 key={item}
                 className="bg-white/15 backdrop-blur-sm border border-white/25 rounded-2xl py-3 px-4 text-center text-sm md:text-base font-medium"
