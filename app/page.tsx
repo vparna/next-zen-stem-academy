@@ -101,7 +101,7 @@ export default function Home() {
                 />
               </div>
               <div className="hidden sm:flex absolute -bottom-5 -left-4 md:-left-10 bg-white text-slate-900 rounded-2xl shadow-xl px-5 py-3 items-center gap-3">
-                <span className="text-2xl" role="img" aria-label="highly rated">
+                <span className="text-2xl" role="img" aria-label="five star rating">
                   ⭐
                 </span>
                 <div>
@@ -133,7 +133,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6">
             {highlights.map((item) => (
               <div key={item.title} className="bg-white rounded-3xl p-7 shadow-lg shadow-blue-100/50 border border-slate-100 hover:-translate-y-1 transition-transform">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl mb-4">{item.icon}</div>
+                <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl mb-4" aria-hidden="true">{item.icon}</div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
                 <p className="text-slate-600">{item.description}</p>
               </div>
