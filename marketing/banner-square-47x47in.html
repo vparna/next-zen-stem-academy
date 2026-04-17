@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NextZen STEM Academy – 3ft 11in × 3ft 11in Banner</title>
+  <!--
+    Print dimensions: 3 feet 11 inches × 3 feet 11 inches (47" × 47")
+    6 grommet holes:
+      • Top-left corner     (offset 1.5" in / 1.5" down)
+      • Top-center          (midpoint top edge)
+      • Top-right corner    (offset 1.5" in / 1.5" down)
+      • Bottom-left corner  (offset 1.5" in / 1.5" up)
+      • Bottom-center       (midpoint bottom edge)
+      • Bottom-right corner (offset 1.5" in / 1.5" up)
+    At 150 DPI → 7050 × 7050 px; HTML preview at 700 × 700 CSS px.
+  -->
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    /* Banner canvas: 700 × 700 CSS px (square) */
+    .banner {
+      width: 700px;
+      height: 700px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+    }
+
+    /* ── GROMMET HOLES ──────────────────────────────────────── */
+    /*
+      6 grommet holes representing physical mounting eyelets:
+        Top-left corner, Top-center edge, Top-right corner
+        Bottom-left corner, Bottom-center edge, Bottom-right corner
+      Each grommet is a silver ring (hollow center showing banner background)
+    */
+    .grommet {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      /* Outer ring: silver/steel look */
+      background: radial-gradient(circle at 35% 35%, #e2e8f0, #94a3b8 50%, #64748b);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.45), inset 0 0 0 7px #1e293b;
+      z-index: 100;
+    }
+    /* 6 hole positions */
+    .g-tl { top: 16px;    left: 16px; }
+    .g-tc { top: 16px;    left: 50%; transform: translateX(-50%); }
+    .g-tr { top: 16px;    right: 16px; }
+    .g-bl { bottom: 16px; left: 16px; }
+    .g-bc { bottom: 16px; left: 50%; transform: translateX(-50%); }
+    .g-br { bottom: 16px; right: 16px; }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(175deg, #1a2a6c 0%, #1e3a8a 50%, #2563eb 100%);
+      padding: 14px 30px 10px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .star { position: absolute; background: #fff; border-radius: 50%; opacity: 0.7; }
+    .rocket-dec { position: absolute; left: 18px; top: 16px; font-size: 36px; transform: rotate(-30deg); z-index: 2; }
+    .planet-dec { position: absolute; right: 18px; top: 10px; font-size: 32px; z-index: 2; }
+
+    .logo-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; position: relative; z-index: 2;
+    }
+    .brand-text { text-align: left; line-height: 1; }
+    .brand-text .next { font-size: 40px; font-weight: 900; color: #fff; }
+    .brand-text .zen  { font-size: 40px; font-weight: 900; color: #f59e0b; }
+    .brand-text .stem { font-size: 13px; font-weight: 800; color: #fff; letter-spacing: 4px; display: block; margin-top: 1px; }
+
+    /* ── TAGLINE BAR ─────────────────────────────────────────── */
+    .tagline-bar {
+      background: #172554;
+      padding: 8px 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .tagline-bar p { font-size: 15px; font-weight: 700; font-style: italic; }
+    .tagline-bar .gold { color: #f59e0b; }
+    .tagline-bar .white { color: #fff; font-style: normal; font-weight: 900; }
+
+    /* ── PROGRAMS SECTION ───────────────────────────────────── */
+    .programs-section {
+      background: linear-gradient(180deg, #bfdbfe 0%, #e0f2fe 70%, #dcfce7 100%);
+      padding: 14px 12px 10px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    .program-circles {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      width: 100%;
+      gap: 8px;
+    }
+    .program-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+    .circle-frame {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      background: #dbeafe;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 54px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .program-label {
+      background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 100%);
+      color: #fff;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    /* ── ACTIVITIES ROW ─────────────────────────────────────── */
+    .activities-row {
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 6px;
+      border-top: 2px solid #e2e8f0;
+      border-bottom: 2px solid #e2e8f0;
+      flex-shrink: 0;
+    }
+    .activity-item {
+      display: flex; flex-direction: column; align-items: center;
+      flex: 1; padding: 0 4px;
+      border-right: 1px solid #e2e8f0;
+    }
+    .activity-item:last-child { border-right: none; }
+    .activity-icon { font-size: 32px; margin-bottom: 4px; }
+    .activity-label { font-size: 10px; font-weight: 700; color: #1e3a8a; text-align: center; line-height: 1.2; }
+
+    /* ── CTA SECTION ────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(180deg, #dcfce7 0%, #bbf7d0 40%, #4ade80 80%, #16a34a 100%);
+      padding: 8px 20px 6px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .opening-soon-box {
+      background: linear-gradient(90deg, #f59e0b 0%, #ef4444 50%, #f59e0b 100%);
+      border-radius: 8px;
+      padding: 5px 20px;
+      display: inline-block;
+      margin: 3px 0;
+    }
+    .os-text { font-size: 28px; font-weight: 900; color: #fef08a; text-shadow: 1px 1px 0 #92400e; letter-spacing: 1px; }
+    .schedule-text { font-size: 13px; font-weight: 700; font-style: italic; color: #fff; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+    .book-icons { font-size: 24px; margin-top: 3px; }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .footer {
+      background: linear-gradient(90deg, #065f46 0%, #0f766e 100%);
+      padding: 8px 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .footer-line { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 2px 0; }
+    .footer-line .icon { font-size: 13px; }
+    .footer-line .text { font-size: 12px; font-weight: 700; color: #fff; }
+    .footer-div { color: rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+<div class="banner">
+
+  <!-- ── 6 GROMMET HOLES ─────────────────────────────────── -->
+  <!-- Top row: TL corner, Top-center, TR corner -->
+  <div class="grommet g-tl" title="Grommet TL"></div>
+  <div class="grommet g-tc" title="Grommet Top-Center"></div>
+  <div class="grommet g-tr" title="Grommet TR"></div>
+  <!-- Bottom row: BL corner, Bottom-center, BR corner -->
+  <div class="grommet g-bl" title="Grommet BL"></div>
+  <div class="grommet g-bc" title="Grommet Bottom-Center"></div>
+  <div class="grommet g-br" title="Grommet BR"></div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <!-- Stars -->
+    <div class="star" style="width:3px;height:3px;top:12%;left:22%"></div>
+    <div class="star" style="width:2px;height:2px;top:28%;left:42%"></div>
+    <div class="star" style="width:3px;height:3px;top:18%;left:65%"></div>
+    <div class="star" style="width:4px;height:4px;top:40%;left:78%"></div>
+    <div class="star" style="width:2px;height:2px;top:55%;left:30%"></div>
+    <div class="rocket-dec">🚀</div>
+    <div class="planet-dec">🪐</div>
+
+    <div class="logo-row">
+      <svg width="62" height="62" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="45" cy="52" rx="10" ry="22" fill="#f59e0b" transform="rotate(-30 45 52)"/>
+        <ellipse cx="45" cy="52" rx="10" ry="22" fill="#16a34a" transform="rotate(0 45 52)"/>
+        <ellipse cx="45" cy="52" rx="10" ry="22" fill="#f59e0b" transform="rotate(30 45 52)"/>
+        <ellipse cx="45" cy="52" rx="10" ry="22" fill="#22c55e" transform="rotate(-15 45 52)"/>
+        <ellipse cx="45" cy="52" rx="10" ry="22" fill="#16a34a" transform="rotate(15 45 52)"/>
+        <circle cx="45" cy="42" r="8" fill="#f97316" stroke="#fff" stroke-width="1.5"/>
+        <ellipse cx="45" cy="42" rx="20" ry="8" fill="none" stroke="#f59e0b" stroke-width="2"/>
+        <ellipse cx="45" cy="42" rx="20" ry="8" fill="none" stroke="#f59e0b" stroke-width="2" transform="rotate(60 45 42)"/>
+        <ellipse cx="45" cy="42" rx="20" ry="8" fill="none" stroke="#f59e0b" stroke-width="2" transform="rotate(120 45 42)"/>
+        <circle cx="45" cy="42" r="4" fill="#fef3c7"/>
+      </svg>
+      <div class="brand-text">
+        <span class="next">Next</span><span class="zen">Zen</span>
+        <span class="stem">STEM ACADEMY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAGLINE BAR -->
+  <div class="tagline-bar">
+    <p>
+      <span class="gold">Ancient Wisdom. Modern STEM. </span>
+      <span class="white">Future Leaders.</span>
+    </p>
+  </div>
+
+  <!-- PROGRAMS -->
+  <div class="programs-section">
+    <div class="program-circles">
+      <div class="program-item">
+        <div class="circle-frame">🔬</div>
+        <div class="program-label">Preschool &amp; Pre-K</div>
+      </div>
+      <div class="program-item">
+        <div class="circle-frame" style="width:140px;height:140px;font-size:64px;">🤖</div>
+        <div class="program-label">STEM Programs<br>(Ages 4–14)</div>
+      </div>
+      <div class="program-item">
+        <div class="circle-frame">✋</div>
+        <div class="program-label">Hands-On Learning<br>&amp; Mindfulness</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITIES -->
+  <div class="activities-row">
+    <div class="activity-item">
+      <div class="activity-icon">🤖</div>
+      <div class="activity-label">Robotics &amp; Coding</div>
+    </div>
+    <div class="activity-item">
+      <div class="activity-icon">🎨</div>
+      <div class="activity-label">Creative Arts</div>
+    </div>
+    <div class="activity-item">
+      <div class="activity-icon">🔭</div>
+      <div class="activity-label">Math &amp; Science Labs</div>
+    </div>
+    <div class="activity-item">
+      <div class="activity-icon">🌳</div>
+      <div class="activity-label">Outdoor Exploration</div>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div class="cta-section">
+    <div style="font-size:26px;">🌳🌲🌿🦋🌲🌳</div>
+    <div class="opening-soon-box">
+      <div class="os-text">OPENING SOON</div>
+    </div>
+    <div class="schedule-text">Schedule a Tour Today!</div>
+    <div class="book-icons">📖 💡 ⚛️</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-line">
+      <span class="icon">📍</span>
+      <span class="text">Woodinville/Bothell, WA</span>
+    </div>
+    <div class="footer-line">
+      <span class="icon">📞</span>
+      <span class="text">(425) 325-0431</span>
+      <span class="footer-div">|</span>
+      <span class="text">www.NextZenAcademy.com</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
