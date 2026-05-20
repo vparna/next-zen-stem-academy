@@ -74,13 +74,6 @@ const testimonials = [
     stars: 5,
   },
   {
-    name: 'James P.',
-    role: 'Parent of 1',
-    avatar: 'https://ui-avatars.com/api/?name=James+P&background=0ea5e9&color=fff&size=80',
-    quote: 'The robotics program is beyond what I expected. My son built his first autonomous robot in week 3. He now talks about becoming an engineer every day!',
-    stars: 5,
-  },
-  {
     name: 'Linda N.',
     role: 'Parent of 3',
     avatar: 'https://ui-avatars.com/api/?name=Linda+N&background=8b5cf6&color=fff&size=80',
@@ -266,7 +259,7 @@ export default function Home() {
             <h2 className="section-heading mx-auto mb-4">What Parents Say</h2>
             <p className="text-slate-600 text-lg mt-6">Real stories from our amazing community of families.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
               <div key={t.name} className="bg-white rounded-3xl p-7 shadow-lg border border-slate-100 card-hover">
                 <div className="flex items-center gap-1 mb-4">
