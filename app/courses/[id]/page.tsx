@@ -19,6 +19,7 @@ interface Course {
 
 export default function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
+  const sidebarStickyOffsetClass = 'top-24';
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
   const [resolvedParams, setResolvedParams] = useState<{ id: string } | null>(null);
@@ -218,7 +219,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Sidebar */}
             <div>
-              <div className="bg-white rounded-3xl p-6 sticky top-24 shadow-lg border border-slate-100">
+              <div className={`bg-white rounded-3xl p-6 sticky ${sidebarStickyOffsetClass} shadow-lg border border-slate-100`}>
                 <h3 className="text-xl font-extrabold text-slate-900 mb-4">What You&apos;ll Learn</h3>
                 <ul className="space-y-3">
                   {course.features.map((feature, index) => (
