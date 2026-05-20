@@ -111,10 +111,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          <p className="mt-4 text-gray-600">Loading course details...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-orange-200 border-t-orange-500"></div>
+          <p className="mt-4 text-slate-600">Loading course details...</p>
         </div>
       </div>
     );
@@ -122,10 +122,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
   if (!course) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Course Not Found</h2>
-          <Link href="/courses" className="text-blue-600 hover:text-blue-800">
+          <h2 className="text-2xl font-extrabold text-slate-900 mb-4">Course Not Found</h2>
+          <Link href="/courses" className="text-orange-500 hover:text-orange-600 font-semibold">
             Back to Courses
           </Link>
         </div>
@@ -134,24 +134,24 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   }
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-slate-50 min-h-screen">
       {/* Course Header */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-4">
-            <Link href="/courses" className="text-blue-100 hover:text-white">
+            <Link href="/courses" className="text-slate-300 hover:text-white font-medium">
               ← Back to Courses
             </Link>
           </div>
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <span className="bg-blue-700 px-3 py-1 rounded text-sm font-semibold">
+              <span className="bg-orange-500/20 border border-orange-400/30 text-orange-300 px-3 py-1 rounded-full text-sm font-semibold">
                 {course.category}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-4">
+              <h1 className="text-4xl md:text-5xl font-extrabold mt-4 mb-4">
                 {course.name}
               </h1>
-              <p className="text-xl text-blue-100 mb-6">
+              <p className="text-xl text-slate-300 mb-6">
                 {course.description}
               </p>
               <div className="flex flex-wrap gap-4 text-sm">
@@ -165,20 +165,20 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </div>
               </div>
             </div>
-            <div className="bg-white text-gray-900 rounded-lg p-8 shadow-xl">
+            <div className="bg-white text-slate-900 rounded-3xl p-8 shadow-lg border border-slate-100">
               <div className="text-center mb-6">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
+                <div className="text-4xl font-extrabold text-orange-500 mb-2">
                   ${course.price}
                 </div>
-                <p className="text-gray-600">per month</p>
+                <p className="text-slate-600">per month</p>
               </div>
               <button
                 onClick={handleEnroll}
-                className="w-full bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition"
+                className="ui-pill-btn w-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200 hover:shadow-lg hover:shadow-orange-300 transition-all"
               >
                 Enroll Now
               </button>
-              <p className="text-sm text-gray-600 text-center mt-4">
+              <p className="text-sm text-slate-600 text-center mt-4">
                 30-day money-back guarantee
               </p>
             </div>
@@ -187,27 +187,27 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       </section>
 
       {/* Course Content */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="md:col-span-2 space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">About This Course</h2>
-                <p className="text-gray-600 text-lg leading-relaxed">
+              <div className="bg-white rounded-3xl p-8 shadow-md border border-slate-100">
+                <h2 className="section-heading mb-8">About This Course</h2>
+                <p className="text-slate-600 text-lg leading-relaxed">
                   {course.fullDescription}
                 </p>
               </div>
 
               {course.syllabus && course.syllabus.length > 0 && (
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-4">Course Syllabus</h2>
-                  <div className="bg-gray-50 rounded-lg p-6">
+                <div className="bg-white rounded-3xl p-8 shadow-md border border-slate-100">
+                  <h2 className="section-heading mb-8">Course Syllabus</h2>
+                  <div className="bg-blue-50 rounded-3xl p-6">
                     <ul className="space-y-3">
                       {course.syllabus.map((item, index) => (
                         <li key={index} className="flex items-start">
-                          <span className="text-blue-600 font-bold mr-3">✓</span>
-                          <span className="text-gray-700">{item}</span>
+                          <span className="text-orange-500 font-bold mr-3">✓</span>
+                          <span className="text-slate-700">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -218,13 +218,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Sidebar */}
             <div>
-              <div className="bg-gray-50 rounded-lg p-6 sticky top-4">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">What You'll Learn</h3>
+              <div className="bg-white rounded-3xl p-6 sticky top-24 shadow-lg border border-slate-100">
+                <h3 className="text-xl font-extrabold text-slate-900 mb-4">What You&apos;ll Learn</h3>
                 <ul className="space-y-3">
                   {course.features.map((feature, index) => (
                     <li key={index} className="flex items-start">
-                      <span className="text-green-600 mr-2">✓</span>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-orange-500 mr-2">✓</span>
+                      <span className="text-slate-700">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -235,15 +235,15 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       </section>
 
       {/* CTA Section */}
-      <section className="bg-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 text-blue-100">
+          <h2 className="text-3xl font-extrabold mb-4">Ready to Get Started?</h2>
+          <p className="text-xl mb-8 text-slate-300">
             Enroll now and start your learning journey today
           </p>
           <button
             onClick={handleEnroll}
-            className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-blue-50 transition inline-block"
+            className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all inline-block"
           >
             Enroll in {course.name}
           </button>

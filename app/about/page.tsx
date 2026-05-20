@@ -97,7 +97,7 @@ export default function AboutPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             {coreValues.map((v) => (
-              <div key={v.title} className="bg-white rounded-3xl p-7 shadow-sm border border-slate-100 card-hover">
+              <div key={v.title} className="bg-white rounded-3xl p-7 shadow-lg border border-slate-100 card-hover">
                 <div className={`inline-flex w-14 h-14 rounded-2xl ${v.color} items-center justify-center text-2xl mb-5`}>
                   {v.icon}
                 </div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyUs.map((item) => (
-              <div key={item.label} className="flex gap-4 p-6 rounded-2xl border border-slate-100 hover:border-orange-200 hover:bg-orange-50/50 transition-colors">
+              <div key={item.label} className="flex gap-4 p-6 rounded-3xl border border-slate-100 bg-white shadow-md card-hover hover:border-orange-200 hover:bg-orange-50/50 transition-colors">
                 <span className="text-3xl flex-shrink-0">{item.icon}</span>
                 <div>
                   <h3 className="font-bold text-slate-900 mb-1">{item.label}</h3>
