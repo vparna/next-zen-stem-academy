@@ -91,7 +91,7 @@ export default function CoursesPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-slate-50 min-h-screen">
       {/* ── Hero ── */}
       <section className="relative min-h-[44vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
@@ -188,7 +188,7 @@ export default function CoursesPage() {
                       </div>
                       <Link
                         href={`/courses/${course._id}`}
-                        className="block w-full text-center bg-gradient-to-r from-orange-500 to-red-500 text-white py-2.5 rounded-full font-semibold text-sm hover:shadow-md hover:shadow-orange-200 transition"
+                        className="ui-pill-btn w-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200 hover:shadow-lg hover:shadow-orange-300 transition-all"
                       >
                         View Details
                       </Link>
