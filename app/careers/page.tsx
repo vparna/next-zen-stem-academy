@@ -52,7 +52,8 @@ export default function CareersPage() {
       } else {
         setError(data.error || 'Failed to load jobs');
       }
-    } catch {
+    } catch (err) {
+      console.error('Error fetching jobs:', err);
       setError('Failed to load jobs');
     } finally {
       setLoading(false);

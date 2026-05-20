@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -46,12 +46,20 @@ export default function CoursesPage() {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  useEffect(() => {
-    fetchCourses();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getSampleCourses = useCallback((): Course[] => {
+    const all = [
+      { _id: '1', name: 'Robotics Fundamentals', category: 'Robotics', description: 'Learn the basics of robotics, including sensors, motors, and programming.', price: 99, duration: '12 weeks', ageGroup: '8-12 years' },
+      { _id: '2', name: 'Advanced Robotics', category: 'Robotics', description: 'Build complex robots and learn advanced programming techniques.', price: 129, duration: '16 weeks', ageGroup: '12-16 years' },
+      { _id: '3', name: 'Mathematics Mastery', category: 'Maths', description: 'Comprehensive mathematics program covering algebra, geometry, and problem-solving.', price: 79, duration: '10 weeks', ageGroup: '10-14 years' },
+      { _id: '4', name: 'Chess Beginner', category: 'Chess', description: 'Learn chess fundamentals, basic strategies, and opening principles.', price: 69, duration: '8 weeks', ageGroup: '6-10 years' },
+      { _id: '5', name: 'Chess Advanced', category: 'Chess', description: 'Master advanced tactics, endgames, and competitive chess strategies.', price: 89, duration: '12 weeks', ageGroup: '10-16 years' },
+      { _id: '6', name: 'Olympiad Mathematics', category: 'Maths', description: 'Prepare for mathematics olympiads with challenging problem sets.', price: 119, duration: '14 weeks', ageGroup: '12-16 years' },
+    ];
+    if (selectedCategory === 'all') return all;
+    return all.filter((c) => c.category === selectedCategory);
   }, [selectedCategory]);
 
-  const fetchCourses = async () => {
+  const fetchCourses = useCallback(async () => {
     try {
       const url = selectedCategory === 'all'
         ? '/api/courses'
@@ -63,25 +71,17 @@ export default function CoursesPage() {
       } else {
         setCourses(getSampleCourses());
       }
-    } catch {
+    } catch (error) {
+      console.error('Error fetching courses:', error);
       setCourses(getSampleCourses());
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedCategory, getSampleCourses]);
 
-  const getSampleCourses = (): Course[] => {
-    const all = [
-      { _id: '1', name: 'Robotics Fundamentals', category: 'Robotics', description: 'Learn the basics of robotics, including sensors, motors, and programming.', price: 99, duration: '12 weeks', ageGroup: '8-12 years' },
-      { _id: '2', name: 'Advanced Robotics', category: 'Robotics', description: 'Build complex robots and learn advanced programming techniques.', price: 129, duration: '16 weeks', ageGroup: '12-16 years' },
-      { _id: '3', name: 'Mathematics Mastery', category: 'Maths', description: 'Comprehensive mathematics program covering algebra, geometry, and problem-solving.', price: 79, duration: '10 weeks', ageGroup: '10-14 years' },
-      { _id: '4', name: 'Chess Beginner', category: 'Chess', description: 'Learn chess fundamentals, basic strategies, and opening principles.', price: 69, duration: '8 weeks', ageGroup: '6-10 years' },
-      { _id: '5', name: 'Chess Advanced', category: 'Chess', description: 'Master advanced tactics, endgames, and competitive chess strategies.', price: 89, duration: '12 weeks', ageGroup: '10-16 years' },
-      { _id: '6', name: 'Olympiad Mathematics', category: 'Maths', description: 'Prepare for mathematics olympiads with challenging problem sets.', price: 119, duration: '14 weeks', ageGroup: '12-16 years' },
-    ];
-    if (selectedCategory === 'all') return all;
-    return all.filter((c) => c.category === selectedCategory);
-  };
+  useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
 
   const categories = [
     { value: 'all', label: 'All Courses', icon: '📚' },
