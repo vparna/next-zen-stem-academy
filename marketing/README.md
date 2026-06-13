@@ -22,6 +22,18 @@ The official NextZen STEM Academy marketing flyer matching the approved brand de
 
 ---
 
+### 🧾 NEW: Quick Print Pamphlets (`pamphlet-covered-play-area.html`, `pamphlets-print-sheet.html`)
+Two ready-to-print pamphlet layouts inspired by your location-focused sample:
+- `pamphlet-covered-play-area.html`
+  - Single large pamphlet design for direct printing
+  - Includes heading, photo-grid placeholders, location map panel, phone and full address strip
+- `pamphlets-print-sheet.html`
+  - 4-up printable sheet (2x2) for quick bulk handouts
+  - Print once, cut into 4 pamphlets, and distribute immediately
+- **Print tip**: open in browser → Print → enable “Background graphics” for best color output
+
+---
+
 ### 🖼️ NEW: 8ft × 2ft Landscape Banner (`banner-8x2ft.*`)
 A wide-format print-ready banner for events, storefronts and trade shows:
 - **Dimensions**: 8 feet wide × 2 feet tall (96" × 24")
