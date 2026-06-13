@@ -30,7 +30,7 @@ Two ready-to-print pamphlet layouts inspired by your location-focused sample:
 - `pamphlets-print-sheet.html`
   - 4-up printable sheet (2x2) for quick bulk handouts
   - Print once, cut into 4 pamphlets, and distribute immediately
-- **Print tip**: open in browser → Print → enable “Background graphics” for best color output
+- **Print tip**: open in browser → Print → enable “Background Graphics” for best color output
 
 ---
 
