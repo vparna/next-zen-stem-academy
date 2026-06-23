@@ -49,7 +49,8 @@ async function handler() {
       total: formattedInterests.length,
     });
   } catch (error) {
-    console.error('Error fetching interests:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error fetching interests:', errorMessage);
     return NextResponse.json(
       { error: 'Failed to fetch interests' },
       { status: 500 }

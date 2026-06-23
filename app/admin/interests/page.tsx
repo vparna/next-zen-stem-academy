@@ -51,7 +51,8 @@ export default function AdminInterestsPage() {
         setError('Failed to load interest submissions');
       }
     } catch (err) {
-      console.error('Error fetching interests:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      console.error('Error fetching interests:', errorMessage);
       setError('An error occurred while loading interest submissions');
     } finally {
       setLoading(false);
