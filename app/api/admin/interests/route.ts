@@ -36,7 +36,7 @@ async function handler() {
       email: interest.email,
       phone: interest.phone,
       course: interest.course,
-      childName: interest.childName || null,
+      childName: interest.childName ?? null,
       childAge: interest.childAge ?? null,
       message: interest.message || null,
       status: interest.status || 'new',
