@@ -183,7 +183,7 @@ export default function AdminInterestsPage() {
                         )}
                       </td>
                       <td className="px-6 py-4 max-w-sm">
-                        <p className="text-sm text-gray-700 line-clamp-3">
+                        <p className="text-sm text-gray-700 whitespace-pre-wrap break-words" title={interest.message || ''}>
                           {interest.message || '—'}
                         </p>
                       </td>
