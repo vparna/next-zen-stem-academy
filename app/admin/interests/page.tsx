@@ -176,7 +176,7 @@ export default function AdminInterestsPage() {
                         {interest.childName ? (
                           <div className="text-sm text-gray-900">
                             {interest.childName}
-                            {interest.childAge ? ` (${interest.childAge})` : ''}
+                            {interest.childAge ? ` (${interest.childAge} yrs)` : ''}
                           </div>
                         ) : (
                           <span className="text-sm text-gray-500">N/A</span>
