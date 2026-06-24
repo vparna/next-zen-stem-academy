@@ -81,10 +81,10 @@ export default function Navbar() {
               <Image 
                 src={`${basePath}/logo.svg`}
                 alt="Next Zen Academy Logo" 
-                width={200} 
-                height={60}
+                width={230} 
+                height={70}
                 priority
-                style={{ height: '48px', width: 'auto' }}
+                style={{ height: '52px', width: 'auto' }}
               />
             </Link>
           </div>
