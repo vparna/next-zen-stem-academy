@@ -184,7 +184,7 @@ export default function AdminDashboardPage() {
         <div className="mt-6">
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Other Admin Tools</h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-3 gap-4">
               <Link
                 href="/admin/jobs"
                 className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition"
@@ -201,6 +201,15 @@ export default function AdminDashboardPage() {
                 <div className="text-3xl mb-2">📋</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">Review Applications</h3>
                 <p className="text-gray-600 text-sm">View and manage job applications</p>
+              </Link>
+
+              <Link
+                href="/admin/interests"
+                className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition"
+              >
+                <div className="text-3xl mb-2">📝</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">Interest Leads</h3>
+                <p className="text-gray-600 text-sm">View form submissions from the interest page</p>
               </Link>
             </div>
           </div>
