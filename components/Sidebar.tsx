@@ -89,10 +89,10 @@ export default function Sidebar() {
                 <Image
                   src={`${basePath}/logo.svg`}
                   alt="Next Zen Academy Logo"
-                  width={180}
-                  height={50}
+                  width={230}
+                  height={70}
                   priority
-                  style={{ height: '38px', width: 'auto' }}
+                  style={{ height: '42px', width: 'auto' }}
                 />
               </Link>
             </div>

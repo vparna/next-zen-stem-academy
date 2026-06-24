@@ -20,9 +20,9 @@ export default function Footer() {
             <Image
               src={`${basePath}/logo-white.svg`}
               alt="Next Zen Academy Logo"
-              width={180}
-              height={50}
-              style={{ height: '44px', width: 'auto', marginBottom: '1rem' }}
+              width={230}
+              height={70}
+              style={{ height: '48px', width: 'auto', marginBottom: '1rem' }}
             />
             <p className="text-slate-400 text-sm leading-relaxed mb-5">
               Empowering young minds through innovative education with our unique 3S philosophy — STEM, Skills, and Success.
