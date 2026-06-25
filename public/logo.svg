@@ -66,7 +66,7 @@
   <!-- ===== TEXT ===== -->
   <!-- "Next" white, "Zen" gold -->
   <text font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="900" letter-spacing="-0.5">
-    <tspan x="74" y="34" fill="#ffffff">Next</tspan><tspan fill="#ffd740">Zen</tspan>
+    <tspan x="74" y="34" fill="#ffffff">Next</tspan><tspan x="126" y="34" fill="#ffd740">Zen</tspan>
   </text>
 
   <!-- "STEM ACADEMY" orange -->
