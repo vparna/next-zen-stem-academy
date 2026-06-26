@@ -79,12 +79,12 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image 
-                src={`${basePath}/logo.svg`}
+                src={`${basePath}/icon.svg`}
                 alt="Next Zen Academy Logo" 
-                width={230} 
-                height={70}
+                width={52} 
+                height={52}
                 priority
-                style={{ height: '52px', width: 'auto' }}
+                style={{ height: '52px', width: '52px' }}
               />
             </Link>
           </div>
