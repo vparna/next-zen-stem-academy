@@ -21,15 +21,15 @@ To create an admin user, run the following command:
 npm run create-admin
 ```
 
-This will create an admin user with the following credentials:
+This will create an admin user with:
 - Email: `admin@nextgen.com`
-- Password: `admin123`
+- A secure random password shown once in the terminal
 
-**Important:** Change the password after first login!
+**Important:** Save the generated password and change it after first login.
 
 ### Logging In
 
-1. Navigate to `/login`
+1. Navigate to `/admin/login`
 2. Enter the admin credentials
 3. You will be automatically redirected to `/admin/dashboard`
 

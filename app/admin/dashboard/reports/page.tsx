@@ -31,7 +31,7 @@ export default function ReportsPage() {
     const userData = localStorage.getItem('user');
     
     if (!token || !userData) {
-      router.push('/login');
+      router.push('/admin/login');
       return;
     }
 

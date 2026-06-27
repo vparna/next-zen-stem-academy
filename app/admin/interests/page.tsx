@@ -46,7 +46,7 @@ export default function AdminInterestsPage() {
         setError('Session expired. Please log in again.');
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        setTimeout(() => router.push('/login'), 1500);
+        setTimeout(() => router.push('/admin/login'), 1500);
       } else {
         setError('Failed to load interest submissions');
       }
@@ -64,7 +64,7 @@ export default function AdminInterestsPage() {
     const userData = localStorage.getItem('user');
 
     if (!token || !userData) {
-      router.push('/login');
+      router.push('/admin/login');
       return;
     }
 
@@ -74,7 +74,7 @@ export default function AdminInterestsPage() {
     } catch {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      router.push('/login');
+      router.push('/admin/login');
       return;
     }
 
