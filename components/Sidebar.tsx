@@ -87,12 +87,12 @@ export default function Sidebar() {
               </button>
               <Link href="/" className="flex items-center">
                 <Image
-                  src={`${basePath}/logo.svg`}
+                  src={`${basePath}/icon.svg`}
                   alt="Next Zen Academy Logo"
-                  width={230}
-                  height={70}
+                  width={42}
+                  height={42}
                   priority
-                  style={{ height: '42px', width: 'auto' }}
+                  style={{ height: '42px', width: '42px' }}
                 />
               </Link>
             </div>
