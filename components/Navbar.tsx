@@ -12,6 +12,7 @@ export default function Navbar() {
     userName: ''
   });
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const logoSrc = `${basePath}/logo.svg`;
   const router = useRouter();
 
   useEffect(() => {
@@ -79,12 +80,13 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image 
-                src={`${basePath}/icon.svg`}
+                src={logoSrc}
                 alt="Next Zen Academy Logo" 
-                width={52} 
-                height={52}
+                width={230}
+                height={70}
+                sizes="152px"
+                className="h-auto w-[9.5rem]"
                 priority
-                style={{ height: '52px', width: '52px' }}
               />
             </Link>
           </div>

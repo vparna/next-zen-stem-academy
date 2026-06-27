@@ -64,6 +64,7 @@ export default function Sidebar() {
     { href: '/hours', label: 'Hours', icon: '🕐' },
     { href: '/support', label: 'Support', icon: '💬' },
   ];
+  const logoSrc = `${basePath}/logo.svg`;
 
   return (
     <>
@@ -87,12 +88,13 @@ export default function Sidebar() {
               </button>
               <Link href="/" className="flex items-center">
                 <Image
-                  src={`${basePath}/icon.svg`}
+                  src={logoSrc}
                   alt="Next Zen Academy Logo"
-                  width={42}
-                  height={42}
+                  width={230}
+                  height={70}
+                  sizes="(max-width: 640px) 128px, 152px"
+                  className="h-auto w-32 sm:w-[9.5rem]"
                   priority
-                  style={{ height: '42px', width: '42px' }}
                 />
               </Link>
             </div>

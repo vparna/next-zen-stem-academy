@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const logoSrc = `${basePath}/logo.svg`;
 
   return (
     <footer className="bg-slate-900 text-white">
@@ -18,11 +19,12 @@ export default function Footer() {
           {/* About */}
           <div>
             <Image
-              src={`${basePath}/icon.svg`}
+              src={logoSrc}
               alt="Next Zen Academy Logo"
-              width={48}
-              height={48}
-              style={{ height: '48px', width: '48px', marginBottom: '1rem' }}
+              width={230}
+              height={70}
+              sizes="180px"
+              className="mb-4 h-auto w-44"
             />
             <p className="text-slate-400 text-sm leading-relaxed mb-5">
               Empowering young minds through innovative education with our unique 3S philosophy — STEM, Skills, and Success.
