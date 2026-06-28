@@ -4,7 +4,7 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Next Zen Academy - Innovative Education",
+  title: "NextZen Academy - Innovative Education",
   description: "Empowering young minds through Robotics, Mathematics, and Chess education with our unique 3S philosophy",
 };
 

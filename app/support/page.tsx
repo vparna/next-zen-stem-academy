@@ -31,7 +31,7 @@ export default function SupportPage() {
             How Can We <span className="gradient-text">Help?</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-xl">
-            Find answers to common questions and get the help you need to make the most of Next Zen Academy.
+            Find answers to common questions and get the help you need to make the most of NextZen Academy.
           </p>
         </div>
       </section>

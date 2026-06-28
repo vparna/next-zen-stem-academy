@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Us - NextZen STEM Academy',
-  description: 'Intelligence Beyond Academics - Learn about our mission, vision, and core values at NextZen STEM Academy',
+  title: 'About Us - NextZen Academy',
+  description: 'Intelligence Beyond Academics - Learn about our mission, vision, and core values at NextZen Academy',
 };
 
 const coreValues = [
@@ -46,7 +46,7 @@ export default function AboutPage() {
           </p>
           <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-4">
             About NextZen{' '}
-            <span className="gradient-text">STEM Academy</span>
+            <span className="gradient-text">Academy</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-xl">
             Intelligence Beyond Academics — shaping curious, confident, and compassionate learners.
@@ -65,7 +65,7 @@ export default function AboutPage() {
               </div>
               <h2 className="text-2xl font-extrabold text-slate-900 mb-4">Our Mission</h2>
               <p className="text-slate-600 leading-relaxed mb-3">
-                At NextZen STEM Academy, our mission is to nurture curious, confident, and compassionate learners by blending modern STEM education with mindfulness, values, and balance.
+                At NextZen Academy, our mission is to nurture curious, confident, and compassionate learners by blending modern STEM education with mindfulness, values, and balance.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 We create a safe and inspiring environment where children learn to think deeply, explore freely, and grow joyfully — preparing them for both life and the future.

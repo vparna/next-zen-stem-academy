@@ -55,9 +55,9 @@ export const emailTemplates = {
       <p>Hi ${userName},</p>
       <p>Thank you for enrolling in <strong>${courseName}</strong>. We're excited to have you join us!</p>
       <p>You can access your course materials from your dashboard.</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Welcome to ${courseName}! Hi ${userName}, Thank you for enrolling in ${courseName}. We're excited to have you join us! You can access your course materials from your dashboard. Best regards, Next Zen Academy Team`,
+    text: `Welcome to ${courseName}! Hi ${userName}, Thank you for enrolling in ${courseName}. We're excited to have you join us! You can access your course materials from your dashboard. Best regards, NextZen Academy Team`,
   }),
 
   payment: (userName: string, courseName: string, amount: number): EmailTemplate => ({
@@ -67,9 +67,9 @@ export const emailTemplates = {
       <p>Hi ${userName},</p>
       <p>We've successfully received your payment of <strong>$${amount.toFixed(2)}</strong> for <strong>${courseName}</strong>.</p>
       <p>You can now access all course materials from your dashboard.</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Payment Received. Hi ${userName}, We've successfully received your payment of $${amount.toFixed(2)} for ${courseName}. You can now access all course materials from your dashboard. Best regards, Next Zen Academy Team`,
+    text: `Payment Received. Hi ${userName}, We've successfully received your payment of $${amount.toFixed(2)} for ${courseName}. You can now access all course materials from your dashboard. Best regards, NextZen Academy Team`,
   }),
 
   courseStart: (userName: string, courseName: string, startDate: Date): EmailTemplate => ({
@@ -79,9 +79,9 @@ export const emailTemplates = {
       <p>Hi ${userName},</p>
       <p>Your course <strong>${courseName}</strong> begins on <strong>${startDate.toLocaleDateString()}</strong>.</p>
       <p>Make sure you're ready to start learning! Log in to your dashboard to access course materials.</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Your Course is Starting! Hi ${userName}, Your course ${courseName} begins on ${startDate.toLocaleDateString()}. Make sure you're ready to start learning! Log in to your dashboard to access course materials. Best regards, Next Zen Academy Team`,
+    text: `Your Course is Starting! Hi ${userName}, Your course ${courseName} begins on ${startDate.toLocaleDateString()}. Make sure you're ready to start learning! Log in to your dashboard to access course materials. Best regards, NextZen Academy Team`,
   }),
 
   assignmentDue: (userName: string, assignmentTitle: string, dueDate: Date): EmailTemplate => ({
@@ -91,9 +91,9 @@ export const emailTemplates = {
       <p>Hi ${userName},</p>
       <p>This is a reminder that your assignment <strong>${assignmentTitle}</strong> is due on <strong>${dueDate.toLocaleDateString()}</strong>.</p>
       <p>Don't forget to submit your work on time!</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Assignment Reminder. Hi ${userName}, This is a reminder that your assignment ${assignmentTitle} is due on ${dueDate.toLocaleDateString()}. Don't forget to submit your work on time! Best regards, Next Zen Academy Team`,
+    text: `Assignment Reminder. Hi ${userName}, This is a reminder that your assignment ${assignmentTitle} is due on ${dueDate.toLocaleDateString()}. Don't forget to submit your work on time! Best regards, NextZen Academy Team`,
   }),
 
   gradePosted: (userName: string, assignmentTitle: string, score: number): EmailTemplate => ({
@@ -104,9 +104,9 @@ export const emailTemplates = {
       <p>Your instructor has graded your assignment <strong>${assignmentTitle}</strong>.</p>
       <p>Your score: <strong>${score}</strong></p>
       <p>Log in to your dashboard to view detailed feedback.</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Your Grade is Available. Hi ${userName}, Your instructor has graded your assignment ${assignmentTitle}. Your score: ${score}. Log in to your dashboard to view detailed feedback. Best regards, Next Zen Academy Team`,
+    text: `Your Grade is Available. Hi ${userName}, Your instructor has graded your assignment ${assignmentTitle}. Your score: ${score}. Log in to your dashboard to view detailed feedback. Best regards, NextZen Academy Team`,
   }),
 
   certificateIssued: (userName: string, courseName: string, certificateUrl: string): EmailTemplate => ({
@@ -117,9 +117,9 @@ export const emailTemplates = {
       <p>You've successfully completed <strong>${courseName}</strong>!</p>
       <p>Your certificate is now available. <a href="${certificateUrl}">Download Certificate</a></p>
       <p>We're proud of your achievement!</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Congratulations! Hi ${userName}, You've successfully completed ${courseName}! Your certificate is now available at: ${certificateUrl}. We're proud of your achievement! Best regards, Next Zen Academy Team`,
+    text: `Congratulations! Hi ${userName}, You've successfully completed ${courseName}! Your certificate is now available at: ${certificateUrl}. We're proud of your achievement! Best regards, NextZen Academy Team`,
   }),
 
   liveClassReminder: (userName: string, classTitle: string, scheduledAt: Date, meetingLink: string): EmailTemplate => ({
@@ -130,9 +130,9 @@ export const emailTemplates = {
       <p>Your live class <strong>${classTitle}</strong> is scheduled for <strong>${scheduledAt.toLocaleString()}</strong>.</p>
       <p><a href="${meetingLink}">Join Live Class</a></p>
       <p>See you there!</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Live Class Starting Soon. Hi ${userName}, Your live class ${classTitle} is scheduled for ${scheduledAt.toLocaleString()}. Join at: ${meetingLink}. See you there! Best regards, Next Zen Academy Team`,
+    text: `Live Class Starting Soon. Hi ${userName}, Your live class ${classTitle} is scheduled for ${scheduledAt.toLocaleString()}. Join at: ${meetingLink}. See you there! Best regards, NextZen Academy Team`,
   }),
 
   courseCompletion: (userName: string, courseName: string, progress: number): EmailTemplate => ({
@@ -143,25 +143,25 @@ export const emailTemplates = {
       <p>Congratulations! You've completed <strong>${courseName}</strong> with ${progress}% progress.</p>
       <p>Your certificate will be issued shortly and will be available in your dashboard.</p>
       <p>Keep up the great work!</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Course Completed! Hi ${userName}, Congratulations! You've completed ${courseName} with ${progress}% progress. Your certificate will be issued shortly and will be available in your dashboard. Keep up the great work! Best regards, Next Zen Academy Team`,
+    text: `Course Completed! Hi ${userName}, Congratulations! You've completed ${courseName} with ${progress}% progress. Your certificate will be issued shortly and will be available in your dashboard. Keep up the great work! Best regards, NextZen Academy Team`,
   }),
 
   passwordReset: (userName: string, resetLink: string): EmailTemplate => ({
-    subject: 'Password Reset Request - Next Zen Academy',
+    subject: 'Password Reset Request - NextZen Academy',
     html: `
       <h2>Password Reset Request</h2>
       <p>Hi ${userName},</p>
-      <p>We received a request to reset your password for your Next Zen Academy account.</p>
+      <p>We received a request to reset your password for your NextZen Academy account.</p>
       <p>Click the link below to reset your password. This link will expire in 1 hour:</p>
       <p><a href="${resetLink}" style="display: inline-block; padding: 10px 20px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 5px;">Reset Password</a></p>
       <p>Or copy and paste this link into your browser:</p>
       <p>${resetLink}</p>
       <p>If you didn't request a password reset, please ignore this email or contact support if you have concerns.</p>
-      <p>Best regards,<br>Next Zen Academy Team</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
     `,
-    text: `Password Reset Request. Hi ${userName}, We received a request to reset your password for your Next Zen Academy account. Click the link below to reset your password. This link will expire in 1 hour: ${resetLink}. If you didn't request a password reset, please ignore this email or contact support if you have concerns. Best regards, Next Zen Academy Team`,
+    text: `Password Reset Request. Hi ${userName}, We received a request to reset your password for your NextZen Academy account. Click the link below to reset your password. This link will expire in 1 hour: ${resetLink}. If you didn't request a password reset, please ignore this email or contact support if you have concerns. Best regards, NextZen Academy Team`,
   }),
 };
 
@@ -209,7 +209,7 @@ export async function sendEmail(
     const textVersion = template.text || 'Please view this email in an HTML-capable email client.';
     
     const mailOptions = {
-      from: `"Next Zen Academy" <${process.env.EMAIL_USER}>`,
+      from: `"NextZen Academy" <${process.env.EMAIL_USER}>`,
       to,
       subject: template.subject,
       html: template.html,

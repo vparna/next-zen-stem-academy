@@ -205,7 +205,7 @@ export default function CoursesPage() {
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Ready to Enroll?</h2>
-          <p className="text-slate-400 mb-8 text-lg">Sign up now and start your learning journey with Next Zen Academy.</p>
+          <p className="text-slate-400 mb-8 text-lg">Sign up now and start your learning journey with NextZen Academy.</p>
           <Link
             href="/signup"
             className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all"

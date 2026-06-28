@@ -89,7 +89,7 @@ export default function InterestPage() {
                 </g>
               </svg>
               <div>
-                <h1 className="text-2xl font-bold">Next Zen Academy</h1>
+                <h1 className="text-2xl font-bold">NextZen Academy</h1>
                 <p className="text-blue-100 text-sm">Where Skills Meet Success</p>
               </div>
             </div>
@@ -112,7 +112,7 @@ export default function InterestPage() {
                 🎉 COMING SOON 🎉
               </div>
               <h2 className="text-4xl font-bold mb-3">Express Your Interest</h2>
-              <p className="text-xl text-blue-100">Join the future of learning at Next Zen Academy!</p>
+              <p className="text-xl text-blue-100">Join the future of learning at NextZen Academy!</p>
             </div>
 
             {/* Courses Offered */}
@@ -338,7 +338,7 @@ export default function InterestPage() {
 
           {/* Why Choose Us */}
           <div className="mt-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4 text-center">Why Choose Next Zen Academy?</h3>
+            <h3 className="text-2xl font-bold mb-4 text-center">Why Choose NextZen Academy?</h3>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="text-4xl mb-2">🎯</div>
@@ -363,7 +363,7 @@ export default function InterestPage() {
       {/* Footer */}
       <div className="bg-gray-900 text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="mb-2">© 2026 Next Zen Academy. All rights reserved.</p>
+          <p className="mb-2">© 2026 NextZen Academy. All rights reserved.</p>
           <p className="text-gray-400 text-sm">Building future leaders through quality education</p>
         </div>
       </div>

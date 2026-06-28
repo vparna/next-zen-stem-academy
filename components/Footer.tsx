@@ -17,13 +17,20 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* About */}
           <div>
-            <Image
-              src={`${basePath}/icon.svg`}
-              alt="Next Zen Academy Logo"
-              width={48}
-              height={48}
-              style={{ height: '48px', width: '48px', marginBottom: '1rem' }}
-            />
+            <div className="flex items-center gap-2 mb-4">
+              <Image
+                src={`${basePath}/icon.svg`}
+                alt="NextZen Academy Logo"
+                width={42}
+                height={42}
+                style={{ height: '42px', width: '42px' }}
+              />
+              <span className="text-xl font-bold tracking-tight">
+                <span className="text-white">Next</span>
+                <span className="text-orange-400">Zen</span>
+                <span className="text-slate-300 font-semibold text-base ml-1">Academy</span>
+              </span>
+            </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-5">
               Empowering young minds through innovative education with our unique 3S philosophy — STEM, Skills, and Success.
             </p>
@@ -100,7 +107,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Next Zen Academy. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} NextZen Academy. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/support" className="hover:text-orange-400 transition">Privacy Policy</Link>
             <Link href="/support" className="hover:text-orange-400 transition">Terms of Service</Link>

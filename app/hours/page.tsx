@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Center Hours - Next Zen Academy',
+  title: 'Center Hours - NextZen Academy',
   description: 'Visit us during our center hours. We are open Monday-Friday and Saturday with flexible scheduling options.',
 };
 
