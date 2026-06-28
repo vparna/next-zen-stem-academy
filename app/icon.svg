@@ -28,7 +28,7 @@
   <circle cx="16" cy="16" r="15" fill="url(#bgA)" stroke="#ffd740" stroke-width="0.5"/>
 
   <!-- Lotus + Atom centered at 16,18 -->
-  <g transform="translate(16,18)">
+  <g transform="translate(16,18) scale(1,-1)">
     <!-- Green outer petals -->
     <ellipse cx="0" cy="2" rx="2.5" ry="8" fill="url(#grA)" transform="rotate(-75)" opacity="0.95"/>
     <ellipse cx="0" cy="2" rx="2.5" ry="8" fill="url(#grA)" transform="rotate(75)" opacity="0.95"/>

@@ -34,7 +34,7 @@
   <rect width="230" height="70" rx="10" fill="none" stroke="#ffd740" stroke-width="0.75" opacity="0.4"/>
 
   <!-- ===== LOTUS + ATOM ICON ===== -->
-  <g transform="translate(37,37)">
+  <g transform="translate(37,37) scale(1,-1)">
     <!-- Outer green leaf petals -->
     <ellipse cx="0" cy="4" rx="6" ry="18" fill="url(#petalGreenW)" transform="rotate(-75)" opacity="0.95"/>
     <ellipse cx="0" cy="4" rx="6" ry="18" fill="url(#petalGreenW)" transform="rotate(75)" opacity="0.95"/>
