@@ -87,7 +87,7 @@ export default function Sidebar() {
               </button>
               <Link href="/" className="flex items-center gap-2">
                 <Image
-                  src={`${basePath}/icon.svg`}
+                  src={`${basePath}/NextZen Logo.jpg`}
                   alt="NextZen Academy Logo"
                   width={38}
                   height={38}

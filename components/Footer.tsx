@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src={`${basePath}/icon.svg`}
+                src={`${basePath}/NextZen Logo.jpg`}
                 alt="NextZen Academy Logo"
                 width={42}
                 height={42}
