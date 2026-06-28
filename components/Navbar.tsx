@@ -77,15 +77,20 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center gap-2">
               <Image 
                 src={`${basePath}/icon.svg`}
-                alt="Next Zen Academy Logo" 
-                width={52} 
-                height={52}
+                alt="NextZen Academy Logo" 
+                width={40} 
+                height={40}
                 priority
-                style={{ height: '52px', width: '52px' }}
+                style={{ height: '40px', width: '40px' }}
               />
+              <span className="text-xl font-bold tracking-tight">
+                <span className="text-slate-800">Next</span>
+                <span className="text-orange-500">Zen</span>
+                <span className="text-slate-600 font-semibold text-base ml-1">Academy</span>
+              </span>
             </Link>
           </div>
 
