@@ -79,7 +79,7 @@ export default function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
               <Image 
-                src={`${basePath}/NextZen Logo.jpg`}
+                src={`${basePath}/icon.svg`}
                 alt="NextZen Academy Logo" 
                 width={40} 
                 height={40}
