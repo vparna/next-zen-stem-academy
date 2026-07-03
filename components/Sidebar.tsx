@@ -85,20 +85,16 @@ export default function Sidebar() {
                   {isOpen ? <path d="M6 18L18 6M6 6l12 12" /> : <path d="M4 6h16M4 12h16M4 18h16" />}
                 </svg>
               </button>
-              <Link href="/" className="flex items-center gap-2">
-                <Image
-                  src={`${basePath}/icon.svg`}
-                  alt="NextZen Academy Logo"
-                  width={38}
-                  height={38}
-                  priority
-                  style={{ height: '38px', width: '38px' }}
-                />
-                <span className="text-xl font-bold tracking-tight">
-                  <span className="text-slate-800">Next</span>
-                  <span className="text-orange-500">Zen</span>
-                  <span className="text-slate-600 font-semibold text-base ml-1">Academy</span>
-                </span>
+              <Link href="/" className="flex items-center">
+                <div className="relative overflow-hidden rounded-lg border border-slate-200/50 shadow-sm h-9 aspect-[16/9]">
+                  <Image
+                    src={`${basePath}/brand-logo.jpeg`}
+                    alt="NextZen Academy Logo"
+                    fill
+                    priority
+                    className="object-cover"
+                  />
+                </div>
               </Link>
             </div>
 
