@@ -17,19 +17,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* About */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Image
-                src={`${basePath}/icon.svg`}
-                alt="NextZen Academy Logo"
-                width={42}
-                height={42}
-                style={{ height: '42px', width: '42px' }}
-              />
-              <span className="text-xl font-bold tracking-tight">
-                <span className="text-white">Next</span>
-                <span className="text-orange-400">Zen</span>
-                <span className="text-slate-300 font-semibold text-base ml-1">Academy</span>
-              </span>
+            <div className="flex items-center mb-4">
+              <div className="relative overflow-hidden rounded-lg border border-slate-700/50 h-14 aspect-[16/9]">
+                <Image
+                  src={`${basePath}/brand-logo.jpeg`}
+                  alt="NextZen Academy Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-5">
               Empowering young minds through innovative education with our unique 3S philosophy — STEM, Skills, and Success.
