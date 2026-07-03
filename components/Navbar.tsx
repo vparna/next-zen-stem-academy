@@ -179,7 +179,7 @@ export default function Navbar() {
               {/* Utility Pages & Authentication */}
               <div className="flex items-center space-x-6 text-[11px] font-extrabold uppercase tracking-wide">
                 <Link href="/" className="text-slate-500 hover:text-sky-600 transition-colors">Home</Link>
-                <Link href="#parent-resources" className="text-slate-500 hover:text-sky-600 transition-colors">Parent Resources</Link>
+                <Link href="/#parent-resources" className="text-slate-500 hover:text-sky-600 transition-colors">Parent Resources</Link>
                 <Link href="/careers" className="text-slate-500 hover:text-sky-600 transition-colors">Careers</Link>
                 <Link href="/support" className="text-slate-500 hover:text-sky-600 transition-colors">Contact Us</Link>
 
@@ -230,7 +230,7 @@ export default function Navbar() {
             <div className="h-12 flex justify-between items-center">
               <nav className="flex items-center space-x-2 text-[11px] lg:text-[12px] font-black tracking-widest text-slate-700 uppercase">
                 <Link
-                  href="#nextzen-way"
+                  href="/#nextzen-way"
                   className="hover:text-orange-500 transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-orange-50/40 active:scale-95"
                 >
                   The NextZen Way
@@ -248,14 +248,14 @@ export default function Navbar() {
                   }`} />
                 </Link>
                 <Link
-                  href="#stem-labs"
+                  href="/#stem-labs"
                   className="hover:text-orange-500 transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-orange-50/40 active:scale-95"
                 >
                   STEM Labs
                   <span className="absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-orange-500 to-amber-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-300" />
                 </Link>
                 <Link
-                  href="#summer-camps"
+                  href="/#summer-camps"
                   className="hover:text-orange-500 transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-orange-50/40 active:scale-95"
                 >
                   Summer Camps
@@ -275,7 +275,7 @@ export default function Navbar() {
               </nav>
 
               <Link
-                href="#admissions"
+                href="/#admissions"
                 className="bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white font-black px-6 py-2.5 rounded-full text-[11px] tracking-widest uppercase transition-all duration-300 shadow-md shadow-orange-500/10 hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
               >
                 Admissions
@@ -453,21 +453,21 @@ export default function Navbar() {
                 <span className="text-base">📚</span> <span className="text-xs uppercase tracking-wider">Programs</span>
               </Link>
               <Link
-                href="#nextzen-way"
+                href="/#nextzen-way"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-500 transition-all duration-200"
               >
                 <span className="text-base">🌱</span> <span className="text-xs uppercase tracking-wider">The NextZen Way</span>
               </Link>
               <Link
-                href="#stem-labs"
+                href="/#stem-labs"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-500 transition-all duration-200"
               >
                 <span className="text-base">🤖</span> <span className="text-xs uppercase tracking-wider">STEM Labs</span>
               </Link>
               <Link
-                href="#summer-camps"
+                href="/#summer-camps"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-500 transition-all duration-200"
               >
@@ -481,14 +481,14 @@ export default function Navbar() {
             <h3 className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">Resources &amp; Support</h3>
             <nav className="space-y-1">
               <Link
-                href="#admissions"
+                href="/#admissions"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-orange-500 transition-all duration-200"
               >
                 <span>🎓</span> <span className="text-xs uppercase tracking-wider">Admissions</span>
               </Link>
               <Link
-                href="#parent-resources"
+                href="/#parent-resources"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-orange-500 transition-all duration-200"
               >
