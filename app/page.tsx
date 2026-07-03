@@ -133,7 +133,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="max-w-2xl">
             <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/20 border border-orange-400/30 text-orange-300 text-sm font-semibold mb-6 backdrop-blur-sm">
-              🚀 Future-ready STEM learning for children
+              🚀 Future-ready STEM learning for childrens
             </p>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white mb-5">
               Spark Curiosity.{' '}
