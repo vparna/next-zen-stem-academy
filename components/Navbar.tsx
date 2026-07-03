@@ -106,15 +106,14 @@ export default function Navbar() {
           {/* Logo & Branding - Visible on Desktop */}
           <div className="hidden lg:flex items-center py-2 h-22">
             <Link href="/" className="flex items-center group">
-              <div className="relative overflow-hidden rounded-xl border border-slate-200/40 shadow-md group-hover:shadow-lg group-hover:scale-[1.03] transition-all duration-300 h-10 lg:h-12 aspect-[16/9] bg-white ring-1 ring-slate-100/50">
+              <div className="relative h-12 lg:h-14 w-40 lg:w-48 transition-all duration-300 group-hover:scale-[1.02]">
                 <Image 
-                  src={`${basePath}/brand-logo.jpeg`}
+                  src={`${basePath}/brand-logo4.png`}
                   alt="NextZen Academy Logo" 
                   fill
                   priority
-                  className="object-cover"
+                  className="object-contain object-left"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </Link>
           </div>
@@ -300,13 +299,13 @@ export default function Navbar() {
 
             {/* Center Logo */}
             <Link href="/" className="flex items-center justify-center">
-              <div className="relative overflow-hidden rounded-lg border border-slate-200/40 shadow-sm h-8 aspect-[16/9] bg-white ring-1 ring-slate-100/50">
+              <div className="relative h-12 w-44">
                 <Image 
-                  src={`${basePath}/brand-logo.jpeg`}
+                  src={`${basePath}/brand-logo4.png`}
                   alt="NextZen Academy Logo" 
                   fill
                   priority
-                  className="object-cover"
+                  className="object-contain object-center"
                 />
               </div>
             </Link>
@@ -356,12 +355,12 @@ export default function Navbar() {
           {/* Drawer Header */}
           <div className="flex items-center justify-between pb-6 border-b border-slate-100">
             <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
-              <div className="relative overflow-hidden rounded-lg border border-slate-200/50 shadow-sm h-8 aspect-[16/9] bg-white">
+              <div className="relative h-12 w-44">
                 <Image 
-                  src={`${basePath}/brand-logo.jpeg`}
+                  src={`${basePath}/brand-logo3.png`}
                   alt="NextZen Academy Logo" 
                   fill
-                  className="object-cover"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>
