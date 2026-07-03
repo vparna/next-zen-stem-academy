@@ -184,32 +184,36 @@ export default function Home() {
 
   return (
     <div className="bg-[#FAF8F5] text-slate-800 overflow-x-hidden font-sans">
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
       {/* ── HERO SECTION ── */}
       <section className="relative bg-gradient-to-b from-[#FFFDFB] via-[#FAF6F0] to-[#FAF8F5] pt-12 pb-24 md:py-24 lg:py-32 overflow-hidden">
         {/* Decorative Background Accents */}
         <div className="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] rounded-full bg-orange-100/30 filter blur-[80px] pointer-events-none" />
         <div className="absolute bottom-[10%] right-[-5%] w-[35rem] h-[35rem] rounded-full bg-sky-100/40 filter blur-[80px] pointer-events-none" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            
+
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-8 text-left">
               <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200/60 px-4 py-1.5 rounded-full text-xs font-bold text-orange-600 uppercase tracking-wider shadow-sm animate-fade-in-up">
                 🚀 Future-Ready STEM Education
               </span>
-              
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
                 Spark Curiosity. <br />
                 <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-sky-500 bg-clip-text text-transparent">
                   Build Brilliance.
                 </span>
               </h1>
-              
+
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
                 NextZen Academy offers a premium learning experience through Robotics, Mathematics, and Chess programs that empower children to design, analyze, and build with confidence.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Link
                   href="/courses"
@@ -288,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* ── STATS BANNER (Floating Overlap) ── */}
-      <section className="relative z-20 bg-white">
+      {/* <section className="relative z-20 bg-white mt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="-mt-16 md:-mt-20 bg-white rounded-[2.5rem] border border-slate-200/50 shadow-xl shadow-slate-100/80 p-8 md:p-12">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
@@ -302,12 +306,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── FLAGSHIP PROGRAMS (Goddard & Bright Horizons style) ── */}
       <section className="py-20 md:py-28 bg-white" id="stem-labs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest text-orange-500 uppercase">
               Curriculum Core
@@ -325,28 +329,28 @@ export default function Home() {
               // Accent color mapping
               const isRobotics = course.accentColor === 'orange';
               const isMath = course.accentColor === 'sky';
-              
-              const borderAccentClass = isRobotics 
-                ? 'group-hover:border-orange-200' 
-                : isMath 
-                  ? 'group-hover:border-sky-200' 
+
+              const borderAccentClass = isRobotics
+                ? 'group-hover:border-orange-200'
+                : isMath
+                  ? 'group-hover:border-sky-200'
                   : 'group-hover:border-emerald-200';
 
-              const badgeColorClass = isRobotics 
-                ? 'bg-orange-500 text-white' 
-                : isMath 
-                  ? 'bg-sky-500 text-white' 
+              const badgeColorClass = isRobotics
+                ? 'bg-orange-500 text-white'
+                : isMath
+                  ? 'bg-sky-500 text-white'
                   : 'bg-emerald-500 text-white';
 
-              const textAccentClass = isRobotics 
-                ? 'text-orange-600 bg-orange-50' 
-                : isMath 
-                  ? 'text-sky-600 bg-sky-50' 
+              const textAccentClass = isRobotics
+                ? 'text-orange-600 bg-orange-50'
+                : isMath
+                  ? 'text-sky-600 bg-sky-50'
                   : 'text-emerald-600 bg-emerald-50';
 
               return (
-                <div 
-                  key={course.title} 
+                <div
+                  key={course.title}
                   className={`group rounded-[2.5rem] overflow-hidden border border-slate-100/80 bg-white hover:shadow-2xl transition-all duration-300 flex flex-col ${borderAccentClass}`}
                 >
                   {/* Card Image */}
@@ -358,7 +362,7 @@ export default function Home() {
                       className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
-                    
+
                     {/* Age Badge */}
                     <span className={`absolute top-4 left-4 text-xs font-extrabold px-3 py-1.5 rounded-full shadow ${badgeColorClass}`}>
                       {course.badge}
@@ -376,7 +380,7 @@ export default function Home() {
                           {course.price}
                         </span>
                       </div>
-                      
+
                       <p className="text-sm text-slate-500 leading-relaxed">
                         {course.description}
                       </p>
@@ -392,11 +396,11 @@ export default function Home() {
                       </ul>
                     </div>
 
-                    <Link 
-                      href={course.href} 
+                    <Link
+                      href={course.href}
                       className="inline-flex items-center gap-2 text-sm font-extrabold text-orange-500 hover:text-orange-600 transition-colors group/link pt-4"
                     >
-                      Explore Track Details 
+                      Explore Track Details
                       <span className="transform group-hover/link:translate-x-1.5 transition-transform duration-200">
                         →
                       </span>
@@ -420,7 +424,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest text-sky-500 uppercase">
               Our Philosophy
@@ -435,16 +439,16 @@ export default function Home() {
 
           {/* Interactive Layout */}
           <div className="grid lg:grid-cols-12 gap-12 items-center">
-            
+
             {/* Left: Tab Buttons Column */}
-            <div className="lg:col-span-5 space-y-4">
+            <div className="lg:col-span-5 flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
               {[
                 { key: 'stem', label: 'STEM', tag: 'Hands-on discovery', icon: '🧪', color: 'orange' },
                 { key: 'skills', label: 'Skills', tag: 'Executive functioning', icon: '🧠', color: 'sky' },
                 { key: 'success', label: 'Success', tag: 'Outcomes & Milestones', icon: '🏆', color: 'emerald' },
               ].map((tab) => {
                 const isActive = activePhilosophyTab === tab.key;
-                
+
                 let activeStyle = '';
                 if (isActive) {
                   if (tab.color === 'orange') activeStyle = 'bg-white border-orange-500/80 shadow-md shadow-orange-500/5';
@@ -458,16 +462,16 @@ export default function Home() {
                   <button
                     key={tab.key}
                     onClick={() => setActivePhilosophyTab(tab.key as 'stem' | 'skills' | 'success')}
-                    className={`w-full text-left p-6 rounded-2xl border-2 transition-all flex items-center gap-5 cursor-pointer ${activeStyle}`}
+                    className={`p-4 lg:p-6 rounded-2xl border-2 transition-all flex items-center gap-3 lg:gap-5 flex-shrink-0 cursor-pointer ${activeStyle}`}
                   >
-                    <span className="text-3xl p-3 rounded-xl bg-[#FAF8F5] border border-slate-100 shadow-sm flex-shrink-0">
+                    <span className="text-2xl lg:text-3xl p-2 lg:p-3 rounded-xl bg-[#FAF8F5] border border-slate-100 shadow-sm flex-shrink-0">
                       {tab.icon}
                     </span>
                     <div>
-                      <h3 className={`text-lg font-black ${isActive ? 'text-slate-900' : 'text-slate-600'}`}>
+                      <h3 className={`text-sm lg:text-lg font-black whitespace-nowrap ${isActive ? 'text-slate-900' : 'text-slate-600'}`}>
                         {tab.label}
                       </h3>
-                      <p className="text-xs font-semibold text-slate-400 mt-0.5">
+                      <p className="text-[10px] lg:text-xs font-semibold text-slate-400 mt-0.5 whitespace-nowrap">
                         {tab.tag}
                       </p>
                     </div>
@@ -518,7 +522,7 @@ export default function Home() {
       {/* ── WHY CHOOSE US (Highlights Cards) ── */}
       <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest text-orange-500 uppercase">
               The Academy Standards
@@ -533,8 +537,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {highlights.map((item) => (
-              <div 
-                key={item.title} 
+              <div
+                key={item.title}
                 className={`rounded-[2rem] p-8 border hover:shadow-xl transition-all duration-300 ${item.bg}`}
               >
                 <span className="inline-flex items-center justify-center text-4xl p-4 bg-white rounded-2xl border border-slate-100 shadow-sm mb-6">
@@ -563,7 +567,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
+
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest text-orange-500 uppercase">
               Parent Community
@@ -578,8 +582,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <div 
-                key={t.name} 
+              <div
+                key={t.name}
                 className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-lg relative hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 {/* Decorative Quotation Mark */}
@@ -594,7 +598,7 @@ export default function Home() {
                       <span key={i} className="text-lg">★</span>
                     ))}
                   </div>
-                  
+
                   <p className="text-slate-600 text-sm italic leading-relaxed font-medium">
                     &ldquo;{t.quote}&rdquo;
                   </p>
@@ -625,7 +629,7 @@ export default function Home() {
       {/* ── FAQ ACCORDION SECTION (Goddard School style) ── */}
       <section className="py-20 md:py-28 bg-white" id="parent-resources">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="text-center mb-16 space-y-4">
             <span className="text-xs font-bold tracking-widest text-sky-500 uppercase">
               Frequently Asked Questions
@@ -642,13 +646,12 @@ export default function Home() {
             {faqs.map((faq, idx) => {
               const isOpen = activeFaqIndex === idx;
               return (
-                <div 
-                  key={faq.question} 
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
-                    isOpen 
-                      ? 'border-orange-500/80 shadow-md shadow-orange-500/5' 
+                <div
+                  key={faq.question}
+                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
+                      ? 'border-orange-500/80 shadow-md shadow-orange-500/5'
                       : 'border-slate-200 hover:border-slate-800'
-                  }`}
+                    }`}
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
@@ -660,10 +663,9 @@ export default function Home() {
                     </span>
                   </button>
 
-                  <div 
-                    className={`transition-all duration-300 ease-in-out ${
-                      isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
-                    }`}
+                  <div
+                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
+                      }`}
                   >
                     <div className="px-6 py-5 text-sm md:text-base text-slate-500 leading-relaxed font-medium bg-[#FAF8F5]/30">
                       {faq.answer}
@@ -695,22 +697,22 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative z-10 flex-shrink-0">
               {!isLoggedIn ? (
-                <Link 
-                  href="/signup" 
+                <Link
+                  href="/signup"
                   className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-[1.03] transition-all cursor-pointer whitespace-nowrap"
                 >
                   Enroll Now — It&apos;s Free
                 </Link>
               ) : (
-                <Link 
-                  href="/dashboard" 
+                <Link
+                  href="/dashboard"
                   className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-[1.03] transition-all cursor-pointer whitespace-nowrap"
                 >
                   View Student Dashboard
                 </Link>
               )}
-              <Link 
-                href="/courses" 
+              <Link
+                href="/courses"
                 className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-slate-800 bg-white border border-slate-200 hover:border-slate-800 shadow-sm transition-all cursor-pointer whitespace-nowrap"
               >
                 Browse Courses
