@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Only allow password reset for the designated admin email
-    if (email.toLowerCase() !== ADMIN_EMAIL) {
+    if (email !== ADMIN_EMAIL) {
       // Return a generic message to prevent email enumeration
       console.log('Admin forgot-password: email does not match admin email');
       return NextResponse.json({

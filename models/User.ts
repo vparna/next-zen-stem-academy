@@ -20,9 +20,7 @@ export async function createUser(userData: Omit<User, '_id' | 'createdAt' | 'upd
 
 export async function findUserByEmail(email: string): Promise<User | null> {
   const db = await getDatabase();
-  return db.collection<User>(COLLECTION_NAME).findOne({
-    email: { $regex: new RegExp(`^${email.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`, 'i') }
-  });
+  return db.collection<User>(COLLECTION_NAME).findOne({ email: email.toLowerCase() });
 }
 
 export async function findUserById(id: string | ObjectId): Promise<User | null> {
