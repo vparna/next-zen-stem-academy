@@ -3,6 +3,7 @@
 
 import { MongoClient } from 'mongodb';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/NextGen';
 
@@ -17,21 +18,23 @@ async function createAdminUser() {
     const usersCollection = db.collection('users');
     
     // Check if admin user already exists
-    const existingAdmin = await usersCollection.findOne({ email: 'admin@nextgen.com' });
+    const existingAdmin = await usersCollection.findOne({ email: 'admin@nextzenacademy.com' });
     
     if (existingAdmin) {
-      console.log('ℹ️  Admin user already exists with email: admin@nextgen.com');
+      console.log('ℹ️  Admin user already exists with email: admin@nextzenacademy.com');
       console.log('   You can login with this account.');
-      console.log('\n⚠️  If you forgot the password, please reset it through the database directly.');
+      console.log('\n💡 To set or reset the password, call the POST /api/admin/invite endpoint');
+      console.log('   or use the forgot password flow at /forgot-password.');
       return;
     }
     
-    // Generate a random password
-    const randomPassword = Math.random().toString(36).slice(-10) + Math.random().toString(36).slice(-10);
+    // Create admin user with a random unusable password
+    // The admin will set their password via the setup email
+    const randomPassword = crypto.randomBytes(32).toString('hex');
     const hashedPassword = await bcrypt.hash(randomPassword, 10);
     
     await usersCollection.insertOne({
-      email: 'admin@nextgen.com',
+      email: 'admin@nextzenacademy.com',
       password: hashedPassword,
       firstName: 'Admin',
       lastName: 'User',
@@ -42,10 +45,9 @@ async function createAdminUser() {
     });
     
     console.log('✅ Admin user created successfully!');
-    console.log('   Email: admin@nextgen.com');
-    console.log(`   Password: ${randomPassword}`);
-    console.log('\n⚠️  IMPORTANT: Save this password securely! It will not be shown again.');
-    console.log('   Please change the password after first login!');
+    console.log('   Email: admin@nextzenacademy.com');
+    console.log('\n📧 To set the admin password, call POST /api/admin/invite');
+    console.log('   This will send a password setup email to admin@nextzenacademy.com.');
     
   } catch (error) {
     console.error('❌ Error creating admin user:', error);

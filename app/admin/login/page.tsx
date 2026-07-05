@@ -109,7 +109,7 @@ export default function AdminLoginPage() {
                 value={formData.email}
                 onChange={handleChange}
                 className="appearance-none relative block w-full px-4 py-2.5 border border-slate-200 placeholder-slate-400 text-slate-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400 sm:text-sm"
-                placeholder="admin@nextgen.com"
+                placeholder="admin@nextzenacademy.com"
               />
             </div>
 
