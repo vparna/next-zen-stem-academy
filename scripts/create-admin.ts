@@ -24,6 +24,7 @@ async function createAdminUser() {
       console.log('ℹ️  Admin user already exists with email: admin@nextzenacademy.com');
       console.log('   You can login with this account.');
       console.log('\n💡 To set or reset the password, call the POST /api/admin/invite endpoint');
+      console.log('   with body: { "secret": "<ADMIN_INVITE_SECRET>" }');
       console.log('   or use the forgot password flow at /forgot-password.');
       return;
     }
@@ -47,6 +48,7 @@ async function createAdminUser() {
     console.log('✅ Admin user created successfully!');
     console.log('   Email: admin@nextzenacademy.com');
     console.log('\n📧 To set the admin password, call POST /api/admin/invite');
+    console.log('   with body: { "secret": "<ADMIN_INVITE_SECRET>" }');
     console.log('   This will send a password setup email to admin@nextzenacademy.com.');
     
   } catch (error) {

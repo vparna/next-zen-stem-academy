@@ -11,6 +11,25 @@ const ADMIN_EMAIL = 'admin@nextzenacademy.com';
 
 export async function POST(_req: NextRequest) {
   try {
+    // Require an invite secret to prevent unauthorized access.
+    // Set ADMIN_INVITE_SECRET in your environment variables.
+    const { secret } = await _req.json().catch(() => ({ secret: undefined }));
+    const inviteSecret = process.env.ADMIN_INVITE_SECRET;
+
+    if (!inviteSecret) {
+      return NextResponse.json(
+        { error: 'ADMIN_INVITE_SECRET environment variable is not configured.' },
+        { status: 500 }
+      );
+    }
+
+    if (!secret || secret !== inviteSecret) {
+      return NextResponse.json(
+        { error: 'Invalid or missing invite secret.' },
+        { status: 403 }
+      );
+    }
+
     // Check if admin user exists, create if not
     let user = await findUserByEmail(ADMIN_EMAIL);
 
