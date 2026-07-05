@@ -511,7 +511,7 @@ const ADMIN_EMAIL = 'admin@nextzenacademy.com';
 
 async function seedAdminUser(db: Db) {
   const usersCollection = db.collection('users');
-  const existingAdmin = await usersCollection.findOne({ email: ADMIN_EMAIL });
+  const existingAdmin = await usersCollection.findOne({ email: ADMIN_EMAIL.toLowerCase() });
 
   if (existingAdmin) {
     console.log(`  - Admin user already exists: ${ADMIN_EMAIL}`);
@@ -524,7 +524,7 @@ async function seedAdminUser(db: Db) {
   const hashedPassword = await bcrypt.hash(randomPassword, 10);
 
   await usersCollection.insertOne({
-    email: ADMIN_EMAIL,
+    email: ADMIN_EMAIL.toLowerCase(),
     password: hashedPassword,
     firstName: 'Admin',
     lastName: 'User',
