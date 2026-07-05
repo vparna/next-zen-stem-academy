@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
     // Send email only to admin@nextzenacademy.com
     try {
       const template = emailTemplates.passwordReset(user.firstName, resetLink);
-      await sendEmail(ADMIN_EMAIL, template, user._id, 'password-reset');
+      await sendEmail(ADMIN_EMAIL, template, user._id!, 'password-reset');
 
       return NextResponse.json({
         message: 'If this is the admin account, a password reset link has been sent.',
