@@ -163,6 +163,23 @@ export const emailTemplates = {
     `,
     text: `Password Reset Request. Hi ${userName}, We received a request to reset your password for your NextZen Academy account. Click the link below to reset your password. This link will expire in 1 hour: ${resetLink}. If you didn't request a password reset, please ignore this email or contact support if you have concerns. Best regards, NextZen Academy Team`,
   }),
+
+  adminSetup: (userName: string, setupLink: string): EmailTemplate => ({
+    subject: 'Set Up Your Admin Account - NextZen Academy',
+    html: `
+      <h2>Welcome to NextZen Academy Admin!</h2>
+      <p>Hi ${userName},</p>
+      <p>An admin account has been created for you at NextZen Academy.</p>
+      <p>Click the link below to set your password and activate your account. This link will expire in 1 hour:</p>
+      <p><a href="${setupLink}" style="display: inline-block; padding: 10px 20px; background-color: #f97316; color: white; text-decoration: none; border-radius: 5px;">Set Up Your Password</a></p>
+      <p>Or copy and paste this link into your browser:</p>
+      <p>${setupLink}</p>
+      <p>Once you set your password, you can log in at the admin login page.</p>
+      <p>If you did not expect this email, please ignore it.</p>
+      <p>Best regards,<br>NextZen Academy Team</p>
+    `,
+    text: `Welcome to NextZen Academy Admin! Hi ${userName}, An admin account has been created for you at NextZen Academy. Click the link below to set your password and activate your account. This link will expire in 1 hour: ${setupLink}. Once you set your password, you can log in at the admin login page. If you did not expect this email, please ignore it. Best regards, NextZen Academy Team`,
+  }),
 };
 
 // Send email function
@@ -285,6 +302,9 @@ export async function sendNotificationEmail(
       break;
     case 'password-reset':
       template = emailTemplates.passwordReset(templateData.userName, templateData.resetLink);
+      break;
+    case 'admin-setup':
+      template = emailTemplates.adminSetup(templateData.userName, templateData.setupLink);
       break;
     default:
       return false;
