@@ -141,12 +141,19 @@ export default function AdminLoginPage() {
             </button>
           </div>
 
-          <p className="text-center text-sm text-slate-600">
-            Not an admin?{' '}
-            <Link href="/login" className="font-medium text-orange-500 hover:text-orange-600">
-              Go to user login
-            </Link>
-          </p>
+          <div className="text-center space-y-2">
+            <p className="text-sm text-slate-600">
+              <Link href="/admin/forgot-password" className="font-medium text-orange-500 hover:text-orange-600">
+                Forgot password?
+              </Link>
+            </p>
+            <p className="text-sm text-slate-600">
+              Not an admin?{' '}
+              <Link href="/login" className="font-medium text-orange-500 hover:text-orange-600">
+                Go to user login
+              </Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>
