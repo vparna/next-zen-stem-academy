@@ -10,7 +10,10 @@ const ADMIN_EMAIL = 'admin@nextzenacademy.com';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
+    const { email: rawEmail } = await req.json();
+
+    // Normalize email to lowercase
+    const email = rawEmail?.toLowerCase();
 
     // Validate required field
     if (!email) {
@@ -23,6 +26,7 @@ export async function POST(req: NextRequest) {
     // Only allow password reset for the designated admin email
     if (email.toLowerCase() !== ADMIN_EMAIL) {
       // Return a generic message to prevent email enumeration
+      console.log('Admin forgot-password: email does not match admin email');
       return NextResponse.json({
         message: 'If this is the admin account, a password reset link has been sent.',
       });
@@ -33,6 +37,7 @@ export async function POST(req: NextRequest) {
 
     if (!user) {
       // Return same generic message to prevent enumeration
+      console.log('Admin forgot-password: admin user not found in database');
       return NextResponse.json({
         message: 'If this is the admin account, a password reset link has been sent.',
       });
@@ -40,6 +45,7 @@ export async function POST(req: NextRequest) {
 
     // Verify the user has admin role
     if (user.role !== 'admin') {
+      console.log('Admin forgot-password: user found but role is not admin:', user.role);
       return NextResponse.json({
         message: 'If this is the admin account, a password reset link has been sent.',
       });

@@ -8,7 +8,10 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password, firstName, lastName, phone, role } = await req.json();
+    const { email: rawEmail, password, firstName, lastName, phone, role } = await req.json();
+    
+    // Normalize email to lowercase
+    const email = rawEmail?.toLowerCase();
     
     // Validate required fields
     if (!email || !password || !firstName || !lastName) {
