@@ -7,6 +7,8 @@
 // 4. Seed initial data (courses and jobs)
 
 import { MongoClient, Db } from 'mongodb';
+import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 
 // Check if MONGODB_URI is set
 if (!process.env.MONGODB_URI) {
@@ -505,6 +507,37 @@ async function seedCollection(db: Db, collectionName: string, data: any[]) {
   }
 }
 
+const ADMIN_EMAIL = 'admin@nextzenacademy.com';
+
+async function seedAdminUser(db: Db) {
+  const usersCollection = db.collection('users');
+  const existingAdmin = await usersCollection.findOne({ email: ADMIN_EMAIL });
+
+  if (existingAdmin) {
+    console.log(`  - Admin user already exists: ${ADMIN_EMAIL}`);
+    return false;
+  }
+
+  // Create admin user with a random unusable password.
+  // The admin will set their real password via POST /api/admin/invite.
+  const randomPassword = crypto.randomBytes(32).toString('hex');
+  const hashedPassword = await bcrypt.hash(randomPassword, 10);
+
+  await usersCollection.insertOne({
+    email: ADMIN_EMAIL,
+    password: hashedPassword,
+    firstName: 'Admin',
+    lastName: 'User',
+    phone: '+1234567890',
+    role: 'admin',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+
+  console.log(`  ✓ Created admin user: ${ADMIN_EMAIL}`);
+  return true;
+}
+
 async function initializeDatabase() {
   const client = new MongoClient(MONGODB_URI);
 
@@ -546,8 +579,13 @@ async function initializeDatabase() {
     console.log('\n  Seeding jobs:');
     await seedCollection(db, 'jobs', sampleJobs);
 
-    // Step 4: List all collections
-    console.log('\n📋 STEP 4: Database Summary');
+    // Step 4: Create admin user
+    console.log('\n👤 STEP 4: Creating Admin User');
+    console.log('-'.repeat(60));
+    await seedAdminUser(db);
+
+    // Step 5: List all collections
+    console.log('\n📋 STEP 5: Database Summary');
     console.log('-'.repeat(60));
     const allCollections = await db.listCollections().toArray();
     console.log(`\n  Total collections: ${allCollections.length}`);
@@ -563,7 +601,10 @@ async function initializeDatabase() {
     console.log(`   - ${allCollections.length} collections created`);
     console.log(`   - ${sampleCourses.length} sample courses`);
     console.log(`   - ${sampleJobs.length} sample jobs`);
+    console.log('   - Admin user (admin@nextzenacademy.com)');
     console.log('   - Indexes for optimized queries');
+    console.log('\n📧 To set the admin password, call POST /api/admin/invite');
+    console.log('   with body: { "secret": "<ADMIN_INVITE_SECRET>" }');
     console.log('\n🚀 You can now start using the application!');
     
   } catch (error) {
