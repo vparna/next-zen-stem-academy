@@ -250,7 +250,7 @@ export default function Navbar() {
                   href="/stem-labs"
                   className="hover:text-orange-500 transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-orange-50/40 active:scale-95"
                 >
-                  STEM Labs
+                  STEAM Labs
                   <span className="absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-orange-500 to-amber-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-300" />
                 </Link>
                 <Link
@@ -463,7 +463,7 @@ export default function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50 hover:text-orange-500 transition-all duration-200"
               >
-                <span className="text-base">🤖</span> <span className="text-xs uppercase tracking-wider">STEM Labs</span>
+                <span className="text-base">🤖</span> <span className="text-xs uppercase tracking-wider">STEAM Labs</span>
               </Link>
               <Link
                 href="/summer-camps"
