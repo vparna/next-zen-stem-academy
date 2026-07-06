@@ -7,7 +7,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [authState, setAuthState] = useState<{isLoggedIn: boolean; userName: string}>({
+  const [authState, setAuthState] = useState<{ isLoggedIn: boolean; userName: string }>({
     isLoggedIn: false,
     userName: ''
   });
@@ -104,11 +104,10 @@ export default function Sidebar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 relative group ${
-                    isActive(link.href)
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 relative group ${isActive(link.href)
                       ? 'text-orange-500'
                       : 'text-slate-700 hover:text-orange-500'
-                  }`}
+                    }`}
                 >
                   {link.label}
                   <span className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-orange-500 to-sky-500 transition-transform origin-left duration-200 ${isActive(link.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
@@ -170,9 +169,8 @@ export default function Sidebar() {
 
       {/* Slide-in Sidebar */}
       <aside
-        className={`fixed top-[67px] left-0 bottom-0 w-72 bg-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out flex flex-col ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-[67px] left-0 bottom-0 w-72 bg-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         {/* Accent strip */}
         <div className="h-1 w-full bg-gradient-to-r from-orange-500 via-amber-400 to-sky-500" />
@@ -199,11 +197,10 @@ export default function Sidebar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group font-medium ${
-                  isActive(link.href)
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group font-medium ${isActive(link.href)
                     ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200'
                     : 'text-slate-700 hover:bg-slate-50 hover:text-orange-500'
-                }`}
+                  }`}
               >
                 <span className="text-xl">{link.icon}</span>
                 <span>{link.label}</span>
@@ -219,11 +216,10 @@ export default function Sidebar() {
             {authState.isLoggedIn && (
               <Link
                 href="/dashboard"
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
-                  isActive('/dashboard')
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${isActive('/dashboard')
                     ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200'
                     : 'text-slate-700 hover:bg-slate-50 hover:text-orange-500'
-                }`}
+                  }`}
               >
                 <span className="text-xl">📊</span>
                 <span>Dashboard</span>
