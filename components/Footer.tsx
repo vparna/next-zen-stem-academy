@@ -18,12 +18,12 @@ export default function Footer() {
           {/* About */}
           <div>
             <div className="flex items-center mb-4">
-              <div className="relative overflow-hidden rounded-lg border border-slate-700/50 h-14 aspect-[16/9]">
+              <div className="relative h-12 w-44">
                 <Image
-                  src={`${basePath}/brand-logo.jpeg`}
+                  src={`${basePath}/brand-logo2.png`}
                   alt="NextZen Academy Logo"
                   fill
-                  className="object-cover"
+                  className="object-contain object-left"
                 />
               </div>
             </div>
