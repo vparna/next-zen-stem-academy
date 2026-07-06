@@ -357,7 +357,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
               <div className="relative h-12 w-44">
                 <Image 
-                  src={`${basePath}/brand-logo3.png`}
+                  src={`${basePath}/brand-logo4.png`}
                   alt="NextZen Academy Logo" 
                   fill
                   className="object-contain object-left"
