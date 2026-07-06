@@ -109,7 +109,7 @@ export default function AdminLoginPage() {
                 value={formData.email}
                 onChange={handleChange}
                 className="appearance-none relative block w-full px-4 py-2.5 border border-slate-200 placeholder-slate-400 text-slate-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-300 focus:border-orange-400 sm:text-sm"
-                placeholder="admin@nextgen.com"
+                placeholder="admin@nextzenacademy.com"
               />
             </div>
 
@@ -141,12 +141,19 @@ export default function AdminLoginPage() {
             </button>
           </div>
 
-          <p className="text-center text-sm text-slate-600">
-            Not an admin?{' '}
-            <Link href="/login" className="font-medium text-orange-500 hover:text-orange-600">
-              Go to user login
-            </Link>
-          </p>
+          <div className="text-center space-y-2">
+            <p className="text-sm text-slate-600">
+              <Link href="/admin/forgot-password" className="font-medium text-orange-500 hover:text-orange-600">
+                Forgot password?
+              </Link>
+            </p>
+            <p className="text-sm text-slate-600">
+              Not an admin?{' '}
+              <Link href="/login" className="font-medium text-orange-500 hover:text-orange-600">
+                Go to user login
+              </Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>
