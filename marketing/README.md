@@ -121,7 +121,7 @@ A beautiful, professional WhatsApp marketing flyer featuring:
 - **Benefits section** highlighting our 3S Philosophy
 - **Updated contact information**:
   - Email: admin@nextzenacademy.com
-  - Phone: (425) 374-1463
+  - Phone: +1 (425) 325-0431
   - Website: www.nextzenacademy.com
 - **Available in JPEG format** (`flyer.jpeg`) ready for sharing
 
@@ -246,7 +246,7 @@ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 Find the footer section in `flyer.html` and update:
 ```html
 <div class="contact-item">📧 admin@nextzenacademy.com</div>
-<div class="contact-item">📱 (425) 374-1463</div>
+<div class="contact-item">📱 +1 (425) 325-0431</div>
 <div class="contact-item">🌐 www.nextzenacademy.com</div>
 ```
 

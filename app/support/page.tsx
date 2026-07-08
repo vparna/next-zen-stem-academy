@@ -111,7 +111,7 @@ export default function SupportPage() {
               </h2>
               <div className="space-y-4 text-sm text-slate-600">
                 <p><strong className="text-slate-800">My Profile:</strong> Access your <Link href="/dashboard" className="text-orange-500 hover:underline font-medium">Dashboard</Link> to update personal information and contact details.</p>
-                <p><strong className="text-slate-800">My Children:</strong> Add children, view their information, enroll them in courses, and track each child's progress from your Dashboard.</p>
+                <p><strong className="text-slate-800">My Children:</strong> Add children, view their information, enroll them in courses, and track each child&apos;s progress from your Dashboard.</p>
                 <p><strong className="text-slate-800">Sign In / Sign Up:</strong> Once logged in, the Sign In and Sign Up buttons are automatically replaced with your name, Dashboard link, and Logout button.</p>
               </div>
             </div>
@@ -162,7 +162,11 @@ export default function SupportPage() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-left min-w-52">
                 <h3 className="font-bold text-lg mb-2">📞 Phone Support</h3>
-                <p className="text-slate-300 text-sm">(425) 374-1463</p>
+                <p className="text-slate-300 text-sm">
+                  <a href="tel:+14253250431" className="hover:text-orange-400 transition-colors">
+                    +1 (425) 325-0431
+                  </a>
+                </p>
                 <p className="text-slate-500 text-xs mt-1">Mon–Fri, 9am–6pm PST</p>
               </div>
             </div>
