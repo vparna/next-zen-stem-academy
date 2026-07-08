@@ -87,7 +87,7 @@ export default function HoursPage() {
                 Contact
               </h3>
               <p className="text-gray-700">
-                Phone: (425) 374-1463<br />
+                Phone: +1 (425) 325-0431<br />
                 Email: info@nextzenacademy.com
               </p>
             </div>

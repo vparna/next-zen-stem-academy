@@ -1,22 +1,8 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function Footer() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
-    }
-  };
 
   return (
     <footer className="bg-slate-950 text-white relative">
@@ -28,45 +14,6 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Newsletter Section */}
-        <div className="border-b border-slate-800 pb-10 mb-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-            <div className="max-w-md text-center lg:text-left">
-              <h3 className="text-xl font-black text-white mb-2 tracking-tight">
-                Join the NextZen Newsletter
-              </h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Stay updated with the latest STEM resources, camp schedules, and academic tips. No spam, ever.
-              </p>
-            </div>
-            <div className="w-full lg:w-auto flex-shrink-0">
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto lg:w-96 relative">
-                <div className="relative flex-grow">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    required
-                    className="w-full bg-slate-900/60 border border-slate-800 text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all"
-                  />
-                  {subscribed && (
-                    <div className="absolute inset-0 bg-emerald-950/90 border border-emerald-800 text-emerald-400 rounded-xl px-4 py-3 text-xs font-bold flex items-center justify-center transition-all duration-300 animate-fade-in">
-                      ✓ Thank you for subscribing!
-                    </div>
-                  )}
-                </div>
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-extrabold text-sm px-6 py-3 rounded-xl transition-all shadow-md shadow-orange-500/10 hover:shadow-lg hover:shadow-orange-500/20 active:scale-[0.98] cursor-pointer whitespace-nowrap animate-pulse-subtle"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
         {/* Links & Info Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           {/* Column 1: Brand & Socials */}
@@ -198,8 +145,8 @@ export default function Footer() {
                 </div>
                 <div className="flex-1 text-slate-400 group-hover:text-slate-200 transition-colors">
                   <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Call Us</p>
-                  <a href="tel:4253741463" className="hover:text-orange-400 transition-colors">
-                    (425) 374-1463
+                  <a href="tel:+14253250431" className="hover:text-orange-400 transition-colors">
+                    +1 (425) 325-0431
                   </a>
                 </div>
               </li>
