@@ -9,6 +9,15 @@
 import { MongoClient, Db } from 'mongodb';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
+import { config } from 'dotenv';
+import { existsSync } from 'fs';
+import { resolve } from 'path';
+
+// Load environment variables from .env.local if it exists
+const envLocalPath = resolve(process.cwd(), '.env.local');
+if (existsSync(envLocalPath)) {
+  config({ path: envLocalPath });
+}
 
 // Check if MONGODB_URI is set
 if (!process.env.MONGODB_URI) {

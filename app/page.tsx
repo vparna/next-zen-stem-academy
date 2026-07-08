@@ -4,103 +4,167 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-// Static Data
-const stats = [
-  { value: '500+', label: 'Students Enrolled', icon: '🤖' },
-  { value: '98%', label: 'Parent Satisfaction', icon: '⭐' },
-  { value: '3', label: 'STEM Subjects', icon: '💡' },
-  { value: '10+', label: 'Years Experience', icon: '🏆' },
+// Static Data for Childcare Programs
+const childcarePrograms = [
+  {
+    title: 'Little Blossoms',
+    age: '6 weeks to 12 months',
+    image: '/little_blossoms.png',
+    description: 'Nurturing daycare environment focusing on sensory discovery, basic motor coordination, and secure, warm bonding.',
+    bullets: [
+      'Sensory play & exploration',
+      'Individualized care routines',
+      'Safe, hygienic play space'
+    ]
+  },
+  {
+    title: 'Tiny Explorers',
+    age: '13 to 24 months',
+    image: '/tiny_explorers.png',
+    description: 'Guided physical movement, early language building, and initial social group interactions to build confidence.',
+    bullets: [
+      'Language building & story time',
+      'Motor skills & physical coordination',
+      'Social development through play'
+    ]
+  },
+  {
+    title: 'Curious Cubs',
+    age: '2-Year-Olds',
+    image: '/curious_cubs.png',
+    description: 'Cognitive exploration, basic puzzle solving, and learning daily group routines to foster emotional growth.',
+    bullets: [
+      'Cognitive puzzles & shape sorting',
+      'Social collaboration exercises',
+      'Establishing daily group routines'
+    ]
+  },
+  {
+    title: 'Little Discoverers',
+    age: '3 to 4-Year-Olds',
+    image: '/little_discoverers.png',
+    description: 'Kindergarten readiness program featuring pre-reading, creative arts, logical thinking, and social skills.',
+    bullets: [
+      'Pre-reading & phonics introduction',
+      'Creative arts & expression sessions',
+      'Social-emotional milestone training'
+    ]
+  }
 ];
 
-const highlights = [
+// Static Data for After-School & STEM Programs
+const afterschoolPrograms = [
   {
-    icon: '🤖',
-    title: 'Hands-On Robotics',
-    description: 'We don\'t use toys. Children build and program with actual industry-grade microcontrollers, sensors, and software tools.',
-    bg: 'bg-blue-50/70 border-blue-100/50',
-    accent: 'text-blue-600',
+    title: 'Young Innovators',
+    age: 'Grades K–5 (Ages 5–10)',
+    image: '/robotics_track.png',
+    description: 'After-school care program combining academic support with initial hands-on exposure to robotics, logic puzzles, and chess.',
+    bullets: [
+      'Homework support & school tutoring',
+      'Introductory robotics & coding play',
+      'Chess basics & strategy puzzles'
+    ]
   },
   {
-    icon: '🎓',
-    title: 'Olympiad-Level Mentors',
-    description: 'Learn from math competition champions, master chess coaches, and experienced software developers who care about individual growth.',
-    bg: 'bg-orange-50/70 border-orange-100/50',
-    accent: 'text-orange-600',
-  },
-  {
-    icon: '📊',
-    title: 'Measurable Success Metrics',
-    description: 'Receive detailed monthly progress reports, certificate milestones, and chess/math tournament readiness evaluations.',
-    bg: 'bg-emerald-50/70 border-emerald-100/50',
-    accent: 'text-emerald-600',
-  },
+    title: 'Future Leaders',
+    age: 'Grades 6–12 (Ages 11–18)',
+    image: '/future_leaders.png',
+    description: 'Focuses on advanced leadership coaching, competitive chess & math preparation, and professional-grade coding projects.',
+    bullets: [
+      'Advanced coding & programming tracks',
+      'Competitive Olympiad math prep',
+      'Leadership & communication workshops'
+    ]
+  }
 ];
 
-const courses = [
+// STEM Flags
+const stemTracks = [
   {
     title: 'Robotics & Coding',
-    description: 'Build and program autonomous robots. Students learn hardware mechanics, electronic circuits, and programming in Scratch, Python, and C++.',
-    href: '/courses?category=Robotics',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80',
-    accentColor: 'orange',
-    badge: 'Ages 8–16',
+    age: 'Ages 8–16',
     price: '$99/mo',
+    image: '/robotics_track.png',
+    description: 'Build and program autonomous robots. Learn hardware mechanics, electronic circuits, and text-based coding in Python and C++.',
     bullets: [
-      'Build physical mechanical assemblies',
-      'Learn block-based & text programming',
-      'Understand sensor & motor automation'
+      'Hands-on physical hardware builds',
+      'Sensors, motors, and electronic circuits',
+      'Coding in Scratch, Python, and C++'
     ]
   },
   {
     title: 'Mathematics Mastery',
-    description: 'Make mathematics practical and engaging. We focus on conceptual mastery, logic puzzles, algebra foundation, and Olympiad competition prep.',
-    href: '/courses?category=Maths',
-    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80',
-    accentColor: 'sky',
-    badge: 'Ages 10–16',
+    age: 'Ages 10–16',
     price: '$79/mo',
+    image: '/math_kid.png',
+    description: 'Conceptual mathematics covering algebra, geometry, and logical reasoning, plus AMC/Math Kangaroo competition prep.',
     bullets: [
-      'Logical reasoning & puzzle-solving',
-      'Advanced curriculum alignment',
-      'Tournament & competition readiness'
+      'Conceptual algebra & geometry bases',
+      'Problem-solving & tournament readiness',
+      'Olympiad & competitive math training'
     ]
   },
   {
     title: 'Strategic Chess',
-    description: 'Develop focus, patience, and strategic foresight. Led by expert coaches, children master openings, middle-game tactics, and tournament play.',
-    href: '/courses?category=Chess',
-    image: 'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=800&q=80',
-    accentColor: 'emerald',
-    badge: 'Ages 6–16',
+    age: 'Ages 6–16',
     price: '$69/mo',
+    image: '/chess_kid.png',
+    description: 'Develop focus and foresight. Led by master coaches, students learn openings, mid-game tactical patterns, and tournament play.',
     bullets: [
-      'Learn tactical patterns & openings',
-      'Boost memory & calculation capacity',
-      'Participate in internal matches & ratings'
+      'Learn positional strategies & openings',
+      'Memory, calculation, and focus training',
+      'Regular rated matches & analysis'
     ]
+  }
+];
+
+const highlights = [
+  {
+    title: 'Innovative STEM Curriculum',
+    description: 'Our educators nurture, educate, and inspire your child through hands-on robotics, math, and chess curricula designed to build critical thinking and life-long skills.',
+    bg: 'bg-white border-slate-100 shadow-sm',
+    accent: 'text-brand-red',
+    btnText: 'About Our Curriculum',
+    href: '/courses',
+    image: '/robotics_kid.png',
+  },
+  {
+    title: 'Olympiad-Level Mentors',
+    description: 'Learn from mathematics competition champions, master chess coaches, and experienced software developers who are trained to focus on individual student growth.',
+    bg: 'bg-white border-slate-100 shadow-sm',
+    accent: 'text-[#005cc4]',
+    btnText: 'Meet Our Mentors',
+    href: '/about',
+    image: '/math_kid.png',
+  },
+  {
+    title: 'Collaborative STEM Community',
+    description: 'NextZen Academy is a vibrant space where children form lifelong friendships, build confidence, and collaborate on real-world engineering projects.',
+    bg: 'bg-white border-slate-100 shadow-sm',
+    accent: 'text-brand-red',
+    btnText: 'About NextZen',
+    href: '/about',
+    image: '/chess_kid.png',
   },
 ];
 
 const testimonials = [
   {
-    name: 'Sarah M.',
-    role: 'Parent of 2 (Ages 8 & 11)',
-    avatar: 'https://ui-avatars.com/api/?name=Sarah+M&background=f97316&color=fff&size=80',
-    quote: 'My daughter went from dreading math to begging for extra logic sessions. The instructors are phenomenal — patient, encouraging, and incredibly knowledgeable.',
+    name: 'Nicholas W.',
+    role: 'NextZen Parent',
+    quote: 'I love the detailed monthly reports and the multiple pictures from the labs each day. I love how much more socialized and knowledgeable my son has become in only a very short time.',
     stars: 5,
   },
   {
-    name: 'Linda N.',
-    role: 'Parent of 3 (Ages 6, 9 & 12)',
-    avatar: 'https://ui-avatars.com/api/?name=Linda+N&background=8b5cf6&color=fff&size=80',
-    quote: 'All three of my kids attend Next Zen. The chess program has dramatically improved their focus and academic grades at school. Worth every penny.',
+    name: 'Kathleen D.',
+    role: 'NextZen Parent',
+    quote: 'All of the teachers are kind, communicative, and want what is best for our children. We also love the structured curriculum, variety of activities, and projects!',
     stars: 5,
   },
   {
-    name: 'Swathi Ch.',
-    role: 'Parent of 1 (Age 10)',
-    avatar: 'https://ui-avatars.com/api/?name=Swathi+Ch&background=10b981&color=fff&size=80',
-    quote: 'The robotics program is beyond what I expected. My son built his first autonomous obstacle-evading robot in week 3. He now talks about becoming an engineer!',
+    name: 'Renee C.',
+    role: 'NextZen Parent',
+    quote: 'I feel like my child is genuinely cared for and has a good routine with a rich variety of activities. The robotics program has given them incredible confidence.',
     stars: 5,
   },
 ];
@@ -108,7 +172,11 @@ const testimonials = [
 const faqs = [
   {
     question: 'What age groups are eligible for NextZen programs?',
-    answer: 'Our core programs are designed for children aged 6 to 16. We divide students into age-appropriate and skill-level-based cohorts (e.g., Chess: 6-16, Robotics: 8-16, Mathematics: 10-16) to ensure optimal learning outcomes and peer collaboration.',
+    answer: 'We offer full-day childcare for infants from 6 weeks up to preschool age (4 years old), and after-school/STEM enrichment for school-age children up to 18 years old (K-12).',
+  },
+  {
+    question: 'Is your main focus childcare or STEM education?',
+    answer: 'Our primary focus is high-quality, secure Childcare and Daycare. On top of this nurturing foundation, we offer an integrated after-school package featuring our signature STEM, Chess, Coding, and Mathematics tracks.',
   },
   {
     question: 'Can we try a class before enrolling in a paid plan?',
@@ -124,47 +192,24 @@ const faqs = [
   },
 ];
 
-const philosophyData = {
-  stem: {
-    title: 'Inquiry-Led STEM Learning',
-    description: 'We believe active discovery is far more powerful than passive listening. Children learn by constructing physical hardware, writing code, and testing hypotheses in real-world scenarios.',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&q=80',
-    bulletTitle: 'Key Focus Areas:',
-    bullets: [
-      'Real-world problem-solving methodologies',
-      'Electronic circuits, microcontrollers, and sensory inputs',
-      'Translating math theories into robotics code logic'
-    ]
-  },
-  skills: {
-    title: 'Essential Life-Skill Development',
-    description: 'Technical knowledge is only half the equation. Our programs are designed to nurture executive functioning skills that serve children throughout their academic and personal lives.',
-    image: 'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=800&q=80',
-    bulletTitle: 'Cognitive Growth:',
-    bullets: [
-      'Patience and strategic foresight via structured chess play',
-      'Analytical reasoning and logical structure under pressure',
-      'Collaborative communication and team division of labor'
-    ]
-  },
-  success: {
-    title: 'Measurable Academic & Life Success',
-    description: 'We align our tracks to tangible outcomes. Whether prep for competitive math olympiads, official chess rating improvements, or high-school coding readiness, we track and reward every milestone.',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80',
-    bulletTitle: 'Our Milestones:',
-    bullets: [
-      'Prep for AMC 8 / Math Kangaroo competitions',
-      'Certificate of mastery and build portfolio for school applications',
-      'Confidence to tackle complex, multi-step scientific projects'
-    ]
-  }
-};
-
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activePhilosophyTab, setActivePhilosophyTab] = useState<'stem' | 'skills' | 'success'>('stem');
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+  // Interactive states
+  const [zipCode, setZipCode] = useState('');
+  const [locatorResult, setLocatorResult] = useState<string | null>(null);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [activeChildcareIndex, setActiveChildcareIndex] = useState(0);
+
+  // Inquiry form states
+  const [inquiryName, setInquiryName] = useState('');
+  const [inquiryEmail, setInquiryEmail] = useState('');
+  const [inquiryPhone, setInquiryPhone] = useState('');
+  const [inquiryProgram, setInquiryProgram] = useState('Little Blossoms');
+  const [inquiryMessage, setInquiryMessage] = useState('');
+  const [privacyConsent, setPrivacyConsent] = useState(false);
+  const [inquiryStatus, setInquiryStatus] = useState<string | null>(null);
 
   useEffect(() => {
     const checkAuth = () => {
@@ -182,336 +227,261 @@ export default function Home() {
     setActiveFaqIndex(activeFaqIndex === index ? null : index);
   };
 
+  const handleLocatorSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!zipCode.trim()) {
+      setLocatorResult('Please enter a city, state, or zip code.');
+      return;
+    }
+    setLocatorResult('Searching for nearest NextZen STEM & Childcare Lab...');
+    setTimeout(() => {
+      setLocatorResult(
+        `✓ NextZen Academy Silicon Valley Lab (1.2 miles away) - NOW ENROLLING for Childcare & STEM!`
+      );
+    }, 600);
+  };
+
+  const handleUseMyLocation = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setZipCode('94043');
+    setLocatorResult('Searching based on your location...');
+    setTimeout(() => {
+      setLocatorResult(
+        `✓ NextZen Academy Mountain View Lab (0.8 miles away) - NOW ENROLLING for Childcare & STEM!`
+      );
+    }, 600);
+  };
+
+  const handleInquirySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inquiryName || !inquiryEmail || !inquiryPhone || !inquiryMessage) {
+      setInquiryStatus('❌ Please fill in all required fields.');
+      return;
+    }
+    if (!privacyConsent) {
+      setInquiryStatus('❌ You must agree to the privacy policy to submit.');
+      return;
+    }
+    setInquiryStatus('Sending inquiry...');
+    setTimeout(() => {
+      setInquiryStatus(
+        '✓ Thank you! Your inquiry has been received. Our enrollment coordinator will reach out to you shortly.'
+      );
+      // Reset form
+      setInquiryName('');
+      setInquiryEmail('');
+      setInquiryPhone('');
+      setInquiryMessage('');
+      setPrivacyConsent(false);
+    }, 800);
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonialIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="bg-[#FAF8F5] text-slate-800 overflow-x-hidden font-sans">
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
+    <div className="bg-[#FAF8F5] text-[#1f2e57] overflow-x-hidden font-sans">
+
       {/* ── HERO SECTION ── */}
-      <section className="relative bg-gradient-to-b from-[#FFFDFB] via-[#FAF6F0] to-[#FAF8F5] pt-12 pb-24 md:py-24 lg:py-32 overflow-hidden">
-        {/* Decorative Background Accents */}
-        <div className="absolute top-[-10%] left-[-5%] w-[40rem] h-[40rem] rounded-full bg-orange-100/30 filter blur-[80px] pointer-events-none" />
-        <div className="absolute bottom-[10%] right-[-5%] w-[35rem] h-[35rem] rounded-full bg-sky-100/40 filter blur-[80px] pointer-events-none" />
+      <section className="relative w-full min-h-[640px] lg:min-h-[760px] flex items-center justify-start overflow-hidden">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-8 text-left">
-              <span className="inline-flex items-center gap-2 bg-orange-50 border border-orange-200/60 px-4 py-1.5 rounded-full text-xs font-bold text-orange-600 uppercase tracking-wider shadow-sm animate-fade-in-up">
-                🚀 Future-Ready STEM Education
-              </span>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                Spark Curiosity. <br />
-                <span className="bg-gradient-to-r from-orange-500 via-amber-500 to-sky-500 bg-clip-text text-transparent">
-                  Build Brilliance.
-                </span>
-              </h1>
-
-              <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
-                NextZen Academy offers a premium learning experience through Robotics, Mathematics, and Chess programs that empower children to design, analyze, and build with confidence.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                <Link
-                  href="/courses"
-                  className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 hover:scale-[1.03] transition-all cursor-pointer"
-                >
-                  Explore Programs
-                </Link>
-                {!isLoggedIn && (
-                  <Link
-                    href="/signup"
-                    className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-slate-800 bg-white border-2 border-slate-200 hover:border-slate-800 hover:bg-slate-50 shadow-sm transition-all cursor-pointer"
-                  >
-                    Book Free Trial
-                  </Link>
-                )}
-              </div>
-
-              {/* Trust Badges */}
-              <div className="pt-6 border-t border-slate-200/50">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Our Standards of Excellence</p>
-                <div className="flex flex-wrap gap-4">
-                  {['⭐ 4.9/5 Parent Rating', '🎓 500+ Active Students', '🏆 Award-Winning Pedagogy'].map((badge) => (
-                    <span
-                      key={badge}
-                      className="inline-flex items-center gap-1.5 bg-white/70 backdrop-blur-sm border border-slate-200/50 rounded-xl px-4 py-2 text-xs font-bold text-slate-700 shadow-sm"
-                    >
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Media Column */}
-            <div className="lg:col-span-5 relative flex justify-center items-center">
-              {/* Organic Frame Image Container */}
-              <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-[3.5rem] rounded-tr-[9rem] rounded-bl-[9rem] overflow-hidden border-8 border-white shadow-2xl relative">
-                <Image
-                  src={`${basePath}/hero_img.png`}
-                  alt="Children collaborating on educational project"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
-              </div>
-
-              {/* Floating Element 1: Robotics */}
-              <div className="absolute -top-6 -left-6 bg-white/95 backdrop-blur shadow-xl rounded-2xl p-4 border border-orange-100/80 flex items-center gap-3 animate-bounce-slow">
-                <span className="text-2xl">🤖</span>
-                <div>
-                  <p className="text-xs font-extrabold text-slate-800 leading-tight">Robotics Lab</p>
-                  <p className="text-[10px] font-bold text-orange-500">100% Hands-on Coding</p>
-                </div>
-              </div>
-
-              {/* Floating Element 2: Chess */}
-              <div className="absolute -bottom-4 -right-4 bg-white/95 backdrop-blur shadow-xl rounded-2xl p-4 border border-sky-100/80 flex items-center gap-3 animate-bounce-delayed">
-                <span className="text-2xl">♟️</span>
-                <div>
-                  <p className="text-xs font-extrabold text-slate-800 leading-tight">Chess Mastery</p>
-                  <p className="text-[10px] font-bold text-sky-500">Logic & Concentration</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
+        {/* Full-bleed hero image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero_img.png"
+            alt="Children collaborating on science and STEM activities at NextZen Academy"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Dark navy gradient — left solid, fading right to reveal photo */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#060f1e]/92 via-[#060f1e]/70 to-[#060f1e]/10" />
+          {/* Subtle vertical vignette for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#060f1e]/40 via-transparent to-transparent" />
         </div>
 
-        {/* Custom SVG Wave bottom transition border */}
-        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-10 translate-y-[1px]">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[32px] md:h-[50px] fill-current text-white">
-            <path d="M0,0 C150,90 350,120 600,100 C850,80 1050,90 1200,60 L1200,120 L0,120 Z" />
-          </svg>
-        </div>
-      </section>
+        {/* Content */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
+          <div className="max-w-2xl">
 
-      {/* ── STATS BANNER (Floating Overlap) ── */}
-      {/* <section className="relative z-20 bg-white mt-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="-mt-16 md:-mt-20 bg-white rounded-[2.5rem] border border-slate-200/50 shadow-xl shadow-slate-100/80 p-8 md:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-              {stats.map((s, idx) => (
-                <div key={s.label} className={`flex flex-col items-center justify-center ${idx >= 2 ? 'pt-6 md:pt-0' : ''}`}>
-                  <span className="text-3xl mb-2">{s.icon}</span>
-                  <p className="text-3xl md:text-4xl font-black text-slate-900 mb-1">{s.value}</p>
-                  <p className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">{s.label}</p>
+            {/* Badge */}
+            <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/40 px-4 py-2 rounded-full text-xs font-black text-orange-300 uppercase tracking-widest mb-8">
+              🚀 Premium Childcare &amp; STEM Academy
+            </span>
+
+            {/* Headline */}
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08] mb-6">
+              Where{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300 italic">
+                Curiosity
+              </span>{' '}
+              Builds Brilliance
+            </h1>
+
+            {/* Description */}
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium mb-10 max-w-xl">
+              NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEM enrichment — nurturing every child from infancy through high school.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 mb-12">
+              <button
+                onClick={() => scrollToSection('childcare-programs')}
+                className="bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              >
+                Preschool &amp; Daycare
+              </button>
+              <button
+                onClick={() => scrollToSection('afterschool-programs')}
+                className="bg-white/10 border border-white/25 hover:bg-white/18 hover:border-white/40 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+              >
+                After-School &amp; STEM
+              </button>
+            </div>
+
+            {/* Trust Stats */}
+            <div className="flex flex-wrap gap-8 border-t border-white/10 pt-8">
+              {[
+                { value: '6', label: 'Age Programs', icon: '🎓' },
+                { value: '15+', label: 'STEM Courses', icon: '🔬' },
+                { value: '98%', label: 'Parent Satisfaction', icon: '⭐' },
+              ].map((stat) => (
+                <div key={stat.label} className="flex items-center gap-3">
+                  <span className="text-2xl">{stat.icon}</span>
+                  <div>
+                    <div className="text-2xl font-black text-white leading-none">{stat.value}</div>
+                    <div className="text-xs text-slate-400 font-semibold mt-0.5 uppercase tracking-wide">{stat.label}</div>
+                  </div>
                 </div>
               ))}
             </div>
+
           </div>
         </div>
-      </section> */}
 
-      {/* ── FLAGSHIP PROGRAMS (Goddard & Bright Horizons style) ── */}
-      <section className="py-20 md:py-28 bg-white" id="stem-labs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-bold tracking-widest text-orange-500 uppercase">
-              Curriculum Core
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-              Flagship Learning Tracks
-            </h2>
-            <p className="text-slate-500 text-base md:text-lg">
-              Expert-designed curricula structured around child cognitive growth milestones. Pick a discipline and watch your child shine.
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {courses.map((course) => {
-              // Accent color mapping
-              const isRobotics = course.accentColor === 'orange';
-              const isMath = course.accentColor === 'sky';
-
-              const borderAccentClass = isRobotics
-                ? 'group-hover:border-orange-200'
-                : isMath
-                  ? 'group-hover:border-sky-200'
-                  : 'group-hover:border-emerald-200';
-
-              const badgeColorClass = isRobotics
-                ? 'bg-orange-500 text-white'
-                : isMath
-                  ? 'bg-sky-500 text-white'
-                  : 'bg-emerald-500 text-white';
-
-              const textAccentClass = isRobotics
-                ? 'text-orange-600 bg-orange-50'
-                : isMath
-                  ? 'text-sky-600 bg-sky-50'
-                  : 'text-emerald-600 bg-emerald-50';
-
-              return (
-                <div
-                  key={course.title}
-                  className={`group rounded-[2.5rem] overflow-hidden border border-slate-100/80 bg-white hover:shadow-2xl transition-all duration-300 flex flex-col ${borderAccentClass}`}
-                >
-                  {/* Card Image */}
-                  <div className="relative h-60 w-full overflow-hidden">
-                    <Image
-                      src={course.image}
-                      alt={course.title}
-                      fill
-                      className="object-cover group-hover:scale-[1.04] transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
-
-                    {/* Age Badge */}
-                    <span className={`absolute top-4 left-4 text-xs font-extrabold px-3 py-1.5 rounded-full shadow ${badgeColorClass}`}>
-                      {course.badge}
-                    </span>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-8 flex-1 flex flex-col justify-between space-y-6">
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl md:text-2xl font-black text-slate-900">
-                          {course.title}
-                        </h3>
-                        <span className={`text-xs font-black px-3.5 py-1 rounded-full ${textAccentClass}`}>
-                          {course.price}
-                        </span>
-                      </div>
-
-                      <p className="text-sm text-slate-500 leading-relaxed">
-                        {course.description}
-                      </p>
-
-                      {/* Scannable Curricula Bullets */}
-                      <ul className="space-y-2 pt-2">
-                        {course.bullets.map((bullet) => (
-                          <li key={bullet} className="flex items-start gap-2 text-xs font-semibold text-slate-700">
-                            <span className="text-emerald-500 flex-shrink-0 mt-0.5">✓</span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <Link
-                      href={course.href}
-                      className="inline-flex items-center gap-2 text-sm font-extrabold text-orange-500 hover:text-orange-600 transition-colors group/link pt-4"
-                    >
-                      Explore Track Details
-                      <span className="transform group-hover/link:translate-x-1.5 transition-transform duration-200">
-                        →
-                      </span>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
+        {/* Bottom wave into next section */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full block">
+            <path d="M0 60L80 52C160 44 320 28 480 22C640 16 800 28 960 34C1120 40 1280 40 1360 40L1440 40V60H0Z" fill="#ffffff" />
+          </svg>
         </div>
       </section>
 
-      {/* ── THE NEXTZEN WAY (3S Philosophy with Tabs) ── */}
-      <section className="py-20 md:py-28 bg-[#F6F8FB] relative" id="nextzen-way">
-        {/* Small SVG curve for section transition */}
-        <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 -translate-y-[1px]">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[24px] md:h-[40px] fill-current text-white rotate-180">
-            <path d="M0,0 C150,90 350,120 600,100 C850,80 1050,90 1200,60 L1200,120 L0,120 Z" />
-          </svg>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* ── SECTION 1: CHILDCARE & EARLY EDUCATION (Kiddie Academy Split Tab style) ── */}
+      <section className="py-20 bg-white" id="childcare-programs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-bold tracking-widest text-sky-500 uppercase">
-              Our Philosophy
+            <span className="text-xs font-black tracking-widest text-orange-600 uppercase">
+              Childcare & Daycare
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-              The NextZen Learning Formula
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f172a] tracking-tight">
+              Learning for Every Age
             </h2>
-            <p className="text-slate-500 text-base md:text-lg">
-              We focus on building cognitive structures that empower long-term achievement rather than short-term memorization.
+            <p className="text-[#0f172a]/70 text-base md:text-lg font-semibold">
+              Premium early education programs. Hover or click on a program to explore its custom curriculum and classroom details.
             </p>
           </div>
 
-          {/* Interactive Layout */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Interactive Split Layout */}
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
 
-            {/* Left: Tab Buttons Column */}
-            <div className="lg:col-span-5 flex flex-row lg:flex-col gap-2 overflow-x-auto no-scrollbar pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0">
-              {[
-                { key: 'stem', label: 'STEM', tag: 'Hands-on discovery', icon: '🧪', color: 'orange' },
-                { key: 'skills', label: 'Skills', tag: 'Executive functioning', icon: '🧠', color: 'sky' },
-                { key: 'success', label: 'Success', tag: 'Outcomes & Milestones', icon: '🏆', color: 'emerald' },
-              ].map((tab) => {
-                const isActive = activePhilosophyTab === tab.key;
-
-                let activeStyle = '';
-                if (isActive) {
-                  if (tab.color === 'orange') activeStyle = 'bg-white border-orange-500/80 shadow-md shadow-orange-500/5';
-                  else if (tab.color === 'sky') activeStyle = 'bg-white border-sky-500/80 shadow-md shadow-sky-500/5';
-                  else activeStyle = 'bg-white border-emerald-500/80 shadow-md shadow-emerald-500/5';
-                } else {
-                  activeStyle = 'bg-transparent border-transparent hover:bg-white/40 hover:border-slate-200';
-                }
-
+            {/* Left Column: Interactive Program Tabs */}
+            <div className="lg:col-span-5 flex flex-col gap-3 justify-center">
+              {childcarePrograms.map((program, idx) => {
+                const isActive = activeChildcareIndex === idx;
                 return (
                   <button
-                    key={tab.key}
-                    onClick={() => setActivePhilosophyTab(tab.key as 'stem' | 'skills' | 'success')}
-                    className={`p-4 lg:p-6 rounded-2xl border-2 transition-all flex items-center gap-3 lg:gap-5 flex-shrink-0 cursor-pointer ${activeStyle}`}
+                    key={program.title}
+                    onMouseEnter={() => setActiveChildcareIndex(idx)}
+                    onClick={() => setActiveChildcareIndex(idx)}
+                    className={`text-left p-6 rounded-2xl border-l-4 transition-all duration-200 cursor-pointer flex justify-between items-center ${isActive
+                      ? 'border-orange-500 bg-[#f8fafc] shadow-md text-[#0f172a]'
+                      : 'border-transparent hover:bg-slate-50 text-[#0f172a]/70'
+                      }`}
                   >
-                    <span className="text-2xl lg:text-3xl p-2 lg:p-3 rounded-xl bg-[#FAF8F5] border border-slate-100 shadow-sm flex-shrink-0">
-                      {tab.icon}
-                    </span>
                     <div>
-                      <h3 className={`text-sm lg:text-lg font-black whitespace-nowrap ${isActive ? 'text-slate-900' : 'text-slate-600'}`}>
-                        {tab.label}
-                      </h3>
-                      <p className="text-[10px] lg:text-xs font-semibold text-slate-400 mt-0.5 whitespace-nowrap">
-                        {tab.tag}
+                      <h4 className="font-serif text-lg font-bold">
+                        {program.title}
+                      </h4>
+                      <p className="text-xs font-bold text-slate-400 mt-1">
+                        {program.age}
                       </p>
                     </div>
+                    <span className={`text-lg transition-transform duration-200 ${isActive ? 'translate-x-1.5 text-orange-500' : 'text-slate-300'}`}>
+                      →
+                    </span>
                   </button>
                 );
               })}
             </div>
 
-            {/* Right: Dynamic Display Column */}
-            <div className="lg:col-span-7 bg-white rounded-[2.5rem] border border-slate-200/50 shadow-xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
-              <div className="w-full md:w-1/2 relative aspect-square md:aspect-[3/4] rounded-2xl overflow-hidden border border-slate-100 shadow flex-shrink-0">
+            {/* Right Column: Dynamic Program Display Card */}
+            <div className="lg:col-span-7 bg-[#f8fafc]/50 rounded-[3rem] border border-slate-200/60 p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center shadow-lg relative min-h-[480px]">
+              {/* Image Frame */}
+              <div className="w-full md:w-1/2 relative aspect-square md:aspect-[3/4] rounded-3xl overflow-hidden border border-white shadow-inner flex-shrink-0">
                 <Image
-                  src={philosophyData[activePhilosophyTab].image}
-                  alt={philosophyData[activePhilosophyTab].title}
+                  src={childcarePrograms[activeChildcareIndex].image}
+                  alt={childcarePrograms[activeChildcareIndex].title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-all duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/20 via-transparent to-transparent" />
               </div>
 
-              <div className="space-y-4">
-                <h3 className="text-xl md:text-2xl font-black text-slate-900 leading-tight">
-                  {philosophyData[activePhilosophyTab].title}
-                </h3>
-                <p className="text-sm text-slate-500 leading-relaxed font-medium">
-                  {philosophyData[activePhilosophyTab].description}
-                </p>
-                <div className="space-y-2 pt-2">
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    {philosophyData[activePhilosophyTab].bulletTitle}
+              {/* Program Detail Text */}
+              <div className="flex-grow flex flex-col justify-between h-full space-y-6">
+                <div className="space-y-4">
+                  <span className="text-[10px] font-black uppercase text-orange-600 bg-orange-500/10 px-3 py-1.5 rounded-full inline-block">
+                    {childcarePrograms[activeChildcareIndex].age}
+                  </span>
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0f172a] leading-tight">
+                    {childcarePrograms[activeChildcareIndex].title}
+                  </h3>
+                  <p className="text-sm text-[#0f172a]/70 leading-relaxed font-semibold">
+                    {childcarePrograms[activeChildcareIndex].description}
                   </p>
-                  <ul className="space-y-2">
-                    {philosophyData[activePhilosophyTab].bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2 text-xs font-semibold text-slate-700">
-                        <span className="text-sky-500 mt-0.5">•</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  <div className="pt-2 border-t border-slate-200/50">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Focus & Milestones:</p>
+                    <ul className="space-y-2">
+                      {childcarePrograms[activeChildcareIndex].bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2 text-xs font-bold text-[#0f172a]/80">
+                          <span className="text-orange-500 flex-shrink-0 mt-0.5">✓</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    onClick={() => {
+                      setInquiryProgram(childcarePrograms[activeChildcareIndex].title);
+                      scrollToSection('inquiry-form-section');
+                    }}
+                    className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white transition-all duration-300 shadow-md shadow-orange-500/10 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                  >
+                    Inquire for {childcarePrograms[activeChildcareIndex].title}
+                  </button>
                 </div>
               </div>
+
             </div>
 
           </div>
@@ -519,125 +489,421 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US (Highlights Cards) ── */}
-      <section className="py-20 md:py-28 bg-white">
+      {/* ── SECTION 2: AFTER-SCHOOL & STEM ENRICHMENT ── */}
+      <section className="py-20 bg-brand-light" id="afterschool-programs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-bold tracking-widest text-orange-500 uppercase">
-              The Academy Standards
+            <span className="text-xs font-black tracking-widest text-brand-teal uppercase">
+              K-12 Student Support
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-              Why Families Choose NextZen
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary tracking-tight">
+              After-School & STEM Enrichment
             </h2>
-            <p className="text-slate-500 text-base md:text-lg">
-              We set high educational standards for children, focusing on actual conceptual development and high-quality coaching.
+            <p className="text-primary/70 text-base md:text-lg font-semibold">
+              Supporting older age groups with homework prep, leadership development, and specialized, high-tier STEM learning tracks.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {highlights.map((item) => (
+          {/* Group Classes Section */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {afterschoolPrograms.map((program) => (
               <div
-                key={item.title}
-                className={`rounded-[2rem] p-8 border hover:shadow-xl transition-all duration-300 ${item.bg}`}
+                key={program.title}
+                className="group rounded-[2.5rem] overflow-hidden border border-slate-100 bg-white hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row shadow-sm"
               >
-                <span className="inline-flex items-center justify-center text-4xl p-4 bg-white rounded-2xl border border-slate-100 shadow-sm mb-6">
-                  {item.icon}
-                </span>
-                <h3 className={`text-lg md:text-xl font-black mb-3 ${item.accent}`}>
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-medium">
-                  {item.description}
-                </p>
+                {/* Image */}
+                <div className="relative h-56 md:h-auto md:w-2/5 flex-shrink-0 overflow-hidden">
+                  <Image
+                    src={program.image}
+                    alt={program.title}
+                    fill
+                    className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
+                  <div className="space-y-3">
+                    <span className="text-[10px] font-black uppercase text-brand-teal bg-brand-teal/10 px-2.5 py-1 rounded-full">
+                      {program.age}
+                    </span>
+                    <h3 className="font-serif text-xl font-bold text-primary">
+                      {program.title}
+                    </h3>
+                    <p className="text-xs text-primary/70 leading-relaxed font-semibold">
+                      {program.description}
+                    </p>
+                    <ul className="space-y-2 pt-2 border-t border-slate-100">
+                      {program.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2 text-xs font-bold text-primary/80">
+                          <span className="text-brand-teal flex-shrink-0 mt-0.5">✓</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setInquiryProgram(program.title);
+                      scrollToSection('inquiry-form-section');
+                    }}
+                    className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white transition-all duration-300 shadow-md shadow-sky-500/10 hover:shadow-lg hover:shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                  >
+                    Learn More
+                  </button>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* STEM Tracks Subsection */}
+          <div className="space-y-8">
+            <h3 className="font-serif text-2xl font-bold text-center text-primary">
+              Our Signature After-School Tracks
+            </h3>
+            <div className="grid lg:grid-cols-3 gap-8">
+              {stemTracks.map((track) => (
+                <div
+                  key={track.title}
+                  className="bg-white/70 rounded-[2.5rem] overflow-hidden border border-slate-100 hover:bg-white hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image
+                        src={track.image}
+                        alt={track.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <span className="absolute top-4 left-4 text-[10px] font-black px-3.5 py-1.5 rounded-full bg-brand-orange text-white shadow">
+                        {track.age}
+                      </span>
+                    </div>
+
+                    <div className="p-6 space-y-4">
+                      <div className="flex justify-between items-center">
+                        <h4 className="font-serif text-lg font-bold text-primary">{track.title}</h4>
+                        <span className="text-xs font-black text-brand-teal bg-brand-teal/10 px-2 py-0.5 rounded">
+                          {track.price}
+                        </span>
+                      </div>
+                      <p className="text-xs text-primary/70 leading-relaxed font-semibold">{track.description}</p>
+                      <ul className="space-y-1.5 pt-2">
+                        {track.bullets.map((bullet) => (
+                          <li key={bullet} className="flex items-start gap-2 text-[11px] font-bold text-primary/80">
+                            <span className="text-brand-teal font-sans font-bold">•</span>
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <button
+                      onClick={() => {
+                        setInquiryProgram(`${track.title} (Enrichment)`);
+                        scrollToSection('inquiry-form-section');
+                      }}
+                      className="w-full py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white transition-all duration-300 shadow-md shadow-sky-500/10 hover:shadow-lg hover:shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                    >
+                      Inquire for STEM Track
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
       </section>
 
-      {/* ── TESTIMONIALS (Bright Horizons Bubble Card style) ── */}
-      <section className="py-20 md:py-28 bg-[#FAF6F0] relative">
-        {/* Curved Wave transition */}
-        <div className="absolute top-0 left-0 right-0 w-full overflow-hidden leading-none z-10 -translate-y-[1px]">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-[24px] md:h-[40px] fill-current text-white rotate-180">
-            <path d="M0,0 C150,90 350,120 600,100 C850,80 1050,90 1200,60 L1200,120 L0,120 Z" />
-          </svg>
-        </div>
+      {/* ── WHY PARENTS LOVE NEXTZEN (Kiddie Academy Outcomes style) ── */}
+      <section className="py-20 bg-white" id="why-nextzen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-bold tracking-widest text-orange-500 uppercase">
-              Parent Community
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
-              Stories from our Families
-            </h2>
-            <p className="text-slate-500 text-base md:text-lg">
-              Hear directly from parents about the conceptual changes and mental development they noticed in their children.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-lg relative hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                {/* Decorative Quotation Mark */}
-                <span className="absolute right-6 top-4 text-7xl font-serif text-amber-500/10 pointer-events-none select-none">
-                  “
-                </span>
-
-                <div className="space-y-4">
-                  {/* Stars */}
-                  <div className="flex gap-1 text-amber-400">
-                    {Array.from({ length: t.stars }).map((_, i) => (
-                      <span key={i} className="text-lg">★</span>
-                    ))}
-                  </div>
-
-                  <p className="text-slate-600 text-sm italic leading-relaxed font-medium">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-4 mt-6 pt-6 border-t border-slate-150">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border border-slate-100">
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
-                  </div>
-                  <div>
-                    <p className="font-extrabold text-slate-900 text-sm leading-tight">{t.name}</p>
-                    <p className="text-xs font-bold text-slate-400 mt-0.5">{t.role}</p>
-                  </div>
+            {/* Left visual card */}
+            <div className="lg:col-span-5 space-y-6">
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary leading-tight">
+                Why Families Love NextZen Academy
+              </h3>
+              <div className="relative aspect-[4/5] w-full max-w-[400px] mx-auto rounded-[3rem] overflow-hidden border-8 border-brand-light shadow-xl">
+                <Image
+                  src="/hero_img.png"
+                  alt="Children smiling in a lab"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-primary/10" />
+                {/* Floating graphic overlay badge */}
+                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-5 rounded-2xl border border-slate-100 shadow-md">
+                  <p className="text-xs font-black text-brand-orange uppercase tracking-wider mb-1">Our Core Commitment</p>
+                  <p className="text-sm font-bold text-primary">To spark lifelong learning, build analytical thinkers, and offer a safe, happy childcare community.</p>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right detailed outcome cards */}
+            <div className="lg:col-span-7 space-y-6">
+              {highlights.map((item) => (
+                <div
+                  key={item.title}
+                  className={`rounded-[2.5rem] p-8 border border-slate-100 hover:border-slate-200 transition-all duration-300 flex flex-col md:flex-row gap-6 items-center shadow-lg ${item.bg}`}
+                >
+                  <div className="relative w-28 h-28 rounded-2xl overflow-hidden flex-shrink-0 border border-slate-100 shadow-inner">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex-grow space-y-3 text-left">
+                    <h4 className="font-serif text-lg md:text-xl font-bold text-[#1f2e57]">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-[#1f2e57]/70 font-semibold leading-relaxed">
+                      {item.description}
+                    </p>
+                    <Link
+                      href={item.href}
+                      className="inline-flex items-center gap-1.5 text-xs font-black text-[#005cc4] hover:underline uppercase tracking-wider pt-1"
+                    >
+                      {item.btnText} <span className="font-sans font-bold">→</span>
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── INQUIRY & CONTACT FORM SECTION ── */}
+      <section className="py-20 bg-[#f5f1ec]" id="inquiry-form-section">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-xl space-y-8">
+
+            <div className="text-center space-y-3">
+              <span className="text-xs font-black tracking-widest text-[#A93439] uppercase">
+                Enrollment & Feedback
+              </span>
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
+                Connect With Our Team
+              </h3>
+              <p className="text-xs md:text-sm text-[#1f2e57]/70 font-semibold max-w-md mx-auto">
+                Interested in our programs or want to share feedback? Submit details below to receive program guides and connect with us.
+              </p>
+            </div>
+
+            <form onSubmit={handleInquirySubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Parent / Guardian Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={inquiryName}
+                    onChange={(e) => setInquiryName(e.target.value)}
+                    placeholder="John Doe"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Email Address *</label>
+                  <input
+                    type="email"
+                    required
+                    value={inquiryEmail}
+                    onChange={(e) => setInquiryEmail(e.target.value)}
+                    placeholder="john@example.com"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Phone Number *</label>
+                  <input
+                    type="tel"
+                    required
+                    value={inquiryPhone}
+                    onChange={(e) => setInquiryPhone(e.target.value)}
+                    placeholder="(123) 456-7890"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Program of Interest *</label>
+                  <select
+                    value={inquiryProgram}
+                    onChange={(e) => setInquiryProgram(e.target.value)}
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3.5 text-sm focus:outline-none font-semibold"
+                  >
+                    <option value="Little Blossoms">Little Blossoms - 6w to 12m</option>
+                    <option value="Tiny Explorers">Tiny Explorers - 13m to 24m</option>
+                    <option value="Curious Cubs">Curious Cubs - 2 Years</option>
+                    <option value="Little Discoverers">Little Discoverers - 3 to 4 Years</option>
+                    <option value="Young Innovators">Young Innovators - K to 5th Grade</option>
+                    <option value="Future Leaders">Future Leaders - 6th to 12th Grade</option>
+                    <option value="Robotics & Coding">Robotics & Coding</option>
+                    <option value="Mathematics Mastery">Mathematics Mastery</option>
+                    <option value="Strategic Chess">Strategic Chess</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Message or Feedback *</label>
+                <textarea
+                  required
+                  rows={4}
+                  value={inquiryMessage}
+                  onChange={(e) => setInquiryMessage(e.target.value)}
+                  placeholder="Tell us about your child or share feedback about our programs..."
+                  className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl p-4 text-sm focus:outline-none font-semibold"
+                />
+              </div>
+
+              {/* Privacy Consent Checkbox */}
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacyConsent"
+                  checked={privacyConsent}
+                  onChange={(e) => setPrivacyConsent(e.target.checked)}
+                  className="mt-1 border-slate-200 focus:ring-[#005cc4] h-4 w-4 text-[#005cc4] rounded cursor-pointer"
+                />
+                <label htmlFor="privacyConsent" className="text-xs font-semibold text-[#1f2e57]/70 cursor-pointer">
+                  I consent to receive communication updates from NextZen Academy regarding enrollment schedules and agree to the storage of my submitted feedback in accordance with the Privacy Policy. *
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-4 rounded-full font-black text-xs text-center uppercase tracking-wider text-white bg-[#A93439] hover:bg-[#A93439]/90 shadow-md active:scale-95 transition-all cursor-pointer"
+              >
+                Submit Inquiry
+              </button>
+
+              {inquiryStatus && (
+                <p className={`text-xs font-bold text-center mt-4 p-3 rounded-xl border ${inquiryStatus.startsWith('✓') ? 'text-[#005cc4] bg-[#005cc4]/10 border-[#005cc4]/20' : 'text-[#A93439] bg-[#A93439]/10 border-[#A93439]/20'
+                  }`}>
+                  {inquiryStatus}
+                </p>
+              )}
+            </form>
+
+            {/* Mock Parent Handbook Download Button */}
+            <div className="border-t border-slate-100 pt-8 text-center space-y-3">
+              <p className="text-xs font-bold text-[#1f2e57]/70">
+                Want to read our policies on tuition, schedules, and late fees?
+              </p>
+              <a
+                href="/NextZen_Parent_Handbook.pdf"
+                download
+                className="inline-flex items-center gap-2 border border-[#1f2e57]/20 hover:border-[#1f2e57] text-[#1f2e57] font-black uppercase text-[10px] tracking-wider px-6 py-3 rounded-full transition-all active:scale-95"
+              >
+                📥 Download Parent Handbook (PDF)
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS SECTION (Kiddie Academy Testimonial Block) ── */}
+      <section className="py-20 bg-[#1f2e57] text-white relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+
+          <span className="text-xs font-black tracking-widest text-[#f2c638] uppercase">
+            Parent Community
+          </span>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-3 mb-12">
+            Stories From Our Families
+          </h2>
+
+          <div className="bg-white/10 backdrop-blur-sm rounded-[3rem] p-8 md:p-12 border border-white/10 relative shadow-2xl">
+            {/* Quote Icon */}
+            <span className="absolute left-8 top-6 text-7xl font-serif text-[#f2c638]/20 select-none pointer-events-none">
+              “
+            </span>
+
+            {/* Testimonial Content */}
+            <div className="min-h-[140px] flex flex-col justify-center">
+              <p className="text-base md:text-lg italic font-medium leading-relaxed mb-6">
+                &ldquo;{testimonials[currentTestimonialIndex].quote}&rdquo;
+              </p>
+            </div>
+
+            {/* Stars */}
+            <div className="flex justify-center gap-1 text-[#f2c638] mb-6">
+              {Array.from({ length: testimonials[currentTestimonialIndex].stars }).map((_, i) => (
+                <span key={i} className="text-xl">★</span>
+              ))}
+            </div>
+
+            {/* Parent Info */}
+            <div className="border-t border-white/15 pt-6 inline-block">
+              <p className="font-black text-sm text-white">
+                {testimonials[currentTestimonialIndex].name}
+              </p>
+              <p className="text-xs font-bold text-white/50 mt-1">
+                {testimonials[currentTestimonialIndex].role}
+              </p>
+            </div>
+
+            {/* Slider Controls */}
+            <div className="flex items-center justify-center gap-6 mt-8">
+              <button
+                onClick={prevTestimonial}
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all cursor-pointer text-white"
+                aria-label="Previous testimonial"
+              >
+                ◀
+              </button>
+              <span className="text-xs font-black tracking-wider text-white/75">
+                {currentTestimonialIndex + 1} / {testimonials.length}
+              </span>
+              <button
+                onClick={nextTestimonial}
+                className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all cursor-pointer text-white"
+                aria-label="Next testimonial"
+              >
+                ▶
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/about"
+              className="text-xs font-black text-[#f2c638] hover:text-[#f5d15e] hover:underline uppercase tracking-wider"
+            >
+              Read More Testimonials
+            </Link>
           </div>
 
         </div>
       </section>
 
       {/* ── FAQ ACCORDION SECTION (Goddard School style) ── */}
-      <section className="py-20 md:py-28 bg-white" id="parent-resources">
+      <section className="py-20 bg-white" id="parent-resources">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-16 space-y-4">
-            <span className="text-xs font-bold tracking-widest text-sky-500 uppercase">
+            <span className="text-xs font-black tracking-widest text-[#005cc4] uppercase">
               Frequently Asked Questions
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1f2e57] tracking-tight">
               Have Questions? We Have Answers
             </h2>
-            <p className="text-slate-500 text-sm md:text-base">
+            <p className="text-[#1f2e57]/70 text-sm md:text-base font-semibold">
               Providing clear explanations to help parents make the right educational choices.
             </p>
           </div>
@@ -649,25 +915,25 @@ export default function Home() {
                 <div
                   key={faq.question}
                   className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
-                      ? 'border-orange-500/80 shadow-md shadow-orange-500/5'
-                      : 'border-slate-200 hover:border-slate-800'
+                    ? 'border-[#A93439] shadow-md'
+                    : 'border-slate-200 hover:border-[#1f2e57]'
                     }`}
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full text-left px-6 py-5 font-extrabold text-slate-900 flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base"
+                    className="w-full text-left px-6 py-5 font-black text-[#1f2e57] flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base"
                   >
                     <span>{faq.question}</span>
-                    <span className={`text-xl transform transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180 text-orange-500' : 'text-slate-400'}`}>
+                    <span className={`text-xs transform transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180 text-[#A93439]' : 'text-slate-400'}`}>
                       ▼
                     </span>
                   </button>
 
                   <div
-                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
+                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0 overflow-hidden'
                       }`}
                   >
-                    <div className="px-6 py-5 text-sm md:text-base text-slate-500 leading-relaxed font-medium bg-[#FAF8F5]/30">
+                    <div className="px-6 py-5 text-sm md:text-base text-[#1f2e57]/75 leading-relaxed font-semibold bg-[#FAF8F5]/30">
                       {faq.answer}
                     </div>
                   </div>
@@ -682,16 +948,16 @@ export default function Home() {
       {/* ── ENROLLMENT CTA BANNER (Bright Horizons style) ── */}
       <section className="pb-24 pt-8 bg-white" id="admissions">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-amber-500/10 via-orange-500/20 to-sky-500/10 border border-orange-200/50 p-8 md:p-16 lg:p-20 shadow-xl shadow-orange-500/5 flex flex-col lg:flex-row items-center gap-8 lg:gap-12 justify-between">
+          <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-sky-500/10 border border-orange-500/20 p-8 md:p-16 lg:p-20 shadow-xl flex flex-col lg:flex-row items-center gap-8 lg:gap-12 justify-between">
             {/* Background Blob */}
-            <div className="absolute top-0 right-0 w-[24rem] h-[24rem] rounded-full bg-gradient-to-br from-orange-400/10 to-amber-400/10 filter blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[24rem] h-[24rem] rounded-full bg-gradient-to-br from-orange-500/10 to-amber-500/10 filter blur-3xl pointer-events-none" />
 
             <div className="space-y-4 max-w-2xl relative z-10 text-center lg:text-left">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f172a] tracking-tight leading-tight">
                 Ready to Transform Your Child&apos;s Future?
               </h2>
-              <p className="text-slate-600 text-sm md:text-base lg:text-lg leading-relaxed font-medium">
-                Join 500+ families already on the path to analytical excellence. Enroll in our weekly cohorts or schedule a 100% free discovery trial today.
+              <p className="text-[#0f172a]/80 text-sm md:text-base lg:text-lg leading-relaxed font-semibold">
+                Join 500+ families already on the path to academic & analytical excellence. Enroll in our weekly cohorts or schedule a 100% free discovery trial today.
               </p>
             </div>
 
@@ -699,21 +965,21 @@ export default function Home() {
               {!isLoggedIn ? (
                 <Link
                   href="/signup"
-                  className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-[1.03] transition-all cursor-pointer whitespace-nowrap"
+                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white transition-all duration-300 shadow-md shadow-orange-500/15 hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   Enroll Now — It&apos;s Free
                 </Link>
               ) : (
                 <Link
                   href="/dashboard"
-                  className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-[1.03] transition-all cursor-pointer whitespace-nowrap"
+                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white transition-all duration-300 shadow-md shadow-orange-500/15 hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   View Student Dashboard
                 </Link>
               )}
               <Link
                 href="/courses"
-                className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-slate-800 bg-white border border-slate-200 hover:border-slate-800 shadow-sm transition-all cursor-pointer whitespace-nowrap"
+                className="text-slate-700 hover:text-orange-500 bg-white border border-slate-200 hover:border-orange-400 hover:shadow-md hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-300 cursor-pointer whitespace-nowrap font-black text-xs uppercase tracking-widest px-8 py-4 rounded-full"
               >
                 Browse Courses
               </Link>

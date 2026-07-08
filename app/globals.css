@@ -1,27 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-  /* Brand palette */
-  --color-primary: #0f172a;
-  --color-accent-orange: #f97316;
-  --color-accent-teal: #0ea5e9;
-  --color-light-bg: #f8fafc;
+  --foreground: #1f2e57;
+  /* Brand palette inspired by Kiddie Academy style */
+  --color-primary: #1f2e57;
+  --color-brand-red: #A93439;
+  --color-brand-gold: #f2c638;
+  --color-brand-gold-hover: #f5d15e;
+  --color-brand-blue: #005cc4;
+  --color-brand-blue-hover: #006fed;
+  --color-brand-tan: #f5f1ec;
+
+  --color-accent-orange: #A93439;
+  --color-accent-teal: #005cc4;
+  --color-light-bg: #f5f1ec;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Inter', 'Poppins', var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Nunito', 'Inter', var(--font-geist-sans);
+  --font-serif: 'Zilla Slab', Georgia, serif;
+  --color-primary: var(--color-primary);
+  --color-brand-red: var(--color-brand-red);
+  --color-brand-gold: var(--color-brand-gold);
+  --color-brand-gold-hover: var(--color-brand-gold-hover);
+  --color-brand-blue: var(--color-brand-blue);
+  --color-brand-blue-hover: var(--color-brand-blue-hover);
+  --color-brand-tan: var(--color-brand-tan);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', 'Poppins', Arial, Helvetica, sans-serif;
+  font-family: 'Nunito', 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .ui-pill-btn {
@@ -59,9 +73,12 @@ body {
 }
 
 @keyframes pulse-orb {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1) translateY(0);
   }
+
   50% {
     transform: scale(1.12) translateY(14px);
   }
@@ -79,6 +96,7 @@ body {
 .card-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .card-hover:hover {
   transform: translateY(-6px);
   box-shadow: 0 24px 48px rgba(15, 23, 42, 0.15);
@@ -95,6 +113,7 @@ body {
   position: relative;
   display: inline-block;
 }
+
 .section-heading::after {
   content: '';
   position: absolute;
@@ -112,6 +131,7 @@ body {
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -128,10 +148,21 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ui-pill-btn { transition: none; }
-  .hero-orb { animation: none; }
-  .card-hover { transition: none; }
-  .animate-fade-in-up { animation: none; }
+  .ui-pill-btn {
+    transition: none;
+  }
+
+  .hero-orb {
+    animation: none;
+  }
+
+  .card-hover {
+    transition: none;
+  }
+
+  .animate-fade-in-up {
+    animation: none;
+  }
 }
 
 /* Smooth scrolling */
