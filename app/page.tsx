@@ -587,7 +587,7 @@ export default function Home() {
               Want to read our policies on tuition, schedules, and late fees?
             </p>
             <a
-              href="/NextZen_Parent_Handbook.pdf"
+              href="/NextZen Academy Parent Handbook.pdf"
               download
               className="inline-flex items-center gap-2 border border-[#1f2e57]/20 hover:border-[#1f2e57] text-[#1f2e57] font-black uppercase text-[10px] tracking-wider px-6 py-3 rounded-full transition-all active:scale-95 bg-white shadow-sm"
             >
