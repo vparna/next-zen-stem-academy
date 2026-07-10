@@ -325,11 +325,11 @@ export default function Home() {
 
             {/* Headline */}
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08] mb-6">
-              Where{' '}
+              Ancient Wisdom.{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300 italic">
-                Curiosity
+                Modern Learning.
               </span>{' '}
-              Builds Brilliance
+              Future Leaders
             </h1>
 
             {/* Description */}
