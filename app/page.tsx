@@ -285,18 +285,11 @@ export default function Home() {
             </span>
 
             {/* Headline */}
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08] mb-6">
-              Ancient Wisdom.{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] italic">
-                Modern Learning.
-              </span>{' '}
-              Future Leaders
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-8 flex flex-col gap-2">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F25022] to-[#FF7043]">Ancient Wisdom</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] to-[#FFB900] italic">Modern Learning</span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] to-[#00E5FF]">Future Leaders</span>
             </h1>
-
-            {/* Description */}
-            {/* <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium mb-10 max-w-xl">
-              NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEAM enrichment — nurturing every child from infancy through high school.
-            </p> */}
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">
@@ -617,13 +610,13 @@ export default function Home() {
 
             <div className="text-center space-y-3">
               <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
-                Enrollment & Feedback
+                Enrolling Now
               </span>
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
-                Connect With Our Team
+                Program Inquiry &amp; Enrollment
               </h3>
               <p className="text-xs md:text-sm text-[#1f2e57]/70 font-semibold max-w-md mx-auto">
-                Interested in our programs or want to share feedback? Submit details below to receive program guides and connect with us.
+                Interested in our programs? Submit details below to receive program guides and connect with our enrollment team.
               </p>
             </div>
 
@@ -686,13 +679,13 @@ export default function Home() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Message or Feedback *</label>
+                <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Additional Information or Special Notes *</label>
                 <textarea
                   required
                   rows={4}
                   value={inquiryMessage}
                   onChange={(e) => setInquiryMessage(e.target.value)}
-                  placeholder="Tell us about your child or share feedback about our programs..."
+                  placeholder="Tell us about your child, scheduling preferences, or any specific questions you have..."
                   className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl p-4 text-sm focus:outline-none font-semibold"
                 />
               </div>
@@ -707,7 +700,7 @@ export default function Home() {
                   className="mt-1 border-slate-200 focus:ring-[#00A4EF] h-4 w-4 text-[#00A4EF] rounded cursor-pointer"
                 />
                 <label htmlFor="privacyConsent" className="text-xs font-semibold text-[#1f2e57]/70 cursor-pointer">
-                  I consent to receive communication updates from NextZen Academy regarding enrollment schedules and agree to the storage of my submitted feedback in accordance with the Privacy Policy. *
+                  I consent to receive communication updates from NextZen Academy regarding enrollment schedules and agree to the storage of my submitted details in accordance with the Privacy Policy. *
                 </label>
               </div>
 
@@ -715,7 +708,7 @@ export default function Home() {
                 type="submit"
                 className="w-full py-4 rounded-full font-black text-xs text-center uppercase tracking-wider text-white bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 shadow-md active:scale-95 transition-all cursor-pointer"
               >
-                Submit Inquiry
+                Submit Enrollment Inquiry
               </button>
 
               {inquiryStatus && (

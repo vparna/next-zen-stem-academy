@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Us - NextZen Academy',
+  title: 'Our Story - NextZen Academy',
   description: 'Intelligence Beyond Academics - Learn about our mission, vision, and core values at NextZen Academy',
 };
 

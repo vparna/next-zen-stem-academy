@@ -7,7 +7,7 @@ import { useRouter, usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedCampus, setSelectedCampus] = useState('Bothell');
+  const [selectedCampus, setSelectedCampus] = useState('Woodinville');
   const [isCampusDropdownOpen, setIsCampusDropdownOpen] = useState(false);
   const [authState, setAuthState] = useState<{ isLoggedIn: boolean; userName: string }>({
     isLoggedIn: false,
@@ -19,7 +19,7 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const campuses = ['Bothell', 'Redmond', 'Bellevue', 'Seattle'];
+  const campuses = ['Woodinville', 'Redmond', 'Bellevue', 'Seattle'];
 
   useEffect(() => {
     // Check authentication status
@@ -153,20 +153,26 @@ export default function Navbar() {
                         <button
                           key={campus}
                           onClick={() => {
-                            setSelectedCampus(campus);
-                            setIsCampusDropdownOpen(false);
+                            if (campus === 'Woodinville') {
+                              setSelectedCampus(campus);
+                              setIsCampusDropdownOpen(false);
+                              router.push('/');
+                            } else {
+                              setIsCampusDropdownOpen(false);
+                              router.push('/campuses/future-expansion');
+                            }
                           }}
-                          className={`w-full text-left px-4 py-2.5 text-xs font-semibold transition-all duration-150 flex items-center justify-between ${
+                          className={`w-full text-left px-4 py-2 flex flex-col justify-center transition-all duration-150 ${
                             selectedCampus === campus
                               ? 'bg-[#F25022]/5 text-[#F25022] font-black'
                               : 'text-slate-700 hover:bg-slate-50'
                           }`}
                         >
-                          <span className="flex items-center gap-1.5">
+                          <span className="flex items-center gap-1.5 text-xs font-semibold">
                             <span>📍</span> {campus} Campus
                           </span>
-                          {selectedCampus === campus && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#F25022]" />
+                          {campus !== 'Woodinville' && (
+                            <span className="text-[9px] text-slate-400 font-medium pl-5">(Future Expansion)</span>
                           )}
                         </button>
                       ))}
@@ -266,7 +272,7 @@ export default function Navbar() {
                     isActive('/about') ? 'text-[#F25022] bg-[#F25022]/5 font-black border border-[#F25022]/20' : ''
                   }`}
                 >
-                  About Us
+                  Our Story
                   <span className={`absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform transition-transform origin-center duration-300 ${
                     isActive('/about') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                   }`} />
@@ -381,15 +387,29 @@ export default function Navbar() {
               {campuses.map((campus) => (
                 <button
                   key={campus}
-                  onClick={() => setSelectedCampus(campus)}
-                  className={`px-3 py-2 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                  onClick={() => {
+                    if (campus === 'Woodinville') {
+                      setSelectedCampus(campus);
+                      setIsMenuOpen(false);
+                      router.push('/');
+                    } else {
+                      setIsMenuOpen(false);
+                      router.push('/campuses/future-expansion');
+                    }
+                  }}
+                  className={`px-3 py-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
                     selectedCampus === campus
-                      ? 'bg-orange-50 border-orange-200 text-orange-600 shadow-sm shadow-orange-500/5'
+                      ? 'bg-[#F25022]/5 border-[#F25022]/25 text-[#F25022] shadow-sm'
                       : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'
                   }`}
                 >
-                  <span>📍</span>
-                  <span>{campus}</span>
+                  <span className="flex items-center gap-1">
+                    <span>📍</span>
+                    <span>{campus}</span>
+                  </span>
+                  {campus !== 'Woodinville' && (
+                    <span className="text-[8px] text-slate-400 font-medium">(Expansion)</span>
+                  )}
                 </button>
               ))}
             </div>
@@ -438,7 +458,7 @@ export default function Navbar() {
                     : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
                 }`}
               >
-                <span className="text-base">👋</span> <span className="text-xs uppercase tracking-wider">About Us</span>
+                <span className="text-base">👋</span> <span className="text-xs uppercase tracking-wider">Our Story</span>
               </Link>
               <Link
                 href="/courses"
