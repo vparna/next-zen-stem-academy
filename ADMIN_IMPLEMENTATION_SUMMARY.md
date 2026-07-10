@@ -2,7 +2,7 @@
 
 ## Overview
 
-This implementation adds a comprehensive admin dashboard to Next-Gen STEM Academy, allowing administrators to manage students, track payments, monitor attendance, and generate detailed reports.
+This implementation adds a comprehensive admin dashboard to Next-Gen STEAM Academy, allowing administrators to manage students, track payments, monitor attendance, and generate detailed reports.
 
 ## What Was Implemented
 

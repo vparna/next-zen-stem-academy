@@ -1,6 +1,6 @@
 # Advanced Features Implementation Guide
 
-This document provides comprehensive information about the newly implemented features in NextGen STEM Academy.
+This document provides comprehensive information about the newly implemented features in NextGen STEAM Academy.
 
 ## Table of Contents
 

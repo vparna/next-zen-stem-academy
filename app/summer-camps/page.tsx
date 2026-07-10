@@ -152,7 +152,7 @@ const faqs = [
   },
   {
     question: 'What is the student-to-mentor ratio?',
-    answer: 'To ensure a safe, high-quality learning environment, we maintain a strict student-to-mentor ratio of 6:1 for Robotics and Creative Coding camps, and 8:1 for Math and Chess camps. Each cohort is led by an experienced STEM educator assisted by trained teaching aids.'
+    answer: 'To ensure a safe, high-quality learning environment, we maintain a strict student-to-mentor ratio of 6:1 for Robotics and Creative Coding camps, and 8:1 for Math and Chess camps. Each cohort is led by an experienced STEAM educator assisted by trained teaching aids.'
   },
   {
     question: 'Do we need to pack lunch or snacks?',
@@ -194,12 +194,12 @@ export default function SummerCampsPage() {
   useEffect(() => {
     const baseRate = estimatorType === 'full' ? 599 : 349;
     let pricePerWeek = baseRate;
-    
+
     if (estimatorLunch && estimatorType === 'full') pricePerWeek += 75;
     if (estimatorCare) pricePerWeek += 50;
 
     let total = pricePerWeek * estimatorWeeks;
-    
+
     // Apply multi-week discounts
     let discount = 0;
     if (estimatorWeeks >= 4) {
@@ -286,7 +286,7 @@ export default function SummerCampsPage() {
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
                 Ignite curiosity and build technical excellence. Our premium weekly summer programs combine intensive hands-on STEAM education in Robotics, Coding, Chess, and Mathematics with collaborative outdoor play.
               </p>
-              
+
               {/* Trust Badges */}
               <div className="flex flex-wrap gap-3 pt-2">
                 {['📍 Bothell & Redmond', '👥 6:1 Student Ratio', '📅 Weekly June–Aug'].map((badge) => (
@@ -387,33 +387,33 @@ export default function SummerCampsPage() {
               const isRobotics = track.accentColor === 'orange';
               const isMath = track.accentColor === 'sky';
               const isChess = track.accentColor === 'emerald';
-              
-              const borderHoverColor = isRobotics 
-                ? 'hover:border-orange-200' 
-                : isMath 
-                  ? 'hover:border-sky-200' 
-                  : isChess 
-                    ? 'hover:border-emerald-200' 
+
+              const borderHoverColor = isRobotics
+                ? 'hover:border-orange-200'
+                : isMath
+                  ? 'hover:border-sky-200'
+                  : isChess
+                    ? 'hover:border-emerald-200'
                     : 'hover:border-purple-200';
 
-              const badgeColor = isRobotics 
-                ? 'bg-orange-500 text-white' 
-                : isMath 
-                  ? 'bg-sky-500 text-white' 
-                  : isChess 
-                    ? 'bg-emerald-500 text-white' 
+              const badgeColor = isRobotics
+                ? 'bg-orange-500 text-white'
+                : isMath
+                  ? 'bg-sky-500 text-white'
+                  : isChess
+                    ? 'bg-emerald-500 text-white'
                     : 'bg-purple-500 text-white';
 
-              const lightTextBg = isRobotics 
-                ? 'text-orange-600 bg-orange-50' 
-                : isMath 
-                  ? 'text-sky-600 bg-sky-50' 
-                  : isChess 
-                    ? 'text-emerald-600 bg-emerald-50' 
+              const lightTextBg = isRobotics
+                ? 'text-orange-600 bg-orange-50'
+                : isMath
+                  ? 'text-sky-600 bg-sky-50'
+                  : isChess
+                    ? 'text-emerald-600 bg-emerald-50'
                     : 'text-purple-600 bg-purple-50';
 
               return (
-                <div 
+                <div
                   key={track.id}
                   className={`group rounded-[2.5rem] overflow-hidden border border-slate-100/80 bg-white hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row ${borderHoverColor}`}
                 >
@@ -498,11 +498,10 @@ export default function SummerCampsPage() {
                   <button
                     key={idx}
                     onClick={() => setSelectedWeekIndex(idx)}
-                    className={`text-left p-4 rounded-2xl border-2 transition-all cursor-pointer ${
-                      isSelected 
+                    className={`text-left p-4 rounded-2xl border-2 transition-all cursor-pointer ${isSelected
                         ? 'bg-white border-orange-500/80 shadow-md shadow-orange-500/5'
                         : 'bg-white/50 border-transparent hover:bg-white hover:border-slate-200'
-                    }`}
+                      }`}
                   >
                     <div className="flex justify-between items-center">
                       <span className="text-xs font-black text-slate-900">{w.week}</span>
@@ -540,7 +539,7 @@ export default function SummerCampsPage() {
               {/* Offered Camps List */}
               <div className="space-y-6">
                 {weeksData[selectedWeekIndex].camps.map((camp, idx) => (
-                  <div 
+                  <div
                     key={idx}
                     className="p-6 rounded-2xl border border-slate-100 hover:border-slate-200 bg-[#FAF8F5]/30 hover:bg-[#FAF8F5]/60 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-6"
                   >
@@ -651,21 +650,19 @@ export default function SummerCampsPage() {
                         setEstimatorType('half');
                         setEstimatorLunch(false);
                       }}
-                      className={`p-4 rounded-xl border-2 transition-all font-bold text-xs text-center cursor-pointer ${
-                        estimatorType === 'half'
+                      className={`p-4 rounded-xl border-2 transition-all font-bold text-xs text-center cursor-pointer ${estimatorType === 'half'
                           ? 'bg-white border-orange-500 text-orange-600 shadow-sm'
                           : 'bg-white/50 border-slate-100 text-slate-600'
-                      }`}
+                        }`}
                     >
                       Half-Day ($349/wk)
                     </button>
                     <button
                       onClick={() => setEstimatorType('full')}
-                      className={`p-4 rounded-xl border-2 transition-all font-bold text-xs text-center cursor-pointer ${
-                        estimatorType === 'full'
+                      className={`p-4 rounded-xl border-2 transition-all font-bold text-xs text-center cursor-pointer ${estimatorType === 'full'
                           ? 'bg-white border-orange-500 text-orange-600 shadow-sm'
                           : 'bg-white/50 border-slate-100 text-slate-600'
-                      }`}
+                        }`}
                     >
                       Full-Day ($599/wk)
                     </button>
@@ -697,11 +694,10 @@ export default function SummerCampsPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <button
                       onClick={() => setEstimatorCare(!estimatorCare)}
-                      className={`p-3.5 rounded-xl border transition-all text-xs font-bold text-left cursor-pointer flex items-center justify-between ${
-                        estimatorCare
+                      className={`p-3.5 rounded-xl border transition-all text-xs font-bold text-left cursor-pointer flex items-center justify-between ${estimatorCare
                           ? 'bg-white border-sky-400 text-sky-600 shadow-sm'
                           : 'bg-white/50 border-slate-150 text-slate-500 hover:bg-white'
-                      }`}
+                        }`}
                     >
                       <span>🕒 Extended Care (8AM-5:30PM)</span>
                       <span>+$50/wk</span>
@@ -710,13 +706,12 @@ export default function SummerCampsPage() {
                     <button
                       disabled={estimatorType === 'half'}
                       onClick={() => setEstimatorLunch(!estimatorLunch)}
-                      className={`p-3.5 rounded-xl border transition-all text-xs font-bold text-left cursor-pointer flex items-center justify-between ${
-                        estimatorType === 'half'
+                      className={`p-3.5 rounded-xl border transition-all text-xs font-bold text-left cursor-pointer flex items-center justify-between ${estimatorType === 'half'
                           ? 'opacity-40 cursor-not-allowed bg-slate-100 border-slate-200 text-slate-400'
                           : estimatorLunch
                             ? 'bg-white border-sky-400 text-sky-600 shadow-sm'
                             : 'bg-white/50 border-slate-150 text-slate-500 hover:bg-white'
-                      }`}
+                        }`}
                     >
                       <span>🍎 Catered Hot Lunch</span>
                       <span>+$75/wk</span>
@@ -847,7 +842,7 @@ export default function SummerCampsPage() {
                       <option value="Summer Camp: Robotics">🤖 Robotics &amp; AI Pioneer Camp</option>
                       <option value="Summer Camp: Math">🧮 Mathematics Olympiad Camp</option>
                       <option value="Summer Camp: Chess">♟️ Chess Champions Camp</option>
-                      <option value="Summer Camp: Maker">🎮 STEM Maker &amp; Game Design</option>
+                      <option value="Summer Camp: Maker">🎮 STEAM Maker &amp; Game Design</option>
                     </select>
                   </div>
 
@@ -941,13 +936,12 @@ export default function SummerCampsPage() {
             {faqs.map((faq, idx) => {
               const isOpen = activeFaqIndex === idx;
               return (
-                <div 
-                  key={idx} 
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
-                    isOpen 
-                      ? 'border-orange-500/80 shadow-md shadow-orange-500/5' 
+                <div
+                  key={idx}
+                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
+                      ? 'border-orange-500/80 shadow-md shadow-orange-500/5'
                       : 'border-slate-200 hover:border-slate-800'
-                  }`}
+                    }`}
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
@@ -959,10 +953,9 @@ export default function SummerCampsPage() {
                     </span>
                   </button>
 
-                  <div 
-                    className={`transition-all duration-300 ease-in-out ${
-                      isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
-                    }`}
+                  <div
+                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
+                      }`}
                   >
                     <div className="px-6 py-5 text-sm md:text-base text-slate-500 leading-relaxed font-medium bg-[#FAF8F5]/30">
                       {faq.answer}

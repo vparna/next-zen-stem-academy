@@ -2,7 +2,7 @@
 
 ## Overview
 
-NextGen STEM Academy's mobile attendance and chat application provides a comprehensive solution for attendance tracking and communication between parents, students, and teachers.
+NextGen STEAM Academy's mobile attendance and chat application provides a comprehensive solution for attendance tracking and communication between parents, students, and teachers.
 
 ## Features
 
@@ -266,4 +266,4 @@ For technical support or feature requests:
 
 ---
 
-Built with ❤️ for NextGen STEM Academy
+Built with ❤️ for NextGen STEAM Academy

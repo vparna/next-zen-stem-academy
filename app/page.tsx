@@ -3,61 +3,17 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { childcarePrograms } from '@/lib/childcarePrograms';
 
-// Static Data for Childcare Programs
-const childcarePrograms = [
-  {
-    title: 'Little Blossoms',
-    age: '6 weeks to 12 months',
-    image: '/little_blossoms.png',
-    description: 'Nurturing daycare environment focusing on sensory discovery, basic motor coordination, and secure, warm bonding.',
-    bullets: [
-      'Sensory play & exploration',
-      'Individualized care routines',
-      'Safe, hygienic play space'
-    ]
-  },
-  {
-    title: 'Tiny Explorers',
-    age: '13 to 24 months',
-    image: '/tiny_explorers.png',
-    description: 'Guided physical movement, early language building, and initial social group interactions to build confidence.',
-    bullets: [
-      'Language building & story time',
-      'Motor skills & physical coordination',
-      'Social development through play'
-    ]
-  },
-  {
-    title: 'Curious Cubs',
-    age: '2-Year-Olds',
-    image: '/curious_cubs.png',
-    description: 'Cognitive exploration, basic puzzle solving, and learning daily group routines to foster emotional growth.',
-    bullets: [
-      'Cognitive puzzles & shape sorting',
-      'Social collaboration exercises',
-      'Establishing daily group routines'
-    ]
-  },
-  {
-    title: 'Little Discoverers',
-    age: '3 to 4-Year-Olds',
-    image: '/little_discoverers.png',
-    description: 'Kindergarten readiness program featuring pre-reading, creative arts, logical thinking, and social skills.',
-    bullets: [
-      'Pre-reading & phonics introduction',
-      'Creative arts & expression sessions',
-      'Social-emotional milestone training'
-    ]
-  }
-];
 
-// Static Data for After-School & STEM Programs
+// Static Data for After-School & STEAM Programs
 const afterschoolPrograms = [
   {
     title: 'Young Innovators',
     age: 'Grades K–5 (Ages 5–10)',
     image: '/robotics_track.png',
+    color: '#F25022',
     description: 'After-school care program combining academic support with initial hands-on exposure to robotics, logic puzzles, and chess.',
     bullets: [
       'Homework support & school tutoring',
@@ -69,6 +25,7 @@ const afterschoolPrograms = [
     title: 'Future Leaders',
     age: 'Grades 6–12 (Ages 11–18)',
     image: '/future_leaders.png',
+    color: '#00A4EF',
     description: 'Focuses on advanced leadership coaching, competitive chess & math preparation, and professional-grade coding projects.',
     bullets: [
       'Advanced coding & programming tracks',
@@ -78,13 +35,14 @@ const afterschoolPrograms = [
   }
 ];
 
-// STEM Flags
+// STEAM Flags
 const stemTracks = [
   {
     title: 'Robotics & Coding',
     age: 'Ages 8–16',
     price: '$99/mo',
     image: '/robotics_track.png',
+    color: '#F25022',
     description: 'Build and program autonomous robots. Learn hardware mechanics, electronic circuits, and text-based coding in Python and C++.',
     bullets: [
       'Hands-on physical hardware builds',
@@ -97,6 +55,7 @@ const stemTracks = [
     age: 'Ages 10–16',
     price: '$79/mo',
     image: '/math_kid.png',
+    color: '#7FBA00',
     description: 'Conceptual mathematics covering algebra, geometry, and logical reasoning, plus AMC/Math Kangaroo competition prep.',
     bullets: [
       'Conceptual algebra & geometry bases',
@@ -109,6 +68,7 @@ const stemTracks = [
     age: 'Ages 6–16',
     price: '$69/mo',
     image: '/chess_kid.png',
+    color: '#00A4EF',
     description: 'Develop focus and foresight. Led by master coaches, students learn openings, mid-game tactical patterns, and tournament play.',
     bullets: [
       'Learn positional strategies & openings',
@@ -120,10 +80,10 @@ const stemTracks = [
 
 const highlights = [
   {
-    title: 'Innovative STEM Curriculum',
+    title: 'Innovative STEAM Curriculum',
     description: 'Our educators nurture, educate, and inspire your child through hands-on robotics, math, and chess curricula designed to build critical thinking and life-long skills.',
     bg: 'bg-white border-slate-100 shadow-sm',
-    accent: 'text-brand-red',
+    accent: 'text-[#F25022]',
     btnText: 'About Our Curriculum',
     href: '/courses',
     image: '/robotics_kid.png',
@@ -132,16 +92,16 @@ const highlights = [
     title: 'Olympiad-Level Mentors',
     description: 'Learn from mathematics competition champions, master chess coaches, and experienced software developers who are trained to focus on individual student growth.',
     bg: 'bg-white border-slate-100 shadow-sm',
-    accent: 'text-[#005cc4]',
+    accent: 'text-[#00A4EF]',
     btnText: 'Meet Our Mentors',
     href: '/about',
     image: '/math_kid.png',
   },
   {
-    title: 'Collaborative STEM Community',
+    title: 'Collaborative STEAM Community',
     description: 'NextZen Academy is a vibrant space where children form lifelong friendships, build confidence, and collaborate on real-world engineering projects.',
     bg: 'bg-white border-slate-100 shadow-sm',
-    accent: 'text-brand-red',
+    accent: 'text-[#7FBA00]',
     btnText: 'About NextZen',
     href: '/about',
     image: '/chess_kid.png',
@@ -172,11 +132,11 @@ const testimonials = [
 const faqs = [
   {
     question: 'What age groups are eligible for NextZen programs?',
-    answer: 'We offer full-day childcare for infants from 6 weeks up to preschool age (4 years old), and after-school/STEM enrichment for school-age children up to 18 years old (K-12).',
+    answer: 'We offer full-day childcare for infants from 6 weeks up to preschool age (4 years old), and after-school/STEAM enrichment for school-age children up to 18 years old (K-12).',
   },
   {
-    question: 'Is your main focus childcare or STEM education?',
-    answer: 'Our primary focus is high-quality, secure Childcare and Daycare. On top of this nurturing foundation, we offer an integrated after-school package featuring our signature STEM, Chess, Coding, and Mathematics tracks.',
+    question: 'Is your main focus childcare or STEAM education?',
+    answer: 'Our primary focus is high-quality, secure Childcare and Daycare. On top of this nurturing foundation, we offer an integrated after-school package featuring our signature STEAM, Chess, Coding, and Mathematics tracks.',
   },
   {
     question: 'Can we try a class before enrolling in a paid plan?',
@@ -193,6 +153,7 @@ const faqs = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
 
@@ -233,10 +194,10 @@ export default function Home() {
       setLocatorResult('Please enter a city, state, or zip code.');
       return;
     }
-    setLocatorResult('Searching for nearest NextZen STEM & Childcare Lab...');
+    setLocatorResult('Searching for nearest NextZen STEAM & Childcare Lab...');
     setTimeout(() => {
       setLocatorResult(
-        `✓ NextZen Academy Silicon Valley Lab (1.2 miles away) - NOW ENROLLING for Childcare & STEM!`
+        `✓ NextZen Academy Silicon Valley Lab (1.2 miles away) - NOW ENROLLING for Childcare & STEAM!`
       );
     }, 600);
   };
@@ -247,7 +208,7 @@ export default function Home() {
     setLocatorResult('Searching based on your location...');
     setTimeout(() => {
       setLocatorResult(
-        `✓ NextZen Academy Mountain View Lab (0.8 miles away) - NOW ENROLLING for Childcare & STEM!`
+        `✓ NextZen Academy Mountain View Lab (0.8 miles away) - NOW ENROLLING for Childcare & STEAM!`
       );
     }, 600);
   };
@@ -303,7 +264,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero_img.png"
-            alt="Children collaborating on science and STEM activities at NextZen Academy"
+            alt="Children collaborating on science and STEAM activities at NextZen Academy"
             fill
             className="object-cover object-center"
             priority
@@ -319,51 +280,51 @@ export default function Home() {
           <div className="max-w-2xl">
 
             {/* Badge */}
-            <span className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/40 px-4 py-2 rounded-full text-xs font-black text-orange-300 uppercase tracking-widest mb-8">
-              🚀 Premium Childcare &amp; STEM Academy
+            <span className="inline-flex items-center gap-2 bg-[#F25022]/20 border border-[#F25022]/40 px-4 py-2 rounded-full text-xs font-black text-[#FFB900] uppercase tracking-widest mb-8">
+              🚀 Premium Childcare &amp; STEAM Academy
             </span>
 
             {/* Headline */}
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.08] mb-6">
-              Where{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300 italic">
-                Curiosity
+              Ancient Wisdom.{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] italic">
+                Modern Learning.
               </span>{' '}
-              Builds Brilliance
+              Future Leaders
             </h1>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium mb-10 max-w-xl">
-              NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEM enrichment — nurturing every child from infancy through high school.
+              NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEAM enrichment — nurturing every child from infancy through high school.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">
               <button
                 onClick={() => scrollToSection('childcare-programs')}
-                className="bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 Preschool &amp; Daycare
               </button>
               <button
                 onClick={() => scrollToSection('afterschool-programs')}
-                className="bg-white/10 border border-white/25 hover:bg-white/18 hover:border-white/40 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                After-School &amp; STEM
+                After-School &amp; STEAM
               </button>
             </div>
 
             {/* Trust Stats */}
             <div className="flex flex-wrap gap-8 border-t border-white/10 pt-8">
               {[
-                { value: '6', label: 'Age Programs', icon: '🎓' },
-                { value: '15+', label: 'STEM Courses', icon: '🔬' },
-                { value: '98%', label: 'Parent Satisfaction', icon: '⭐' },
+                { value: '6', label: 'Age Programs', icon: '🎓', color: '#F25022' },
+                { value: '15+', label: 'STEAM Courses', icon: '🔬', color: '#7FBA00' },
+                { value: '98%', label: 'Parent Satisfaction', icon: '⭐', color: '#FFB900' },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center gap-3">
                   <span className="text-2xl">{stat.icon}</span>
                   <div>
-                    <div className="text-2xl font-black text-white leading-none">{stat.value}</div>
+                    <div className="text-2xl font-black leading-none" style={{ color: stat.color }}>{stat.value}</div>
                     <div className="text-xs text-slate-400 font-semibold mt-0.5 uppercase tracking-wide">{stat.label}</div>
                   </div>
                 </div>
@@ -381,105 +342,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 1: CHILDCARE & EARLY EDUCATION (Kiddie Academy Split Tab style) ── */}
-      <section className="py-20 bg-white" id="childcare-programs">
+      {/* ── SECTION 1: CHILDCARE & EARLY EDUCATION (Kiddie Academy style) ── */}
+      <section className="py-20 bg-[#f5f1ec]" id="childcare-programs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-black tracking-widest text-orange-600 uppercase">
-              Childcare & Daycare
+          {/* Section Header */}
+          <div className="text-right max-w-6xl mx-auto mb-20 space-y-3">
+            <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
+              Childcare &amp; Daycare
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f172a] tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1f2e57] tracking-tight">
               Learning for Every Age
             </h2>
-            <p className="text-[#0f172a]/70 text-base md:text-lg font-semibold">
-              Premium early education programs. Hover or click on a program to explore its custom curriculum and classroom details.
-            </p>
           </div>
 
-          {/* Interactive Split Layout */}
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+          {/* ── Main Interactive Block ── */}
+          <div className="rounded-2xl shadow-2xl">
 
-            {/* Left Column: Interactive Program Tabs */}
-            <div className="lg:col-span-5 flex flex-col gap-3 justify-center">
-              {childcarePrograms.map((program, idx) => {
-                const isActive = activeChildcareIndex === idx;
-                return (
-                  <button
-                    key={program.title}
-                    onMouseEnter={() => setActiveChildcareIndex(idx)}
-                    onClick={() => setActiveChildcareIndex(idx)}
-                    className={`text-left p-6 rounded-2xl border-l-4 transition-all duration-200 cursor-pointer flex justify-between items-center ${isActive
-                      ? 'border-orange-500 bg-[#f8fafc] shadow-md text-[#0f172a]'
-                      : 'border-transparent hover:bg-slate-50 text-[#0f172a]/70'
+            {/* Top: Tab List LEFT + Photo RIGHT */}
+            <div className="flex flex-col lg:flex-row">
+
+              {/* LEFT: Vertical Tab List */}
+              <div className="w-full lg:w-[300px] xl:w-[340px] flex-shrink-0 bg-[#f5f1ec] flex flex-col rounded-l-2xl overflow-hidden">
+                {childcarePrograms.map((program, idx) => {
+                  const isActive = activeChildcareIndex === idx;
+                  return (
+                    <button
+                      key={program.title}
+                      onMouseEnter={() => setActiveChildcareIndex(idx)}
+                      onClick={() => router.push(`/programs/${program.slug}`)}
+                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${
+                        !isActive ? 'hover:bg-[#ede8e2]' : ''
                       }`}
-                  >
-                    <div>
-                      <h4 className="font-serif text-lg font-bold">
+                      style={isActive ? { backgroundColor: program.color } : {}}
+                    >
+                      <span
+                        className="font-black text-xl leading-tight"
+                        style={isActive ? { color: '#fff' } : { color: '#1f2e57' }}
+                      >
                         {program.title}
-                      </h4>
-                      <p className="text-xs font-bold text-slate-400 mt-1">
+                      </span>
+                      <span
+                        className="text-sm font-medium leading-tight mt-0.5"
+                        style={isActive ? { color: 'rgba(255,255,255,0.80)' } : { color: '#6b7280' }}
+                      >
                         {program.age}
-                      </p>
-                    </div>
-                    <span className={`text-lg transition-transform duration-200 ${isActive ? 'translate-x-1.5 text-orange-500' : 'text-slate-300'}`}>
-                      →
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
 
-            {/* Right Column: Dynamic Program Display Card */}
-            <div className="lg:col-span-7 bg-[#f8fafc]/50 rounded-[3rem] border border-slate-200/60 p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center shadow-lg relative min-h-[480px]">
-              {/* Image Frame */}
-              <div className="w-full md:w-1/2 relative aspect-square md:aspect-[3/4] rounded-3xl overflow-hidden border border-white shadow-inner flex-shrink-0">
+              {/* RIGHT: Full-Height Photo — extends beyond the tab list height */}
+              <div className="relative flex-1 min-h-[420px] lg:min-h-0 lg:-my-10 rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src={childcarePrograms[activeChildcareIndex].image}
                   alt={childcarePrograms[activeChildcareIndex].title}
                   fill
-                  className="object-cover transition-all duration-500"
+                  className="object-cover object-center transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/20 via-transparent to-transparent" />
-              </div>
-
-              {/* Program Detail Text */}
-              <div className="flex-grow flex flex-col justify-between h-full space-y-6">
-                <div className="space-y-4">
-                  <span className="text-[10px] font-black uppercase text-orange-600 bg-orange-500/10 px-3 py-1.5 rounded-full inline-block">
-                    {childcarePrograms[activeChildcareIndex].age}
-                  </span>
-                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0f172a] leading-tight">
-                    {childcarePrograms[activeChildcareIndex].title}
-                  </h3>
-                  <p className="text-sm text-[#0f172a]/70 leading-relaxed font-semibold">
-                    {childcarePrograms[activeChildcareIndex].description}
-                  </p>
-
-                  <div className="pt-2 border-t border-slate-200/50">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Focus & Milestones:</p>
-                    <ul className="space-y-2">
-                      {childcarePrograms[activeChildcareIndex].bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-2 text-xs font-bold text-[#0f172a]/80">
-                          <span className="text-orange-500 flex-shrink-0 mt-0.5">✓</span>
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    onClick={() => {
-                      setInquiryProgram(childcarePrograms[activeChildcareIndex].title);
-                      scrollToSection('inquiry-form-section');
-                    }}
-                    className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white transition-all duration-300 shadow-md shadow-orange-500/10 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
-                  >
-                    Inquire for {childcarePrograms[activeChildcareIndex].title}
-                  </button>
-                </div>
               </div>
 
             </div>
@@ -489,19 +410,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 2: AFTER-SCHOOL & STEM ENRICHMENT ── */}
+      {/* ── SECTION 2: AFTER-SCHOOL & STEAM ENRICHMENT ── */}
       <section className="py-20 bg-brand-light" id="afterschool-programs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="text-xs font-black tracking-widest text-brand-teal uppercase">
+            <span className="text-xs font-black tracking-widest text-[#00A4EF] uppercase">
               K-12 Student Support
             </span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary tracking-tight">
-              After-School & STEM Enrichment
+              After-School & STEAM Enrichment
             </h2>
             <p className="text-primary/70 text-base md:text-lg font-semibold">
-              Supporting older age groups with homework prep, leadership development, and specialized, high-tier STEM learning tracks.
+              Supporting older age groups with homework prep, leadership development, and specialized, high-tier STEAM learning tracks.
             </p>
           </div>
 
@@ -510,7 +431,8 @@ export default function Home() {
             {afterschoolPrograms.map((program) => (
               <div
                 key={program.title}
-                className="group rounded-[2.5rem] overflow-hidden border border-slate-100 bg-white hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row shadow-sm"
+                className="group rounded-[2.5rem] overflow-hidden border-t-4 border border-slate-100 bg-white hover:shadow-2xl transition-all duration-300 flex flex-col md:flex-row shadow-sm"
+                style={{ borderTopColor: program.color }}
               >
                 {/* Image */}
                 <div className="relative h-56 md:h-auto md:w-2/5 flex-shrink-0 overflow-hidden">
@@ -525,7 +447,10 @@ export default function Home() {
                 {/* Content */}
                 <div className="p-8 flex-grow flex flex-col justify-between space-y-6">
                   <div className="space-y-3">
-                    <span className="text-[10px] font-black uppercase text-brand-teal bg-brand-teal/10 px-2.5 py-1 rounded-full">
+                    <span
+                      className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full"
+                      style={{ color: program.color, backgroundColor: `${program.color}18` }}
+                    >
                       {program.age}
                     </span>
                     <h3 className="font-serif text-xl font-bold text-primary">
@@ -537,7 +462,7 @@ export default function Home() {
                     <ul className="space-y-2 pt-2 border-t border-slate-100">
                       {program.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2 text-xs font-bold text-primary/80">
-                          <span className="text-brand-teal flex-shrink-0 mt-0.5">✓</span>
+                          <span className="flex-shrink-0 mt-0.5" style={{ color: program.color }}>✓</span>
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -549,7 +474,8 @@ export default function Home() {
                       setInquiryProgram(program.title);
                       scrollToSection('inquiry-form-section');
                     }}
-                    className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white transition-all duration-300 shadow-md shadow-sky-500/10 hover:shadow-lg hover:shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                    className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                    style={{ backgroundColor: program.color }}
                   >
                     Learn More
                   </button>
@@ -558,7 +484,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* STEM Tracks Subsection */}
+          {/* STEAM Tracks Subsection */}
           <div className="space-y-8">
             <h3 className="font-serif text-2xl font-bold text-center text-primary">
               Our Signature After-School Tracks
@@ -577,7 +503,10 @@ export default function Home() {
                         fill
                         className="object-cover"
                       />
-                      <span className="absolute top-4 left-4 text-[10px] font-black px-3.5 py-1.5 rounded-full bg-brand-orange text-white shadow">
+                      <span
+                        className="absolute top-4 left-4 text-[10px] font-black px-3.5 py-1.5 rounded-full text-white shadow"
+                        style={{ backgroundColor: track.color }}
+                      >
                         {track.age}
                       </span>
                     </div>
@@ -585,7 +514,10 @@ export default function Home() {
                     <div className="p-6 space-y-4">
                       <div className="flex justify-between items-center">
                         <h4 className="font-serif text-lg font-bold text-primary">{track.title}</h4>
-                        <span className="text-xs font-black text-brand-teal bg-brand-teal/10 px-2 py-0.5 rounded">
+                        <span
+                          className="text-xs font-black px-2 py-0.5 rounded"
+                          style={{ color: track.color, backgroundColor: `${track.color}18` }}
+                        >
                           {track.price}
                         </span>
                       </div>
@@ -593,7 +525,7 @@ export default function Home() {
                       <ul className="space-y-1.5 pt-2">
                         {track.bullets.map((bullet) => (
                           <li key={bullet} className="flex items-start gap-2 text-[11px] font-bold text-primary/80">
-                            <span className="text-brand-teal font-sans font-bold">•</span>
+                            <span className="font-sans font-bold" style={{ color: track.color }}>•</span>
                             <span>{bullet}</span>
                           </li>
                         ))}
@@ -607,9 +539,10 @@ export default function Home() {
                         setInquiryProgram(`${track.title} (Enrichment)`);
                         scrollToSection('inquiry-form-section');
                       }}
-                      className="w-full py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white transition-all duration-300 shadow-md shadow-sky-500/10 hover:shadow-lg hover:shadow-sky-500/20 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                      className="w-full py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                      style={{ backgroundColor: track.color }}
                     >
-                      Inquire for STEM Track
+                      Inquire for STEAM Track
                     </button>
                   </div>
                 </div>
@@ -640,7 +573,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-primary/10" />
                 {/* Floating graphic overlay badge */}
                 <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-5 rounded-2xl border border-slate-100 shadow-md">
-                  <p className="text-xs font-black text-brand-orange uppercase tracking-wider mb-1">Our Core Commitment</p>
+                  <p className="text-xs font-black text-[#F25022] uppercase tracking-wider mb-1">Our Core Commitment</p>
                   <p className="text-sm font-bold text-primary">To spark lifelong learning, build analytical thinkers, and offer a safe, happy childcare community.</p>
                 </div>
               </div>
@@ -670,7 +603,7 @@ export default function Home() {
                     </p>
                     <Link
                       href={item.href}
-                      className="inline-flex items-center gap-1.5 text-xs font-black text-[#005cc4] hover:underline uppercase tracking-wider pt-1"
+                      className="inline-flex items-center gap-1.5 text-xs font-black text-[#00A4EF] hover:underline uppercase tracking-wider pt-1"
                     >
                       {item.btnText} <span className="font-sans font-bold">→</span>
                     </Link>
@@ -689,7 +622,7 @@ export default function Home() {
           <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-xl space-y-8">
 
             <div className="text-center space-y-3">
-              <span className="text-xs font-black tracking-widest text-[#A93439] uppercase">
+              <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
                 Enrollment & Feedback
               </span>
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
@@ -710,7 +643,7 @@ export default function Home() {
                     value={inquiryName}
                     onChange={(e) => setInquiryName(e.target.value)}
                     placeholder="John Doe"
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
                   />
                 </div>
                 <div className="space-y-2">
@@ -721,7 +654,7 @@ export default function Home() {
                     value={inquiryEmail}
                     onChange={(e) => setInquiryEmail(e.target.value)}
                     placeholder="john@example.com"
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
                   />
                 </div>
               </div>
@@ -735,7 +668,7 @@ export default function Home() {
                     value={inquiryPhone}
                     onChange={(e) => setInquiryPhone(e.target.value)}
                     placeholder="(123) 456-7890"
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
                   />
                 </div>
                 <div className="space-y-2">
@@ -743,7 +676,7 @@ export default function Home() {
                   <select
                     value={inquiryProgram}
                     onChange={(e) => setInquiryProgram(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl px-4 py-3.5 text-sm focus:outline-none font-semibold"
+                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3.5 text-sm focus:outline-none font-semibold"
                   >
                     <option value="Little Blossoms">Little Blossoms - 6w to 12m</option>
                     <option value="Tiny Explorers">Tiny Explorers - 13m to 24m</option>
@@ -766,7 +699,7 @@ export default function Home() {
                   value={inquiryMessage}
                   onChange={(e) => setInquiryMessage(e.target.value)}
                   placeholder="Tell us about your child or share feedback about our programs..."
-                  className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#005cc4] rounded-xl p-4 text-sm focus:outline-none font-semibold"
+                  className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl p-4 text-sm focus:outline-none font-semibold"
                 />
               </div>
 
@@ -777,7 +710,7 @@ export default function Home() {
                   id="privacyConsent"
                   checked={privacyConsent}
                   onChange={(e) => setPrivacyConsent(e.target.checked)}
-                  className="mt-1 border-slate-200 focus:ring-[#005cc4] h-4 w-4 text-[#005cc4] rounded cursor-pointer"
+                  className="mt-1 border-slate-200 focus:ring-[#00A4EF] h-4 w-4 text-[#00A4EF] rounded cursor-pointer"
                 />
                 <label htmlFor="privacyConsent" className="text-xs font-semibold text-[#1f2e57]/70 cursor-pointer">
                   I consent to receive communication updates from NextZen Academy regarding enrollment schedules and agree to the storage of my submitted feedback in accordance with the Privacy Policy. *
@@ -786,13 +719,13 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-full font-black text-xs text-center uppercase tracking-wider text-white bg-[#A93439] hover:bg-[#A93439]/90 shadow-md active:scale-95 transition-all cursor-pointer"
+                className="w-full py-4 rounded-full font-black text-xs text-center uppercase tracking-wider text-white bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 shadow-md active:scale-95 transition-all cursor-pointer"
               >
                 Submit Inquiry
               </button>
 
               {inquiryStatus && (
-                <p className={`text-xs font-bold text-center mt-4 p-3 rounded-xl border ${inquiryStatus.startsWith('✓') ? 'text-[#005cc4] bg-[#005cc4]/10 border-[#005cc4]/20' : 'text-[#A93439] bg-[#A93439]/10 border-[#A93439]/20'
+                <p className={`text-xs font-bold text-center mt-4 p-3 rounded-xl border ${inquiryStatus.startsWith('✓') ? 'text-[#00A4EF] bg-[#00A4EF]/10 border-[#00A4EF]/20' : 'text-[#F25022] bg-[#F25022]/10 border-[#F25022]/20'
                   }`}>
                   {inquiryStatus}
                 </p>
@@ -818,10 +751,10 @@ export default function Home() {
       </section>
 
       {/* ── TESTIMONIALS SECTION (Kiddie Academy Testimonial Block) ── */}
-      <section className="py-20 bg-[#1f2e57] text-white relative">
+      <section className="py-20 bg-gradient-to-br from-[#1f2e57] via-[#0a1628] to-[#1f2e57] text-white relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 
-          <span className="text-xs font-black tracking-widest text-[#f2c638] uppercase">
+          <span className="text-xs font-black tracking-widest text-[#FFB900] uppercase">
             Parent Community
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-3 mb-12">
@@ -830,7 +763,7 @@ export default function Home() {
 
           <div className="bg-white/10 backdrop-blur-sm rounded-[3rem] p-8 md:p-12 border border-white/10 relative shadow-2xl">
             {/* Quote Icon */}
-            <span className="absolute left-8 top-6 text-7xl font-serif text-[#f2c638]/20 select-none pointer-events-none">
+            <span className="absolute left-8 top-6 text-7xl font-serif text-[#FFB900]/20 select-none pointer-events-none">
               “
             </span>
 
@@ -842,7 +775,7 @@ export default function Home() {
             </div>
 
             {/* Stars */}
-            <div className="flex justify-center gap-1 text-[#f2c638] mb-6">
+            <div className="flex justify-center gap-1 text-[#FFB900] mb-6">
               {Array.from({ length: testimonials[currentTestimonialIndex].stars }).map((_, i) => (
                 <span key={i} className="text-xl">★</span>
               ))}
@@ -883,7 +816,7 @@ export default function Home() {
           <div className="mt-8 text-center">
             <Link
               href="/about"
-              className="text-xs font-black text-[#f2c638] hover:text-[#f5d15e] hover:underline uppercase tracking-wider"
+              className="text-xs font-black text-[#FFB900] hover:text-[#ffc933] hover:underline uppercase tracking-wider"
             >
               Read More Testimonials
             </Link>
@@ -897,7 +830,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-16 space-y-4">
-            <span className="text-xs font-black tracking-widest text-[#005cc4] uppercase">
+            <span className="text-xs font-black tracking-widest text-[#00A4EF] uppercase">
               Frequently Asked Questions
             </span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1f2e57] tracking-tight">
@@ -909,37 +842,42 @@ export default function Home() {
           </div>
 
           <div className="space-y-4">
-            {faqs.map((faq, idx) => {
-              const isOpen = activeFaqIndex === idx;
-              return (
-                <div
-                  key={faq.question}
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
-                    ? 'border-[#A93439] shadow-md'
-                    : 'border-slate-200 hover:border-[#1f2e57]'
-                    }`}
-                >
-                  <button
-                    onClick={() => toggleFaq(idx)}
-                    className="w-full text-left px-6 py-5 font-black text-[#1f2e57] flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base"
-                  >
-                    <span>{faq.question}</span>
-                    <span className={`text-xs transform transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180 text-[#A93439]' : 'text-slate-400'}`}>
-                      ▼
-                    </span>
-                  </button>
-
+            {(() => {
+              const faqColors = ['#F25022', '#7FBA00', '#00A4EF', '#FFB900', '#F25022'];
+              return faqs.map((faq, idx) => {
+                const isOpen = activeFaqIndex === idx;
+                const faqColor = faqColors[idx % faqColors.length];
+                return (
                   <div
-                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0 overflow-hidden'
-                      }`}
+                    key={faq.question}
+                    className={`rounded-2xl border-l-4 border border-slate-200 transition-all duration-200 overflow-hidden bg-white ${isOpen ? 'shadow-md' : 'hover:shadow-sm'}`}
+                    style={isOpen ? { borderLeftColor: faqColor } : { borderLeftColor: faqColor }}
                   >
-                    <div className="px-6 py-5 text-sm md:text-base text-[#1f2e57]/75 leading-relaxed font-semibold bg-[#FAF8F5]/30">
-                      {faq.answer}
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full text-left px-6 py-5 font-black text-[#1f2e57] flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base"
+                    >
+                      <span>{faq.question}</span>
+                      <span
+                        className={`text-xs transform transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180' : 'text-slate-400'}`}
+                        style={isOpen ? { color: faqColor } : {}}
+                      >
+                        ▼
+                      </span>
+                    </button>
+
+                    <div
+                      className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0 overflow-hidden'
+                        }`}
+                    >
+                      <div className="px-6 py-5 text-sm md:text-base text-[#1f2e57]/75 leading-relaxed font-semibold bg-[#FAF8F5]/30">
+                        {faq.answer}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })
+            })()}
           </div>
 
         </div>
@@ -948,9 +886,9 @@ export default function Home() {
       {/* ── ENROLLMENT CTA BANNER (Bright Horizons style) ── */}
       <section className="pb-24 pt-8 bg-white" id="admissions">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-sky-500/10 border border-orange-500/20 p-8 md:p-16 lg:p-20 shadow-xl flex flex-col lg:flex-row items-center gap-8 lg:gap-12 justify-between">
+          <div className="relative rounded-[3rem] overflow-hidden bg-gradient-to-br from-[#F25022]/10 via-[#FFB900]/10 to-[#00A4EF]/10 border border-[#F25022]/20 p-8 md:p-16 lg:p-20 shadow-xl flex flex-col lg:flex-row items-center gap-8 lg:gap-12 justify-between">
             {/* Background Blob */}
-            <div className="absolute top-0 right-0 w-[24rem] h-[24rem] rounded-full bg-gradient-to-br from-orange-500/10 to-amber-500/10 filter blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[24rem] h-[24rem] rounded-full bg-gradient-to-br from-[#F25022]/10 via-[#FFB900]/10 to-[#7FBA00]/10 filter blur-3xl pointer-events-none" />
 
             <div className="space-y-4 max-w-2xl relative z-10 text-center lg:text-left">
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f172a] tracking-tight leading-tight">
@@ -965,21 +903,21 @@ export default function Home() {
               {!isLoggedIn ? (
                 <Link
                   href="/signup"
-                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white transition-all duration-300 shadow-md shadow-orange-500/15 hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   Enroll Now — It&apos;s Free
                 </Link>
               ) : (
                 <Link
                   href="/dashboard"
-                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-orange-500 via-amber-500 to-[#ffbe2e] hover:from-orange-600 hover:via-amber-600 hover:to-[#f0b024] text-white transition-all duration-300 shadow-md shadow-orange-500/15 hover:shadow-lg hover:shadow-orange-500/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   View Student Dashboard
                 </Link>
               )}
               <Link
                 href="/courses"
-                className="text-slate-700 hover:text-orange-500 bg-white border border-slate-200 hover:border-orange-400 hover:shadow-md hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-300 cursor-pointer whitespace-nowrap font-black text-xs uppercase tracking-widest px-8 py-4 rounded-full"
+                className="text-slate-700 hover:text-[#F25022] bg-white border border-slate-200 hover:border-[#F25022] hover:shadow-md hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-300 cursor-pointer whitespace-nowrap font-black text-xs uppercase tracking-widest px-8 py-4 rounded-full"
               >
                 Browse Courses
               </Link>

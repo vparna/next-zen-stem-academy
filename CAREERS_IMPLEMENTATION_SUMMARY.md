@@ -1,7 +1,7 @@
 # Careers Page Implementation Summary
 
 ## Overview
-Successfully implemented a complete careers page system for NextGen STEM Academy that allows the organization to post job openings and manage applications from candidates.
+Successfully implemented a complete careers page system for NextGen STEAM Academy that allows the organization to post job openings and manage applications from candidates.
 
 ## What Was Implemented
 

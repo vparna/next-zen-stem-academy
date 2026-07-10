@@ -102,7 +102,7 @@ export default function CareersPage() {
             Join Our <span className="gradient-text">Team</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-xl">
-            Be part of our mission to empower young minds through innovative STEM education.
+            Be part of our mission to empower young minds through innovative STEAM education.
           </p>
         </div>
       </section>
@@ -220,7 +220,7 @@ export default function CareersPage() {
         </div>
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Don&apos;t See the Right Role?</h2>
-          <p className="text-slate-300 mb-8 text-lg">We&apos;re always looking for passionate educators and STEM enthusiasts. Send us your resume!</p>
+          <p className="text-slate-300 mb-8 text-lg">We&apos;re always looking for passionate educators and STEAM enthusiasts. Send us your resume!</p>
           <a
             href="mailto:careers@nextzenacademy.com"
             className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all"

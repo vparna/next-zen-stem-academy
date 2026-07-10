@@ -9,14 +9,14 @@ const sampleJobs = [
   {
     jobId: 'JOB-001',
     title: 'Robotics Instructor',
-    description: 'We are seeking a passionate Robotics Instructor to teach students aged 8-16 the fundamentals of robotics, programming, and engineering. You will design engaging lesson plans, guide hands-on projects, and inspire young minds to explore STEM fields.',
+    description: 'We are seeking a passionate Robotics Instructor to teach students aged 8-16 the fundamentals of robotics, programming, and engineering. You will design engaging lesson plans, guide hands-on projects, and inspire young minds to explore STEAM fields.',
     requirements: [
       'Bachelor\'s degree in Engineering, Computer Science, Education, or related field',
       '2+ years of experience teaching or working with children',
       'Strong knowledge of robotics platforms (LEGO Mindstorms, VEX, Arduino)',
       'Experience with programming languages (Python, C++, or block-based)',
       'Excellent communication and classroom management skills',
-      'Passion for STEM education and working with youth'
+      'Passion for STEAM education and working with youth'
     ],
     responsibilities: [
       'Develop and deliver engaging robotics curriculum for various age groups',
@@ -119,19 +119,19 @@ const sampleJobs = [
 
 async function seedJobs() {
   const client = new MongoClient(MONGODB_URI);
-  
+
   try {
     console.log('Connecting to MongoDB...');
     await client.connect();
     console.log('Connected successfully!');
-    
+
     const db = client.db();
     const jobsCollection = db.collection('jobs');
-    
+
     // Clear existing jobs (optional - comment out if you want to keep existing data)
     console.log('Clearing existing jobs...');
     await jobsCollection.deleteMany({});
-    
+
     // Insert sample jobs
     console.log('Inserting sample jobs...');
     const now = new Date();
@@ -140,19 +140,19 @@ async function seedJobs() {
       createdAt: now,
       updatedAt: now,
     }));
-    
+
     const result = await jobsCollection.insertMany(jobsToInsert);
     console.log(`Successfully inserted ${result.insertedCount} jobs!`);
-    
+
     // Display inserted jobs
     console.log('\nInserted Jobs:');
     sampleJobs.forEach((job, index) => {
       console.log(`${index + 1}. ${job.jobId}: ${job.title} (${job.department} - ${job.jobType})`);
     });
-    
+
     console.log('\n✅ Seeding completed successfully!');
     console.log('You can now view the jobs at: http://localhost:3000/careers');
-    
+
   } catch (error) {
     console.error('Error seeding jobs:', error);
     process.exit(1);

@@ -1,6 +1,6 @@
 # Google Play Store Deployment Guide
 
-This guide will walk you through deploying the NextGen STEM Academy mobile app to the Google Play Store.
+This guide will walk you through deploying the NextGen STEAM Academy mobile app to the Google Play Store.
 
 ## Prerequisites
 
@@ -18,10 +18,10 @@ Create or update `app.json` in your project root:
 
 ```json
 {
-  "name": "NextGen STEM Academy",
-  "displayName": "NextGen STEM",
+  "name": "NextGen STEAM Academy",
+  "displayName": "NextGen STEAM",
   "expo": {
-    "name": "NextGen STEM Academy",
+    "name": "NextGen STEAM Academy",
     "slug": "nextgen-stem-academy",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -85,7 +85,7 @@ Since this is a Next.js web app, we'll use Capacitor to create a native wrapper:
 
 ```bash
 npm install @capacitor/core @capacitor/cli
-npx cap init "NextGen STEM Academy" "com.nextzenstem.academy"
+npx cap init "NextGen STEAM Academy" "com.nextzenstem.academy"
 ```
 
 #### 2.2 Add Android Platform
@@ -147,9 +147,9 @@ Create `public/manifest.json`:
 
 ```json
 {
-  "name": "NextGen STEM Academy",
-  "short_name": "NextGen STEM",
-  "description": "Mobile attendance and chat for NextGen STEM Academy",
+  "name": "NextGen STEAM Academy",
+  "short_name": "NextGen STEAM",
+  "description": "Mobile attendance and chat for NextGen STEAM Academy",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#4F46E5",
@@ -256,7 +256,7 @@ Output files:
 
 1. Click "Create app"
 2. Fill in:
-   - App name: "NextGen STEM Academy"
+   - App name: "NextGen STEAM Academy"
    - Default language: English (US)
    - App or game: App
    - Free or paid: Free
@@ -267,11 +267,11 @@ Output files:
 Complete all required fields:
 
 **App Details:**
-- App name: NextGen STEM Academy
-- Short description (80 chars): Mobile attendance tracking and communication for NextGen STEM Academy
+- App name: NextGen STEAM Academy
+- Short description (80 chars): Mobile attendance tracking and communication for NextGen STEAM Academy
 - Full description (4000 chars):
 ```
-NextGen STEM Academy is a comprehensive mobile application designed for seamless attendance tracking and communication between parents, students, and teachers.
+NextGen STEAM Academy is a comprehensive mobile application designed for seamless attendance tracking and communication between parents, students, and teachers.
 
 KEY FEATURES:
 
@@ -378,7 +378,7 @@ Example privacy policy should cover:
 3. Add release name: "1.0.0"
 4. Add release notes:
 ```
-Initial release of NextGen STEM Academy mobile app
+Initial release of NextGen STEAM Academy mobile app
 
 Features:
 - QR code-based attendance tracking
@@ -517,6 +517,6 @@ Following this guide will help you successfully deploy your mobile app to the Go
 - Respond to user feedback
 - Keep your app updated
 
-For technical support with NextGen STEM Academy, contact: support@nextzenstem.com
+For technical support with NextGen STEAM Academy, contact: support@nextzenstem.com
 
 Good luck with your deployment! 🚀

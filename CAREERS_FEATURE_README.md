@@ -1,6 +1,6 @@
 # Careers Page Feature Documentation
 
-This document describes the newly implemented careers page feature that allows NextGen STEM Academy to post job openings and manage applications.
+This document describes the newly implemented careers page feature that allows NextGen STEAM Academy to post job openings and manage applications.
 
 ## Overview
 

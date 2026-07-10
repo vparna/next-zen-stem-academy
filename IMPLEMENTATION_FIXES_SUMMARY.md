@@ -160,7 +160,7 @@ This document summarizes all the fixes and improvements made to address the 6 is
 
 5. **Contact Support**
    - Email: support@nextzenacademy.com
-   - Phone: 1-800-STEM-EDU
+   - Phone: 1-800-STEAM-EDU
    - Support hours
 
 **Files Created:**

@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document summarizes the comprehensive implementation of 9 major feature sets that transform NextGen STEM Academy into a full-featured Learning Management System (LMS).
+This document summarizes the comprehensive implementation of 9 major feature sets that transform NextGen STEAM Academy into a full-featured Learning Management System (LMS).
 
 ## Features Implemented
 
