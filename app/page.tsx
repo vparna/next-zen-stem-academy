@@ -294,9 +294,9 @@ export default function Home() {
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium mb-10 max-w-xl">
+            {/* <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium mb-10 max-w-xl">
               NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEAM enrichment — nurturing every child from infancy through high school.
-            </p>
+            </p> */}
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">
@@ -514,12 +514,6 @@ export default function Home() {
                     <div className="p-6 space-y-4">
                       <div className="flex justify-between items-center">
                         <h4 className="font-serif text-lg font-bold text-primary">{track.title}</h4>
-                        <span
-                          className="text-xs font-black px-2 py-0.5 rounded"
-                          style={{ color: track.color, backgroundColor: `${track.color}18` }}
-                        >
-                          {track.price}
-                        </span>
                       </div>
                       <p className="text-xs text-primary/70 leading-relaxed font-semibold">{track.description}</p>
                       <ul className="space-y-1.5 pt-2">
