@@ -13,7 +13,7 @@ export default function Navbar() {
     isLoggedIn: false,
     userName: ''
   });
-  
+
   const campusDropdownRef = useRef<HTMLDivElement>(null);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const router = useRouter();
@@ -25,10 +25,10 @@ export default function Navbar() {
     // Check authentication status
     const checkAuth = () => {
       if (typeof window === 'undefined') return;
-      
+
       const token = localStorage.getItem('token');
       const userData = localStorage.getItem('user');
-      
+
       if (token && userData) {
         try {
           const user = JSON.parse(userData);
@@ -50,12 +50,12 @@ export default function Navbar() {
         });
       }
     };
-    
+
     checkAuth();
-    
+
     window.addEventListener('authChange', checkAuth);
     window.addEventListener('storage', checkAuth);
-    
+
     // Close dropdown on click outside
     const handleClickOutside = (event: MouseEvent) => {
       if (campusDropdownRef.current && !campusDropdownRef.current.contains(event.target as Node)) {
@@ -63,7 +63,7 @@ export default function Navbar() {
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    
+
     return () => {
       window.removeEventListener('authChange', checkAuth);
       window.removeEventListener('storage', checkAuth);
@@ -84,7 +84,7 @@ export default function Navbar() {
       userName: ''
     });
     setIsMenuOpen(false);
-    
+
     window.dispatchEvent(new Event('authChange'));
     router.push('/');
   };
@@ -102,14 +102,14 @@ export default function Navbar() {
       {/* Main Header Container (Pro Glassmorphism Style) */}
       <header className="fixed top-[5px] left-0 right-0 z-40 w-full bg-white/80 backdrop-blur-xl border-b border-slate-200/40 shadow-[0_8px_32px_rgba(15,23,42,0.03)] transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-stretch justify-between">
-          
+
           {/* Logo & Branding - Visible on Desktop */}
           <div className="hidden lg:flex items-center py-2 h-22">
             <Link href="/" className="flex items-center group">
               <div className="relative h-12 lg:h-14 w-40 lg:w-48 transition-all duration-300 group-hover:scale-[1.02]">
-                <Image 
+                <Image
                   src={`${basePath}/brand-logo5.png`}
-                  alt="NextZen Academy Logo" 
+                  alt="NextZen Academy Logo"
                   fill
                   priority
                   className="object-contain object-left"
@@ -122,7 +122,7 @@ export default function Navbar() {
           <div className="hidden lg:flex-1 lg:flex lg:flex-col lg:pl-12">
             {/* TIER 1: Utilities & Auth (Top Row) */}
             <div className="h-10 flex justify-between items-center border-b border-slate-100 text-xs font-bold text-slate-500">
-              
+
               {/* Location Pill & Selector */}
               <div className="flex items-center gap-4">
                 <div className="relative" ref={campusDropdownRef}>
@@ -135,10 +135,10 @@ export default function Navbar() {
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F25022]"></span>
                     </span>
                     <span>Campus: {selectedCampus}</span>
-                    <svg 
-                      className={`w-3 h-3 text-slate-500 transition-transform duration-250 ${isCampusDropdownOpen ? 'rotate-180' : ''}`} 
-                      fill="none" 
-                      stroke="currentColor" 
+                    <svg
+                      className={`w-3 h-3 text-slate-500 transition-transform duration-250 ${isCampusDropdownOpen ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
@@ -162,11 +162,10 @@ export default function Navbar() {
                               router.push('/campuses/future-expansion');
                             }
                           }}
-                          className={`w-full text-left px-4 py-2 flex flex-col justify-center transition-all duration-150 ${
-                            selectedCampus === campus
+                          className={`w-full text-left px-4 py-2 flex flex-col justify-center transition-all duration-150 ${selectedCampus === campus
                               ? 'bg-[#F25022]/5 text-[#F25022] font-black'
                               : 'text-slate-700 hover:bg-slate-50'
-                          }`}
+                            }`}
                         >
                           <span className="flex items-center gap-1.5 text-xs font-semibold">
                             <span>📍</span> {campus} Campus
@@ -243,14 +242,12 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/courses"
-                  className={`hover:text-[#F25022] transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-[#F25022]/5 active:scale-95 ${
-                    isActive('/courses') ? 'text-[#F25022] bg-[#F25022]/5 font-black border border-[#F25022]/20' : ''
-                  }`}
+                  className={`hover:text-[#F25022] transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-[#F25022]/5 active:scale-95 ${isActive('/courses') ? 'text-[#F25022] bg-[#F25022]/5 font-black border border-[#F25022]/20' : ''
+                    }`}
                 >
                   Programs
-                  <span className={`absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform transition-transform origin-center duration-300 ${
-                    isActive('/courses') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`} />
+                  <span className={`absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform transition-transform origin-center duration-300 ${isActive('/courses') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    }`} />
                 </Link>
                 <Link
                   href="/stem-labs"
@@ -268,14 +265,12 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/about"
-                  className={`hover:text-[#F25022] transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-[#F25022]/5 active:scale-95 ${
-                    isActive('/about') ? 'text-[#F25022] bg-[#F25022]/5 font-black border border-[#F25022]/20' : ''
-                  }`}
+                  className={`hover:text-[#F25022] transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-[#F25022]/5 active:scale-95 ${isActive('/about') ? 'text-[#F25022] bg-[#F25022]/5 font-black border border-[#F25022]/20' : ''
+                    }`}
                 >
                   Our Story
-                  <span className={`absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform transition-transform origin-center duration-300 ${
-                    isActive('/about') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`} />
+                  <span className={`absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform transition-transform origin-center duration-300 ${isActive('/about') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    }`} />
                 </Link>
               </nav>
 
@@ -306,9 +301,9 @@ export default function Navbar() {
             {/* Center Logo */}
             <Link href="/" className="flex items-center justify-center">
               <div className="relative h-12 w-44">
-                <Image 
-                  src={`${basePath}/brand-logo4.png`}
-                  alt="NextZen Academy Logo" 
+                <Image
+                  src={`${basePath}/brand-logo5.png`}
+                  alt="NextZen Academy Logo"
                   fill
                   priority
                   className="object-contain object-center"
@@ -349,22 +344,21 @@ export default function Navbar() {
 
       {/* Slide-out Mobile Navigation Drawer Panel */}
       <aside
-        className={`fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white/95 backdrop-blur-xl shadow-2xl z-50 transform transition-transform duration-350 ease-in-out flex flex-col lg:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white/95 backdrop-blur-xl shadow-2xl z-50 transform transition-transform duration-350 ease-in-out flex flex-col lg:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         {/* Accent Strip inside Drawer */}
         <div className="h-[4px] w-full bg-gradient-to-r from-[#F25022] via-[#FFB900] via-[#7FBA00] to-[#00A4EF]" />
 
         <div className="flex flex-col h-full overflow-y-auto px-6 py-8">
-          
+
           {/* Drawer Header */}
           <div className="flex items-center justify-between pb-6 border-b border-slate-100">
             <Link href="/" className="flex items-center" onClick={() => setIsMenuOpen(false)}>
               <div className="relative h-12 w-44">
-                <Image 
+                <Image
                   src={`${basePath}/brand-logo4.png`}
-                  alt="NextZen Academy Logo" 
+                  alt="NextZen Academy Logo"
                   fill
                   className="object-contain object-left"
                 />
@@ -397,11 +391,10 @@ export default function Navbar() {
                       router.push('/campuses/future-expansion');
                     }
                   }}
-                  className={`px-3 py-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${
-                    selectedCampus === campus
+                  className={`px-3 py-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${selectedCampus === campus
                       ? 'bg-[#F25022]/5 border-[#F25022]/25 text-[#F25022] shadow-sm'
                       : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'
-                  }`}
+                    }`}
                 >
                   <span className="flex items-center gap-1">
                     <span>📍</span>
@@ -441,33 +434,30 @@ export default function Navbar() {
               <Link
                 href="/"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${
-                  isActive('/')
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${isActive('/')
                     ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
                     : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
-                }`}
+                  }`}
               >
                 <span className="text-base">🏠</span> <span className="text-xs uppercase tracking-wider">Home</span>
               </Link>
               <Link
                 href="/about"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${
-                  isActive('/about')
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${isActive('/about')
                     ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
                     : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
-                }`}
+                  }`}
               >
                 <span className="text-base">👋</span> <span className="text-xs uppercase tracking-wider">Our Story</span>
               </Link>
               <Link
                 href="/courses"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${
-                  isActive('/courses')
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${isActive('/courses')
                     ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
                     : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
-                }`}
+                  }`}
               >
                 <span className="text-base">📚</span> <span className="text-xs uppercase tracking-wider">Programs</span>
               </Link>
@@ -516,18 +506,16 @@ export default function Navbar() {
               <Link
                 href="/careers"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${
-                  isActive('/careers') ? 'text-[#F25022] font-bold bg-[#F25022]/5' : 'text-slate-600 hover:bg-slate-50 hover:text-[#F25022]'
-                }`}
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${isActive('/careers') ? 'text-[#F25022] font-bold bg-[#F25022]/5' : 'text-slate-600 hover:bg-slate-50 hover:text-[#F25022]'
+                  }`}
               >
                 <span>💼</span> <span className="text-xs uppercase tracking-wider">Careers</span>
               </Link>
               <Link
                 href="/support"
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${
-                  isActive('/support') ? 'text-[#F25022] font-bold bg-[#F25022]/5' : 'text-slate-600 hover:bg-slate-50 hover:text-[#F25022]'
-                }`}
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${isActive('/support') ? 'text-[#F25022] font-bold bg-[#F25022]/5' : 'text-slate-600 hover:bg-slate-50 hover:text-[#F25022]'
+                  }`}
               >
                 <span>📞</span> <span className="text-xs uppercase tracking-wider">Contact Us</span>
               </Link>
