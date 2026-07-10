@@ -4,17 +4,18 @@
 :root {
   --background: #ffffff;
   --foreground: #1f2e57;
-  /* Brand palette inspired by Kiddie Academy style */
+  /* Microsoft 4-color brand palette */
   --color-primary: #1f2e57;
-  --color-brand-red: #A93439;
-  --color-brand-gold: #f2c638;
-  --color-brand-gold-hover: #f5d15e;
-  --color-brand-blue: #005cc4;
-  --color-brand-blue-hover: #006fed;
+  --color-brand-red: #F25022;
+  --color-brand-gold: #FFB900;
+  --color-brand-gold-hover: #ffc933;
+  --color-brand-blue: #00A4EF;
+  --color-brand-blue-hover: #00c0ff;
+  --color-brand-green: #7FBA00;
   --color-brand-tan: #f5f1ec;
 
-  --color-accent-orange: #A93439;
-  --color-accent-teal: #005cc4;
+  --color-accent-orange: #F25022;
+  --color-accent-teal: #00A4EF;
   --color-light-bg: #f5f1ec;
 }
 
@@ -29,6 +30,7 @@
   --color-brand-gold-hover: var(--color-brand-gold-hover);
   --color-brand-blue: var(--color-brand-blue);
   --color-brand-blue-hover: var(--color-brand-blue-hover);
+  --color-brand-green: var(--color-brand-green);
   --color-brand-tan: var(--color-brand-tan);
 }
 
@@ -62,13 +64,13 @@ body {
 .hero-orb-left {
   top: -7rem;
   left: -7rem;
-  background: rgba(249, 115, 22, 0.5);
+  background: rgba(242, 80, 34, 0.5); /* MS Red */
 }
 
 .hero-orb-right {
   right: -7rem;
   bottom: -9rem;
-  background: rgba(14, 165, 233, 0.5);
+  background: rgba(0, 164, 239, 0.5); /* MS Blue */
   animation-delay: 1.8s;
 }
 
@@ -86,7 +88,7 @@ body {
 
 /* ── Gradient text ── */
 .gradient-text {
-  background: linear-gradient(135deg, #f97316 0%, #ef4444 50%, #ec4899 100%);
+  background: linear-gradient(135deg, #F25022 0%, #FFB900 50%, #7FBA00 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -122,7 +124,7 @@ body {
   width: 56px;
   height: 4px;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #f97316, #0ea5e9);
+  background: linear-gradient(90deg, #F25022, #00A4EF);
 }
 
 /* ── Fade-in-up animation ── */
