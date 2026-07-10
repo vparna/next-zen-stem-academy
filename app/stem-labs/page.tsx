@@ -114,7 +114,7 @@ export default function StemLabsPage() {
     name: '',
     email: '',
     phone: '',
-    course: 'STEM Labs Trial',
+    course: 'STEAM Labs Trial',
     childName: '',
     childAge: '',
     message: ''
@@ -147,7 +147,7 @@ export default function StemLabsPage() {
         },
         body: JSON.stringify({
           ...formData,
-          message: `[STEM LABS TRIAL REQUEST] Selected Lab Category: ${formData.course}. Notes: ${formData.message || 'None'}`
+          message: `[STEAM LABS TRIAL REQUEST] Selected Lab Category: ${formData.course}. Notes: ${formData.message || 'None'}`
         }),
       });
 
@@ -160,7 +160,7 @@ export default function StemLabsPage() {
         name: '',
         email: '',
         phone: '',
-        course: 'STEM Labs Trial',
+        course: 'STEAM Labs Trial',
         childName: '',
         childAge: '',
         message: ''
@@ -204,7 +204,7 @@ export default function StemLabsPage() {
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
                 Step inside our state-of-the-art physical labs designed to foster collaborative engineering, posistional logic, and algorithmic creativity. We build intelligence beyond school standards.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
                 <a
                   href="#book-trial"
@@ -226,7 +226,7 @@ export default function StemLabsPage() {
               <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-[4/5] rounded-[3rem] rounded-tr-[7rem] rounded-bl-[7rem] lg:rounded-tr-[9rem] lg:rounded-bl-[9rem] overflow-hidden border-8 border-white shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&q=80"
-                  alt="High tech STEM lab class"
+                  alt="High tech STEAM lab class"
                   fill
                   className="object-cover"
                   priority
@@ -269,8 +269,8 @@ export default function StemLabsPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
             {steamPillars.map((pillar) => (
-              <div 
-                key={pillar.letter} 
+              <div
+                key={pillar.letter}
                 className={`rounded-[2rem] p-5 md:p-6 border transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 flex flex-col items-center text-center last:col-span-2 md:last:col-span-1 ${pillar.color}`}
               >
                 <span className="text-2xl md:text-3xl font-black mb-1 md:mb-2 select-none">{pillar.letter}</span>
@@ -307,11 +307,10 @@ export default function StemLabsPage() {
                   <button
                     key={lab.id}
                     onClick={() => setActiveTabId(lab.id)}
-                    className={`text-left p-4 lg:p-5 rounded-2xl border-2 transition-all cursor-pointer flex items-center gap-3 lg:gap-4 flex-shrink-0 ${
-                      isSelected 
+                    className={`text-left p-4 lg:p-5 rounded-2xl border-2 transition-all cursor-pointer flex items-center gap-3 lg:gap-4 flex-shrink-0 ${isSelected
                         ? 'bg-[#FAF8F5] border-orange-500/80 shadow-md shadow-orange-500/5'
                         : 'bg-transparent border-transparent hover:bg-slate-50 hover:border-slate-200'
-                    }`}
+                      }`}
                   >
                     <span className="text-2xl lg:text-3xl bg-white border border-slate-100 shadow-sm p-1.5 lg:p-2 rounded-xl">
                       {lab.icon}
@@ -400,7 +399,7 @@ export default function StemLabsPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {labCohorts.map((cohort, idx) => (
-              <div 
+              <div
                 key={idx}
                 className={`rounded-[2rem] border p-8 flex flex-col justify-between space-y-6 bg-white hover:shadow-xl transition-all duration-300`}
               >
@@ -638,13 +637,12 @@ export default function StemLabsPage() {
             {safetyFaqs.map((faq, idx) => {
               const isOpen = activeFaqIndex === idx;
               return (
-                <div 
-                  key={idx} 
-                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${
-                    isOpen 
-                      ? 'border-sky-500/80 shadow-md shadow-sky-500/5' 
+                <div
+                  key={idx}
+                  className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
+                      ? 'border-sky-500/80 shadow-md shadow-sky-500/5'
                       : 'border-slate-200 hover:border-slate-800'
-                  }`}
+                    }`}
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
@@ -656,10 +654,9 @@ export default function StemLabsPage() {
                     </span>
                   </button>
 
-                  <div 
-                    className={`transition-all duration-300 ease-in-out ${
-                      isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
-                    }`}
+                  <div
+                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0'
+                      }`}
                   >
                     <div className="px-6 py-5 text-sm md:text-base text-slate-500 leading-relaxed font-medium bg-[#FAF8F5]/30">
                       {faq.answer}

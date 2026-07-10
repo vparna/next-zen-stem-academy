@@ -1,6 +1,6 @@
 # Marketing Research & Financial Projections - Usage Guide
 
-This directory contains comprehensive marketing research and financial projection documents for NextGen STEM Academy.
+This directory contains comprehensive marketing research and financial projection documents for NextGen STEAM Academy.
 
 ## 📄 Available Documents
 

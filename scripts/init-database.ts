@@ -360,7 +360,7 @@ const sampleJobs = [
       'Strong knowledge of robotics platforms (LEGO Mindstorms, VEX, Arduino)',
       'Experience with programming languages (Python, C++, or block-based)',
       'Excellent communication and classroom management skills',
-      'Passion for STEM education and working with youth'
+      'Passion for STEAM education and working with youth'
     ],
     responsibilities: [
       'Develop and deliver engaging robotics curriculum for various age groups',
@@ -471,7 +471,7 @@ const sampleJobs = [
 
 async function createCollectionIfNotExists(db: Db, collectionName: string) {
   const existingCollections = await db.listCollections({ name: collectionName }).toArray();
-  
+
   if (existingCollections.length === 0) {
     await db.createCollection(collectionName);
     console.log(`  ✓ Created collection: ${collectionName}`);
@@ -484,7 +484,7 @@ async function createCollectionIfNotExists(db: Db, collectionName: string) {
 
 async function createIndexes(db: Db, collectionName: string, indexes: any[]) {
   const collection = db.collection(collectionName);
-  
+
   for (const index of indexes) {
     try {
       await collection.createIndex(index.key, index.options);
@@ -505,7 +505,7 @@ async function createIndexes(db: Db, collectionName: string, indexes: any[]) {
 async function seedCollection(db: Db, collectionName: string, data: any[]) {
   const collection = db.collection(collectionName);
   const existingCount = await collection.countDocuments();
-  
+
   if (existingCount === 0) {
     await collection.insertMany(data);
     console.log(`  ✓ Seeded ${data.length} documents into ${collectionName}`);
@@ -557,7 +557,7 @@ async function initializeDatabase() {
 
     const dbName = getDatabaseName(MONGODB_URI);
     const db = client.db(dbName);
-    
+
     console.log(`📊 Database: ${dbName}\n`);
     console.log('='.repeat(60));
 
@@ -581,10 +581,10 @@ async function initializeDatabase() {
     // Step 3: Seed initial data
     console.log('\n🌱 STEP 3: Seeding Initial Data');
     console.log('-'.repeat(60));
-    
+
     console.log('\n  Seeding courses:');
     await seedCollection(db, 'courses', sampleCourses);
-    
+
     console.log('\n  Seeding jobs:');
     await seedCollection(db, 'jobs', sampleJobs);
 
@@ -598,7 +598,7 @@ async function initializeDatabase() {
     console.log('-'.repeat(60));
     const allCollections = await db.listCollections().toArray();
     console.log(`\n  Total collections: ${allCollections.length}`);
-    
+
     for (const coll of allCollections) {
       const count = await db.collection(coll.name).countDocuments();
       console.log(`  - ${coll.name}: ${count} documents`);
@@ -615,7 +615,7 @@ async function initializeDatabase() {
     console.log('\n📧 To set the admin password, call POST /api/admin/invite');
     console.log('   with body: { "secret": "<ADMIN_INVITE_SECRET>" }');
     console.log('\n🚀 You can now start using the application!');
-    
+
   } catch (error) {
     console.error('\n❌ Error initializing database:', error);
     process.exit(1);

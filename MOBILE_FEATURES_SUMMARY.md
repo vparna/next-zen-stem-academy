@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document summarizes all the work completed to fix the QR code error and implement the requested mobile app features for NextGen STEM Academy.
+This document summarizes all the work completed to fix the QR code error and implement the requested mobile app features for NextGen STEAM Academy.
 
 ## Issues Addressed
 

@@ -1,6 +1,6 @@
 # Apple App Store Deployment Guide
 
-This comprehensive guide will walk you through deploying the NextGen STEM Academy mobile app to the Apple App Store.
+This comprehensive guide will walk you through deploying the NextGen STEAM Academy mobile app to the Apple App Store.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ Before you begin, ensure you have:
 3. Click "Identifiers" → "+" button
 4. Select "App IDs" → "Continue"
 5. Fill in:
-   - Description: NextGen STEM Academy
+   - Description: NextGen STEAM Academy
    - Bundle ID: com.nextzenstem.academy (Explicit)
    - Capabilities: Enable required ones:
      - Push Notifications
@@ -53,10 +53,10 @@ Create or update `app.json`:
 
 ```json
 {
-  "name": "NextGen STEM Academy",
-  "displayName": "NextGen STEM",
+  "name": "NextGen STEAM Academy",
+  "displayName": "NextGen STEAM",
   "expo": {
-    "name": "NextGen STEM Academy",
+    "name": "NextGen STEAM Academy",
     "slug": "nextgen-stem-academy",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -116,7 +116,7 @@ Required screens:
 
 ```bash
 npm install @capacitor/core @capacitor/cli
-npx cap init "NextGen STEM Academy" "com.nextzenstem.academy"
+npx cap init "NextGen STEAM Academy" "com.nextzenstem.academy"
 ```
 
 #### 3.2 Add iOS Platform
@@ -256,7 +256,7 @@ Upload will take several minutes. You'll receive email confirmation.
 3. Select "New App"
 4. Fill in:
    - Platform: iOS
-   - Name: NextGen STEM Academy
+   - Name: NextGen STEAM Academy
    - Primary Language: English (U.S.)
    - Bundle ID: com.nextzenstem.academy
    - SKU: nextgen-stem-academy-001
@@ -267,7 +267,7 @@ Upload will take several minutes. You'll receive email confirmation.
 Complete these sections:
 
 **General Information:**
-- App Name: NextGen STEM Academy
+- App Name: NextGen STEAM Academy
 - Subtitle (30 chars): Student Attendance & Communication
 - Category: Education
 - Secondary Category: Productivity
@@ -277,7 +277,7 @@ Complete these sections:
 - Example: https://nextzenstem.com/privacy
 
 **Contact Information:**
-- Name: NextGen STEM Academy Support
+- Name: NextGen STEAM Academy Support
 - Email: support@nextzenstem.com
 - Phone: +1 (XXX) XXX-XXXX
 
@@ -294,7 +294,7 @@ Complete these sections:
 
 **Description (4000 chars):**
 ```
-NextGen STEM Academy is a comprehensive mobile application designed for seamless attendance tracking and communication between parents, students, and teachers.
+NextGen STEAM Academy is a comprehensive mobile application designed for seamless attendance tracking and communication between parents, students, and teachers.
 
 KEY FEATURES:
 
@@ -330,7 +330,7 @@ PERFECT FOR:
 - Teachers who need efficient attendance management
 - Schools seeking modern attendance solutions
 
-NextGen STEM Academy makes education management simple, secure, and efficient.
+NextGen STEAM Academy makes education management simple, secure, and efficient.
 ```
 
 **Keywords (100 chars):**
@@ -416,7 +416,7 @@ Expected rating: 4+ (suitable for all ages)
 
 **What's New in This Version (4000 chars):**
 ```
-Initial release of NextGen STEM Academy mobile app!
+Initial release of NextGen STEAM Academy mobile app!
 
 New Features:
 • QR code-based attendance tracking
@@ -430,7 +430,7 @@ New Features:
 • Beautiful, intuitive interface
 • Secure authentication
 
-Thank you for using NextGen STEM Academy!
+Thank you for using NextGen STEAM Academy!
 ```
 
 ## Step 8: Build and Submit
@@ -624,7 +624,7 @@ pod install
 
 ## Support
 
-For NextGen STEM Academy specific support:
+For NextGen STEAM Academy specific support:
 - Email: support@nextzenstem.com
 - Website: https://nextzenstem.com/support
 

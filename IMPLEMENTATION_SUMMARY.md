@@ -1,7 +1,7 @@
 # Mobile Attendance App Implementation Summary
 
 ## Overview
-This implementation adds a comprehensive mobile-first attendance and chat application to NextGen STEM Academy, allowing parents to check students in/out using QR codes and enabling communication between parents and teachers.
+This implementation adds a comprehensive mobile-first attendance and chat application to NextGen STEAM Academy, allowing parents to check students in/out using QR codes and enabling communication between parents and teachers.
 
 ## What Was Built
 

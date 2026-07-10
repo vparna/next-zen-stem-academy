@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.nextzenstem.academy',
-  appName: 'NextGen STEM Academy',
+  appName: 'NextGen STEAM Academy',
   webDir: 'public', // Set to 'public' (which exists) to prevent Capacitor from throwing 'Could not find web assets directory'
   server: {
     // For local mobile testing, uncomment the line below and replace with your Mac's local IP address:

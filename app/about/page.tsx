@@ -65,7 +65,7 @@ export default function AboutPage() {
               </div>
               <h2 className="text-2xl font-extrabold text-slate-900 mb-4">Our Mission</h2>
               <p className="text-slate-600 leading-relaxed mb-3">
-                At NextZen Academy, our mission is to nurture curious, confident, and compassionate learners by blending modern STEM education with mindfulness, values, and balance.
+                At NextZen Academy, our mission is to nurture curious, confident, and compassionate learners by blending modern STEAM education with mindfulness, values, and balance.
               </p>
               <p className="text-slate-600 leading-relaxed">
                 We create a safe and inspiring environment where children learn to think deeply, explore freely, and grow joyfully — preparing them for both life and the future.
@@ -134,7 +134,7 @@ export default function AboutPage() {
       <section className="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Ready to Join Our Family?</h2>
-          <p className="text-slate-400 mb-8 text-lg">Start your child&apos;s STEM journey today with a free trial class.</p>
+          <p className="text-slate-400 mb-8 text-lg">Start your child&apos;s STEAM journey today with a free trial class.</p>
           <Link href="/signup" className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all">
             Book a Free Trial
           </Link>

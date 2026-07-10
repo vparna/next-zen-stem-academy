@@ -1,6 +1,6 @@
 # Mobile App Configuration Guide
 
-This guide provides detailed instructions for configuring the NextGen STEM Academy mobile app for production deployment.
+This guide provides detailed instructions for configuring the NextGen STEAM Academy mobile app for production deployment.
 
 ## Table of Contents
 
@@ -246,9 +246,9 @@ Create `public/manifest.json`:
 
 ```json
 {
-  "name": "NextGen STEM Academy",
-  "short_name": "NextGen STEM",
-  "description": "Mobile attendance and chat for NextGen STEM Academy",
+  "name": "NextGen STEAM Academy",
+  "short_name": "NextGen STEAM",
+  "description": "Mobile attendance and chat for NextGen STEAM Academy",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#4F46E5",
@@ -327,7 +327,7 @@ export default function RootLayout({ children }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#4F46E5" />
-        <meta name="description" content="NextGen STEM Academy Mobile App" />
+        <meta name="description" content="NextGen STEAM Academy Mobile App" />
         
         {/* PWA Configuration */}
         <link rel="manifest" href="/manifest.json" />
@@ -336,9 +336,9 @@ export default function RootLayout({ children }) {
         {/* iOS Meta Tags */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="NextGen STEM" />
+        <meta name="apple-mobile-web-app-title" content="NextGen STEAM" />
         
-        <title>NextGen STEM Academy</title>
+        <title>NextGen STEAM Academy</title>
       </head>
       <body>{children}</body>
     </html>
@@ -423,7 +423,7 @@ export function registerServiceWorker() {
 
 ```bash
 npm install @capacitor/core @capacitor/cli
-npx cap init "NextGen STEM Academy" "com.nextzenstem.academy"
+npx cap init "NextGen STEAM Academy" "com.nextzenstem.academy"
 ```
 
 ### 2. Add Platforms
@@ -443,7 +443,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.nextzenstem.academy',
-  appName: 'NextGen STEM Academy',
+  appName: 'NextGen STEAM Academy',
   webDir: 'out',
   bundledWebRuntime: false,
   plugins: {
@@ -702,6 +702,6 @@ Follow: https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
 ## Conclusion
 
-This configuration guide covers all aspects of setting up the NextGen STEM Academy mobile app. Follow each section carefully and test thoroughly before deployment.
+This configuration guide covers all aspects of setting up the NextGen STEAM Academy mobile app. Follow each section carefully and test thoroughly before deployment.
 
 For support, contact: support@nextzenstem.com

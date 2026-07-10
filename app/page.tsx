@@ -56,7 +56,7 @@ const childcarePrograms = [
   }
 ];
 
-// Static Data for After-School & STEM Programs
+// Static Data for After-School & STEAM Programs
 const afterschoolPrograms = [
   {
     title: 'Young Innovators',
@@ -84,7 +84,7 @@ const afterschoolPrograms = [
   }
 ];
 
-// STEM Flags
+// STEAM Flags
 const stemTracks = [
   {
     title: 'Robotics & Coding',
@@ -129,7 +129,7 @@ const stemTracks = [
 
 const highlights = [
   {
-    title: 'Innovative STEM Curriculum',
+    title: 'Innovative STEAM Curriculum',
     description: 'Our educators nurture, educate, and inspire your child through hands-on robotics, math, and chess curricula designed to build critical thinking and life-long skills.',
     bg: 'bg-white border-slate-100 shadow-sm',
     accent: 'text-[#F25022]',
@@ -147,7 +147,7 @@ const highlights = [
     image: '/math_kid.png',
   },
   {
-    title: 'Collaborative STEM Community',
+    title: 'Collaborative STEAM Community',
     description: 'NextZen Academy is a vibrant space where children form lifelong friendships, build confidence, and collaborate on real-world engineering projects.',
     bg: 'bg-white border-slate-100 shadow-sm',
     accent: 'text-[#7FBA00]',
@@ -181,11 +181,11 @@ const testimonials = [
 const faqs = [
   {
     question: 'What age groups are eligible for NextZen programs?',
-    answer: 'We offer full-day childcare for infants from 6 weeks up to preschool age (4 years old), and after-school/STEM enrichment for school-age children up to 18 years old (K-12).',
+    answer: 'We offer full-day childcare for infants from 6 weeks up to preschool age (4 years old), and after-school/STEAM enrichment for school-age children up to 18 years old (K-12).',
   },
   {
-    question: 'Is your main focus childcare or STEM education?',
-    answer: 'Our primary focus is high-quality, secure Childcare and Daycare. On top of this nurturing foundation, we offer an integrated after-school package featuring our signature STEM, Chess, Coding, and Mathematics tracks.',
+    question: 'Is your main focus childcare or STEAM education?',
+    answer: 'Our primary focus is high-quality, secure Childcare and Daycare. On top of this nurturing foundation, we offer an integrated after-school package featuring our signature STEAM, Chess, Coding, and Mathematics tracks.',
   },
   {
     question: 'Can we try a class before enrolling in a paid plan?',
@@ -242,10 +242,10 @@ export default function Home() {
       setLocatorResult('Please enter a city, state, or zip code.');
       return;
     }
-    setLocatorResult('Searching for nearest NextZen STEM & Childcare Lab...');
+    setLocatorResult('Searching for nearest NextZen STEAM & Childcare Lab...');
     setTimeout(() => {
       setLocatorResult(
-        `✓ NextZen Academy Silicon Valley Lab (1.2 miles away) - NOW ENROLLING for Childcare & STEM!`
+        `✓ NextZen Academy Silicon Valley Lab (1.2 miles away) - NOW ENROLLING for Childcare & STEAM!`
       );
     }, 600);
   };
@@ -256,7 +256,7 @@ export default function Home() {
     setLocatorResult('Searching based on your location...');
     setTimeout(() => {
       setLocatorResult(
-        `✓ NextZen Academy Mountain View Lab (0.8 miles away) - NOW ENROLLING for Childcare & STEM!`
+        `✓ NextZen Academy Mountain View Lab (0.8 miles away) - NOW ENROLLING for Childcare & STEAM!`
       );
     }, 600);
   };
@@ -312,7 +312,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/hero_img.png"
-            alt="Children collaborating on science and STEM activities at NextZen Academy"
+            alt="Children collaborating on science and STEAM activities at NextZen Academy"
             fill
             className="object-cover object-center"
             priority
@@ -329,7 +329,7 @@ export default function Home() {
 
             {/* Badge */}
             <span className="inline-flex items-center gap-2 bg-[#F25022]/20 border border-[#F25022]/40 px-4 py-2 rounded-full text-xs font-black text-[#FFB900] uppercase tracking-widest mb-8">
-              🚀 Premium Childcare &amp; STEM Academy
+              🚀 Premium Childcare &amp; STEAM Academy
             </span>
 
             {/* Headline */}
@@ -343,7 +343,7 @@ export default function Home() {
 
             {/* Description */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-medium mb-10 max-w-xl">
-              NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEM enrichment — nurturing every child from infancy through high school.
+              NextZen Academy provides a premium, secure childcare environment paired with cutting-edge after-school STEAM enrichment — nurturing every child from infancy through high school.
             </p>
 
             {/* CTA Buttons */}
@@ -358,7 +358,7 @@ export default function Home() {
                 onClick={() => scrollToSection('afterschool-programs')}
                 className="bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                After-School &amp; STEM
+                After-School &amp; STEAM
               </button>
             </div>
 
@@ -366,7 +366,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-8 border-t border-white/10 pt-8">
               {[
                 { value: '6', label: 'Age Programs', icon: '🎓', color: '#F25022' },
-                { value: '15+', label: 'STEM Courses', icon: '🔬', color: '#7FBA00' },
+                { value: '15+', label: 'STEAM Courses', icon: '🔬', color: '#7FBA00' },
                 { value: '98%', label: 'Parent Satisfaction', icon: '⭐', color: '#FFB900' },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center gap-3">
@@ -506,7 +506,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 2: AFTER-SCHOOL & STEM ENRICHMENT ── */}
+      {/* ── SECTION 2: AFTER-SCHOOL & STEAM ENRICHMENT ── */}
       <section className="py-20 bg-brand-light" id="afterschool-programs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -515,10 +515,10 @@ export default function Home() {
               K-12 Student Support
             </span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-primary tracking-tight">
-              After-School & STEM Enrichment
+              After-School & STEAM Enrichment
             </h2>
             <p className="text-primary/70 text-base md:text-lg font-semibold">
-              Supporting older age groups with homework prep, leadership development, and specialized, high-tier STEM learning tracks.
+              Supporting older age groups with homework prep, leadership development, and specialized, high-tier STEAM learning tracks.
             </p>
           </div>
 
@@ -580,7 +580,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* STEM Tracks Subsection */}
+          {/* STEAM Tracks Subsection */}
           <div className="space-y-8">
             <h3 className="font-serif text-2xl font-bold text-center text-primary">
               Our Signature After-School Tracks
@@ -638,7 +638,7 @@ export default function Home() {
                       className="w-full py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
                       style={{ backgroundColor: track.color }}
                     >
-                      Inquire for STEM Track
+                      Inquire for STEAM Track
                     </button>
                   </div>
                 </div>
@@ -941,38 +941,39 @@ export default function Home() {
             {(() => {
               const faqColors = ['#F25022', '#7FBA00', '#00A4EF', '#FFB900', '#F25022'];
               return faqs.map((faq, idx) => {
-              const isOpen = activeFaqIndex === idx;
-              const faqColor = faqColors[idx % faqColors.length];
-              return (
-                <div
-                  key={faq.question}
-                  className={`rounded-2xl border-l-4 border border-slate-200 transition-all duration-200 overflow-hidden bg-white ${isOpen ? 'shadow-md' : 'hover:shadow-sm'}`}
-                  style={isOpen ? { borderLeftColor: faqColor } : { borderLeftColor: faqColor }}
-                >
-                  <button
-                    onClick={() => toggleFaq(idx)}
-                    className="w-full text-left px-6 py-5 font-black text-[#1f2e57] flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base"
-                  >
-                    <span>{faq.question}</span>
-                    <span
-                      className={`text-xs transform transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180' : 'text-slate-400'}`}
-                      style={isOpen ? { color: faqColor } : {}}
-                    >
-                      ▼
-                    </span>
-                  </button>
-
+                const isOpen = activeFaqIndex === idx;
+                const faqColor = faqColors[idx % faqColors.length];
+                return (
                   <div
-                    className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0 overflow-hidden'
-                      }`}
+                    key={faq.question}
+                    className={`rounded-2xl border-l-4 border border-slate-200 transition-all duration-200 overflow-hidden bg-white ${isOpen ? 'shadow-md' : 'hover:shadow-sm'}`}
+                    style={isOpen ? { borderLeftColor: faqColor } : { borderLeftColor: faqColor }}
                   >
-                    <div className="px-6 py-5 text-sm md:text-base text-[#1f2e57]/75 leading-relaxed font-semibold bg-[#FAF8F5]/30">
-                      {faq.answer}
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full text-left px-6 py-5 font-black text-[#1f2e57] flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base"
+                    >
+                      <span>{faq.question}</span>
+                      <span
+                        className={`text-xs transform transition-transform duration-200 flex-shrink-0 ${isOpen ? 'rotate-180' : 'text-slate-400'}`}
+                        style={isOpen ? { color: faqColor } : {}}
+                      >
+                        ▼
+                      </span>
+                    </button>
+
+                    <div
+                      className={`transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[300px] border-t border-slate-100' : 'max-h-0 overflow-hidden'
+                        }`}
+                    >
+                      <div className="px-6 py-5 text-sm md:text-base text-[#1f2e57]/75 leading-relaxed font-semibold bg-[#FAF8F5]/30">
+                        {faq.answer}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })})()}
+                );
+              })
+            })()}
           </div>
 
         </div>

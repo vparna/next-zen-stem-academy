@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide explains how to properly set up and initialize your MongoDB database for the NextGen STEM Academy application. The database name should be **NextGen** as configured in the application.
+This guide explains how to properly set up and initialize your MongoDB database for the NextGen STEAM Academy application. The database name should be **NextGen** as configured in the application.
 
 ## Automatic Initialization (Recommended)
 

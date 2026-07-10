@@ -1,4 +1,4 @@
-# NextGen STEM Academy - Marketing Research & Financial Projections
+# NextGen STEAM Academy - Marketing Research & Financial Projections
 
 **Document Date:** January 2026  
 **Launch Date:** February 2026  
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-This comprehensive marketing research and financial analysis document provides detailed projections for NextGen STEM Academy's launch in February 2026. The analysis includes student enrollment forecasts, revenue projections, operational expenses, break-even analysis, and cash flow projections for the first 24 months of operation.
+This comprehensive marketing research and financial analysis document provides detailed projections for NextGen STEAM Academy's launch in February 2026. The analysis includes student enrollment forecasts, revenue projections, operational expenses, break-even analysis, and cash flow projections for the first 24 months of operation.
 
 **Key Highlights:**
 - **Break-Even Point:** Month 8 (September 2026)
@@ -64,8 +64,8 @@ This comprehensive marketing research and financial analysis document provides d
 
 ### 1.3 Market Trends
 
-- **Growth Rate:** 15% annual growth in STEM education market
-- **Demand Drivers:** Increased focus on STEM careers, robotics competitions, chess tournaments
+- **Growth Rate:** 15% annual growth in STEAM education market
+- **Demand Drivers:** Increased focus on STEAM careers, robotics competitions, chess tournaments
 - **Seasonal Patterns:** Peak enrollment in September-October and January-February
 - **Parent Preferences:** Flexible scheduling, quality instructors, measurable outcomes
 
@@ -548,7 +548,7 @@ Month-by-Month Cumulative Position:
 
 ## Conclusion
 
-NextGen STEM Academy has a strong business model with realistic projections for profitability. The break-even analysis shows that with proper execution, the academy will reach positive cash flow in Month 9 (October 2026) and achieve strong profitability in Year 2.
+NextGen STEAM Academy has a strong business model with realistic projections for profitability. The break-even analysis shows that with proper execution, the academy will reach positive cash flow in Month 9 (October 2026) and achieve strong profitability in Year 2.
 
 **Key Success Factors:**
 1. ✓ Strong initial marketing and enrollment push
@@ -559,7 +559,7 @@ NextGen STEM Academy has a strong business model with realistic projections for 
 
 **Investment Recommendation:** **PROCEED**
 
-With an initial investment of $60,000, NextGen STEM Academy is positioned to become a profitable and sustainable education business. The 3S philosophy, comprehensive curriculum, and modern platform provide strong competitive advantages in the growing STEM education market.
+With an initial investment of $60,000, NextGen STEAM Academy is positioned to become a profitable and sustainable education business. The 3S philosophy, comprehensive curriculum, and modern platform provide strong competitive advantages in the growing STEAM education market.
 
 **Next Steps:**
 1. Secure funding and finalize business structure
@@ -602,7 +602,7 @@ With an initial investment of $60,000, NextGen STEM Academy is positioned to bec
 ### Appendix C: Market Research Sources
 
 - Local demographic data from census bureau
-- STEM education industry reports (IBISWorld, Technavio)
+- STEAM education industry reports (IBISWorld, Technavio)
 - Competitor analysis of 8 local educational centers
 - Parent surveys (150 respondents) on education priorities
 - School district enrollment and demographic trends

@@ -1,18 +1,18 @@
-# NextZen STEM Academy Marketing Materials
+# NextZen STEAM Academy Marketing Materials
 
-This folder contains marketing materials for NextZen STEM Academy, including flyers, banners, promotional content, and QR codes for print and digital campaigns.
+This folder contains marketing materials for NextZen STEAM Academy, including flyers, banners, promotional content, and QR codes for print and digital campaigns.
 
 ## 📋 Contents
 
 ---
 
 ### 🌟 NEW: Official Marketing Flyer (`flyer-nextzen-stem-academy.*`)
-The official NextZen STEM Academy marketing flyer matching the approved brand design:
+The official NextZen STEAM Academy marketing flyer matching the approved brand design:
 - **Design**: Deep blue space-themed header, sky/nature gradient body, teal footer
 - **Content**:
-  - **NextZen STEM Academy** logo with lotus + atom icon
-  - **Tagline**: *"Ancient Wisdom. Modern STEM. Future Leaders."*
-  - **Three programs**: Preschool & Pre-K | STEM Programs (Ages 4–14) | Hands-On Learning & Mindfulness
+  - **NextZen STEAM Academy** logo with lotus + atom icon
+  - **Tagline**: *"Ancient Wisdom. Modern STEAM. Future Leaders."*
+  - **Three programs**: Preschool & Pre-K | STEAM Programs (Ages 4–14) | Hands-On Learning & Mindfulness
   - **Four activities**: Robotics & Coding | Creative Arts | Math & Science Labs | Outdoor Exploration
   - **"OPENING SOON"** call-to-action with "Schedule a Tour Today!"
   - **Contact**: Woodinville/Bothell, WA | (425) 325-0431 | www.NextZenAcademy.com
