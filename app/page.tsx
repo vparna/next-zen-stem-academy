@@ -3,58 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { childcarePrograms } from '@/lib/childcarePrograms';
 
-// Static Data for Childcare Programs
-const childcarePrograms = [
-  {
-    title: 'Little Blossoms',
-    age: '6 weeks to 12 months',
-    image: '/little_blossoms.png',
-    color: '#F25022',
-    description: 'Nurturing daycare environment focusing on sensory discovery, basic motor coordination, and secure, warm bonding.',
-    bullets: [
-      'Sensory play & exploration',
-      'Individualized care routines',
-      'Safe, hygienic play space'
-    ]
-  },
-  {
-    title: 'Tiny Explorers',
-    age: '13 to 24 months',
-    image: '/tiny_explorers.png',
-    color: '#7FBA00',
-    description: 'Guided physical movement, early language building, and initial social group interactions to build confidence.',
-    bullets: [
-      'Language building & story time',
-      'Motor skills & physical coordination',
-      'Social development through play'
-    ]
-  },
-  {
-    title: 'Curious Cubs',
-    age: '2-Year-Olds',
-    image: '/curious_cubs.png',
-    color: '#00A4EF',
-    description: 'Cognitive exploration, basic puzzle solving, and learning daily group routines to foster emotional growth.',
-    bullets: [
-      'Cognitive puzzles & shape sorting',
-      'Social collaboration exercises',
-      'Establishing daily group routines'
-    ]
-  },
-  {
-    title: 'Little Discoverers',
-    age: '3 to 4-Year-Olds',
-    image: '/little_discoverers.png',
-    color: '#FFB900',
-    description: 'Kindergarten readiness program featuring pre-reading, creative arts, logical thinking, and social skills.',
-    bullets: [
-      'Pre-reading & phonics introduction',
-      'Creative arts & expression sessions',
-      'Social-emotional milestone training'
-    ]
-  }
-];
 
 // Static Data for After-School & STEAM Programs
 const afterschoolPrograms = [
@@ -202,6 +153,7 @@ const faqs = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(null);
 
@@ -390,113 +342,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 1: CHILDCARE & EARLY EDUCATION (Kiddie Academy Split Tab style) ── */}
-      <section className="py-20 bg-white" id="childcare-programs">
+      {/* ── SECTION 1: CHILDCARE & EARLY EDUCATION (Kiddie Academy style) ── */}
+      <section className="py-20 bg-[#f5f1ec]" id="childcare-programs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          {/* Section Header */}
+          <div className="text-right max-w-6xl mx-auto mb-20 space-y-3">
             <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
               Childcare &amp; Daycare
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f172a] tracking-tight">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1f2e57] tracking-tight">
               Learning for Every Age
             </h2>
-            <p className="text-[#0f172a]/70 text-base md:text-lg font-semibold">
-              Premium early education programs. Hover or click on a program to explore its custom curriculum and classroom details.
-            </p>
           </div>
 
-          {/* Interactive Split Layout */}
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+          {/* ── Main Interactive Block ── */}
+          <div className="rounded-2xl shadow-2xl">
 
-            {/* Left Column: Interactive Program Tabs */}
-            <div className="lg:col-span-5 flex flex-col gap-3 justify-center">
-              {childcarePrograms.map((program, idx) => {
-                const isActive = activeChildcareIndex === idx;
-                return (
-                  <button
-                    key={program.title}
-                    onMouseEnter={() => setActiveChildcareIndex(idx)}
-                    onClick={() => setActiveChildcareIndex(idx)}
-                    className={`text-left p-6 rounded-2xl border-l-4 transition-all duration-200 cursor-pointer flex justify-between items-center ${isActive
-                      ? 'bg-[#f8fafc] shadow-md text-[#0f172a]'
-                      : 'border-transparent hover:bg-slate-50 text-[#0f172a]/70'
+            {/* Top: Tab List LEFT + Photo RIGHT */}
+            <div className="flex flex-col lg:flex-row">
+
+              {/* LEFT: Vertical Tab List */}
+              <div className="w-full lg:w-[300px] xl:w-[340px] flex-shrink-0 bg-[#f5f1ec] flex flex-col rounded-l-2xl overflow-hidden">
+                {childcarePrograms.map((program, idx) => {
+                  const isActive = activeChildcareIndex === idx;
+                  return (
+                    <button
+                      key={program.title}
+                      onMouseEnter={() => setActiveChildcareIndex(idx)}
+                      onClick={() => router.push(`/programs/${program.slug}`)}
+                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${
+                        !isActive ? 'hover:bg-[#ede8e2]' : ''
                       }`}
-                    style={isActive ? { borderLeftColor: program.color } : {}}
-                  >
-                    <div>
-                      <h4 className="font-serif text-lg font-bold">
-                        {program.title}
-                      </h4>
-                      <p className="text-xs font-bold text-slate-400 mt-1">
-                        {program.age}
-                      </p>
-                    </div>
-                    <span
-                      className={`text-lg transition-transform duration-200 ${isActive ? 'translate-x-1.5' : 'text-slate-300'}`}
-                      style={isActive ? { color: program.color } : {}}
+                      style={isActive ? { backgroundColor: program.color } : {}}
                     >
-                      →
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
+                      <span
+                        className="font-black text-xl leading-tight"
+                        style={isActive ? { color: '#fff' } : { color: '#1f2e57' }}
+                      >
+                        {program.title}
+                      </span>
+                      <span
+                        className="text-sm font-medium leading-tight mt-0.5"
+                        style={isActive ? { color: 'rgba(255,255,255,0.80)' } : { color: '#6b7280' }}
+                      >
+                        {program.age}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
 
-            {/* Right Column: Dynamic Program Display Card */}
-            <div className="lg:col-span-7 bg-[#f8fafc]/50 rounded-[3rem] border border-slate-200/60 p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center shadow-lg relative min-h-[480px]">
-              {/* Image Frame */}
-              <div className="w-full md:w-1/2 relative aspect-square md:aspect-[3/4] rounded-3xl overflow-hidden border border-white shadow-inner flex-shrink-0">
+              {/* RIGHT: Full-Height Photo — extends beyond the tab list height */}
+              <div className="relative flex-1 min-h-[420px] lg:min-h-0 lg:-my-10 rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src={childcarePrograms[activeChildcareIndex].image}
                   alt={childcarePrograms[activeChildcareIndex].title}
                   fill
-                  className="object-cover transition-all duration-500"
+                  className="object-cover object-center transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/20 via-transparent to-transparent" />
-              </div>
-
-              {/* Program Detail Text */}
-              <div className="flex-grow flex flex-col justify-between h-full space-y-6">
-                <div className="space-y-4">
-                  <span
-                    className="text-[10px] font-black uppercase px-3 py-1.5 rounded-full inline-block"
-                    style={{ color: childcarePrograms[activeChildcareIndex].color, backgroundColor: `${childcarePrograms[activeChildcareIndex].color}18` }}
-                  >
-                    {childcarePrograms[activeChildcareIndex].age}
-                  </span>
-                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#0f172a] leading-tight">
-                    {childcarePrograms[activeChildcareIndex].title}
-                  </h3>
-                  <p className="text-sm text-[#0f172a]/70 leading-relaxed font-semibold">
-                    {childcarePrograms[activeChildcareIndex].description}
-                  </p>
-
-                  <div className="pt-2 border-t border-slate-200/50">
-                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Focus & Milestones:</p>
-                    <ul className="space-y-2">
-                      {childcarePrograms[activeChildcareIndex].bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-2 text-xs font-bold text-[#0f172a]/80">
-                          <span className="flex-shrink-0 mt-0.5" style={{ color: childcarePrograms[activeChildcareIndex].color }}>✓</span>
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    onClick={() => {
-                      setInquiryProgram(childcarePrograms[activeChildcareIndex].title);
-                      scrollToSection('inquiry-form-section');
-                    }}
-                    className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer shadow-md"
-                    style={{ backgroundColor: childcarePrograms[activeChildcareIndex].color }}
-                  >
-                    Inquire for {childcarePrograms[activeChildcareIndex].title}
-                  </button>
-                </div>
               </div>
 
             </div>

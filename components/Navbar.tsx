@@ -108,7 +108,7 @@ export default function Navbar() {
             <Link href="/" className="flex items-center group">
               <div className="relative h-12 lg:h-14 w-40 lg:w-48 transition-all duration-300 group-hover:scale-[1.02]">
                 <Image 
-                  src={`${basePath}/brand-logo4.png`}
+                  src={`${basePath}/brand-logo5.png`}
                   alt="NextZen Academy Logo" 
                   fill
                   priority
