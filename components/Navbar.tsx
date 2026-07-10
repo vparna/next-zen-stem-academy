@@ -280,7 +280,7 @@ export default function Navbar() {
               </nav>
 
               <Link
-                href="/#admissions"
+                href="/#inquiry-form-section"
                 className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black px-6 py-2.5 rounded-full text-[11px] tracking-widest uppercase transition-all duration-300 shadow-md shadow-[#F25022]/10 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97]"
               >
                 Admissions
@@ -500,7 +500,7 @@ export default function Navbar() {
             <h3 className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">Resources &amp; Support</h3>
             <nav className="space-y-1">
               <Link
-                href="/#admissions"
+                href="/#inquiry-form-section"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-[#F25022] transition-all duration-200"
               >

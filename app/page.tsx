@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { childcarePrograms } from '@/lib/childcarePrograms';
+import EnrollmentForm from '@/components/EnrollmentForm';
 
 
 // Static Data for After-School & STEAM Programs
@@ -164,13 +165,12 @@ export default function Home() {
   const [activeChildcareIndex, setActiveChildcareIndex] = useState(0);
 
   // Inquiry form states
-  const [inquiryName, setInquiryName] = useState('');
-  const [inquiryEmail, setInquiryEmail] = useState('');
-  const [inquiryPhone, setInquiryPhone] = useState('');
-  const [inquiryProgram, setInquiryProgram] = useState('Little Blossoms');
-  const [inquiryMessage, setInquiryMessage] = useState('');
-  const [privacyConsent, setPrivacyConsent] = useState(false);
-  const [inquiryStatus, setInquiryStatus] = useState<string | null>(null);
+  const [preSelectedProgram, setPreSelectedProgram] = useState<string | undefined>(undefined);
+
+  const handleProgramInquiryClick = (title: string) => {
+    setPreSelectedProgram(title);
+    scrollToSection('inquiry-form-section');
+  };
 
   useEffect(() => {
     const checkAuth = () => {
@@ -211,30 +211,6 @@ export default function Home() {
         `✓ NextZen Academy Mountain View Lab (0.8 miles away) - NOW ENROLLING for Childcare & STEAM!`
       );
     }, 600);
-  };
-
-  const handleInquirySubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inquiryName || !inquiryEmail || !inquiryPhone || !inquiryMessage) {
-      setInquiryStatus('❌ Please fill in all required fields.');
-      return;
-    }
-    if (!privacyConsent) {
-      setInquiryStatus('❌ You must agree to the privacy policy to submit.');
-      return;
-    }
-    setInquiryStatus('Sending inquiry...');
-    setTimeout(() => {
-      setInquiryStatus(
-        '✓ Thank you! Your inquiry has been received. Our enrollment coordinator will reach out to you shortly.'
-      );
-      // Reset form
-      setInquiryName('');
-      setInquiryEmail('');
-      setInquiryPhone('');
-      setInquiryMessage('');
-      setPrivacyConsent(false);
-    }, 800);
   };
 
   const nextTestimonial = () => {
@@ -463,10 +439,7 @@ export default function Home() {
                   </div>
 
                   <button
-                    onClick={() => {
-                      setInquiryProgram(program.title);
-                      scrollToSection('inquiry-form-section');
-                    }}
+                    onClick={() => handleProgramInquiryClick(program.title)}
                     className="w-full md:w-auto py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
                     style={{ backgroundColor: program.color }}
                   >
@@ -522,10 +495,7 @@ export default function Home() {
 
                   <div className="p-6 pt-0">
                     <button
-                      onClick={() => {
-                        setInquiryProgram(`${track.title} (Enrichment)`);
-                        scrollToSection('inquiry-form-section');
-                      }}
+                      onClick={() => handleProgramInquiryClick(track.title)}
                       className="w-full py-3 px-8 rounded-full font-black text-xs text-center uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
                       style={{ backgroundColor: track.color }}
                     >
@@ -605,134 +575,24 @@ export default function Home() {
 
       {/* ── INQUIRY & CONTACT FORM SECTION ── */}
       <section className="py-20 bg-[#f5f1ec]" id="inquiry-form-section">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-[3rem] p-8 md:p-12 border border-slate-100 shadow-xl space-y-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <EnrollmentForm
+            preSelectedProgram={preSelectedProgram}
+            onClearPreSelected={() => setPreSelectedProgram(undefined)}
+          />
 
-            <div className="text-center space-y-3">
-              <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
-                Enrolling Now
-              </span>
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
-                Program Inquiry &amp; Enrollment
-              </h3>
-              <p className="text-xs md:text-sm text-[#1f2e57]/70 font-semibold max-w-md mx-auto">
-                Interested in our programs? Submit details below to receive program guides and connect with our enrollment team.
-              </p>
-            </div>
-
-            <form onSubmit={handleInquirySubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Parent / Guardian Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={inquiryName}
-                    onChange={(e) => setInquiryName(e.target.value)}
-                    placeholder="John Doe"
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Email Address *</label>
-                  <input
-                    type="email"
-                    required
-                    value={inquiryEmail}
-                    onChange={(e) => setInquiryEmail(e.target.value)}
-                    placeholder="john@example.com"
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Phone Number *</label>
-                  <input
-                    type="tel"
-                    required
-                    value={inquiryPhone}
-                    onChange={(e) => setInquiryPhone(e.target.value)}
-                    placeholder="(123) 456-7890"
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3 text-sm focus:outline-none font-semibold"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Program of Interest *</label>
-                  <select
-                    value={inquiryProgram}
-                    onChange={(e) => setInquiryProgram(e.target.value)}
-                    className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl px-4 py-3.5 text-sm focus:outline-none font-semibold"
-                  >
-                    <option value="Little Blossoms">Little Blossoms - 6w to 12m</option>
-                    <option value="Tiny Explorers">Tiny Explorers - 13m to 24m</option>
-                    <option value="Curious Cubs">Curious Cubs - 2 Years</option>
-                    <option value="Little Discoverers">Little Discoverers - 3 to 4 Years</option>
-                    <option value="Young Innovators">Young Innovators - K to 5th Grade</option>
-                    <option value="Future Leaders">Future Leaders - 6th to 12th Grade</option>
-                    <option value="Robotics & Coding">Robotics & Coding</option>
-                    <option value="Mathematics Mastery">Mathematics Mastery</option>
-                    <option value="Strategic Chess">Strategic Chess</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-black uppercase text-[#1f2e57]/70 block">Additional Information or Special Notes *</label>
-                <textarea
-                  required
-                  rows={4}
-                  value={inquiryMessage}
-                  onChange={(e) => setInquiryMessage(e.target.value)}
-                  placeholder="Tell us about your child, scheduling preferences, or any specific questions you have..."
-                  className="w-full bg-[#FAF8F5] border border-slate-200 focus:border-[#00A4EF] rounded-xl p-4 text-sm focus:outline-none font-semibold"
-                />
-              </div>
-
-              {/* Privacy Consent Checkbox */}
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="privacyConsent"
-                  checked={privacyConsent}
-                  onChange={(e) => setPrivacyConsent(e.target.checked)}
-                  className="mt-1 border-slate-200 focus:ring-[#00A4EF] h-4 w-4 text-[#00A4EF] rounded cursor-pointer"
-                />
-                <label htmlFor="privacyConsent" className="text-xs font-semibold text-[#1f2e57]/70 cursor-pointer">
-                  I consent to receive communication updates from NextZen Academy regarding enrollment schedules and agree to the storage of my submitted details in accordance with the Privacy Policy. *
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 rounded-full font-black text-xs text-center uppercase tracking-wider text-white bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 shadow-md active:scale-95 transition-all cursor-pointer"
-              >
-                Submit Enrollment Inquiry
-              </button>
-
-              {inquiryStatus && (
-                <p className={`text-xs font-bold text-center mt-4 p-3 rounded-xl border ${inquiryStatus.startsWith('✓') ? 'text-[#00A4EF] bg-[#00A4EF]/10 border-[#00A4EF]/20' : 'text-[#F25022] bg-[#F25022]/10 border-[#F25022]/20'
-                  }`}>
-                  {inquiryStatus}
-                </p>
-              )}
-            </form>
-
-            {/* Mock Parent Handbook Download Button */}
-            <div className="border-t border-slate-100 pt-8 text-center space-y-3">
-              <p className="text-xs font-bold text-[#1f2e57]/70">
-                Want to read our policies on tuition, schedules, and late fees?
-              </p>
-              <a
-                href="/NextZen_Parent_Handbook.pdf"
-                download
-                className="inline-flex items-center gap-2 border border-[#1f2e57]/20 hover:border-[#1f2e57] text-[#1f2e57] font-black uppercase text-[10px] tracking-wider px-6 py-3 rounded-full transition-all active:scale-95"
-              >
-                📥 Download Parent Handbook (PDF)
-              </a>
-            </div>
-
+          {/* Mock Parent Handbook Download Button */}
+          <div className="text-center space-y-3 pt-4">
+            <p className="text-xs font-bold text-[#1f2e57]/70">
+              Want to read our policies on tuition, schedules, and late fees?
+            </p>
+            <a
+              href="/NextZen Academy Parent Handbook.pdf"
+              download
+              className="inline-flex items-center gap-2 border border-[#1f2e57]/20 hover:border-[#1f2e57] text-[#1f2e57] font-black uppercase text-[10px] tracking-wider px-6 py-3 rounded-full transition-all active:scale-95 bg-white shadow-sm"
+            >
+              📥 Download Parent Handbook (PDF)
+            </a>
           </div>
         </div>
       </section>
