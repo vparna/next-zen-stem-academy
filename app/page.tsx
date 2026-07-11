@@ -293,23 +293,6 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Trust Stats */}
-            <div className="flex flex-wrap gap-8 border-t border-white/10 pt-8">
-              {[
-                { value: '6', label: 'Age Programs', icon: '🎓', color: '#F25022' },
-                { value: '15+', label: 'STEAM Courses', icon: '🔬', color: '#7FBA00' },
-                { value: '98%', label: 'Parent Satisfaction', icon: '⭐', color: '#FFB900' },
-              ].map((stat) => (
-                <div key={stat.label} className="flex items-center gap-3">
-                  <span className="text-2xl">{stat.icon}</span>
-                  <div>
-                    <div className="text-2xl font-black leading-none" style={{ color: stat.color }}>{stat.value}</div>
-                    <div className="text-xs text-slate-400 font-semibold mt-0.5 uppercase tracking-wide">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
           </div>
         </div>
 
