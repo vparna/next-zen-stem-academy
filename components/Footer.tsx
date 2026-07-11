@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="flex items-center">
               <Link href="/" className="relative h-12 w-44 transition-opacity hover:opacity-90">
                 <Image
-                  src={`${basePath}/brand-logo2.png`}
+                  src={`${basePath}/brand-logo6.png`}
                   alt="NextZen Academy Logo"
                   fill
                   className="object-contain object-left"
