@@ -13,7 +13,8 @@
     "seed-jobs": "tsx scripts/seed-jobs.ts",
     "create-admin": "tsx scripts/create-admin.ts",
     "validate-env": "tsx scripts/validate-env.ts",
-    "pre-deploy-check": "tsx scripts/pre-deploy-check.ts"
+    "pre-deploy-check": "tsx scripts/pre-deploy-check.ts",
+    "mobile:sync": "npm run build && npx cap sync"
   },
   "dependencies": {
     "@capacitor/android": "^8.4.1",

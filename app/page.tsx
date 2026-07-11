@@ -261,10 +261,18 @@ export default function Home() {
             </span>
 
             {/* Headline */}
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] mb-8 flex flex-col gap-2">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F25022] to-[#FF7043]">Ancient Wisdom</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] to-[#FFB900] italic">Modern Learning</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] to-[#00E5FF]">Future Leaders</span>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.12] mb-8 flex flex-col gap-2 relative">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F25022] via-[#FF7043] to-[#FFB900] drop-shadow-md select-none">
+                Ancient Wisdom
+              </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-[#A3E635] to-[#FFB900] italic drop-shadow-md select-none">
+                Modern Learning
+              </span>
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none">
+                Future Leaders
+              </span>
+              {/* Bottom decorative accent line */}
+              <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4" />
             </h1>
 
             {/* CTA Buttons */}
@@ -340,9 +348,8 @@ export default function Home() {
                       key={program.title}
                       onMouseEnter={() => setActiveChildcareIndex(idx)}
                       onClick={() => router.push(`/programs/${program.slug}`)}
-                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${
-                        !isActive ? 'hover:bg-[#ede8e2]' : ''
-                      }`}
+                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${!isActive ? 'hover:bg-[#ede8e2]' : ''
+                        }`}
                       style={isActive ? { backgroundColor: program.color } : {}}
                     >
                       <span
