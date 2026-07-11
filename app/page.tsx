@@ -253,12 +253,14 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
-          <div className="max-w-2xl">
-
-            {/* Badge */}
-            <span className="inline-flex items-center gap-2 bg-[#F25022]/20 border border-[#F25022]/40 px-4 py-2 rounded-full text-xs font-black text-[#FFB900] uppercase tracking-widest mb-8">
-              🚀 Premium Childcare &amp; STEAM Academy
+          {/* Top Label */}
+          <div className="absolute top-4 sm:top-6 left-6 sm:left-10 lg:left-16">
+            <span className="text-sm sm:text-base lg:text-lg font-black text-[#FFB900] uppercase tracking-widest">
+              Premium Early Learning &amp; STEAM Academy
             </span>
+          </div>
+
+          <div className="max-w-2xl">
 
             {/* Headline */}
             <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.12] mb-8 flex flex-col gap-2 relative">
