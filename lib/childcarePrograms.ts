@@ -36,7 +36,7 @@ export const childcarePrograms: ChildcareProgram[] = [
       { area: 'Language & Bonding', detail: 'Narrated routines, responsive cooing, simple songs and lullabies, face-to-face interaction.' },
       { area: 'Routine & Security', detail: 'Consistent feed-sleep-play schedules aligned with each infant\'s individual rhythm.' },
     ],
-    schedule: 'Full-day: 7:00 AM – 6:30 PM',
+    schedule: 'Full-day: 7:00 AM – 5:00 PM',
     ratio: '1 caregiver : 3 infants',
   },
   {
@@ -59,7 +59,7 @@ export const childcarePrograms: ChildcareProgram[] = [
       { area: 'Fine Motor', detail: 'Stacking blocks, shape sorters, large-bead threading, peg boards.' },
       { area: 'Social-Emotional', detail: 'Parallel play groups, emotion identification, simple turn-taking games.' },
     ],
-    schedule: 'Full-day: 7:00 AM – 6:30 PM',
+    schedule: 'Full-day: 7:00 AM – 5:00 PM',
     ratio: '1 caregiver : 4 toddlers',
   },
   {
@@ -82,7 +82,7 @@ export const childcarePrograms: ChildcareProgram[] = [
       { area: 'Social Skills', detail: 'Group circle time, cooperative building challenges, sharing & empathy role-play.' },
       { area: 'Self-Care & Independence', detail: 'Hand-washing routines, self-feeding practices, tidy-up habits, dressing skills.' },
     ],
-    schedule: 'Full-day: 7:00 AM – 6:30 PM',
+    schedule: 'Full-day: 7:00 AM – 5:00 PM',
     ratio: '1 teacher : 5 children',
   },
   {
@@ -105,7 +105,7 @@ export const childcarePrograms: ChildcareProgram[] = [
       { area: 'Creative Expression', detail: 'Drama & storytelling, watercolour painting, music & rhythm, construction play.' },
       { area: 'Kindergarten Prep', detail: 'Structured group lessons, independent task time, pencil grip, classroom behaviour skills.' },
     ],
-    schedule: 'Full-day: 7:00 AM – 6:30 PM  |  Half-day option: 8:00 AM – 12:00 PM',
+    schedule: 'Full-day: 7:00 AM – 5:00 PM  |  Half-day option: 8:00 AM – 12:00 PM',
     ratio: '1 teacher : 8 children',
   },
 ];

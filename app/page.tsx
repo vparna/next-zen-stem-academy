@@ -253,12 +253,14 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
-          <div className="max-w-2xl">
-
-            {/* Badge */}
-            <span className="inline-flex items-center gap-2 bg-[#F25022]/20 border border-[#F25022]/40 px-4 py-2 rounded-full text-xs font-black text-[#FFB900] uppercase tracking-widest mb-8">
-              🚀 Premium Childcare &amp; STEAM Academy
+          {/* Top Label */}
+          <div className="absolute top-4 sm:top-6 left-6 sm:left-10 lg:left-16">
+            <span className="text-sm sm:text-base lg:text-lg font-black text-[#FFB900] uppercase tracking-widest">
+              Premium Early Learning &amp; STEAM Academy
             </span>
+          </div>
+
+          <div className="max-w-2xl">
 
             {/* Headline */}
             <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.12] mb-8 flex flex-col gap-2 relative">
@@ -289,23 +291,6 @@ export default function Home() {
               >
                 After-School &amp; STEAM
               </button>
-            </div>
-
-            {/* Trust Stats */}
-            <div className="flex flex-wrap gap-8 border-t border-white/10 pt-8">
-              {[
-                { value: '6', label: 'Age Programs', icon: '🎓', color: '#F25022' },
-                { value: '15+', label: 'STEAM Courses', icon: '🔬', color: '#7FBA00' },
-                { value: '98%', label: 'Parent Satisfaction', icon: '⭐', color: '#FFB900' },
-              ].map((stat) => (
-                <div key={stat.label} className="flex items-center gap-3">
-                  <span className="text-2xl">{stat.icon}</span>
-                  <div>
-                    <div className="text-2xl font-black leading-none" style={{ color: stat.color }}>{stat.value}</div>
-                    <div className="text-xs text-slate-400 font-semibold mt-0.5 uppercase tracking-wide">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
             </div>
 
           </div>

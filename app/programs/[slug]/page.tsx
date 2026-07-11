@@ -164,19 +164,6 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
                     <p className="text-sm font-bold text-[#1f2e57] mt-0.5">{program.schedule}</p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <span
-                    className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-lg"
-                    style={{ backgroundColor: `${program.color}15` }}
-                  >
-                    👩‍🏫
-                  </span>
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Caregiver Ratio</p>
-                    <p className="text-sm font-bold text-[#1f2e57] mt-0.5">{program.ratio}</p>
-                  </div>
-                </div>
               </div>
 
               {/* CTA */}
