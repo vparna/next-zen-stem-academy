@@ -101,12 +101,12 @@ export default function Navbar() {
 
       {/* Main Header Container (Pro Glassmorphism Style) */}
       <header className="fixed top-[5px] left-0 right-0 z-40 w-full bg-white/80 backdrop-blur-xl border-b border-slate-200/40 shadow-[0_8px_32px_rgba(15,23,42,0.03)] transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-stretch justify-between">
+        <div className="max-w-7xl mx-auto pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-2 xl:pl-0 lg:pr-8 flex items-stretch justify-between">
 
           {/* Logo & Branding - Visible on Desktop */}
-          <div className="hidden lg:flex items-center py-2 h-22">
+          <div className="hidden lg:flex items-center py-1 h-22">
             <Link href="/" className="flex items-center group">
-              <div className="relative h-12 lg:h-14 w-40 lg:w-48 transition-all duration-300 group-hover:scale-[1.02]">
+              <div className="relative h-12 lg:h-16 xl:h-20 w-40 lg:w-60 xl:w-72 transition-all duration-300 group-hover:scale-[1.02]">
                 <Image
                   src={`${basePath}/brand-logo5.png`}
                   alt="NextZen Academy Logo"
@@ -163,8 +163,8 @@ export default function Navbar() {
                             }
                           }}
                           className={`w-full text-left px-4 py-2 flex flex-col justify-center transition-all duration-150 ${selectedCampus === campus
-                              ? 'bg-[#F25022]/5 text-[#F25022] font-black'
-                              : 'text-slate-700 hover:bg-slate-50'
+                            ? 'bg-[#F25022]/5 text-[#F25022] font-black'
+                            : 'text-slate-700 hover:bg-slate-50'
                             }`}
                         >
                           <span className="flex items-center gap-1.5 text-xs font-semibold">
@@ -392,8 +392,8 @@ export default function Navbar() {
                     }
                   }}
                   className={`px-3 py-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-0.5 cursor-pointer ${selectedCampus === campus
-                      ? 'bg-[#F25022]/5 border-[#F25022]/25 text-[#F25022] shadow-sm'
-                      : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'
+                    ? 'bg-[#F25022]/5 border-[#F25022]/25 text-[#F25022] shadow-sm'
+                    : 'bg-slate-50 border-slate-100 text-slate-600 hover:bg-slate-100'
                     }`}
                 >
                   <span className="flex items-center gap-1">
@@ -435,8 +435,8 @@ export default function Navbar() {
                 href="/"
                 onClick={() => setIsMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${isActive('/')
-                    ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
-                    : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
+                  ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
+                  : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
                   }`}
               >
                 <span className="text-base">🏠</span> <span className="text-xs uppercase tracking-wider">Home</span>
@@ -445,8 +445,8 @@ export default function Navbar() {
                 href="/about"
                 onClick={() => setIsMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${isActive('/about')
-                    ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
-                    : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
+                  ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
+                  : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
                   }`}
               >
                 <span className="text-base">👋</span> <span className="text-xs uppercase tracking-wider">Our Story</span>
@@ -455,8 +455,8 @@ export default function Navbar() {
                 href="/courses"
                 onClick={() => setIsMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold transition-all duration-200 ${isActive('/courses')
-                    ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
-                    : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
+                  ? 'bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white shadow-md shadow-[#F25022]/20'
+                  : 'text-slate-700 hover:bg-slate-50 hover:text-[#F25022]'
                   }`}
               >
                 <span className="text-base">📚</span> <span className="text-xs uppercase tracking-wider">Programs</span>
