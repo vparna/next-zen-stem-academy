@@ -152,7 +152,8 @@ export async function POST(request: NextRequest) {
 
         await db.collection('medication_authorizations').updateOne(
           { _id: new ObjectId(authorizationId) },
-          { $push: { administrationLogs: logEntry } as Record<string, unknown> }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          { $push: { administrationLogs: logEntry } } as any
         );
 
         return NextResponse.json({ message: 'Medication administered and logged' });

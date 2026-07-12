@@ -20,7 +20,7 @@ export default function AbsencePage() {
       const token = localStorage.getItem('token');
       await fetch('/api/childcare/communication', {
         method: 'POST',
-        headers: { 'Authorization': `****** 'Content-Type': 'application/json' },
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
           senderId: 'current_user',
           centerId: 'default',

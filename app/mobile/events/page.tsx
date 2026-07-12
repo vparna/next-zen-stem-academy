@@ -30,7 +30,7 @@ export default function EventsPage() {
       setLoading(true);
       const token = localStorage.getItem('token');
       const response = await fetch(`/api/childcare/events?month=${currentMonth}`, {
-        headers: { 'Authorization': `****** }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
         const data = await response.json();

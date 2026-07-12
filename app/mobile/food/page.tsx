@@ -19,7 +19,7 @@ export default function FoodPage() {
       const token = localStorage.getItem('token');
       const resource = activeTab === 'menu' ? 'menus' : activeTab === 'allergies' ? 'dietary' : 'cacfp';
       const response = await fetch(`/api/childcare/food?resource=${resource}`, {
-        headers: { 'Authorization': `****** }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
         const data = await response.json();

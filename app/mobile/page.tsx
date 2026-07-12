@@ -27,7 +27,7 @@ export default function MobilePage() {
   const fetchUserProfile = async (token: string) => {
     try {
       const response = await fetch('/api/profile', {
-        headers: { 'Authorization': `****** },
+        headers: { 'Authorization': `Bearer ${token}` },
       });
       if (response.ok) {
         const userData = await response.json();

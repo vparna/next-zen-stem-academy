@@ -18,7 +18,7 @@ export default function StaffPortalPage() {
       const response = await fetch('/api/childcare/staff', {
         method: 'POST',
         headers: { 
-          'Authorization': `******
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

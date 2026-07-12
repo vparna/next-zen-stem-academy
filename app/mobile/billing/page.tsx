@@ -32,7 +32,7 @@ export default function BillingPage() {
       if (filter !== 'all') params.set('status', filter);
       
       const response = await fetch(`/api/childcare/billing?${params}`, {
-        headers: { 'Authorization': `****** }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
         const data = await response.json();

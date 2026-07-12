@@ -39,7 +39,7 @@ export default function ClassroomPage() {
       const token = localStorage.getItem('token');
       const resource = activeView === 'classrooms' ? 'classrooms' : 'behavior';
       const response = await fetch(`/api/childcare/classroom?resource=${resource}`, {
-        headers: { 'Authorization': `****** }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       if (response.ok) {
         const data = await response.json();

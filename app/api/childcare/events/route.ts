@@ -98,13 +98,11 @@ export async function PUT(request: NextRequest) {
     const db = await getDatabase();
 
     if (eventAction === 'rsvp' && parentId && response) {
+      const rsvpEntry = { parentId: new ObjectId(parentId), response, respondedAt: new Date() };
       await db.collection('event_calendar').updateOne(
         { _id: new ObjectId(eventId) },
-        {
-          $push: {
-            rsvps: { parentId: new ObjectId(parentId), response, respondedAt: new Date() }
-          } as Record<string, unknown>
-        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        { $push: { rsvps: rsvpEntry } } as any
       );
       return NextResponse.json({ message: 'RSVP recorded' });
     }

@@ -21,7 +21,8 @@ export default function EnrollmentPage() {
   const updateField = (section: string, field: string, value: string | boolean) => {
     setFormData(prev => ({
       ...prev,
-      [section]: { ...(prev as Record<string, Record<string, unknown>>)[section], [field]: value }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      [section]: { ...(prev as any)[section], [field]: value }
     }));
   };
 
@@ -31,7 +32,7 @@ export default function EnrollmentPage() {
       const token = localStorage.getItem('token');
       const response = await fetch('/api/childcare/enrollment', {
         method: 'POST',
-        headers: { 'Authorization': `****** 'Content-Type': 'application/json' },
+        headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
           action: 'submit_enrollment',
           centerId: 'default',
