@@ -323,16 +323,19 @@ export default function Home() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="bg-gradient-to-r from-[#7FBA00] to-[#A3E635] text-white font-black uppercase text-[7px] sm:text-[8px] tracking-widest px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full inline-block mt-1.5 shadow-sm select-none border border-[#7FBA00]/10 text-center w-full whitespace-nowrap">
+                  <button
+                    onClick={() => scrollToSection('inquiry-form-section')}
+                    className="bg-gradient-to-r from-[#7FBA00] to-[#A3E635] text-white font-black uppercase text-[7px] sm:text-[8px] tracking-widest px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full inline-block mt-1.5 shadow-sm border border-[#7FBA00]/10 text-center w-full whitespace-nowrap cursor-pointer hover:scale-105 hover:shadow-md hover:shadow-[#7FBA00]/40 transition-all duration-200 active:scale-95"
+                  >
                     Now Enrolling
-                  </div>
+                  </button>
                 </div>
 
                 {/* Right Column: CTA Buttons */}
                 <div className="flex flex-col gap-1.5 w-full flex-grow">
                   <button
                     onClick={() => scrollToSection('inquiry-form-section')}
-                    className="w-full bg-gradient-to-r from-[#F25022] to-[#FFB900] hover:opacity-90 text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-md shadow-[#F25022]/10 hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer text-center whitespace-nowrap"
+                    className="w-full bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-200 shadow-md shadow-[#F25022]/20 hover:shadow-xl hover:shadow-[#F25022]/40 hover:scale-105 active:scale-95 cursor-pointer text-center whitespace-nowrap"
                   >
                     Request Information
                   </button>
@@ -340,7 +343,7 @@ export default function Home() {
                     href="https://maps.google.com/?q=NextZen+Academy+Bothell"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-gradient-to-r from-[#00A4EF] to-[#3B82F6] hover:opacity-90 text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-md shadow-[#00A4EF]/10 hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer text-center block whitespace-nowrap"
+                    className="w-full bg-gradient-to-r from-[#00A4EF] to-[#3B82F6] text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-200 shadow-md shadow-[#00A4EF]/20 hover:shadow-xl hover:shadow-[#00A4EF]/40 hover:scale-105 active:scale-95 cursor-pointer text-center block whitespace-nowrap"
                   >
                     Schedule Tour
                   </a>
