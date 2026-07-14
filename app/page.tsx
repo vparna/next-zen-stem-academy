@@ -252,10 +252,11 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32 lg:py-48">
+          
           {/* Top Label */}
           <div className="absolute top-4 sm:top-6 left-6 sm:left-10 lg:left-16">
-            <span className="text-sm sm:text-base lg:text-lg font-black text-[#FFB900] uppercase tracking-widest">
+            <span className="text-xs sm:text-sm lg:text-base font-serif font-semibold italic tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-white to-[#FFB900] drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)] select-none">
               Premium Early Learning &amp; STEAM Academy
             </span>
           </div>
@@ -263,31 +264,33 @@ export default function Home() {
           <div className="max-w-2xl">
 
             {/* Headline */}
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.12] mb-8 flex flex-col gap-2 relative">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F25022] via-[#FF7043] to-[#FFB900] drop-shadow-md select-none">
-                Ancient Wisdom
+            <h1 className="font-serif font-black tracking-tight leading-[1.15] mb-8 flex flex-col gap-3 relative">
+              <span className="flex flex-row items-center gap-x-2 sm:gap-x-3 text-lg sm:text-2xl md:text-3xl lg:text-4xl whitespace-nowrap">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F25022] via-[#FF7043] to-[#FFB900] drop-shadow-md select-none whitespace-nowrap">
+                  Ancient Wisdom
+                </span>
+                <span className="text-white/30 font-light select-none">|</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-[#A3E635] to-[#FFB900] italic drop-shadow-md select-none whitespace-nowrap">
+                  Modern Learning
+                </span>
               </span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-[#A3E635] to-[#FFB900] italic drop-shadow-md select-none">
-                Modern Learning
-              </span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none">
+              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none">
                 Future Leaders
               </span>
               {/* Bottom decorative accent line */}
               <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4" />
             </h1>
-
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 mb-12">
               <button
                 onClick={() => scrollToSection('childcare-programs')}
-                className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 Preschool &amp; Daycare
               </button>
               <button
                 onClick={() => scrollToSection('afterschool-programs')}
-                className="bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 After-School &amp; STEAM
               </button>
