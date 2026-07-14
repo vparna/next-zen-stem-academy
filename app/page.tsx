@@ -253,7 +253,7 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32 lg:py-48">
-          
+
           {/* Top Label */}
           <div className="absolute top-4 sm:top-6 left-6 sm:left-10 lg:left-16">
             <span className="text-xs sm:text-sm lg:text-base font-serif font-semibold italic tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-white to-[#FFB900] drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)] select-none">
@@ -286,13 +286,13 @@ export default function Home() {
                 onClick={() => scrollToSection('childcare-programs')}
                 className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                Preschool &amp; Daycare
+                Preschool
               </button>
               <button
                 onClick={() => scrollToSection('afterschool-programs')}
                 className="bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                After-School &amp; STEAM
+                STEAM Academy
               </button>
             </div>
 
