@@ -113,7 +113,7 @@ export const childcarePrograms: ChildcareProgram[] = [
     slug: 'pre-k',
     title: 'Pre-K',
     age: '4 to 5-Year-Olds',
-    image: '/little_discoverers.png',
+    image: '/pre_k.png',
     color: '#FFB900',
     tagline: 'Building Confident Kindergarteners',
     description:
@@ -136,7 +136,7 @@ export const childcarePrograms: ChildcareProgram[] = [
     slug: 'summer-camps',
     title: 'Summer Camps',
     age: '2 to 12-Year-Olds',
-    image: '/little_discoverers.png',
+    image: '/summer_camps.png',
     color: '#F25022',
     tagline: 'Adventure, Discovery & Fun All Summer Long',
     description:
