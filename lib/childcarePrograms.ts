@@ -13,6 +13,7 @@ export type ChildcareProgram = {
   }[];
   schedule: string;
   ratio: string;
+  parentSlug?: string;   // set on sub-programs to nest them under a parent
 };
 
 export const childcarePrograms: ChildcareProgram[] = [
@@ -41,7 +42,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   },
   {
     slug: 'tiny-explorers',
-    title: 'Tiny Explorers',
+    title: 'Tiny Explorers / Toddlers',
     age: '13 to 24 months',
     image: '/tiny_explorers.png',
     color: '#7FBA00',
@@ -64,7 +65,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   },
   {
     slug: 'curious-cubs',
-    title: 'Curious Cubs',
+    title: 'Curious Cubs / Early Preschool',
     age: '2-Year-Olds',
     image: '/curious_cubs.png',
     color: '#00A4EF',
@@ -87,7 +88,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   },
   {
     slug: 'little-discoverers',
-    title: 'Little Discoverers',
+    title: 'Little Discoverers / Preschool',
     age: '3 to 4-Year-Olds',
     image: '/little_discoverers.png',
     color: '#FFB900',
@@ -107,6 +108,52 @@ export const childcarePrograms: ChildcareProgram[] = [
     ],
     schedule: 'Full-day: 7:00 AM – 5:00 PM  |  Half-day option: 8:00 AM – 12:00 PM',
     ratio: '1 teacher : 8 children',
+  },
+  {
+    slug: 'pre-k',
+    title: 'Pre-K',
+    age: '4 to 5-Year-Olds',
+    image: '/pre_k.png',
+    color: '#FFB900',
+    tagline: 'Building Confident Kindergarteners',
+    description:
+      'Our Pre-K program bridges the gap between preschool and kindergarten with a structured, play-enriched curriculum. Children develop early literacy, numeracy, and social skills that set a strong academic foundation.',
+    bullets: [
+      'Early reading & writing skills',
+      'Number sense & counting to 20',
+      'Collaborative group projects',
+    ],
+    curriculum: [
+      { area: 'Literacy & Writing', detail: 'Sight word fluency, CVC word building, journal drawing, handwriting strokes.' },
+      { area: 'Math Foundations', detail: 'Counting, basic addition with manipulatives, pattern sequences, measurement activities.' },
+      { area: 'STEAM Intro', detail: 'Simple experiments, block engineering challenges, introductory coding with visual blocks.' },
+      { area: 'Social Readiness', detail: 'Classroom norms, peer collaboration, self-regulation strategies, listening skills.' },
+    ],
+    schedule: 'Full-day: 7:00 AM – 5:00 PM  |  Half-day option: 8:00 AM – 12:00 PM',
+    ratio: '1 teacher : 8 children',
+  },
+  {
+    slug: 'summer-camps',
+    title: 'Summer Camps',
+    age: '2 to 12-Year-Olds',
+    image: '/summer_camps.png',
+    color: '#F25022',
+    tagline: 'Adventure, Discovery & Fun All Summer Long',
+    description:
+      'Themed weekly camps blending outdoor exploration, STEAM challenges, arts & crafts, and team-building activities. Each week brings a brand-new adventure to spark curiosity and make summer unforgettable.',
+    bullets: [
+      'Weekly rotating STEAM themes',
+      'Outdoor exploration & nature study',
+      'Arts, crafts & storytelling',
+    ],
+    curriculum: [
+      { area: 'STEAM Adventures', detail: 'Rocketry, robotics, nature science, simple coding games, and engineering challenges.' },
+      { area: 'Creative Arts', detail: 'Themed crafts, drama skits, mural painting, and music exploration sessions.' },
+      { area: 'Outdoor Learning', detail: 'Nature walks, garden science, weather observation, and cooperative outdoor games.' },
+      { area: 'Social & Team Skills', detail: 'Team challenges, leadership activities, kindness projects, and group problem-solving.' },
+    ],
+    schedule: 'Monday – Friday: 8:00 AM – 4:00 PM (extended care available)',
+    ratio: '1 counselor : 8 children',
   },
 ];
 
