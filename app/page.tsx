@@ -302,9 +302,6 @@ export default function Home() {
 
               {/* Header: Graduation Cap Icon + Title */}
               <div className="flex items-center gap-1.5 mb-2.5 sm:mb-3">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#1f2e57] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3M12 5.18L18.97 9L12 12.82L5.03 9L12 5.18M12 16.5C8.6 16.5 5.56 14.85 4 12.23V14.5C4 16.5 7.58 18.5 12 18.5C16.42 18.5 20 16.5 20 14.5V12.23C18.44 14.85 15.4 16.5 12 16.5Z" />
-                </svg>
                 <h2 className="font-sans font-black text-sm sm:text-base text-[#1f2e57] tracking-tight">
                   NextZen Academy of Bothell
                 </h2>
@@ -314,7 +311,7 @@ export default function Home() {
               <div className="flex flex-row gap-2.5 sm:gap-3.5 items-start">
 
                 {/* Left Column: Building Image & Tag */}
-                <div className="flex flex-col items-center w-20 sm:w-24 flex-shrink-0">
+                <div className="flex flex-col items-center flex-shrink-0">
                   <div className="relative w-20 h-14 sm:w-24 sm:h-16 rounded-lg overflow-hidden shadow-md border border-slate-100">
                     <Image
                       src="/building-img.png"
@@ -325,14 +322,14 @@ export default function Home() {
                   </div>
                   <button
                     onClick={() => scrollToSection('inquiry-form-section')}
-                    className="bg-gradient-to-r from-[#7FBA00] to-[#A3E635] text-white font-black uppercase text-[7px] sm:text-[8px] tracking-widest px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full inline-block mt-1.5 shadow-sm border border-[#7FBA00]/10 text-center w-full whitespace-nowrap cursor-pointer hover:scale-105 hover:shadow-md hover:shadow-[#7FBA00]/40 transition-all duration-200 active:scale-95"
+                    className="bg-[#FFB900] text-[#1f2e57] font-black uppercase text-[8px] tracking-widest px-4 py-1.5 rounded-full mt-1.5 shadow-sm border border-[#FFB900]/20 text-center w-full leading-tight cursor-pointer hover:bg-[#e6a800] hover:scale-105 hover:shadow-md hover:shadow-[#FFB900]/40 transition-all duration-200 active:scale-95"
                   >
                     Now Enrolling
                   </button>
                 </div>
 
                 {/* Right Column: CTA Buttons */}
-                <div className="flex flex-col gap-1.5 w-full flex-grow">
+                <div className="flex flex-col gap-3 w-full flex-grow">
                   <button
                     onClick={() => scrollToSection('inquiry-form-section')}
                     className="w-full bg-gradient-to-r from-[#F25022] to-[#FFB900] text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-200 shadow-md shadow-[#F25022]/20 hover:shadow-xl hover:shadow-[#F25022]/40 hover:scale-105 active:scale-95 cursor-pointer text-center whitespace-nowrap"
