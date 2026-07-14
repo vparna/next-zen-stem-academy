@@ -342,7 +342,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="w-full bg-gradient-to-r from-[#00A4EF] to-[#3B82F6] hover:opacity-90 text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-md shadow-[#00A4EF]/10 hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer text-center block whitespace-nowrap"
                   >
-                    Get Directions
+                    Schedule Tour
                   </a>
                 </div>
               </div>
