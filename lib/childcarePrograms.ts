@@ -42,7 +42,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   },
   {
     slug: 'tiny-explorers',
-    title: 'Tiny Explorers',
+    title: 'Tiny Explorers / Toddlers',
     age: '13 to 24 months',
     image: '/tiny_explorers.png',
     color: '#7FBA00',
@@ -65,7 +65,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   },
   {
     slug: 'curious-cubs',
-    title: 'Curious Cubs',
+    title: 'Curious Cubs / Early Preschool',
     age: '2-Year-Olds',
     image: '/curious_cubs.png',
     color: '#00A4EF',
@@ -88,7 +88,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   },
   {
     slug: 'little-discoverers',
-    title: 'Little Discoverers',
+    title: 'Little Discoverers / Preschool',
     age: '3 to 4-Year-Olds',
     image: '/little_discoverers.png',
     color: '#FFB900',
@@ -135,7 +135,7 @@ export const childcarePrograms: ChildcareProgram[] = [
   {
     slug: 'summer-camps',
     title: 'Summer Camps',
-    age: '3 to 6-Year-Olds',
+    age: '2 to 12-Year-Olds',
     image: '/little_discoverers.png',
     color: '#F25022',
     tagline: 'Adventure, Discovery & Fun All Summer Long',
