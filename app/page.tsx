@@ -255,18 +255,18 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32 lg:py-48">
 
           {/* Top Label */}
-          <div className="absolute top-4 sm:top-6 left-6 sm:left-10 lg:left-16">
-            <span className="text-xs sm:text-sm lg:text-base font-serif font-semibold italic tracking-[0.2em] uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-white to-[#FFB900] drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)] select-none">
+          <div className="absolute top-3 sm:top-4 left-6 sm:left-10 lg:left-16">
+            <span className="text-[35px] opacity-60 uppercase font-bold italic tracking-normal text-white drop-shadow-md select-none">
               Premium Early Learning &amp; STEAM Academy
             </span>
           </div>
 
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mt-6 lg:mt-8">
 
             {/* Headline */}
             <h1 className="font-serif font-black tracking-tight leading-[1.15] mb-8 flex flex-col gap-3 relative">
               <span className="flex flex-row items-center gap-x-2 sm:gap-x-3 text-lg sm:text-2xl md:text-3xl lg:text-4xl whitespace-nowrap">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#F25022] via-[#FF7043] to-[#FFB900] drop-shadow-md select-none whitespace-nowrap">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#FFD700] to-[#FFB900] drop-shadow-md select-none whitespace-nowrap">
                   Ancient Wisdom
                 </span>
                 <span className="text-white/30 font-light select-none">|</span>
@@ -274,19 +274,20 @@ export default function Home() {
                   Modern Learning
                 </span>
               </span>
-              <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none">
+              <span className="text-lg sm:text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none text-center w-full">
                 Future Leaders
               </span>
               {/* Bottom decorative accent line */}
-              <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4" />
+              <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4 mx-auto" />
             </h1>
+
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-12">
+            <div className="flex flex-wrap gap-4 mb-8 justify-center">
               <button
                 onClick={() => scrollToSection('childcare-programs')}
                 className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
-                Preschool
+                Premium Preschool
               </button>
               <button
                 onClick={() => scrollToSection('afterschool-programs')}
@@ -294,6 +295,58 @@ export default function Home() {
               >
                 STEAM Academy
               </button>
+            </div>
+
+            {/* Small Local Academy Card */}
+            <div className="mr-auto w-full max-w-[420px] bg-white/95 backdrop-blur-sm text-[#1f2e57] rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20 select-none">
+
+              {/* Header: Graduation Cap Icon + Title */}
+              <div className="flex items-center gap-1.5 mb-2.5 sm:mb-3">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#1f2e57] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3L1 9L12 15L21 10.09V17H23V9L12 3M12 5.18L18.97 9L12 12.82L5.03 9L12 5.18M12 16.5C8.6 16.5 5.56 14.85 4 12.23V14.5C4 16.5 7.58 18.5 12 18.5C16.42 18.5 20 16.5 20 14.5V12.23C18.44 14.85 15.4 16.5 12 16.5Z" />
+                </svg>
+                <h2 className="font-sans font-black text-sm sm:text-base text-[#1f2e57] tracking-tight">
+                  NextZen Academy of Bothell
+                </h2>
+              </div>
+
+              {/* Content Section: Image Column + Buttons Column (Forced flex-row) */}
+              <div className="flex flex-row gap-2.5 sm:gap-3.5 items-start">
+
+                {/* Left Column: Building Image & Tag */}
+                <div className="flex flex-col items-center w-20 sm:w-24 flex-shrink-0">
+                  <div className="relative w-20 h-14 sm:w-24 sm:h-16 rounded-lg overflow-hidden shadow-md border border-slate-100">
+                    <Image
+                      src="/building-img.png"
+                      alt="NextZen Academy of Bothell Campus Building"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="bg-gradient-to-r from-[#7FBA00] to-[#A3E635] text-white font-black uppercase text-[7px] sm:text-[8px] tracking-widest px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-full inline-block mt-1.5 shadow-sm select-none border border-[#7FBA00]/10 text-center w-full whitespace-nowrap">
+                    Now Enrolling
+                  </div>
+                </div>
+
+                {/* Right Column: CTA Buttons */}
+                <div className="flex flex-col gap-1.5 w-full flex-grow">
+                  <button
+                    onClick={() => scrollToSection('inquiry-form-section')}
+                    className="w-full bg-gradient-to-r from-[#F25022] to-[#FFB900] hover:opacity-90 text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-md shadow-[#F25022]/10 hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer text-center whitespace-nowrap"
+                  >
+                    Request Information
+                  </button>
+                  <a
+                    href="https://maps.google.com/?q=NextZen+Academy+Bothell"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-gradient-to-r from-[#00A4EF] to-[#3B82F6] hover:opacity-90 text-white font-black uppercase text-[8px] sm:text-[10px] tracking-wider py-1.5 sm:py-2 rounded-full transition-all duration-300 shadow-md shadow-[#00A4EF]/10 hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer text-center block whitespace-nowrap"
+                  >
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+
             </div>
 
           </div>
