@@ -389,8 +389,7 @@ export default function Home() {
                       key={program.title}
                       onMouseEnter={() => setActiveChildcareIndex(idx)}
                       onClick={() => router.push(`/programs/${program.slug}`)}
-                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${!isActive ? 'hover:bg-[#ede8e2]' : ''
-                        }`}
+                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${!isActive ? 'hover:bg-[#ede8e2]' : ''}`}
                       style={isActive ? { backgroundColor: program.color } : {}}
                     >
                       <span
