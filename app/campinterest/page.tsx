@@ -93,72 +93,32 @@ export default function CampInterestPage() {
         </div>
       </header> */}
 
-      <main className="py-16 sm:py-24 px-4 sm:px-6 relative z-10 max-w-7xl mx-auto">
+      <main className="pt-6 pb-12 sm:py-24 px-4 sm:px-6 relative z-10 max-w-7xl mx-auto flex flex-col items-center">
         {/* Giant Typography Hero Section */}
-        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-24">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100/80 text-blue-700 text-xs sm:text-sm font-bold mb-6 shadow-sm">
-            <span className="relative flex h-2 w-2">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-24 w-full">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-blue-50 border border-blue-100/80 text-blue-700 text-[11px] sm:text-sm font-bold mb-4 sm:mb-6 shadow-sm">
+            <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-blue-600"></span>
             </span>
             STEM Camps 2026 Registration
           </div>
-          <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-none mb-6">
+          <h2 className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-3 sm:mb-6">
             <span className="block text-slate-950">Express Your</span>
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
+            <span className="block mt-1 sm:mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
               Interest
             </span>
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto font-semibold leading-relaxed mt-8">
+          <p className="text-sm sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium sm:font-semibold leading-relaxed mt-3 sm:mt-8 px-2 sm:px-0">
             Join the future of learning at NextZen Academy! Secure your spot in our highly sought-after STEM camps.
           </p>
         </div>
 
-        {/* Camp Cards Section */}
-        <div className="max-w-5xl mx-auto mb-24">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight">Camps We Offer</h3>
-            <div className="h-1.5 w-16 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-3 sm:mt-4 rounded-full"></div>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 gap-8 lg:gap-12">
-            {/* Motion Mania */}
-            <div className="group relative bg-white border border-slate-100 rounded-3xl p-8 lg:p-10 shadow-[0_15px_45px_rgba(59,130,246,0.06)] hover:shadow-[0_20px_50px_rgba(59,130,246,0.12)] transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col items-center text-center">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-              <div className="w-20 h-20 rounded-2xl bg-blue-50 flex items-center justify-center text-4xl mb-6 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                🚀
-              </div>
-              <h4 className="text-2xl font-extrabold text-slate-900 mb-3">Motion Mania</h4>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-                Discover the mechanics of motion and kinetic energy through engaging, hands-on physics activities! Build, test, and run your own projects.
-              </p>
-              <div className="mt-auto px-4 py-2.5 bg-blue-50 text-blue-700 rounded-xl text-sm font-bold w-full">
-                Physics & Engineering
-              </div>
-            </div>
-
-            {/* Space Study Camp */}
-            <div className="group relative bg-white border border-slate-100 rounded-3xl p-8 lg:p-10 shadow-[0_15px_45px_rgba(147,51,234,0.06)] hover:shadow-[0_20px_50px_rgba(147,51,234,0.12)] transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col items-center text-center">
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
-              <div className="w-20 h-20 rounded-2xl bg-purple-50 flex items-center justify-center text-4xl mb-6 shadow-inner group-hover:scale-110 transition-transform duration-500">
-                🌌
-              </div>
-              <h4 className="text-2xl font-extrabold text-slate-900 mb-3">Space Study Camp</h4>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
-                Explore the universe, stars, and planets in our immersive and exciting space exploration camp! Unleash your inner astronaut.
-              </p>
-              <div className="mt-auto px-4 py-2.5 bg-purple-50 text-purple-700 rounded-xl text-sm font-bold w-full">
-                Astronomy & Space
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Form Section */}
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative w-full">
           <div className="absolute inset-0 bg-gradient-to-b from-blue-200/40 to-purple-200/40 blur-3xl -z-10 rounded-[3rem] opacity-75"></div>
           
-          <div className="bg-white/90 backdrop-blur-xl border border-white/60 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-14 shadow-2xl relative">
+          <div className="bg-white/90 backdrop-blur-xl border border-white/60 rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-10 md:p-14 shadow-2xl relative w-full">
             {status === 'success' ? (
               <div className="text-center py-12 sm:py-16 animate-fade-in-up">
                 <div className="w-20 h-20 sm:w-24 sm:h-24 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-4xl sm:text-5xl mx-auto mb-6 sm:mb-8 shadow-inner">
@@ -333,9 +293,9 @@ export default function CampInterestPage() {
         </div>
 
         {/* Feature Highlights */}
-        <div className="mt-24 sm:mt-32 bg-white/60 backdrop-blur-lg rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-14 border border-white shadow-xl max-w-5xl mx-auto">
-          <div className="text-center mb-8 sm:mb-10">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-850 mb-2 tracking-tight">Why Choose NextZen Academy?</h3>
+        <div className="mt-16 sm:mt-32 bg-white/60 backdrop-blur-lg rounded-3xl sm:rounded-[2.5rem] p-5 sm:p-10 md:p-14 border border-white shadow-xl max-w-5xl mx-auto w-full">
+          <div className="text-center mb-6 sm:mb-10">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Why Choose NextZen Academy?</h3>
             <p className="text-sm sm:text-base text-slate-500 font-medium">We deliver excellence through our proven methodology.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8 text-center">
