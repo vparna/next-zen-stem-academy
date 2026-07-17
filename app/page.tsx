@@ -235,7 +235,6 @@ export default function Home() {
 
       {/* ── HERO SECTION ── */}
       <section className="relative w-full min-h-[640px] lg:min-h-[760px] flex items-center justify-start overflow-hidden">
-
         {/* Full-bleed hero image */}
         <div className="absolute inset-0 z-0">
           <Image
