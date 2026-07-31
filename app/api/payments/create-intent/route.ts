@@ -20,9 +20,9 @@ async function handler(req: NextRequest) {
   try {
     const stripe = getStripeClient();
     const user = (req as any).user;
-    const { amount, courseId, courseName, couponCode, childrenCount } = await req.json();
+    const { amount, courseId, courseName, couponCode, childrenCount, enrollmentId } = await req.json();
 
-    if (!amount || !courseId) {
+    if (!amount || !courseId || !enrollmentId) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -53,6 +53,7 @@ async function handler(req: NextRequest) {
         discountApplied: discountApplied.toString(),
         couponCode: appliedCoupon || '',
         childrenCount: childrenCount?.toString() || '0',
+        enrollmentId,
       },
     });
 
