@@ -48,7 +48,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       const response = await fetch('/api/enrollments/user', {
         headers: {
           'Authorization': `Bearer ${token}`
-        }
+        },
+        cache: 'no-store'
       });
       
       if (response.ok) {
