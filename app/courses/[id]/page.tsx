@@ -23,6 +23,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
   const [resolvedParams, setResolvedParams] = useState<{ id: string } | null>(null);
+  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [checkingEnrollment, setCheckingEnrollment] = useState(true);
 
   useEffect(() => {
     params.then(setResolvedParams);
@@ -31,8 +33,37 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   useEffect(() => {
     if (resolvedParams) {
       fetchCourse();
+      checkEnrollmentStatus();
     }
   }, [resolvedParams]);
+
+  const checkEnrollmentStatus = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        setCheckingEnrollment(false);
+        return;
+      }
+
+      const response = await fetch('/api/enrollments/user', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        const enrolled = data.enrollments.some(
+          (e: any) => e.courseId === resolvedParams?.id && (e.status === 'active' || e.paymentStatus === 'paid')
+        );
+        setIsEnrolled(enrolled);
+      }
+    } catch (error) {
+      console.error('Error checking enrollment:', error);
+    } finally {
+      setCheckingEnrollment(false);
+    }
+  };
 
   const fetchCourse = async () => {
     if (!resolvedParams) return;
@@ -167,21 +198,44 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               </div>
             </div>
             <div className="bg-white text-slate-900 rounded-3xl p-8 shadow-lg border border-slate-100">
-              <div className="text-center mb-6">
-                <div className="text-4xl font-extrabold text-orange-500 mb-2">
-                  ${course.price}
+              {checkingEnrollment ? (
+                <div className="text-center py-4">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-orange-200 border-t-orange-500"></div>
                 </div>
-                <p className="text-slate-600">per month</p>
-              </div>
-              <button
-                onClick={handleEnroll}
-                className="ui-pill-btn w-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200 hover:shadow-lg hover:shadow-orange-300 transition-all"
-              >
-                Enroll Now
-              </button>
-              <p className="text-sm text-slate-600 text-center mt-4">
-                30-day money-back guarantee
-              </p>
+              ) : isEnrolled ? (
+                <>
+                  <div className="text-center mb-6">
+                    <div className="text-2xl font-bold text-green-600 mb-2 flex items-center justify-center">
+                      <span className="mr-2">✓</span> Enrolled
+                    </div>
+                    <p className="text-slate-600">You are enrolled in this course.</p>
+                  </div>
+                  <button
+                    onClick={() => router.push('/dashboard')}
+                    className="ui-pill-btn w-full bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-md shadow-green-200 hover:shadow-lg hover:shadow-green-300 transition-all"
+                  >
+                    Go to Dashboard
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="text-center mb-6">
+                    <div className="text-4xl font-extrabold text-orange-500 mb-2">
+                      ${course.price}
+                    </div>
+                    <p className="text-slate-600">per month</p>
+                  </div>
+                  <button
+                    onClick={handleEnroll}
+                    className="ui-pill-btn w-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200 hover:shadow-lg hover:shadow-orange-300 transition-all"
+                  >
+                    Enroll Now
+                  </button>
+                  <p className="text-sm text-slate-600 text-center mt-4">
+                    30-day money-back guarantee
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -238,16 +292,35 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-extrabold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-8 text-slate-300">
-            Enroll now and start your learning journey today
-          </p>
-          <button
-            onClick={handleEnroll}
-            className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all inline-block"
-          >
-            Enroll in {course.name}
-          </button>
+          {checkingEnrollment ? (
+             <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-slate-400 border-t-white"></div>
+          ) : isEnrolled ? (
+            <>
+              <h2 className="text-3xl font-extrabold mb-4">Continue Learning!</h2>
+              <p className="text-xl mb-8 text-slate-300">
+                You are already enrolled in this course. Head to your dashboard to access the materials.
+              </p>
+              <button
+                onClick={() => router.push('/dashboard')}
+                className="ui-pill-btn bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg shadow-green-500/30 hover:scale-105 transition-all inline-block"
+              >
+                Go to Dashboard
+              </button>
+            </>
+          ) : (
+            <>
+              <h2 className="text-3xl font-extrabold mb-4">Ready to Get Started?</h2>
+              <p className="text-xl mb-8 text-slate-300">
+                Enroll now and start your learning journey today
+              </p>
+              <button
+                onClick={handleEnroll}
+                className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all inline-block"
+              >
+                Enroll in {course.name}
+              </button>
+            </>
+          )}
         </div>
       </section>
     </div>

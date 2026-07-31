@@ -4,6 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { loadStripe } from '@stripe/stripe-js';
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 interface Course {
   _id: string;
@@ -15,6 +16,69 @@ interface Course {
 // Load Stripe outside component to avoid recreating instance
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
+function CheckoutForm({ course, amount, onSuccess, onCancel }: { course: Course, amount: number, onSuccess: () => void, onCancel: () => void }) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [processing, setProcessing] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!stripe || !elements) return;
+
+    setProcessing(true);
+    setError('');
+
+    const { error: submitError } = await elements.submit();
+    if (submitError) {
+      setError(submitError.message || 'An error occurred');
+      setProcessing(false);
+      return;
+    }
+
+    const result = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${window.location.origin}/dashboard`,
+      },
+      redirect: 'if_required',
+    });
+
+    if (result.error) {
+      setError(result.error.message || 'Payment failed');
+      setProcessing(false);
+    } else {
+      // Payment succeeded
+      alert('Payment successful!');
+      onSuccess();
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 border border-gray-300 rounded-lg p-6">
+      <PaymentElement />
+      {error && <div className="text-red-600 text-sm mt-2">{error}</div>}
+      <div className="flex flex-col sm:flex-row gap-4 mt-6">
+        <button
+          type="submit"
+          disabled={!stripe || processing}
+          className="flex-1 bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition disabled:bg-blue-400 disabled:cursor-not-allowed"
+        >
+          {processing ? 'Processing Payment...' : `Pay $${amount}`}
+        </button>
+        <button
+          type="button"
+          onClick={onCancel}
+          disabled={processing}
+          className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-md font-semibold hover:bg-gray-300 transition"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  );
+}
+
 function CheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -24,12 +88,6 @@ function CheckoutContent() {
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const [showPaymentForm, setShowPaymentForm] = useState(false);
-  
-  // Card details
-  const [cardNumber, setCardNumber] = useState('');
-  const [expiry, setExpiry] = useState('');
-  const [cvc, setCvc] = useState('');
-  const [cardholderName, setCardholderName] = useState('');
 
   useEffect(() => {
     const courseId = searchParams.get('courseId');
@@ -76,55 +134,7 @@ function CheckoutContent() {
     try {
       const token = localStorage.getItem('token');
       
-      // Create payment intent
-      const intentResponse = await fetch('/api/payments/create-intent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          amount: course.price,
-          courseId: course._id,
-          courseName: course.name,
-        }),
-      });
-
-      if (!intentResponse.ok) {
-        const data = await intentResponse.json();
-        throw new Error(data.error || 'Failed to create payment intent');
-      }
-
-      const intentData = await intentResponse.json();
-      setClientSecret(intentData.clientSecret);
-      setShowPaymentForm(true);
-      
-    } catch (err) {
-      setError((err as Error).message || 'Failed to initiate payment');
-    } finally {
-      setProcessing(false);
-    }
-  };
-
-  const handlePayment = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!course || !clientSecret) return;
-
-    setProcessing(true);
-    setError('');
-
-    try {
-      const token = localStorage.getItem('token');
-      const stripe = await stripePromise;
-
-      if (!stripe) {
-        throw new Error('Stripe failed to load');
-      }
-
-      // For demo purposes, we'll simulate the payment
-      // In production, you'd use Stripe Elements properly
-      
-      // Create enrollment after "successful" payment
+      // 1. Create enrollment first
       const enrollResponse = await fetch('/api/enrollments', {
         method: 'POST',
         headers: {
@@ -144,11 +154,32 @@ function CheckoutContent() {
 
       const enrollData = await enrollResponse.json();
 
-      alert(`Payment successful! Enrollment ID: ${enrollData.enrollmentId}`);
-      router.push('/dashboard');
+      // 2. Create payment intent
+      const intentResponse = await fetch('/api/payments/create-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          amount: course.price,
+          courseId: course._id,
+          courseName: course.name,
+          enrollmentId: enrollData.enrollmentId,
+        }),
+      });
+
+      if (!intentResponse.ok) {
+        const data = await intentResponse.json();
+        throw new Error(data.error || 'Failed to create payment intent');
+      }
+
+      const intentData = await intentResponse.json();
+      setClientSecret(intentData.clientSecret);
+      setShowPaymentForm(true);
       
     } catch (err) {
-      setError((err as Error).message || 'Payment failed. Please try again.');
+      setError((err as Error).message || 'Failed to initiate payment');
     } finally {
       setProcessing(false);
     }
@@ -232,122 +263,39 @@ function CheckoutContent() {
                       <li>30-day money-back guarantee</li>
                     </ul>
                   </div>
-                ) : (
-                  <form onSubmit={handlePayment} className="space-y-4">
-                    <div className="bg-gray-50 border border-gray-300 rounded-lg p-6">
-                      <div className="space-y-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Cardholder Name
-                          </label>
-                          <input
-                            type="text"
-                            value={cardholderName}
-                            onChange={(e) => setCardholderName(e.target.value)}
-                            required
-                            placeholder="John Doe"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Card Number
-                          </label>
-                          <input
-                            type="text"
-                            value={cardNumber}
-                            onChange={(e) => setCardNumber(e.target.value)}
-                            required
-                            placeholder="4242 4242 4242 4242"
-                            maxLength={19}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                          />
-                        </div>
-                        
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Expiry Date
-                            </label>
-                            <input
-                              type="text"
-                              value={expiry}
-                              onChange={(e) => setExpiry(e.target.value)}
-                              required
-                              placeholder="MM/YY"
-                              maxLength={5}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                          </div>
-                          
-                          <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              CVC
-                            </label>
-                            <input
-                              type="text"
-                              value={cvc}
-                              onChange={(e) => setCvc(e.target.value)}
-                              required
-                              placeholder="123"
-                              maxLength={4}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                          </div>
-                        </div>
-
-                        {process.env.NODE_ENV === 'development' && (
-                          <div className="bg-blue-50 border border-blue-200 rounded p-3 text-sm text-gray-600">
-                            <strong>Test Card:</strong> Use 4242 4242 4242 4242 with any future expiry and any CVC for testing
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </form>
-                )}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                {!showPaymentForm ? (
-                  <>
-                    <button
-                      onClick={initiatePayment}
-                      disabled={processing}
-                      className="flex-1 bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition disabled:bg-blue-400 disabled:cursor-not-allowed"
-                    >
-                      {processing ? 'Processing...' : 'Proceed to Payment'}
-                    </button>
-                    <Link
-                      href={`/courses/${course._id}`}
-                      className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-md font-semibold hover:bg-gray-300 transition text-center"
-                    >
-                      Back to Course
-                    </Link>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={handlePayment}
-                      disabled={processing}
-                      className="flex-1 bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition disabled:bg-blue-400 disabled:cursor-not-allowed"
-                    >
-                      {processing ? 'Processing Payment...' : `Pay $${course.price}`}
-                    </button>
-                    <button
-                      onClick={() => {
+                ) : clientSecret && (
+                  <Elements stripe={stripePromise} options={{ clientSecret }}>
+                    <CheckoutForm 
+                      course={course} 
+                      amount={course.price} 
+                      onSuccess={() => router.push('/dashboard')} 
+                      onCancel={() => {
                         setShowPaymentForm(false);
                         setClientSecret('');
-                      }}
-                      disabled={processing}
-                      className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-md font-semibold hover:bg-gray-300 transition"
-                    >
-                      Cancel
-                    </button>
-                  </>
+                      }} 
+                    />
+                  </Elements>
                 )}
               </div>
+
+              {/* Action Buttons (Only when form is hidden) */}
+              {!showPaymentForm && (
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={initiatePayment}
+                    disabled={processing}
+                    className="flex-1 bg-blue-600 text-white py-3 rounded-md font-semibold hover:bg-blue-700 transition disabled:bg-blue-400 disabled:cursor-not-allowed"
+                  >
+                    {processing ? 'Processing...' : 'Proceed to Payment'}
+                  </button>
+                  <Link
+                    href={`/courses/${course._id}`}
+                    className="flex-1 bg-gray-200 text-gray-800 py-3 rounded-md font-semibold hover:bg-gray-300 transition text-center"
+                  >
+                    Back to Course
+                  </Link>
+                </div>
+              )}
 
               {/* Trust Badges */}
               <div className="mt-8 pt-8 border-t border-gray-200">

@@ -53,11 +53,15 @@ export async function POST(req: NextRequest) {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
         console.log('Payment succeeded:', paymentIntent.id);
         
-        const { userId, courseId, courseName, couponCode } = paymentIntent.metadata;
+        const { userId, courseId, courseName, couponCode, enrollmentId } = paymentIntent.metadata;
         
-        // If enrollment exists, update it
-        // In production, you'd store enrollmentId in metadata during payment intent creation
-        // For now, we'll send email notification
+        if (enrollmentId) {
+          await updateEnrollment(enrollmentId, {
+            status: 'active',
+            paymentStatus: 'paid',
+            paymentId: paymentIntent.id
+          });
+        }
         
         if (userId && courseId) {
           const user = await findUserById(userId);
