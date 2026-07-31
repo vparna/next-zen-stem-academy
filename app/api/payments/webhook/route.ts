@@ -24,7 +24,7 @@ function getStripeClient(): Stripe {
 export async function POST(req: NextRequest) {
   try {
     const stripe = getStripeClient();
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
+    const webhookSecret = (process.env.STRIPE_WEBHOOK_SECRET || '').trim();
     const body = await req.text();
     const signature = req.headers.get('stripe-signature');
 
@@ -55,12 +55,21 @@ export async function POST(req: NextRequest) {
         
         const { userId, courseId, courseName, couponCode, enrollmentId } = paymentIntent.metadata;
         
+        console.log(`Processing enrollment: ${enrollmentId} for user ${userId} and course ${courseId}`);
+        
         if (enrollmentId) {
-          await updateEnrollment(enrollmentId, {
-            status: 'active',
-            paymentStatus: 'paid',
-            paymentId: paymentIntent.id
-          });
+          try {
+            const updated = await updateEnrollment(enrollmentId, {
+              status: 'active',
+              paymentStatus: 'paid',
+              paymentId: paymentIntent.id
+            });
+            console.log(`Successfully updated enrollment ${enrollmentId} to active/paid. Modified: ${updated}`);
+          } catch (dbError) {
+            console.error(`Failed to update enrollment ${enrollmentId} in database:`, dbError);
+          }
+        } else {
+          console.error(`No enrollmentId found in Stripe metadata for payment ${paymentIntent.id}`);
         }
         
         if (userId && courseId) {

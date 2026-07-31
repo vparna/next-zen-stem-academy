@@ -6,6 +6,7 @@ import { ObjectId } from 'mongodb';
 
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 async function handler(req: NextRequest) {
   try {
@@ -36,6 +37,10 @@ async function handler(req: NextRequest) {
     return NextResponse.json({ 
       enrollments: enrollmentsWithCourses,
       count: enrollmentsWithCourses.length 
+    }, {
+      headers: {
+        'Cache-Control': 'no-store, max-age=0'
+      }
     });
   } catch (error) {
     console.error('Error fetching user enrollments:', error);
