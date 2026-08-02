@@ -14,6 +14,9 @@ interface InterestRecord {
   message?: string | null;
   status?: string;
   source?: string;
+  paymentStatus?: string;
+  campType?: string;
+  earlyBird?: boolean;
   createdAt: Date;
 }
 

@@ -15,9 +15,11 @@ export default function RoboticsEnrollmentPage() {
     emergencyContact: '',
     priorExperience: '',
     earlyBird: false,
+    campType: 'robotics',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
@@ -49,13 +51,30 @@ export default function RoboticsEnrollmentPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
-    setTimeout(() => {
-      router.push('/payment?amount=100&program=robotics');
-    }, 500);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/api/robotics-enrollment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit enrollment');
+      }
+
+      // Redirect to payment after saving (interest lead is now recorded)
+      router.push('/payment?amount=100&program=' + formData.campType);
+    } catch (error) {
+      console.error('Error submitting enrollment:', error);
+      setSubmitError('Failed to submit enrollment. Please try again.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -366,6 +385,43 @@ export default function RoboticsEnrollmentPage() {
             />
           </div>
 
+          {/* Camp Type Selector */}
+          <div className="space-y-1">
+            <label className="block text-sm font-bold text-[#1a3a7a]">
+              Camp Type <span className="text-red-500">*</span>
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label className={`flex items-start gap-3 cursor-pointer border rounded-xl p-4 transition-all duration-200 ${formData.campType === 'robotics' ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200' : 'border-gray-200 hover:border-blue-300'}`}>
+                <input
+                  type="radio"
+                  name="campType"
+                  value="robotics"
+                  checked={formData.campType === 'robotics'}
+                  onChange={handleChange}
+                  className="mt-1 w-5 h-5 text-blue-600"
+                />
+                <div>
+                  <span className="font-bold text-[#1a3a7a]">🤖 Robotics Camp</span>
+                  <p className="text-gray-600 text-sm mt-0.5">Ages 5–16 • Daily 9:00 AM – 3:00 PM • $400</p>
+                </div>
+              </label>
+              <label className={`flex items-start gap-3 cursor-pointer border rounded-xl p-4 transition-all duration-200 ${formData.campType === 'ftc' ? 'border-indigo-500 bg-indigo-50 ring-2 ring-indigo-200' : 'border-gray-200 hover:border-indigo-300'}`}>
+                <input
+                  type="radio"
+                  name="campType"
+                  value="ftc"
+                  checked={formData.campType === 'ftc'}
+                  onChange={handleChange}
+                  className="mt-1 w-5 h-5 text-indigo-600"
+                />
+                <div>
+                  <span className="font-bold text-[#1a3a7a]">🏗️ FTC Camp</span>
+                  <p className="text-gray-600 text-sm mt-0.5">6th grade & above • Daily 9:00 AM – 12:00 PM • $400</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
           {/* Early-Bird Discount Option */}
           <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
             <label className="flex items-start gap-3 cursor-pointer">
@@ -384,6 +440,13 @@ export default function RoboticsEnrollmentPage() {
               </div>
             </label>
           </div>
+
+          {/* Submission Error */}
+          {submitError && (
+            <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center">
+              <p className="text-red-700 font-semibold text-sm">{submitError}</p>
+            </div>
+          )}
 
           {/* Confirmation Message */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
