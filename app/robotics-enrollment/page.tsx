@@ -160,7 +160,7 @@ export default function RoboticsEnrollmentPage() {
           <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl p-8 shadow-lg">
             <div className="text-4xl mb-3">🎓</div>
             <h3 className="text-2xl font-bold mb-2">Free Demo Class</h3>
-            <p className="text-lg font-semibold mb-2">August 15, 2026 — 2:00 PM to 5:00 PM</p>
+            <p className="text-lg font-semibold mb-2">August 15, 2026 — 3:00 PM to 6:00 PM</p>
             <p className="text-orange-100 text-sm">Experience our teaching style before enrolling — completely free!</p>
             <a
               href="#enrollment-form"
@@ -168,6 +168,48 @@ export default function RoboticsEnrollmentPage() {
             >
               Join Free Demo Class
             </a>
+          </div>
+        </div>
+
+        {/* FTC Camp Offering */}
+        <div className="mt-12">
+          <div className="text-center mb-8">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1a3a7a] mb-3">FTC Camp — Advanced Robotics</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              For students in 6th grade and above. Runs during the same week as the Robotics Camp, each serving different age groups.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-indigo-100 hover:shadow-md transition-shadow duration-300 group">
+              <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                🏗️
+              </div>
+              <h3 className="font-bold text-[#1a3a7a] text-lg mb-1">FTC Camp</h3>
+              <p className="text-gray-600">FIRST Tech Challenge preparation for 6th grade and above</p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-indigo-100 hover:shadow-md transition-shadow duration-300 group">
+              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                🕘
+              </div>
+              <h3 className="font-bold text-[#1a3a7a] text-lg mb-1">Daily Schedule</h3>
+              <p className="text-gray-600">9:00 AM to 12:00 PM (3 hours)</p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-indigo-100 hover:shadow-md transition-shadow duration-300 group">
+              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                📅
+              </div>
+              <h3 className="font-bold text-[#1a3a7a] text-lg mb-1">Same Week</h3>
+              <p className="text-gray-600">August 17, 2026 – August 24, 2026</p>
+            </div>
+          </div>
+
+          <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center">
+            <p className="text-[#1a3a7a] font-semibold text-sm">
+              ℹ️ Both Robotics Camp and FTC Camp run during the same week (Aug 17–24), each designed for different age groups.
+            </p>
           </div>
         </div>
       </section>
