@@ -233,6 +233,18 @@ export default function Home() {
   return (
     <div className="bg-[#FAF8F5] text-[#1f2e57] overflow-x-hidden font-sans">
 
+      {/* ── ANNOUNCEMENT BANNER ── */}
+      <section className="bg-gradient-to-r from-[#1a3a7a] to-[#2563eb] text-white py-4 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-sm md:text-base font-semibold">
+            🚀 Exclusive Robotics Camp Enrollments on August 17, 2026 — Featured on the Home Page.{' '}
+            <a href="/robotics-enrollment" className="underline text-orange-300 hover:text-orange-200 font-bold">
+              Enroll Now →
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* ── HERO SECTION ── */}
       <section className="relative w-full min-h-[640px] lg:min-h-[760px] flex items-center justify-start overflow-hidden">
         {/* Full-bleed hero image */}

@@ -14,13 +14,15 @@ export default function RoboticsEnrollmentPage() {
     address: '',
     emergencyContact: '',
     priorExperience: '',
+    earlyBirdDiscount: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setFormData((prev) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
     if (errors[name]) {
       setErrors((prev) => {
         const next = { ...prev };
@@ -103,7 +105,7 @@ export default function RoboticsEnrollmentPage() {
               🕘
             </div>
             <h3 className="font-bold text-[#1a3a7a] text-lg mb-1">Daily Schedule</h3>
-            <p className="text-gray-600">9:00 AM to 4:00 PM PST</p>
+            <p className="text-gray-600">9:00 AM – 3:00 PM PST</p>
           </div>
 
           {/* Venue */}
@@ -148,19 +150,23 @@ export default function RoboticsEnrollmentPage() {
           <div className="bg-gradient-to-br from-[#1a3a7a] to-[#2563eb] text-white rounded-2xl p-8 shadow-lg">
             <div className="text-4xl mb-3">💰</div>
             <h3 className="text-2xl font-bold mb-2">Total Program Cost</h3>
-            <p className="text-5xl font-black mb-2">$350</p>
+            <p className="text-5xl font-black mb-2">$400</p>
             <p className="text-blue-200 text-sm">Reserve your seat with just a $100 deposit</p>
+            <div className="mt-4 bg-white/10 border border-white/20 rounded-xl p-4">
+              <p className="text-green-300 font-bold text-lg">🎉 Early-Bird Discount: $50 OFF</p>
+              <p className="text-blue-200 text-sm">Register before August 10, 2026 and pay only $350!</p>
+            </div>
           </div>
           <div className="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl p-8 shadow-lg">
             <div className="text-4xl mb-3">🎓</div>
             <h3 className="text-2xl font-bold mb-2">Free Demo Class</h3>
-            <p className="text-lg font-semibold mb-2">Monday at 9:00 AM</p>
+            <p className="text-lg font-semibold mb-2">August 15, 2026 — 2:00 PM to 5:00 PM</p>
             <p className="text-orange-100 text-sm">Experience our teaching style before enrolling — completely free!</p>
             <a
               href="#enrollment-form"
               className="inline-block mt-4 bg-white text-orange-600 font-bold px-6 py-3 rounded-full hover:bg-orange-50 transition-colors duration-200"
             >
-              Join Free Demo Class on Monday
+              Join Free Demo Class on August 15
             </a>
           </div>
         </div>
@@ -318,6 +324,27 @@ export default function RoboticsEnrollmentPage() {
             />
           </div>
 
+          {/* Early-Bird Discount Option */}
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                name="earlyBirdDiscount"
+                checked={formData.earlyBirdDiscount}
+                onChange={handleChange}
+                className="mt-1 w-5 h-5 rounded border-green-300 text-green-600 focus:ring-green-500"
+              />
+              <div>
+                <p className="font-bold text-green-800 text-sm">
+                  🎉 Apply Early-Bird Discount — $50 OFF (Total: $350 instead of $400)
+                </p>
+                <p className="text-green-700 text-xs mt-1">
+                  Available for registrations before August 10, 2026. Discount will be applied at checkout.
+                </p>
+              </div>
+            </label>
+          </div>
+
           {/* Confirmation Message */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-center">
             <p className="text-[#1a3a7a] font-semibold text-sm">
@@ -354,7 +381,7 @@ export default function RoboticsEnrollmentPage() {
               href="#enrollment-form"
               className="inline-block bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5"
             >
-              Join Free Demo Class on Monday
+              Join Free Demo Class on August 15
             </a>
           </div>
         </div>
