@@ -17,7 +17,7 @@ const coreValues = [
 ];
 
 const whyUs = [
-  { icon: '🎓', label: 'Expert Instructors', desc: 'Experienced educators who are passionate and dedicated to student success.' },
+  { icon: '🤖', label: 'FTC Team Led', desc: 'Programs led by national/international FTC Team FTC23270 – Sounder Bots.' },
   { icon: '👥', label: 'Small Class Sizes', desc: 'Personalized attention and optimal learning outcomes for every student.' },
   { icon: '🏫', label: 'Modern Facilities', desc: 'State-of-the-art equipment designed to inspire creativity and innovation.' },
   { icon: '🕐', label: 'Flexible Scheduling', desc: 'Multiple timings to fit your family, with weekday and weekend options.' },

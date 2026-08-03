@@ -32,7 +32,6 @@ export async function POST(request: NextRequest) {
     const courseLabel = campType === 'ftc' ? 'FTC Camp' : 'Robotics Camp';
 
     // Create interest record so it shows in admin Interest Submissions
-    // regardless of whether the user pays the $100 deposit
     const interest = {
       name: parentName,
       email: parentEmail,
