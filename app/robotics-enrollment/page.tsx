@@ -151,7 +151,7 @@ export default function RoboticsEnrollmentPage() {
 
               {/* Age */}
               <div>
-                <label htmlFor="age" className="block text-[15px] font-bold text-[#1f2e57] mb-2">Child's Age (specify months or years)</label>
+                <label htmlFor="age" className="block text-[15px] font-bold text-[#1f2e57] mb-2">Child's Age</label>
                 <input type="text" id="age" name="age" value={formData.age} onChange={handleChange} className={`w-full px-6 py-3.5 rounded-full border ${errors.age ? 'border-red-400' : 'border-gray-200'} bg-white focus:border-[#f2c638] focus:ring-1 focus:ring-[#f2c638] outline-none text-[15px] shadow-sm`} placeholder="Age of Child" />
                 {errors.age && <p className="text-red-500 text-[13px] mt-1.5 font-medium px-2">{errors.age}</p>}
               </div>
