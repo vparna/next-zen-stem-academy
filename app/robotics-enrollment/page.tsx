@@ -33,8 +33,6 @@ export default function RoboticsEnrollmentPage() {
     parentName: '',
     parentEmail: '',
     parentPhone: '',
-    address: '',
-    emergencyContact: '',
     priorExperience: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -58,8 +56,6 @@ export default function RoboticsEnrollmentPage() {
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.parentEmail))
       newErrors.parentEmail = 'Please enter a valid email';
     if (!formData.parentPhone.trim()) newErrors.parentPhone = 'Phone number is required';
-    if (!formData.address.trim()) newErrors.address = 'Address is required';
-    if (!formData.emergencyContact.trim()) newErrors.emergencyContact = 'Emergency contact is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -206,18 +202,8 @@ export default function RoboticsEnrollmentPage() {
               {errors.parentPhone && <p className="text-red-500 text-xs">{errors.parentPhone}</p>}
             </div>
 
-            <div className="space-y-1">
-              <label htmlFor="emergencyContact" className="block text-sm font-bold text-[#1a3a7a]">Emergency Contact <span className="text-red-500">*</span></label>
-              <input type="text" id="emergencyContact" name="emergencyContact" value={formData.emergencyContact} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.emergencyContact ? 'border-red-400 bg-red-50' : 'border-gray-200'} focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none`} placeholder="Name and phone number" />
-              {errors.emergencyContact && <p className="text-red-500 text-xs">{errors.emergencyContact}</p>}
-            </div>
           </div>
 
-          <div className="space-y-1">
-            <label htmlFor="address" className="block text-sm font-bold text-[#1a3a7a]">Address <span className="text-red-500">*</span></label>
-            <input type="text" id="address" name="address" value={formData.address} onChange={handleChange} className={`w-full px-4 py-3 rounded-xl border ${errors.address ? 'border-red-400 bg-red-50' : 'border-gray-200'} focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none`} placeholder="Street, City, State, ZIP" />
-            {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
-          </div>
 
           <div className="space-y-1">
             <label htmlFor="priorExperience" className="block text-sm font-bold text-[#1a3a7a]">Prior Robotics Experience <span className="text-gray-400 text-xs font-normal">(Optional)</span></label>

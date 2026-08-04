@@ -10,15 +10,13 @@ export async function POST(request: NextRequest) {
       parentName,
       parentEmail,
       parentPhone,
-      address,
-      emergencyContact,
       priorExperience,
       earlyBird,
       campType,
     } = body;
 
     // Validate required fields
-    if (!studentName || !age || !parentName || !parentEmail || !parentPhone || !address || !emergencyContact || !campType) {
+    if (!studentName || !age || !parentName || !parentEmail || !parentPhone || !campType) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -44,8 +42,6 @@ export async function POST(request: NextRequest) {
       source: 'robotics-enrollment',
       earlyBird: !!earlyBird,
       campType,
-      address,
-      emergencyContact,
       paymentStatus: 'unpaid',
       createdAt: new Date(),
     };
