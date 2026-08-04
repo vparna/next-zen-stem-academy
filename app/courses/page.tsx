@@ -215,9 +215,11 @@ export default function CoursesPage() {
                         <span className={`absolute top-3 left-3 inline-flex items-center gap-1.5 text-xs font-bold ${cfg.color} ${cfg.bg} px-3 py-1 rounded-full`}>
                           {cfg.icon} {course.category}
                         </span>
+                        {/* Price hidden for now
                         <span className="absolute bottom-3 right-3 text-white text-sm font-bold bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full">
                           ${course.price}<span className="text-xs font-normal">/mo</span>
                         </span>
+                        */}
                       </div>
                       {/* Gradient accent bar */}
                       <div className={`h-1.5 w-full bg-gradient-to-r ${cfg.headerGrad}`} />

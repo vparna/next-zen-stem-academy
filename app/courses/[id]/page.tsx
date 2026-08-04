@@ -220,12 +220,14 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </>
               ) : (
                 <>
+                  {/* Price hidden for now
                   <div className="text-center mb-6">
                     <div className="text-4xl font-extrabold text-orange-500 mb-2">
                       ${course.price}
                     </div>
                     <p className="text-slate-600">per month</p>
                   </div>
+                  */}
                   <button
                     onClick={handleEnroll}
                     className="ui-pill-btn w-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200 hover:shadow-lg hover:shadow-orange-300 transition-all"
