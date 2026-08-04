@@ -103,11 +103,11 @@ export default function RoboticsEnrollmentPage() {
       {/* Header Section matching the image */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-[36px] md:text-[44px] font-extrabold text-[#1f2e57] mb-4 tracking-tight leading-tight">
-            Enroll in our Robotics Academy.
+          <h1 className="text-[36px] md:text-[30px] font-extrabold text-[#1f2e57] mb-4 tracking-tight leading-tight">
+            Enroll in our Summer Exclusive Robotics Camps
           </h1>
           <p className="text-[16px] text-[#1f2e57] max-w-3xl mx-auto font-medium leading-relaxed">
-            Contact us to learn more about what makes NextZen Academy stand out among STEM education providers. Fill out the form below to secure a spot for your child in our upcoming camps.
+            Learn from elite coaches with a proven track record of success in prestigious international competitions (Sounder Bots)
           </p>
         </div>
       </section>
@@ -238,7 +238,7 @@ export default function RoboticsEnrollmentPage() {
               <p className="text-[15px] text-gray-700 leading-relaxed font-medium">
                 <span className="font-bold text-gray-500 w-16 inline-block">Office:</span> <a href="tel:4258004240" className="hover:text-blue-600 transition-colors">425-800-4240</a><br />
                 <span className="font-bold text-gray-500 w-16 inline-block">Mobile:</span> <a href="tel:4253250431" className="hover:text-blue-600 transition-colors">425-325-0431</a><br />
-                <span className="font-bold text-gray-500 w-16 inline-block">Fax:</span> 425-80-4350
+                <span className="font-bold text-gray-500 w-16 inline-block">Fax:</span> 425-800-4350
               </p>
 
               <h3 className="text-[#1f2e57] font-extrabold text-[18px] mt-5 mb-3">Location</h3>

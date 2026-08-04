@@ -237,11 +237,9 @@ export default function Home() {
       <section className="bg-gradient-to-r from-[#1a3a7a] to-[#2563eb] text-white py-4 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-sm md:text-base font-bold">
-            🚀 Exclusive Robotics Camp Enrollments on August 17, 2026 — Featured on the Home Page.
+            Exclusive Robotics Summer Camps at NextZen Academy –
+            <Link href="/robotics-enrollment" className="text-orange-300 hover:text-orange-200 font-bold text-base transition-colors"> Enroll Today!</Link>
           </p>
-          <Link href="/robotics-enrollment" className="inline-block mt-2 text-orange-300 hover:text-orange-200 font-semibold text-sm underline underline-offset-2 transition-colors">
-            Enroll Now →
-          </Link>
         </div>
       </section>
 
