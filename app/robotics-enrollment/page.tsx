@@ -5,22 +5,22 @@ import { useState } from 'react';
 const campDetails = {
   robotics: {
     title: 'Robotics Camp',
-    ageRange: 'Ages 5–14',
-    dates: 'August 17, 2026 – August 24, 2026',
-    schedule: '9:00 AM – 4:00 PM PST',
+    ageRange: 'Ages 7+',
+    dates: 'August 17 – August 24, 2026',
+    schedule: '9:00 AM – 3:00 PM PST',
     fee: '$400',
-    earlyBird: '$50 off until August 10, 2026',
-    description: 'A hands-on robotics training camp for ages 5–14. Learn to build, program, and compete with robots in a fun and supportive environment.',
+    earlyBird: 'Save $50 when you register on or before August 10, 2026',
+    description: 'A hands-on robotics training camp for ages 7+. Learn to build, program, and compete with robots in a fun and supportive environment.',
     kitInfo: 'All students receive robotics kits during the training — no need to purchase separately.',
   },
   ftc: {
     title: 'FTC Camp',
-    ageRange: '6th grade and above',
-    dates: 'August 17, 2026 – August 25, 2026',
-    schedule: '9:00 AM – 3:00 PM PST',
+    ageRange: 'Ages 12+',
+    dates: 'August 17 – August 24, 2026',
+    schedule: '9:00 AM – 12:00 PM PST',
     fee: '$350',
-    earlyBird: '$25 off until August 10, 2026',
-    description: 'FIRST Tech Challenge preparation camp for students in 6th grade and above. Build advanced robots, learn engineering design, and prepare for FTC competition season.',
+    earlyBird: 'Save $50 when you register on or before August 10, 2026',
+    description: 'FIRST Tech Challenge preparation camp for students ages 12+. Build advanced robots, learn engineering design, and prepare for FTC competition season.',
     kitInfo: null,
   },
 };
@@ -125,7 +125,7 @@ export default function RoboticsEnrollmentPage() {
                 <label htmlFor="campType" className="block text-[15px] font-bold text-[#1f2e57] mb-2">
                   Select Program
                 </label>
-                <div className="relative">
+                <div className="relative mb-6">
                   <select
                     id="campType"
                     name="campType"
@@ -133,11 +133,64 @@ export default function RoboticsEnrollmentPage() {
                     onChange={handleChange}
                     className="w-full px-6 py-3.5 bg-white rounded-full border border-gray-200 focus:border-[#f2c638] focus:ring-1 focus:ring-[#f2c638] outline-none text-[15px] text-gray-700 shadow-sm appearance-none"
                   >
-                    <option value="robotics">Robotics Camp (Ages 5–14)</option>
-                    <option value="ftc">FTC Camp (6th grade and above)</option>
+                    <option value="robotics">Robotics Camp (Ages 7+)</option>
+                    <option value="ftc">FTC Camp (Ages 12+)</option>
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-6 text-[#1f2e57]">
                     <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  </div>
+                </div>
+
+                {/* Camp Information */}
+                <div className="bg-[#f8f9fa] rounded-[20px] p-6 border border-gray-200 shadow-sm">
+                  <h3 className="text-[#1f2e57] font-extrabold text-[18px] mb-4 border-b border-gray-200 pb-3">Camp Information</h3>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-bold text-[#1f2e57] text-[15px] flex items-center gap-2">
+                        <span>📅</span> Camp Dates
+                      </h4>
+                      <p className="text-[15px] text-gray-700 font-medium ml-7 mt-0.5">
+                        August 17 – August 24, 2026
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-[#1f2e57] text-[15px] flex items-center gap-2">
+                        <span>🕘</span> Camp Schedule
+                      </h4>
+                      <div className="text-[15px] text-gray-700 font-medium ml-7 mt-0.5">
+                        {formData.campType === 'robotics' ? (
+                          <>
+                            <p className="font-bold text-[#1f2e57]">Robotics Camp (Ages 7+)</p>
+                            <p>9:00 AM – 3:00 PM PST</p>
+                          </>
+                        ) : (
+                          <>
+                            <p className="font-bold text-[#1f2e57]">FTC Camp (Ages 12+)</p>
+                            <p>9:00 AM – 12:00 PM PST</p>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-bold text-[#1f2e57] text-[15px] flex items-center gap-2">
+                        <span>💵</span> Camp Fee
+                      </h4>
+                      <p className="text-[15px] text-gray-700 font-medium ml-7 mt-0.5">
+                        {formData.campType === 'robotics' ? 'Robotics Camp: $400' : 'FTC Camp: $350'}
+                      </p>
+                    </div>
+
+                    <div className="bg-emerald-50 rounded-xl p-3 border border-emerald-100 mt-2">
+                      <h4 className="font-bold text-emerald-800 text-[15px] flex items-center gap-2">
+                        <span>🎉</span> Early Bird Special!
+                      </h4>
+                      <p className="text-[14px] text-emerald-700 font-medium ml-7 mt-0.5">
+                        Save $50 when you register on or before August 10, 2026.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -249,7 +302,7 @@ export default function RoboticsEnrollmentPage() {
               
               <h3 className="text-[#1f2e57] font-extrabold text-[18px] mt-5 mb-3">Camp Info</h3>
               <div className="text-[15px] text-gray-700 leading-relaxed font-medium space-y-1">
-                <p><span className="font-bold text-gray-500">Dates:</span> {selected.dates.split(' – ')[0]}</p>
+                <p><span className="font-bold text-gray-500">Dates:</span> {selected.dates}</p>
                 <p><span className="font-bold text-gray-500">Schedule:</span> {selected.schedule}</p>
                 <p><span className="font-bold text-gray-500">Fee:</span> {selected.fee}</p>
               </div>
