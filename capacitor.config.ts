@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'NextGen STEAM Academy',
   webDir: 'public',
   server: {
-    url: 'https://www.nextzenacademy.com',
+    url: 'https://www.nextzenacademy.com/mobile',
     cleartext: false,
     iosScheme: 'https'
   },
