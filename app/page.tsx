@@ -236,9 +236,9 @@ export default function Home() {
       {/* ── ANNOUNCEMENT BANNER ── */}
       <section className="bg-gradient-to-r from-[#1a3a7a] to-[#2563eb] text-white py-4 px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-sm md:text-base font-bold">
-            Exclusive Robotics Summer Camps at NextZen Academy –
-            <Link href="/robotics-enrollment" className="text-orange-300 hover:text-orange-200 font-bold text-base transition-colors"> Enroll Today!</Link>
+          <p className="text-sm md:text-base font-bold flex flex-col sm:block">
+            <span>Exclusive Robotics Summer Camps at NextZen Academy –</span>
+            <Link href="/robotics-enrollment" className="text-orange-300 hover:text-orange-200 font-bold text-base transition-colors mt-1 sm:mt-0 sm:ml-1 inline-block"> Enroll Today!</Link>
           </p>
         </div>
       </section>
@@ -264,8 +264,8 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-32 lg:py-48">
 
           {/* Top Label */}
-          <div className="absolute top-3 sm:top-4 left-6 sm:left-10 lg:left-16">
-            <span className="text-[35px] opacity-60 uppercase font-bold italic tracking-normal text-white drop-shadow-md select-none">
+          <div className="absolute top-3 sm:top-4 left-6 sm:left-10 lg:left-16 right-6">
+            <span className="text-lg sm:text-xl md:text-2xl lg:text-[35px] opacity-60 uppercase font-bold italic tracking-normal text-white drop-shadow-md select-none line-clamp-1 sm:line-clamp-none">
               Premium Early Learning &amp; STEAM Academy
             </span>
           </div>
@@ -273,41 +273,41 @@ export default function Home() {
           <div className="max-w-2xl mt-6 lg:mt-8">
 
             {/* Headline */}
-            <h1 className="font-serif font-black tracking-tight leading-[1.15] mb-8 flex flex-col gap-3 relative">
-              <span className="flex flex-row items-center gap-x-2 sm:gap-x-3 text-lg sm:text-2xl md:text-3xl lg:text-4xl whitespace-nowrap">
+            <h1 className="font-serif font-black tracking-tight leading-[1.15] mb-8 flex flex-col items-center sm:items-start gap-3 relative text-center sm:text-left">
+              <span className="flex flex-col sm:flex-row items-center sm:items-start gap-y-1 gap-x-2 sm:gap-x-3 text-2xl sm:text-2xl md:text-3xl lg:text-4xl">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-[#FFD700] to-[#FFB900] drop-shadow-md select-none whitespace-nowrap">
                   Ancient Wisdom
                 </span>
-                <span className="text-white/30 font-light select-none">|</span>
+                <span className="hidden sm:inline text-white/30 font-light select-none">|</span>
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#7FBA00] via-[#A3E635] to-[#FFB900] italic drop-shadow-md select-none whitespace-nowrap">
                   Modern Learning
                 </span>
               </span>
-              <span className="text-lg sm:text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none text-center w-full">
+              <span className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md select-none text-center sm:text-left w-full sm:w-auto">
                 Future Leaders
               </span>
               {/* Bottom decorative accent line */}
-              <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4 mx-auto" />
+              <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4 mx-auto sm:mx-0" />
             </h1>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-8 justify-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-8 justify-center sm:justify-start w-full px-4 sm:px-0">
               <button
                 onClick={() => scrollToSection('childcare-programs')}
-                className="bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 shadow-lg shadow-[#F25022]/30 hover:shadow-xl hover:shadow-[#F25022]/40 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 Premium Preschool
               </button>
               <button
                 onClick={() => scrollToSection('afterschool-programs')}
-                className="bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto bg-[#00A4EF]/20 border border-[#00A4EF]/40 hover:bg-[#00A4EF]/30 hover:border-[#00A4EF]/60 text-white font-black uppercase text-sm sm:text-base tracking-wider px-10 py-5 rounded-full transition-all duration-300 hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 STEAM Academy
               </button>
             </div>
 
             {/* Small Local Academy Card */}
-            <div className="mr-auto w-full max-w-[420px] bg-white/95 backdrop-blur-sm text-[#1f2e57] rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20 select-none">
+            <div className="mx-auto sm:mr-auto sm:ml-0 w-full max-w-[420px] bg-white/95 backdrop-blur-sm text-[#1f2e57] rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20 select-none">
 
               {/* Header: Graduation Cap Icon + Title */}
               <div className="flex items-center gap-1.5 mb-2.5 sm:mb-3">
@@ -390,36 +390,75 @@ export default function Home() {
             <div className="flex flex-col lg:flex-row">
 
               {/* LEFT: Vertical Tab List */}
-              <div className="w-full lg:w-[300px] xl:w-[340px] flex-shrink-0 bg-[#f5f1ec] flex flex-col rounded-l-2xl overflow-hidden">
+              <div className="w-full lg:w-[300px] xl:w-[340px] flex-shrink-0 bg-[#f5f1ec] flex flex-col rounded-2xl lg:rounded-r-none lg:rounded-l-2xl overflow-hidden">
                 {childcarePrograms.map((program, idx) => {
                   const isActive = activeChildcareIndex === idx;
                   return (
-                    <button
-                      key={program.title}
-                      onMouseEnter={() => setActiveChildcareIndex(idx)}
-                      onClick={() => router.push(`/programs/${program.slug}`)}
-                      className={`w-full text-left px-8 py-8 border-b border-slate-300/40 last:border-b-0 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${!isActive ? 'hover:bg-[#ede8e2]' : ''}`}
-                      style={isActive ? { backgroundColor: program.color } : {}}
-                    >
-                      <span
-                        className="font-black text-xl leading-tight"
-                        style={isActive ? { color: '#fff' } : { color: '#1f2e57' }}
+                    <div key={program.title} className="flex flex-col border-b border-slate-300/40 last:border-b-0">
+                      <button
+                        onMouseEnter={() => {
+                          if (window.innerWidth >= 1024) setActiveChildcareIndex(idx);
+                        }}
+                        onClick={() => {
+                          if (window.innerWidth >= 1024) {
+                            router.push(`/programs/${program.slug}`);
+                          } else {
+                            setActiveChildcareIndex(idx);
+                          }
+                        }}
+                        className={`w-full text-left px-8 py-8 transition-colors duration-200 cursor-pointer flex flex-col gap-1 ${!isActive ? 'hover:bg-[#ede8e2]' : ''}`}
+                        style={isActive ? { backgroundColor: program.color } : {}}
                       >
-                        {program.title}
-                      </span>
-                      <span
-                        className="text-sm font-medium leading-tight mt-0.5"
-                        style={isActive ? { color: 'rgba(255,255,255,0.80)' } : { color: '#6b7280' }}
+                        <span
+                          className="font-black text-xl leading-tight flex justify-between items-center w-full"
+                          style={isActive ? { color: '#fff' } : { color: '#1f2e57' }}
+                        >
+                          {program.title}
+                          <span className="lg:hidden text-2xl transition-transform duration-300 opacity-80 font-light">
+                            {isActive ? '−' : '+'}
+                          </span>
+                        </span>
+                        <span
+                          className="text-sm font-medium leading-tight mt-0.5"
+                          style={isActive ? { color: 'rgba(255,255,255,0.80)' } : { color: '#6b7280' }}
+                        >
+                          {program.age}
+                        </span>
+                      </button>
+
+                      {/* Mobile Accordion Image */}
+                      <div 
+                        className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden relative ${isActive ? 'max-h-[350px] opacity-100' : 'max-h-0 opacity-0'}`}
                       >
-                        {program.age}
-                      </span>
-                    </button>
+                        <div className="relative w-full h-[250px] sm:h-[350px]">
+                          <Image
+                            src={program.image}
+                            alt={program.title}
+                            fill
+                            className="object-cover object-center"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                          <div className="absolute bottom-4 right-4 z-10">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                router.push(`/programs/${program.slug}`);
+                              }}
+                              className="bg-white/95 backdrop-blur-sm text-xs font-black uppercase px-5 py-2.5 rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                              style={{ color: program.color }}
+                            >
+                              Learn More <span>→</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   );
                 })}
               </div>
 
-              {/* RIGHT: Full-Height Photo — extends beyond the tab list height */}
-              <div className="relative flex-1 min-h-[420px] lg:min-h-0 lg:-my-10 rounded-2xl overflow-hidden shadow-lg">
+              {/* RIGHT: Full-Height Photo — Desktop Only */}
+              <div className="hidden lg:block relative flex-1 min-h-[420px] lg:min-h-0 lg:-my-10 lg:rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src={childcarePrograms[activeChildcareIndex].image}
                   alt={childcarePrograms[activeChildcareIndex].title}
@@ -806,21 +845,21 @@ export default function Home() {
               {!isLoggedIn ? (
                 <Link
                   href="/signup"
-                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto block px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-normal sm:whitespace-nowrap"
                 >
                   Enroll Now — It&apos;s Free
                 </Link>
               ) : (
                 <Link
                   href="/dashboard"
-                  className="px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto block px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-normal sm:whitespace-nowrap"
                 >
                   View Student Dashboard
                 </Link>
               )}
               <Link
                 href="/courses"
-                className="text-slate-700 hover:text-[#F25022] bg-white border border-slate-200 hover:border-[#F25022] hover:shadow-md hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-300 cursor-pointer whitespace-nowrap font-black text-xs uppercase tracking-widest px-8 py-4 rounded-full"
+                className="w-full sm:w-auto block text-center text-slate-700 hover:text-[#F25022] bg-white border border-slate-200 hover:border-[#F25022] hover:shadow-md hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-300 cursor-pointer whitespace-normal sm:whitespace-nowrap font-black text-xs uppercase tracking-widest px-8 py-4 rounded-full"
               >
                 Browse Courses
               </Link>
