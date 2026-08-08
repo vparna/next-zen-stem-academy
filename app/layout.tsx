@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import MobileRouteGuard from "@/components/MobileRouteGuard";
 
 export const metadata: Metadata = {
   title: "NextZen Academy - Innovative Education",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body
         className="antialiased flex flex-col min-h-screen bg-gray-50"
       >
+        <MobileRouteGuard />
         <Navbar />
         <main className="flex-grow pt-[68px] lg:pt-[108px]">
           {children}

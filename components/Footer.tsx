@@ -1,7 +1,24 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const [isNative, setIsNative] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    import('@capacitor/core').then(({ Capacitor }) => {
+      setIsNative(Capacitor.isNativePlatform());
+    }).catch(() => {});
+  }, []);
+
+  const isMobileRoute = pathname?.startsWith('/mobile') ?? false;
+  if (isMobileRoute || isNative) {
+    return null;
+  }
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   return (

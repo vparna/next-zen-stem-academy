@@ -13,6 +13,7 @@ export default function Navbar() {
     isLoggedIn: false,
     userName: ''
   });
+  const [isNative, setIsNative] = useState(false);
 
   const campusDropdownRef = useRef<HTMLDivElement>(null);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -52,6 +53,11 @@ export default function Navbar() {
     };
 
     checkAuth();
+
+    // Check if it's running natively
+    import('@capacitor/core').then(({ Capacitor }) => {
+      setIsNative(Capacitor.isNativePlatform());
+    }).catch(() => {});
 
     window.addEventListener('authChange', checkAuth);
     window.addEventListener('storage', checkAuth);
@@ -93,6 +99,11 @@ export default function Navbar() {
     if (path.startsWith('#')) return false;
     return pathname === path;
   };
+
+  const isMobileRoute = pathname.startsWith('/mobile');
+  if (isMobileRoute || isNative) {
+    return null;
+  }
 
   return (
     <>

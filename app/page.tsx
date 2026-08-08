@@ -181,8 +181,16 @@ export default function Home() {
     };
     checkAuth();
     window.addEventListener('authChange', checkAuth);
+    
+    // Check if running in a native mobile app and redirect
+    import('@capacitor/core').then(({ Capacitor }) => {
+      if (Capacitor.isNativePlatform()) {
+        router.replace('/mobile');
+      }
+    }).catch(err => console.error('Failed to load Capacitor:', err));
+
     return () => window.removeEventListener('authChange', checkAuth);
-  }, []);
+  }, [router]);
 
   const toggleFaq = (index: number) => {
     setActiveFaqIndex(activeFaqIndex === index ? null : index);
