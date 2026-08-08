@@ -168,5 +168,6 @@ export default function MobilePage() {
 
       </div>
     </div>
+    </div>
   );
 }
