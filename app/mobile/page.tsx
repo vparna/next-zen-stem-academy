@@ -109,28 +109,27 @@ export default function MobilePage() {
   const features = isAdmin ? adminFeatures : isTeacher ? teacherFeatures : parentFeatures;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-4">
-      <div className="max-w-md mx-auto pt-6 pb-20">
-        {/* Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-1">NextZen Academy</h1>
-          <p className="text-gray-500 text-sm">Childcare Management Platform</p>
+    <div className="min-h-screen bg-[url('/hero_bg.png')] bg-cover bg-fixed bg-center">
+      <div className="min-h-screen bg-slate-50/80 backdrop-blur-xl p-4">
+        <div className="max-w-md mx-auto pt-2 pb-6">
+          {/* Header Card */}
           {user && (
-            <div className="mt-4 bg-white rounded-xl p-4 shadow-md">
-              <p className="text-sm text-gray-500">Welcome back,</p>
-              <p className="text-lg font-semibold text-gray-800">
-                {user.firstName} {user.lastName}
-              </p>
-              <span className={`inline-block mt-1 text-xs font-semibold uppercase px-3 py-1 rounded-full ${
-                isAdmin ? 'bg-red-100 text-red-700' :
-                isTeacher ? 'bg-blue-100 text-blue-700' :
-                'bg-green-100 text-green-700'
-              }`}>
-                {user.role || 'parent'}
-              </span>
+            <div className="mb-6 relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 text-white">
+              <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="relative z-10">
+                <p className="text-indigo-100 text-sm font-medium tracking-wide opacity-90">Welcome back,</p>
+                <h2 className="text-2xl font-bold mt-1 tracking-tight drop-shadow-sm">
+                  {user.firstName} {user.lastName}
+                </h2>
+                <div className="mt-3 inline-flex items-center bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-white">
+                    {user.role || 'Parent'}
+                  </span>
+                </div>
+              </div>
             </div>
           )}
-        </div>
 
         {/* Quick Action for Teachers */}
         {isTeacher && (
@@ -152,35 +151,21 @@ export default function MobilePage() {
         )}
 
         {/* Feature Grid */}
-        <div className="grid grid-cols-2 gap-3 mb-8">
+        <div className="grid grid-cols-2 gap-4 mb-8">
           {features.map((feature, i) => (
             <button
               key={i}
               onClick={() => router.push(feature.path)}
-              className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition-shadow text-left"
+              className="group relative overflow-hidden bg-white/60 backdrop-blur-md border border-white/40 rounded-2xl p-4 shadow-[0_4px_16px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(79,70,229,0.12)] hover:-translate-y-1 transition-all duration-300 text-left"
             >
-              <div className="text-3xl mb-2">{feature.icon}</div>
-              <h3 className="text-sm font-semibold text-gray-800 mb-0.5">{feature.label}</h3>
-              <p className="text-xs text-gray-500 leading-tight">{feature.desc}</p>
+              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="text-3xl mb-3 transform group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">{feature.icon}</div>
+              <h3 className="text-[13px] font-bold text-gray-800 mb-1 leading-tight">{feature.label}</h3>
+              <p className="text-[11px] text-gray-500 leading-snug line-clamp-2">{feature.desc}</p>
             </button>
           ))}
         </div>
 
-        {/* Navigation */}
-        <div className="flex gap-3">
-          <button
-            onClick={() => router.push('/dashboard')}
-            className="flex-1 bg-white text-gray-700 px-4 py-3 rounded-xl shadow-sm hover:shadow-md transition-shadow font-medium text-sm"
-          >
-            📊 Dashboard
-          </button>
-          <button
-            onClick={() => router.push('/courses')}
-            className="flex-1 bg-indigo-600 text-white px-4 py-3 rounded-xl hover:bg-indigo-700 transition-colors font-medium text-sm"
-          >
-            📚 Courses
-          </button>
-        </div>
       </div>
     </div>
   );

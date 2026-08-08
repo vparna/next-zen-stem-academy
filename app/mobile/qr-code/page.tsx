@@ -164,10 +164,10 @@ export default function QRCodePage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">No Children Added</h2>
           <p className="text-gray-600 mb-6">Please add a child to your account first to generate QR codes.</p>
           <button
-            onClick={() => router.push('/dashboard')}
+            onClick={() => router.push('/mobile')}
             className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
           >
-            Go to Dashboard
+            Go to Home
           </button>
         </div>
       </div>
@@ -185,62 +185,68 @@ export default function QRCodePage() {
           </div>
         )}
 
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Student QR Code</h1>
-          <p className="text-gray-600">Show this QR code for check-in/check-out</p>
+        {/* Header - Handled by MobileLayout, we just need a subtext */}
+        <div className="text-center mb-6">
+          <p className="text-gray-500 text-sm">Show this QR code for check-in/check-out</p>
         </div>
 
         {/* Child Selection */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+        <div className="bg-white/70 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/40 p-5 mb-6">
+          <label className="block text-xs font-bold text-indigo-900/60 uppercase tracking-wider mb-2 px-1">
             Select Child
           </label>
-          <select
-            value={selectedChild}
-            onChange={(e) => {
-              setSelectedChild(e.target.value);
-              setQRCodeData(null);
-            }}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-          >
-            {children.map((child) => (
-              <option key={child._id} value={child._id}>
-                {child.name} {child.age && `(${child.age} years)`}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={selectedChild}
+              onChange={(e) => {
+                setSelectedChild(e.target.value);
+                setQRCodeData(null);
+              }}
+              className="w-full appearance-none bg-white border border-gray-200/60 text-gray-800 px-4 py-3.5 rounded-xl focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 outline-none transition-all shadow-sm font-medium"
+            >
+              {children.map((child) => (
+                <option key={child._id} value={child._id}>
+                  {child.name} {child.age && `(${child.age} years)`}
+                </option>
+              ))}
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-400">
+              ▼
+            </div>
+          </div>
 
           <button
             onClick={generateQRCode}
             disabled={generating || !selectedChild}
-            className="w-full mt-4 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed font-medium"
+            className="w-full mt-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3.5 rounded-xl shadow-[0_4px_14px_rgba(79,70,229,0.3)] hover:shadow-[0_6px_20px_rgba(79,70,229,0.4)] hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-bold text-sm tracking-wide"
           >
-            {generating ? 'Generating...' : 'Generate QR Code'}
+            {generating ? 'GENERATING...' : 'GENERATE QR CODE'}
           </button>
         </div>
 
         {/* QR Code Display */}
         {qrCodeData && (
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-            <div className="mb-4">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          <div className="relative overflow-hidden bg-white rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-gray-100 p-8 text-center animate-in fade-in zoom-in duration-300">
+            <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-indigo-50/50 to-transparent"></div>
+            
+            <div className="relative z-10 mb-6">
+              <h3 className="text-2xl font-bold text-gray-800 mb-1 tracking-tight">
                 {qrCodeData.childName}
               </h3>
-              <p className="text-sm text-gray-500">Present this QR code to teacher</p>
+              <p className="text-xs font-semibold text-indigo-600 uppercase tracking-widest">Student ID</p>
             </div>
             
-            <div className="bg-white p-4 rounded-xl border-2 border-gray-200 inline-block">
+            <div className="relative z-10 bg-white p-5 rounded-2xl border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)] inline-block">
               <img 
                 src={qrCodeData.qrCode} 
                 alt="Student QR Code" 
-                className="w-64 h-64 mx-auto"
+                className="w-56 h-56 mx-auto mix-blend-multiply"
               />
             </div>
 
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-blue-800">
-                <strong>Instructions:</strong> Show this QR code to the teacher when checking in or out of class.
+            <div className="relative z-10 mt-6 pt-6 border-t border-gray-100">
+              <p className="text-[13px] text-gray-500 leading-relaxed max-w-[200px] mx-auto">
+                Present this code to the scanner device at the center entrance.
               </p>
             </div>
           </div>
@@ -253,21 +259,7 @@ export default function QRCodePage() {
           </div>
         )}
 
-        {/* Navigation */}
-        <div className="mt-8 flex gap-4">
-          <button
-            onClick={() => router.push('/dashboard')}
-            className="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium"
-          >
-            Dashboard
-          </button>
-          <button
-            onClick={() => router.push('/mobile/chat')}
-            className="flex-1 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
-          >
-            Messages
-          </button>
-        </div>
+
       </div>
     </div>
   );

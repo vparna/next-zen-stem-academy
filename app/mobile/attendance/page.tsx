@@ -112,86 +112,100 @@ export default function AttendancePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 pb-20">
       <div className="max-w-md mx-auto pt-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Attendance History</h1>
-          <p className="text-gray-600">View check-in and check-out records</p>
+        {/* Header - Handled by MobileLayout */}
+        <div className="mb-4 px-2">
+          <p className="text-gray-500 text-sm">Track check-in and check-out records.</p>
         </div>
 
         {/* Filter */}
         {children.length > 0 && (
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-white/50 p-5 mb-6">
+            <label className="block text-[11px] font-bold text-indigo-900/60 uppercase tracking-wider mb-2 px-1">
               Filter by Child
             </label>
-            <select
-              value={selectedChild}
-              onChange={(e) => setSelectedChild(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            >
-              <option value="all">All Children (Active Only)</option>
-              {children.map((child) => (
-                <option key={child._id} value={child._id}>
-                  {child.name}
-                </option>
-              ))}
-            </select>
+            <div className="relative">
+              <select
+                value={selectedChild}
+                onChange={(e) => setSelectedChild(e.target.value)}
+                className="w-full appearance-none bg-white border border-gray-100 text-gray-800 px-4 py-3 rounded-xl focus:ring-2 focus:ring-indigo-500/50 outline-none transition-shadow shadow-sm font-medium"
+              >
+                <option value="all">All Children (Active Only)</option>
+                {children.map((child) => (
+                  <option key={child._id} value={child._id}>
+                    {child.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-400">
+                ▼
+              </div>
+            </div>
           </div>
         )}
 
         {/* Attendance List */}
-        <div className="space-y-4 mb-6">
+        <div className="space-y-4 mb-6 relative">
+          {/* Timeline Line */}
+          {attendances.length > 0 && (
+            <div className="absolute left-6 top-4 bottom-4 w-px bg-indigo-100 z-0 hidden md:block"></div>
+          )}
+
           {attendances.length === 0 ? (
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-              <div className="text-6xl mb-4">📋</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">No Attendance Records</h3>
-              <p className="text-gray-600">No attendance records found for the selected filter.</p>
+            <div className="bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-gray-200 p-10 text-center">
+              <div className="text-5xl mb-3 opacity-50 grayscale">📋</div>
+              <h3 className="text-lg font-bold text-gray-800 mb-1">No Records</h3>
+              <p className="text-sm text-gray-500">No attendance history found.</p>
             </div>
           ) : (
             attendances.map((attendance) => (
               <div 
                 key={attendance._id} 
-                className="bg-white rounded-xl shadow-md p-5 border-l-4 border-indigo-600"
+                className="relative z-10 bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.03)] border border-gray-50 p-5 overflow-hidden group hover:shadow-[0_8px_24px_rgba(79,70,229,0.08)] transition-all"
               >
-                <div className="flex justify-between items-start mb-3">
+                {/* Status Indicator Bar */}
+                <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${
+                  attendance.status === 'checked-in' ? 'bg-emerald-500' : 'bg-gray-300'
+                }`}></div>
+
+                <div className="flex justify-between items-start mb-4 pl-2">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="text-[15px] font-bold text-gray-800 mb-0.5 tracking-tight">
                       {getChildName(attendance.childId)}
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-[11px] text-gray-400 font-medium tracking-wide uppercase">
                       {formatDate(attendance.checkInTime)}
                     </p>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider ${
                     attendance.status === 'checked-in' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-gray-100 text-gray-800'
+                      ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' 
+                      : 'bg-gray-50 text-gray-500 border border-gray-100'
                   }`}>
-                    {attendance.status === 'checked-in' ? '✓ Checked In' : '✓ Completed'}
+                    {attendance.status === 'checked-in' ? 'Active' : 'Completed'}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-2 gap-3 pl-2 bg-gray-50/50 rounded-xl p-3 border border-gray-50">
                   <div>
-                    <p className="text-gray-500 mb-1">Check In</p>
-                    <p className="font-medium text-gray-800">
+                    <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-0.5">Check In</p>
+                    <p className="font-bold text-gray-700 text-sm">
                       {formatTime(attendance.checkInTime)}
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-500 mb-1">Check Out</p>
-                    <p className="font-medium text-gray-800">
+                    <p className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold mb-0.5">Check Out</p>
+                    <p className="font-bold text-gray-700 text-sm">
                       {attendance.checkOutTime 
                         ? formatTime(attendance.checkOutTime)
-                        : '—'}
+                        : <span className="text-gray-300">—</span>}
                     </p>
                   </div>
                 </div>
 
                 {attendance.notes && (
-                  <div className="mt-3 pt-3 border-t border-gray-100">
-                    <p className="text-sm text-gray-600">
-                      <span className="font-medium">Notes:</span> {attendance.notes}
+                  <div className="mt-3 pl-2 pt-3 border-t border-gray-100/60">
+                    <p className="text-xs text-gray-500 leading-relaxed bg-yellow-50/50 p-2 rounded-lg border border-yellow-100/50">
+                      <span className="font-semibold text-yellow-800">Note:</span> {attendance.notes}
                     </p>
                   </div>
                 )}
@@ -207,21 +221,7 @@ export default function AttendancePage() {
           </div>
         )}
 
-        {/* Navigation */}
-        <div className="flex gap-4">
-          <button
-            onClick={() => router.push('/dashboard')}
-            className="flex-1 bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium"
-          >
-            Dashboard
-          </button>
-          <button
-            onClick={() => router.push('/mobile/qr-code')}
-            className="flex-1 bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors font-medium"
-          >
-            QR Code
-          </button>
-        </div>
+
       </div>
     </div>
   );

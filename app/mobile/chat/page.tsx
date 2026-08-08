@@ -222,10 +222,10 @@ export default function ChatPage() {
           <h2 className="text-2xl font-bold text-gray-800 mb-2">No Courses</h2>
           <p className="text-gray-600 mb-6">Enroll in a course to start chatting with teachers.</p>
           <button
-            onClick={() => router.push('/courses')}
+            onClick={() => router.push('/mobile')}
             className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
           >
-            Browse Courses
+            Go Home
           </button>
         </div>
       </div>
@@ -317,21 +317,7 @@ export default function ChatPage() {
             </button>
           </form>
           
-          {/* Navigation */}
-          <div className="flex gap-4 mt-4">
-            <button
-              onClick={() => router.push('/dashboard')}
-              className="flex-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors text-sm font-medium"
-            >
-              Dashboard
-            </button>
-            <button
-              onClick={() => router.push('/mobile/qr-code')}
-              className="flex-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors text-sm font-medium"
-            >
-              QR Code
-            </button>
-          </div>
+
         </div>
       </div>
     </div>

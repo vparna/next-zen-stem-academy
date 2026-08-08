@@ -63,23 +63,24 @@ export default function BillingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-4">
       <div className="max-w-md mx-auto pt-4 pb-20">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <button onClick={() => router.push('/mobile')} className="text-2xl">←</button>
-          <h1 className="text-2xl font-bold text-gray-800">Billing & Payments</h1>
+        {/* Header - Handled by MobileLayout */}
+        <div className="mb-4 px-2">
+          <p className="text-gray-500 text-sm">Manage your invoices and payments</p>
         </div>
 
         {/* Summary Cards */}
         <div className="grid grid-cols-2 gap-3 mb-6">
-          <div className="bg-white rounded-xl p-4 shadow-md">
-            <p className="text-xs text-gray-500 uppercase">Outstanding</p>
-            <p className="text-xl font-bold text-red-600">
+          <div className="bg-gradient-to-br from-red-500 to-rose-600 rounded-3xl p-5 shadow-[0_8px_30px_rgba(225,29,72,0.2)] text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-16 h-16 bg-white/20 rounded-full blur-xl"></div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1">Outstanding</p>
+            <p className="text-2xl font-bold tracking-tight">
               {formatCurrency(invoices.filter(i => i.status === 'sent' || i.status === 'overdue').reduce((sum, i) => sum + i.total, 0))}
             </p>
           </div>
-          <div className="bg-white rounded-xl p-4 shadow-md">
-            <p className="text-xs text-gray-500 uppercase">Paid This Year</p>
-            <p className="text-xl font-bold text-green-600">
+          <div className="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-3xl p-5 shadow-[0_8px_30px_rgba(16,185,129,0.2)] text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-4 -mt-4 w-16 h-16 bg-white/20 rounded-full blur-xl"></div>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-white/80 mb-1">Paid This Year</p>
+            <p className="text-2xl font-bold tracking-tight">
               {formatCurrency(invoices.filter(i => i.status === 'paid').reduce((sum, i) => sum + i.total, 0))}
             </p>
           </div>
@@ -106,39 +107,40 @@ export default function BillingPage() {
             <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-600 mx-auto"></div>
           </div>
         ) : invoices.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-xl shadow-md">
-            <div className="text-5xl mb-4">💰</div>
-            <p className="text-gray-500">No invoices found</p>
+          <div className="bg-white/50 backdrop-blur-sm rounded-3xl border border-dashed border-gray-200 p-10 text-center shadow-sm">
+            <div className="text-5xl mb-4 opacity-50 grayscale">💳</div>
+            <p className="text-gray-500 font-medium text-sm">No invoices found for this filter</p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {invoices.map((invoice) => (
-              <div key={invoice._id} className="bg-white rounded-xl shadow-md p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-500">{invoice.invoiceNumber}</span>
-                  <span className={`text-xs px-2 py-1 rounded-full font-medium ${getStatusColor(invoice.status)}`}>
+              <div key={invoice._id} className="group bg-white/80 backdrop-blur-md rounded-3xl shadow-[0_4px_16px_rgba(0,0,0,0.03)] border border-gray-100 p-5 hover:shadow-[0_8px_24px_rgba(16,185,129,0.08)] transition-all">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-bold tracking-widest text-gray-400 uppercase">{invoice.invoiceNumber}</span>
+                  <span className={`text-[10px] px-2.5 py-1 rounded-md font-bold uppercase tracking-wider border ${getStatusColor(invoice.status)}`}>
                     {invoice.status.toUpperCase()}
                   </span>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <p className="font-semibold text-gray-800">{formatCurrency(invoice.total)}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-2xl font-bold text-gray-800 tracking-tight">{formatCurrency(invoice.total)}</p>
+                    <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mt-1">
                       Due: {new Date(invoice.dueDate).toLocaleDateString()}
                     </p>
                   </div>
                   {(invoice.status === 'sent' || invoice.status === 'overdue') && (
-                    <button className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700">
+                    <button className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-[0_4px_14px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 transition-all">
                       Pay Now
                     </button>
                   )}
                 </div>
                 {invoice.items.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-gray-100">
+                  <div className="mt-4 pt-4 border-t border-gray-100/80 bg-gray-50/50 -mx-5 -mb-5 p-5 rounded-b-3xl">
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Breakdown</p>
                     {invoice.items.map((item, i) => (
-                      <div key={i} className="flex justify-between text-xs text-gray-500">
+                      <div key={i} className="flex justify-between text-xs font-medium text-gray-600 mb-2 last:mb-0">
                         <span>{item.description}</span>
-                        <span>{formatCurrency(item.total)}</span>
+                        <span className="text-gray-800 font-bold">{formatCurrency(item.total)}</span>
                       </div>
                     ))}
                   </div>
