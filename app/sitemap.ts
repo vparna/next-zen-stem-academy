@@ -26,7 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "curious-cubs",
     "little-discoverers",
     "pre-k",
-    "summer-camps",
   ];
 
   const programPages: MetadataRoute.Sitemap = programSlugs.map((slug) => ({
