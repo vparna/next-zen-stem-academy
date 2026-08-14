@@ -131,7 +131,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   };
 
   const handleScheduleTour = () => {
-    router.push('/#inquiry-form-section');
+    window.location.href = '/#inquiry-form-section';
   };
 
   if (loading) {
