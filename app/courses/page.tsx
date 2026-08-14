@@ -255,13 +255,13 @@ export default function CoursesPage() {
       {/* ── CTA ── */}
       <section className="bg-slate-900 text-white py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Ready to Enroll?</h2>
-          <p className="text-slate-400 mb-8 text-lg">Sign up now and start your learning journey with NextZen Academy.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Want to Learn More?</h2>
+          <p className="text-slate-400 mb-8 text-lg">Schedule a campus tour and explore our programs in person.</p>
           <Link
-            href="/signup"
+            href="/#inquiry-form-section"
             className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all"
           >
-            Create a Free Account
+            Schedule a Tour
           </Link>
         </div>
       </section>

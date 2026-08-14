@@ -130,16 +130,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
     };
   };
 
-  const handleEnroll = () => {
-    // Check if user is logged in
-    const token = localStorage.getItem('token');
-    if (!token) {
-      router.push('/login');
-      return;
-    }
-    
-    // Go to checkout
-    router.push(`/checkout?courseId=${course?._id}`);
+  const handleScheduleTour = () => {
+    router.push('/#inquiry-form-section');
   };
 
   if (loading) {
@@ -229,13 +221,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                   </div>
                   */}
                   <button
-                    onClick={handleEnroll}
+                    onClick={handleScheduleTour}
                     className="ui-pill-btn w-full bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md shadow-orange-200 hover:shadow-lg hover:shadow-orange-300 transition-all"
                   >
-                    Enroll Now
+                    Schedule a Tour
                   </button>
                   <p className="text-sm text-slate-600 text-center mt-4">
-                    30-day money-back guarantee
+                    Visit our campus and explore this program
                   </p>
                 </>
               )}
@@ -312,15 +304,15 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             </>
           ) : (
             <>
-              <h2 className="text-3xl font-extrabold mb-4">Ready to Get Started?</h2>
+              <h2 className="text-3xl font-extrabold mb-4">Interested in This Program?</h2>
               <p className="text-xl mb-8 text-slate-300">
-                Enroll now and start your learning journey today
+                Schedule a campus tour and see this program in action
               </p>
               <button
-                onClick={handleEnroll}
+                onClick={handleScheduleTour}
                 className="ui-pill-btn bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg shadow-orange-500/30 hover:scale-105 transition-all inline-block"
               >
-                Enroll in {course.name}
+                Schedule a Tour
               </button>
             </>
           )}

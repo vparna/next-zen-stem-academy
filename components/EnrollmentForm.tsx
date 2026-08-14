@@ -474,13 +474,13 @@ export default function EnrollmentForm({
     <div className="bg-white rounded-[3rem] p-6 md:p-12 border border-slate-100 shadow-xl space-y-8">
       <div className="text-center space-y-3">
         <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
-          Enrolling Now
+          Schedule a Tour
         </span>
         <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
-          Program Inquiry &amp; Enrollment
+          Schedule a Campus Tour
         </h3>
         <p className="text-xs md:text-sm text-[#1f2e57]/70 font-semibold max-w-md mx-auto">
-          Interested in our programs? Submit details below to receive program guides and connect with our enrollment team.
+          Interested in our programs? Submit details below to schedule a campus tour and connect with our team.
         </p>
       </div>
 
@@ -893,7 +893,7 @@ export default function EnrollmentForm({
           type="submit"
           className="w-full py-4 rounded-full font-black text-xs text-center uppercase tracking-wider text-white bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 shadow-md active:scale-95 transition-all cursor-pointer"
         >
-          Submit Enrollment Inquiry
+          Schedule a Tour
         </button>
 
         {inquiryStatus && (

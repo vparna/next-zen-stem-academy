@@ -176,19 +176,19 @@ export default function RoboticsEnrollmentPage() {
 
                     <div>
                       <h4 className="font-bold text-[#1f2e57] text-[15px] flex items-center gap-2">
-                        <span>💵</span> Camp Fee
+                        <span>🏫</span> Campus Tour
                       </h4>
                       <p className="text-[15px] text-gray-700 font-medium ml-7 mt-0.5">
-                        {formData.campType === 'robotics' ? 'Robotics Camp: $400' : 'FTC Camp: $350'}
+                        Schedule a tour to learn more about camp details and pricing
                       </p>
                     </div>
 
                     <div className="bg-emerald-50 rounded-xl p-3 border border-emerald-100 mt-2">
                       <h4 className="font-bold text-emerald-800 text-[15px] flex items-center gap-2">
-                        <span>🎉</span> Early Bird Special!
+                        <span>🎉</span> Visit Us!
                       </h4>
                       <p className="text-[14px] text-emerald-700 font-medium ml-7 mt-0.5">
-                        Save $50 when you register on or before August 10, 2026.
+                        Schedule a campus tour to see our robotics labs in action.
                       </p>
                     </div>
                   </div>
@@ -260,7 +260,7 @@ export default function RoboticsEnrollmentPage() {
                   disabled={isSubmitting}
                   className="w-full sm:w-auto bg-[#f2c638] hover:bg-[#e3b82c] text-[#1f2e57] text-[15px] font-extrabold uppercase py-3.5 px-10 rounded-full transition-colors disabled:opacity-70 disabled:cursor-not-allowed tracking-wide shadow-sm"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                  {isSubmitting ? 'Submitting...' : 'Schedule a Tour'}
                 </button>
               </div>
             </div>

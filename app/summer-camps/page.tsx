@@ -304,7 +304,7 @@ export default function SummerCampsPage() {
                   href="#camp-inquiry"
                   className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-md shadow-orange-500/20 hover:shadow-lg hover:scale-[1.03] transition-all cursor-pointer"
                 >
-                  Reserve Your Spot
+                  Schedule a Tour
                 </a>
                 <a
                   href="#schedule-planner"
@@ -755,7 +755,7 @@ export default function SummerCampsPage() {
               <span className="bg-white/20 backdrop-blur-md text-white font-extrabold text-xs px-4 py-1 rounded-full uppercase tracking-wider">
                 Limited Camp Spots Available
               </span>
-              <h2 className="text-3xl font-black mt-3">Reserve Your Spot / Request Info</h2>
+              <h2 className="text-3xl font-black mt-3">Schedule a Tour / Request Info</h2>
               <p className="text-sm text-orange-50 mt-1 max-w-xl mx-auto">
                 Select your preferred camp track and dates. A NextZen academic counselor will follow up within 24 hours to secure your registration.
               </p>
