@@ -852,10 +852,10 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto relative z-10 flex-shrink-0">
               {!isLoggedIn ? (
                 <Link
-                  href="/signup"
+                  href="/#inquiry-form-section"
                   className="w-full sm:w-auto block px-8 py-4 rounded-full font-black text-xs text-center uppercase tracking-widest bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#7FBA00] hover:opacity-90 text-white transition-all duration-300 shadow-md shadow-[#F25022]/15 hover:shadow-lg hover:shadow-[#F25022]/25 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-normal sm:whitespace-nowrap"
                 >
-                  Enroll Now — It&apos;s Free
+                  Schedule a Tour
                 </Link>
               ) : (
                 <Link

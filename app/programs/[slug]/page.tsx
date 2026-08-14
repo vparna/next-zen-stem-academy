@@ -173,7 +173,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
                   className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-full font-black text-sm uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5 active:scale-95 shadow-md"
                   style={{ backgroundColor: program.color }}
                 >
-                  Inquire About This Program
+                  Schedule a Tour
                   <span className="text-base leading-none">→</span>
                 </Link>
 

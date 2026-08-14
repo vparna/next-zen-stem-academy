@@ -210,7 +210,7 @@ export default function StemLabsPage() {
                   href="#book-trial"
                   className="px-8 py-4 rounded-full font-extrabold text-sm text-center text-white bg-gradient-to-r from-sky-500 to-blue-500 shadow-md shadow-sky-500/20 hover:shadow-lg hover:scale-[1.03] transition-all cursor-pointer"
                 >
-                  Book 60-Min Free Trial
+                  Schedule a Tour
                 </a>
                 <a
                   href="#virtual-tour"
@@ -474,7 +474,7 @@ export default function StemLabsPage() {
                   onClick={() => setStatus('idle')}
                   className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-wider transition-all"
                 >
-                  Book Another Trial
+                  Schedule Another Tour
                 </button>
               </div>
             ) : (
@@ -609,7 +609,7 @@ export default function StemLabsPage() {
                     disabled={status === 'submitting'}
                     className="bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600 text-white font-black px-12 py-4 rounded-full text-xs uppercase tracking-wider transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-sky-500/10 cursor-pointer"
                   >
-                    {status === 'submitting' ? 'Booking Trial...' : 'Book My Trial Spot 🚀'}
+                    {status === 'submitting' ? 'Scheduling Tour...' : 'Schedule a Tour 🚀'}
                   </button>
                 </div>
               </form>
