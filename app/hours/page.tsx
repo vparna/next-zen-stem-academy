@@ -1,8 +1,10 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Center Hours - NextZen Academy',
-  description: 'Visit us during our center hours. We are open Monday-Friday and Saturday with flexible scheduling options.',
+  title: 'Center Hours – Visit NextZen Academy in Woodinville, WA',
+  description: 'View NextZen Academy center hours for after school programs, STEM classes, and weekend sessions in Woodinville, Washington.',
+  keywords: ['Woodinville daycare hours', 'after school program', 'STEM learning', 'Woodinville'],
+  alternates: { canonical: 'https://www.nextzenacademy.com/hours' },
 };
 
 export default function HoursPage() {

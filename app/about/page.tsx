@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Our Story - NextZen Academy',
-  description: 'Intelligence Beyond Academics - Learn about our mission, vision, and core values at NextZen Academy',
+  title: 'About NextZen Academy – Daycare, Preschool & STEM Education in Woodinville, WA',
+  description: 'Learn about NextZen Academy\'s mission, vision, and core values. We provide premier daycare, preschool, childcare, and STEM learning in Woodinville, Washington.',
+  keywords: ['about NextZen Academy', 'daycare', 'preschool', 'childcare', 'STEM learning', 'Woodinville daycare', 'Washington STEM academy'],
+  alternates: { canonical: 'https://www.nextzenacademy.com/about' },
 };
 
 const coreValues = [
