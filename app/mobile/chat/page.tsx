@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 interface Message {
   _id: string;
@@ -221,12 +221,20 @@ export default function ChatPage() {
           <div className="text-6xl mb-4">💬</div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">No Courses</h2>
           <p className="text-gray-600 mb-6">Enroll in a course to start chatting with teachers.</p>
-          <button
-            onClick={() => router.push('/mobile')}
-            className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
-          >
-            Go Home
-          </button>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={() => router.push('/mobile/enrollment')}
+              className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
+            >
+              Enroll Now
+            </button>
+            <button
+              onClick={() => router.push('/mobile')}
+              className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              Go Home
+            </button>
+          </div>
         </div>
       </div>
     );

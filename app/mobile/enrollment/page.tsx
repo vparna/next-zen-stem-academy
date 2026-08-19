@@ -17,6 +17,8 @@ export default function EnrollmentPage() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState('');
 
   const updateField = (section: string, field: string, value: string | boolean) => {
     setFormData(prev => ({
@@ -24,6 +26,71 @@ export default function EnrollmentPage() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       [section]: { ...(prev as any)[section], [field]: value }
     }));
+    // Clear error for this field when user types
+    setErrors(prev => {
+      const updated = { ...prev };
+      delete updated[`${section}.${field}`];
+      return updated;
+    });
+  };
+
+  const validatePhone = (value: string): string => {
+    // Strip non-numeric characters except + for country code
+    return value.replace(/[^0-9+\-() ]/g, '');
+  };
+
+  const isValidEmail = (email: string): boolean => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const isValidPhone = (phone: string): boolean => {
+    const digits = phone.replace(/\D/g, '');
+    return digits.length >= 10;
+  };
+
+  const validateStep = (currentStep: number): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (currentStep === 1) {
+      if (!formData.parentInfo.firstName.trim()) newErrors['parentInfo.firstName'] = 'First name is required';
+      if (!formData.parentInfo.lastName.trim()) newErrors['parentInfo.lastName'] = 'Last name is required';
+      if (!formData.parentInfo.email.trim()) {
+        newErrors['parentInfo.email'] = 'Email is required';
+      } else if (!isValidEmail(formData.parentInfo.email)) {
+        newErrors['parentInfo.email'] = 'Please enter a valid email address';
+      }
+      if (!formData.parentInfo.phone.trim()) {
+        newErrors['parentInfo.phone'] = 'Phone is required';
+      } else if (!isValidPhone(formData.parentInfo.phone)) {
+        newErrors['parentInfo.phone'] = 'Please enter a valid phone number (at least 10 digits)';
+      }
+    } else if (currentStep === 2) {
+      if (!formData.childInfo.firstName.trim()) newErrors['childInfo.firstName'] = 'First name is required';
+      if (!formData.childInfo.lastName.trim()) newErrors['childInfo.lastName'] = 'Last name is required';
+      if (!formData.childInfo.dateOfBirth) newErrors['childInfo.dateOfBirth'] = 'Date of birth is required';
+    } else if (currentStep === 3) {
+      formData.emergencyContacts.forEach((contact, i) => {
+        if (!contact.name.trim()) newErrors[`emergency.${i}.name`] = 'Name is required';
+        if (!contact.relationship.trim()) newErrors[`emergency.${i}.relationship`] = 'Relationship is required';
+        if (!contact.phone.trim()) {
+          newErrors[`emergency.${i}.phone`] = 'Phone is required';
+        } else if (!isValidPhone(contact.phone)) {
+          newErrors[`emergency.${i}.phone`] = 'Please enter a valid phone number';
+        }
+      });
+    } else if (currentStep === 5) {
+      if (!formData.programRequested) newErrors['programRequested'] = 'Please select a program';
+      if (!formData.scheduleRequested) newErrors['scheduleRequested'] = 'Please select a schedule';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleNext = () => {
+    if (validateStep(step)) {
+      setStep(step + 1);
+    }
   };
 
   const handleSubmit = async () => {
@@ -110,10 +177,13 @@ export default function EnrollmentPage() {
               </div>
               <input placeholder="Email *" type="email" value={formData.parentInfo.email}
                 onChange={(e) => updateField('parentInfo', 'email', e.target.value)}
-                className="w-full border rounded-lg px-3 py-2 text-sm" />
+                className={`w-full border rounded-lg px-3 py-2 text-sm ${errors['parentInfo.email'] ? 'border-red-400' : ''}`} />
+              {errors['parentInfo.email'] && <p className="text-xs text-red-500 mt-1">{errors['parentInfo.email']}</p>}
               <input placeholder="Phone *" type="tel" value={formData.parentInfo.phone}
-                onChange={(e) => updateField('parentInfo', 'phone', e.target.value)}
-                className="w-full border rounded-lg px-3 py-2 text-sm" />
+                onChange={(e) => updateField('parentInfo', 'phone', validatePhone(e.target.value))}
+                className={`w-full border rounded-lg px-3 py-2 text-sm ${errors['parentInfo.phone'] ? 'border-red-400' : ''}`}
+                inputMode="numeric" />
+              {errors['parentInfo.phone'] && <p className="text-xs text-red-500 mt-1">{errors['parentInfo.phone']}</p>}
               <input placeholder="Street Address *"
                 onChange={(e) => setFormData(prev => ({ ...prev, parentInfo: { ...prev.parentInfo, address: { ...prev.parentInfo.address, street: e.target.value } } }))}
                 className="w-full border rounded-lg px-3 py-2 text-sm" />
@@ -197,10 +267,10 @@ export default function EnrollmentPage() {
                     <input placeholder="Phone *" value={contact.phone}
                       onChange={(e) => {
                         const updated = [...formData.emergencyContacts];
-                        updated[i] = { ...updated[i], phone: e.target.value };
+                        updated[i] = { ...updated[i], phone: validatePhone(e.target.value) };
                         setFormData(prev => ({ ...prev, emergencyContacts: updated }));
                       }}
-                      className="border rounded-lg px-3 py-2 text-sm" />
+                      className="border rounded-lg px-3 py-2 text-sm" inputMode="numeric" />
                   </div>
                 </div>
               ))}
@@ -283,7 +353,7 @@ export default function EnrollmentPage() {
             )}
             {step < 5 ? (
               <button
-                onClick={() => setStep(step + 1)}
+                onClick={handleNext}
                 className="flex-1 py-3 bg-purple-600 text-white rounded-xl font-medium hover:bg-purple-700"
               >
                 Next
@@ -298,6 +368,16 @@ export default function EnrollmentPage() {
               </button>
             )}
           </div>
+          {submitError && (
+            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-700 text-sm">{submitError}</p>
+            </div>
+          )}
+          {Object.keys(errors).length > 0 && (
+            <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-yellow-700 text-sm">Please fix the highlighted fields above.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

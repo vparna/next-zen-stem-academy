@@ -1,11 +1,57 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+interface BusRoute {
+  _id: string;
+  name: string;
+  stops: { name: string; time: string; order: number }[];
+  driver?: { name: string; phone: string };
+  status: string;
+}
 
 export default function TransportationPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('tracking');
+  const [routes, setRoutes] = useState<BusRoute[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const getTabClassName = (tabName: string) => {
+    const baseClass = 'flex-1 py-2 rounded-lg text-sm font-medium';
+    const activeClass = 'bg-amber-600 text-white';
+    const inactiveClass = 'bg-white text-gray-600 shadow-sm';
+    return activeTab === tabName ? `${baseClass} ${activeClass}` : `${baseClass} ${inactiveClass}`;
+  };
+
+  const getStatusBadgeClassName = (status: string) => {
+    const baseClass = 'ml-auto text-xs px-2 py-1 rounded-full font-medium';
+    const activeClass = 'bg-green-100 text-green-700';
+    const inactiveClass = 'bg-gray-100 text-gray-500';
+    return status === 'active' ? `${baseClass} ${activeClass}` : `${baseClass} ${inactiveClass}`;
+  };
+
+  useEffect(() => {
+    fetchRoutes();
+  }, []);
+
+  const fetchRoutes = async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem('token');
+      const response = await fetch('/api/childcare/transportation?resource=routes', {
+        headers: { 'Authorization': `******` },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setRoutes(data.data || []);
+      }
+    } catch (error) {
+      console.error('Error fetching routes:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 p-4">
@@ -18,61 +64,76 @@ export default function TransportationPage() {
 
         {/* Tabs */}
         <div className="flex gap-2 mb-6">
-          <button onClick={() => setActiveTab('tracking')}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium ${activeTab === 'tracking' ? 'bg-amber-600 text-white' : 'bg-white text-gray-600 shadow-sm'}`}>
+          <button
+            onClick={() => setActiveTab('tracking')}
+           className={getTabClassName('tracking')}
+          >
             📍 Live Track
           </button>
-          <button onClick={() => setActiveTab('routes')}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium ${activeTab === 'routes' ? 'bg-amber-600 text-white' : 'bg-white text-gray-600 shadow-sm'}`}>
+          <button
+            onClick={() => setActiveTab('routes')}
+           className={getTabClassName('routes')}
+          >
             🗺️ Routes
           </button>
-          <button onClick={() => setActiveTab('schedule')}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium ${activeTab === 'schedule' ? 'bg-amber-600 text-white' : 'bg-white text-gray-600 shadow-sm'}`}>
+          <button
+            onClick={() => setActiveTab('schedule')}
+           className={getTabClassName('schedule')}
+          >
             🕐 Schedule
           </button>
         </div>
 
-        {activeTab === 'tracking' ? (
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-amber-600 mx-auto"></div>
+          </div>
+        ) : activeTab === 'tracking' ? (
           <div className="space-y-4">
-            {/* Live Status Card */}
-            <div className="bg-white rounded-xl shadow-md p-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🚌</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-gray-800">Bus Route A</h3>
-                  <p className="text-xs text-gray-500">Morning Pickup</p>
-                </div>
-                <span className="ml-auto text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-medium">
-                  On Route
-                </span>
+            {routes.length === 0 ? (
+              <div className="bg-white rounded-xl shadow-md p-8 text-center">
+                <div className="text-5xl mb-4">🚌</div>
+                <p className="text-gray-500 font-medium">No bus routes assigned</p>
+                <p className="text-xs text-gray-400 mt-1">Contact the center to set up transportation</p>
               </div>
+            ) : (
+              routes.map((route) => (
+                <div key={route._id} className="bg-white rounded-xl shadow-md p-5">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                      <span className="text-2xl">🚌</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-800">{route.name}</h3>
+                      <p className="text-xs text-gray-500">{route.driver?.name || 'Driver TBD'}</p>
+                    </div>
+                     <span className={getStatusBadgeClassName(route.status)}>
+                       {route.status === 'active' ? 'On Route' : route.status || 'Scheduled'}
+                     </span>
+                  </div>
 
-              {/* GPS Placeholder */}
-              <div className="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4">
-                <div className="text-center">
-                  <span className="text-4xl">🗺️</span>
-                  <p className="text-sm text-gray-500 mt-2">GPS Tracking Map</p>
-                  <p className="text-xs text-gray-400">Real-time location updates</p>
-                </div>
-              </div>
+                  {/* GPS Placeholder */}
+                  <div className="bg-gray-100 rounded-lg h-48 flex items-center justify-center mb-4">
+                    <div className="text-center">
+                      <span className="text-4xl">🗺️</span>
+                      <p className="text-sm text-gray-500 mt-2">GPS Tracking Map</p>
+                      <p className="text-xs text-gray-400">Real-time location updates</p>
+                    </div>
+                  </div>
 
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">ETA to your stop:</span>
-                  <span className="font-semibold text-amber-600">~8 minutes</span>
+                  {route.stops && route.stops.length > 0 && (
+                    <div className="space-y-2">
+                      {route.stops.map((stop, i) => (
+                        <div key={i} className="flex items-center justify-between text-sm">
+                          <span className="text-gray-600">Stop {stop.order}: {stop.name}</span>
+                          <span className="text-gray-700">{stop.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">Next stop:</span>
-                  <span className="text-gray-700">Oak Street</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-600">Driver:</span>
-                  <span className="text-gray-700">Mr. Johnson</span>
-                </div>
-              </div>
-            </div>
+              ))
+            )}
 
             {/* Notification Preferences */}
             <div className="bg-white rounded-xl shadow-md p-4">
@@ -100,26 +161,25 @@ export default function TransportationPage() {
         ) : activeTab === 'routes' ? (
           <div className="bg-white rounded-xl shadow-md p-5">
             <h3 className="font-semibold text-gray-700 mb-4">🗺️ Assigned Routes</h3>
-            <div className="space-y-3">
-              <div className="border rounded-lg p-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium text-gray-800">Route A - Morning</p>
-                    <p className="text-xs text-gray-500">Pickup: 7:30 AM • Stop #3</p>
+            {routes.length === 0 ? (
+              <p className="text-sm text-gray-500 text-center py-4">No routes assigned yet</p>
+            ) : (
+              <div className="space-y-3">
+                {routes.map((route) => (
+                  <div key={route._id} className="border rounded-lg p-3">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-medium text-gray-800">{route.name}</p>
+                        <p className="text-xs text-gray-500">
+                          {route.stops?.length || 0} stops • {route.driver?.name || 'Driver TBD'}
+                        </p>
+                      </div>
+                      <span className="text-xl">🚌</span>
+                    </div>
                   </div>
-                  <span className="text-xl">🚌</span>
-                </div>
+                ))}
               </div>
-              <div className="border rounded-lg p-3">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-medium text-gray-800">Route A - Afternoon</p>
-                    <p className="text-xs text-gray-500">Dropoff: 3:45 PM • Stop #3</p>
-                  </div>
-                  <span className="text-xl">🚌</span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         ) : (
           <div className="bg-white rounded-xl shadow-md p-5">

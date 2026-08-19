@@ -49,7 +49,7 @@ export default function MobileLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans overscroll-none">
       {/* Top App Bar */}
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm px-4 py-3 flex items-center justify-between pt-safe">
         <div className="flex items-center gap-3">
@@ -67,13 +67,19 @@ export default function MobileLayout({ children }: { children: ReactNode }) {
         </div>
         
         <div className="flex items-center gap-2">
-          <button className="relative w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 active:scale-95 transition-transform">
+          <button
+            onClick={() => router.push('/mobile/announcements')}
+            className="relative w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-600 active:scale-95 transition-transform"
+          >
             🔔
             <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
           </button>
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md">
+          <button
+            onClick={() => router.push('/dashboard')}
+            className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-md active:scale-95 transition-transform"
+          >
             {userName.charAt(0).toUpperCase()}
-          </div>
+          </button>
         </div>
       </header>
 

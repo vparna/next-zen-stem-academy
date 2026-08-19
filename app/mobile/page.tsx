@@ -109,8 +109,8 @@ export default function MobilePage() {
   const features = isAdmin ? adminFeatures : isTeacher ? teacherFeatures : parentFeatures;
 
   return (
-    <div className="min-h-screen bg-[url('/hero_bg.png')] bg-cover bg-fixed bg-center">
-      <div className="min-h-screen bg-slate-50/80 backdrop-blur-xl p-4">
+    <div className="min-h-screen bg-[url('/hero_bg.png')] bg-cover bg-fixed bg-center overscroll-none">
+      <div className="min-h-screen bg-slate-50/80 backdrop-blur-xl p-4 overscroll-none">
         <div className="max-w-md mx-auto pt-2 pb-6">
           {/* Header Card */}
           {user && (
