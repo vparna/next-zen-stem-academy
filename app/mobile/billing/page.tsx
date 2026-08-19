@@ -19,6 +19,7 @@ export default function BillingPage() {
   const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
+  const [selectedInvoice, setSelectedInvoice] = useState<string | null>(null);
 
   useEffect(() => {
     fetchInvoices();
@@ -129,7 +130,10 @@ export default function BillingPage() {
                     </p>
                   </div>
                   {(invoice.status === 'sent' || invoice.status === 'overdue') && (
-                    <button className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-[0_4px_14px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 transition-all">
+                    <button 
+                      onClick={() => setSelectedInvoice(invoice._id)}
+                      className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-[0_4px_14px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_20px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 transition-all"
+                    >
                       Pay Now
                     </button>
                   )}
@@ -147,6 +151,53 @@ export default function BillingPage() {
                 )}
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Payment Modal */}
+        {selectedInvoice && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-end justify-center">
+            <div className="bg-white rounded-t-3xl w-full max-w-md p-6 pb-10 animate-in slide-in-from-bottom">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-lg font-bold text-gray-800">Payment Method</h3>
+                <button onClick={() => setSelectedInvoice(null)} className="text-gray-400 text-xl">✕</button>
+              </div>
+              <div className="space-y-3 mb-6">
+                <button className="w-full flex items-center gap-4 p-4 border-2 border-emerald-500 rounded-xl bg-emerald-50">
+                  <span className="text-2xl">💳</span>
+                  <div className="text-left">
+                    <p className="font-semibold text-gray-800">Credit / Debit Card</p>
+                    <p className="text-xs text-gray-500">Visa, Mastercard, Amex</p>
+                  </div>
+                </button>
+                <button className="w-full flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-emerald-300">
+                  <span className="text-2xl">🏦</span>
+                  <div className="text-left">
+                    <p className="font-semibold text-gray-800">Bank Transfer (ACH)</p>
+                    <p className="text-xs text-gray-500">Direct from your bank account</p>
+                  </div>
+                </button>
+                <button className="w-full flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-emerald-300">
+                  <span className="text-2xl">📱</span>
+                  <div className="text-left">
+                    <p className="font-semibold text-gray-800">Digital Wallet</p>
+                    <p className="text-xs text-gray-500">Apple Pay, Google Pay</p>
+                  </div>
+                </button>
+              </div>
+              <p className="text-center text-xs text-gray-400 mb-4">
+                Amount: {formatCurrency(invoices.find(i => i._id === selectedInvoice)?.total || 0)}
+              </p>
+              <button 
+                onClick={() => {
+                  alert('Payment processing will be available soon. Please contact the center for payment options.');
+                  setSelectedInvoice(null);
+                }}
+                className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-bold shadow-lg"
+              >
+                Proceed to Pay
+              </button>
+            </div>
           </div>
         )}
 

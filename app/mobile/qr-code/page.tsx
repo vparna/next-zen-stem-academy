@@ -162,13 +162,21 @@ export default function QRCodePage() {
         <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
           <div className="text-6xl mb-4">👶</div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">No Children Added</h2>
-          <p className="text-gray-600 mb-6">Please add a child to your account first to generate QR codes.</p>
-          <button
-            onClick={() => router.push('/mobile')}
-            className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
-          >
-            Go to Home
-          </button>
+          <p className="text-gray-600 mb-6">Please add a child to your account first to generate QR codes. You can add a child through the enrollment form.</p>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={() => router.push('/mobile/enrollment')}
+              className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              Enroll a Child
+            </button>
+            <button
+              onClick={() => router.push('/mobile')}
+              className="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors"
+            >
+              Go to Home
+            </button>
+          </div>
         </div>
       </div>
     );
