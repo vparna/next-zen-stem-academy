@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -18,26 +18,7 @@ export default function AdminDashboardPage() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    // Check if user is logged in and is admin
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
-    if (!token || !userData) {
-      router.push('/admin/login');
-      return;
-    }
-
-    const user = JSON.parse(userData);
-    if (user.role !== 'admin') {
-      router.push('/dashboard');
-      return;
-    }
-
-    fetchStats();
-  }, [router]);
-
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch('/api/admin/reports', {
@@ -61,7 +42,25 @@ export default function AdminDashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
+
+    if (!token || !userData) {
+      router.push('/admin/login');
+      return;
+    }
+
+    const user = JSON.parse(userData);
+    if (user.role !== 'admin') {
+      router.push('/dashboard');
+      return;
+    }
+
+    fetchStats();
+  }, [fetchStats, router]);
 
   if (loading) {
     return (
