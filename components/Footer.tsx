@@ -47,7 +47,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Empowering young minds through innovative education. Guided by our unique 3S philosophy — STEAM, Skills, and Success.
+              Supporting families with warm daycare, preschool readiness, and a welcoming early learning community.
             </p>
 
             {/* Social Media Links */}
@@ -95,10 +95,10 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3.5 text-sm">
               {[
-                { href: '/courses?category=Robotics', label: '🤖 Robotics & Coding' },
-                { href: '/courses?category=Maths', label: '🧮 Mathematics Mastery' },
-                { href: '/courses?category=Chess', label: '♟️ Strategic Chess' },
-                { href: '/summer-camps', label: '⛺ Summer Camps' },
+                { href: '/programs/little-blossoms', label: '👶 Infant Care' },
+                { href: '/programs/tiny-explorers', label: '🧸 Toddler Care' },
+                { href: '/programs/little-discoverers', label: '📘 Preschool' },
+                { href: '/programs/pre-k', label: '🎒 Pre-K' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-slate-400 hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group">

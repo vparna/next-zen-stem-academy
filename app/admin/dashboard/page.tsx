@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -18,26 +18,7 @@ export default function AdminDashboardPage() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    // Check if user is logged in and is admin
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
-    if (!token || !userData) {
-      router.push('/admin/login');
-      return;
-    }
-
-    const user = JSON.parse(userData);
-    if (user.role !== 'admin') {
-      router.push('/dashboard');
-      return;
-    }
-
-    fetchStats();
-  }, [router]);
-
-  const fetchStats = async () => {
+  const fetchStats = useCallback(async () => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch('/api/admin/reports', {
@@ -61,7 +42,25 @@ export default function AdminDashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [router]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const userData = localStorage.getItem('user');
+
+    if (!token || !userData) {
+      router.push('/admin/login');
+      return;
+    }
+
+    const user = JSON.parse(userData);
+    if (user.role !== 'admin') {
+      router.push('/dashboard');
+      return;
+    }
+
+    fetchStats();
+  }, [fetchStats, router]);
 
   if (loading) {
     return (
@@ -210,6 +209,15 @@ export default function AdminDashboardPage() {
                 <div className="text-3xl mb-2">📝</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">Interest Leads</h3>
                 <p className="text-gray-600 text-sm">View form submissions from the interest page</p>
+              </Link>
+
+              <Link
+                href="/admin/tour-slots"
+                className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition"
+              >
+                <div className="text-3xl mb-2">📅</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">Tour Calendar</h3>
+                <p className="text-gray-600 text-sm">Manage public 30-minute campus tour slots</p>
               </Link>
             </div>
           </div>

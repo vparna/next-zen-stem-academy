@@ -261,17 +261,17 @@ export default function Navbar() {
                     }`} />
                 </Link>
                 <Link
-                  href="/stem-labs"
+                  href="/schedule-tour"
                   className="hover:text-[#F25022] transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-[#F25022]/5 active:scale-95"
                 >
-                  STEAM Labs
+                  Schedule Tour
                   <span className="absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-300" />
                 </Link>
                 <Link
-                  href="/summer-camps"
+                  href="/courses"
                   className="hover:text-[#F25022] transition-all relative group px-3.5 py-2.5 rounded-xl hover:bg-[#F25022]/5 active:scale-95"
                 >
-                  Summer Camps
+                  Preschool Programs
                   <span className="absolute bottom-1.5 left-3.5 right-3.5 h-[2px] rounded-full bg-gradient-to-r from-[#F25022] to-[#FFB900] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-300" />
                 </Link>
                 <Link
@@ -480,18 +480,18 @@ export default function Navbar() {
                 <span className="text-base">🌱</span> <span className="text-xs uppercase tracking-wider">The NextZen Way</span>
               </Link>
               <Link
-                href="/stem-labs"
+                href="/schedule-tour"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50 hover:text-[#F25022] transition-all duration-200"
               >
-                <span className="text-base">🤖</span> <span className="text-xs uppercase tracking-wider">STEAM Labs</span>
+                <span className="text-base">📅</span> <span className="text-xs uppercase tracking-wider">Schedule Tour</span>
               </Link>
               <Link
-                href="/summer-camps"
+                href="/courses"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-slate-50 hover:text-[#F25022] transition-all duration-200"
               >
-                <span className="text-base">🎨</span> <span className="text-xs uppercase tracking-wider">Summer Camps</span>
+                <span className="text-base">🏫</span> <span className="text-xs uppercase tracking-wider">Preschool Programs</span>
               </Link>
             </nav>
           </div>

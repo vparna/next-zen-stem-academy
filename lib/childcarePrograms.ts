@@ -132,29 +132,6 @@ export const childcarePrograms: ChildcareProgram[] = [
     schedule: 'Full-day: 7:00 AM – 5:00 PM  |  Half-day option: 8:00 AM – 12:00 PM',
     ratio: '1 teacher : 8 children',
   },
-  {
-    slug: 'summer-camps',
-    title: 'Summer Camps',
-    age: '2 to 12-Year-Olds',
-    image: '/summer_camps.png',
-    color: '#F25022',
-    tagline: 'Adventure, Discovery & Fun All Summer Long',
-    description:
-      'Themed weekly camps blending outdoor exploration, STEAM challenges, arts & crafts, and team-building activities. Each week brings a brand-new adventure to spark curiosity and make summer unforgettable.',
-    bullets: [
-      'Weekly rotating STEAM themes',
-      'Outdoor exploration & nature study',
-      'Arts, crafts & storytelling',
-    ],
-    curriculum: [
-      { area: 'STEAM Adventures', detail: 'Rocketry, robotics, nature science, simple coding games, and engineering challenges.' },
-      { area: 'Creative Arts', detail: 'Themed crafts, drama skits, mural painting, and music exploration sessions.' },
-      { area: 'Outdoor Learning', detail: 'Nature walks, garden science, weather observation, and cooperative outdoor games.' },
-      { area: 'Social & Team Skills', detail: 'Team challenges, leadership activities, kindness projects, and group problem-solving.' },
-    ],
-    schedule: 'Monday – Friday: 8:00 AM – 4:00 PM (extended care available)',
-    ratio: '1 counselor : 8 children',
-  },
 ];
 
 export function getProgramBySlug(slug: string): ChildcareProgram | undefined {
