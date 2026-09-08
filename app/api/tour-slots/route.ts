@@ -20,7 +20,14 @@ interface TourSlotRecord {
 
 const COLLECTION_NAME = 'tour_slots';
 const CAMPUS_TIME_ZONE = 'America/Los_Angeles';
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const isValidEmail = (value: string) => {
+  const trimmed = value.trim();
+  const atIndex = trimmed.indexOf('@');
+  const lastAtIndex = trimmed.lastIndexOf('@');
+  const dotIndex = trimmed.lastIndexOf('.');
+
+  return atIndex > 0 && atIndex === lastAtIndex && dotIndex > atIndex + 1 && dotIndex < trimmed.length - 1;
+};
 
 const formatSlotLabel = (startAt: Date, endAt: Date) => {
   const date = new Intl.DateTimeFormat('en-US', {
@@ -118,7 +125,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid slot selection' }, { status: 400 });
     }
 
-    if (!emailPattern.test(parentEmail)) {
+    if (!isValidEmail(parentEmail)) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 

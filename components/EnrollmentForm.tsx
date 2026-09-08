@@ -9,7 +9,14 @@ interface TourSlot {
 }
 
 const CAMPUS_TIME_ZONE = 'America/Los_Angeles';
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const isValidEmail = (value: string) => {
+  const trimmed = value.trim();
+  const atIndex = trimmed.indexOf('@');
+  const lastAtIndex = trimmed.lastIndexOf('@');
+  const dotIndex = trimmed.lastIndexOf('.');
+
+  return atIndex > 0 && atIndex === lastAtIndex && dotIndex > atIndex + 1 && dotIndex < trimmed.length - 1;
+};
 
 const formatDateHeading = (iso: string) => new Intl.DateTimeFormat('en-US', {
   weekday: 'long',
@@ -76,7 +83,7 @@ export default function EnrollmentForm() {
     if (!parentName.trim()) nextErrors.parentName = 'Parent name is required.';
     if (!parentPhone.trim()) nextErrors.parentPhone = 'Phone number is required.';
     if (!parentEmail.trim()) nextErrors.parentEmail = 'Email is required.';
-    else if (!emailPattern.test(parentEmail)) nextErrors.parentEmail = 'Enter a valid email address.';
+    else if (!isValidEmail(parentEmail)) nextErrors.parentEmail = 'Enter a valid email address.';
     if (!childAges.trim()) nextErrors.childAges = 'Please enter your child age or ages.';
     if (!selectedSlotId) nextErrors.selectedSlotId = 'Please choose an available 30-minute tour slot.';
 
