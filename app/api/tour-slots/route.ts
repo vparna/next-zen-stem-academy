@@ -20,6 +20,12 @@ interface TourSlotRecord {
 
 const COLLECTION_NAME = 'tour_slots';
 const CAMPUS_TIME_ZONE = 'America/Los_Angeles';
+const SLOT_DURATION_MINUTES = 30;
+const SLOT_START_HOUR = 10;
+const SLOT_END_HOUR = 14;
+const DEFAULT_NEAREST_LIMIT = 5;
+const MAX_SEARCH_DAYS = 365;
+
 const isValidEmail = (value: string) => {
   const trimmed = value.trim();
   const atIndex = trimmed.indexOf('@');
@@ -27,6 +33,88 @@ const isValidEmail = (value: string) => {
   const dotIndex = trimmed.lastIndexOf('.');
 
   return atIndex > 0 && atIndex === lastAtIndex && dotIndex > atIndex + 1 && dotIndex < trimmed.length - 1;
+};
+
+const getTimeZoneParts = (date: Date, timeZone: string) =>
+  Object.fromEntries(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone,
+      hour12: false,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    })
+      .formatToParts(date)
+      .map((part) => [part.type, part.value])
+  );
+
+const getTimeZoneOffset = (date: Date, timeZone: string) => {
+  const values = getTimeZoneParts(date, timeZone);
+  const asUtc = Date.UTC(
+    Number(values.year),
+    Number(values.month) - 1,
+    Number(values.day),
+    Number(values.hour),
+    Number(values.minute),
+    Number(values.second)
+  );
+
+  return asUtc - date.getTime();
+};
+
+const createCampusDate = (date: string, time: string) => {
+  const utcGuess = new Date(`${date}T${time}:00Z`);
+  const offset = getTimeZoneOffset(utcGuess, CAMPUS_TIME_ZONE);
+  return new Date(utcGuess.getTime() - offset);
+};
+
+const getCampusDateString = (date: Date) => {
+  const parts = getTimeZoneParts(date, CAMPUS_TIME_ZONE);
+  return `${parts.year}-${parts.month}-${parts.day}`;
+};
+
+const getTomorrowCampusDateString = () => {
+  const now = new Date();
+  const todayCampus = getCampusDateString(now);
+  const tomorrowUtc = new Date(`${todayCampus}T00:00:00Z`);
+  tomorrowUtc.setUTCDate(tomorrowUtc.getUTCDate() + 1);
+  return tomorrowUtc.toISOString().slice(0, 10);
+};
+
+const toSlotId = (startAt: Date) => startAt.toISOString();
+
+const parseSlotId = (slotId: string) => {
+  const parsed = new Date(slotId);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
+const getDailySlots = (date: string) => {
+  const slots: { startAt: Date; endAt: Date }[] = [];
+  for (let hour = SLOT_START_HOUR; hour < SLOT_END_HOUR; hour += 1) {
+    for (const minute of [0, 30]) {
+      const startAt = createCampusDate(date, `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`);
+      const endAt = new Date(startAt.getTime() + SLOT_DURATION_MINUTES * 60 * 1000);
+      slots.push({ startAt, endAt });
+    }
+  }
+  return slots;
+};
+
+const isValidCampusDateInput = (value: string) => /^\d{4}-\d{2}-\d{2}$/.test(value);
+
+const isBookableSlot = (startAt: Date) => {
+  const campusParts = getTimeZoneParts(startAt, CAMPUS_TIME_ZONE);
+  const slotDate = `${campusParts.year}-${campusParts.month}-${campusParts.day}`;
+  const tomorrow = getTomorrowCampusDateString();
+  const hour = Number(campusParts.hour);
+  const minute = Number(campusParts.minute);
+  const minuteOfDay = hour * 60 + minute;
+  const startMinute = SLOT_START_HOUR * 60;
+  const endMinute = SLOT_END_HOUR * 60;
+  return slotDate >= tomorrow && minuteOfDay >= startMinute && minuteOfDay < endMinute && minute % SLOT_DURATION_MINUTES === 0;
 };
 
 const formatSlotLabel = (startAt: Date, endAt: Date) => {
@@ -89,23 +177,74 @@ Phone: ${parentPhone}
 Kid age(s): ${childAges}`,
 });
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
     const db = await getDatabase();
-    const now = new Date();
+    const { searchParams } = new URL(request.url);
+    const selectedDate = searchParams.get('date');
+    const tomorrow = getTomorrowCampusDateString();
+    const bookedCollection = db.collection<TourSlotRecord>(COLLECTION_NAME);
 
-    const slots = await db
-      .collection<TourSlotRecord>(COLLECTION_NAME)
-      .find({ status: 'available', startAt: { $gte: now } })
-      .sort({ startAt: 1 })
-      .toArray();
+    if (selectedDate) {
+      if (!isValidCampusDateInput(selectedDate)) {
+        return NextResponse.json({ error: 'Invalid date' }, { status: 400 });
+      }
+
+      if (selectedDate < tomorrow) {
+        return NextResponse.json({ slots: [], selectedDate, mode: 'selected-date' });
+      }
+
+      const dayStart = createCampusDate(selectedDate, '00:00');
+      const dayEnd = createCampusDate(selectedDate, '23:59');
+      const booked = await bookedCollection
+        .find({ status: 'booked', startAt: { $gte: dayStart, $lte: dayEnd } })
+        .project({ startAt: 1 })
+        .toArray();
+      const bookedSet = new Set(booked.map((slot) => slot.startAt.toISOString()));
+      const slots = getDailySlots(selectedDate)
+        .filter((slot) => !bookedSet.has(slot.startAt.toISOString()))
+        .map((slot) => ({
+          id: toSlotId(slot.startAt),
+          startAt: slot.startAt.toISOString(),
+          endAt: slot.endAt.toISOString(),
+        }));
+
+      return NextResponse.json({ slots, selectedDate, mode: 'selected-date' });
+    }
+
+    const nearestSlots: { id: string; startAt: string; endAt: string }[] = [];
+    const baseDate = new Date(`${tomorrow}T00:00:00Z`);
+    let dayOffset = 0;
+
+    while (nearestSlots.length < DEFAULT_NEAREST_LIMIT && dayOffset < MAX_SEARCH_DAYS) {
+      const dayUtc = new Date(baseDate);
+      dayUtc.setUTCDate(dayUtc.getUTCDate() + dayOffset);
+      const dayDate = dayUtc.toISOString().slice(0, 10);
+      const dayStart = createCampusDate(dayDate, '00:00');
+      const dayEnd = createCampusDate(dayDate, '23:59');
+
+      const booked = await bookedCollection
+        .find({ status: 'booked', startAt: { $gte: dayStart, $lte: dayEnd } })
+        .project({ startAt: 1 })
+        .toArray();
+      const bookedSet = new Set(booked.map((slot) => slot.startAt.toISOString()));
+
+      const openSlots = getDailySlots(dayDate)
+        .filter((slot) => !bookedSet.has(slot.startAt.toISOString()))
+        .map((slot) => ({
+          id: toSlotId(slot.startAt),
+          startAt: slot.startAt.toISOString(),
+          endAt: slot.endAt.toISOString(),
+        }));
+
+      nearestSlots.push(...openSlots);
+      dayOffset += 1;
+    }
 
     return NextResponse.json({
-      slots: slots.map((slot) => ({
-        id: slot._id?.toString(),
-        startAt: slot.startAt.toISOString(),
-        endAt: slot.endAt.toISOString(),
-      })),
+      slots: nearestSlots.slice(0, DEFAULT_NEAREST_LIMIT),
+      selectedDate: null,
+      mode: 'nearest',
     });
   } catch (error) {
     console.error('Error loading tour slots:', error);
@@ -115,46 +254,85 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const { slotId, parentName, parentEmail, parentPhone, childAges } = await request.json();
+    const { slotId, slotStartAt, parentName, parentEmail, parentPhone, childAges } = await request.json();
+    const submittedSlot = (typeof slotStartAt === 'string' && slotStartAt) || (typeof slotId === 'string' && slotId) || '';
 
-    if (!slotId || !parentName || !parentEmail || !parentPhone || !childAges) {
+    if (!submittedSlot || !parentName || !parentEmail || !parentPhone || !childAges) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
-
-    if (!ObjectId.isValid(slotId)) {
-      return NextResponse.json({ error: 'Invalid slot selection' }, { status: 400 });
-    }
-
+    
     if (!isValidEmail(parentEmail)) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
+    const startAt = parseSlotId(submittedSlot);
+    if (!startAt || !isBookableSlot(startAt)) {
+      return NextResponse.json({ error: 'Invalid slot selection' }, { status: 400 });
+    }
+
+    const endAt = new Date(startAt.getTime() + SLOT_DURATION_MINUTES * 60 * 1000);
     const db = await getDatabase();
     const now = new Date();
+    const collection = db.collection<TourSlotRecord>(COLLECTION_NAME);
+    const existingSlot = await collection.findOne({ startAt, endAt });
+    let booking: TourSlotRecord | null = null;
 
-    const booking = await db.collection<TourSlotRecord>(COLLECTION_NAME).findOneAndUpdate(
-      {
-        _id: new ObjectId(slotId),
-        status: 'available',
-        startAt: { $gte: now },
-      },
-      {
-        $set: {
-          status: 'booked',
-          bookedAt: now,
-          bookedBy: {
-            parentName: parentName.trim(),
-            parentEmail: parentEmail.trim(),
-            parentPhone: parentPhone.trim(),
-            childAges: childAges.trim(),
+    if (existingSlot) {
+      if (existingSlot.status === 'booked') {
+        return NextResponse.json({ error: 'This slot is no longer available. Please choose another time.' }, { status: 409 });
+      }
+
+      const updateResult = await collection.findOneAndUpdate(
+        { _id: existingSlot._id, status: 'available' },
+        {
+          $set: {
+            status: 'booked',
+            bookedAt: now,
+            bookedBy: {
+              parentName: parentName.trim(),
+              parentEmail: parentEmail.trim(),
+              parentPhone: parentPhone.trim(),
+              childAges: childAges.trim(),
+            },
           },
         },
-      },
-      { returnDocument: 'after' }
-    );
+        { returnDocument: 'after' }
+      );
 
-    if (!booking) {
-      return NextResponse.json({ error: 'This slot is no longer available. Please choose another time.' }, { status: 409 });
+      if (!updateResult) {
+        return NextResponse.json({ error: 'This slot is no longer available. Please choose another time.' }, { status: 409 });
+      }
+
+      booking = updateResult;
+    } else {
+      const inserted = await collection.insertOne({
+        startAt,
+        endAt,
+        status: 'booked',
+        createdAt: now,
+        bookedAt: now,
+        bookedBy: {
+          parentName: parentName.trim(),
+          parentEmail: parentEmail.trim(),
+          parentPhone: parentPhone.trim(),
+          childAges: childAges.trim(),
+        },
+      });
+
+      booking = {
+        _id: inserted.insertedId,
+        startAt,
+        endAt,
+        status: 'booked',
+        createdAt: now,
+        bookedAt: now,
+        bookedBy: {
+          parentName: parentName.trim(),
+          parentEmail: parentEmail.trim(),
+          parentPhone: parentPhone.trim(),
+          childAges: childAges.trim(),
+        },
+      };
     }
 
     const slotLabel = formatSlotLabel(booking.startAt, booking.endAt);

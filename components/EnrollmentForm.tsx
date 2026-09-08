@@ -35,6 +35,28 @@ const formatTimeRange = (startIso: string, endIso: string) => {
   return `${formatter.format(new Date(startIso))} – ${formatter.format(new Date(endIso))}`;
 };
 
+const getCampusDateString = (date: Date) => {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: CAMPUS_TIME_ZONE,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+      .formatToParts(date)
+      .map((part) => [part.type, part.value])
+  );
+
+  return `${parts.year}-${parts.month}-${parts.day}`;
+};
+
+const getTomorrowCampusDate = () => {
+  const todayCampus = getCampusDateString(new Date());
+  const tomorrowUtc = new Date(`${todayCampus}T00:00:00Z`);
+  tomorrowUtc.setUTCDate(tomorrowUtc.getUTCDate() + 1);
+  return tomorrowUtc.toISOString().slice(0, 10);
+};
+
 export default function EnrollmentForm() {
   const [parentName, setParentName] = useState('');
   const [parentPhone, setParentPhone] = useState('');
@@ -46,16 +68,20 @@ export default function EnrollmentForm() {
   const [status, setStatus] = useState<string | null>(null);
   const [loadingSlots, setLoadingSlots] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+  const tomorrowCampusDate = useMemo(() => getTomorrowCampusDate(), []);
 
-  const fetchSlots = async () => {
+  const fetchSlots = async (date?: string) => {
     setLoadingSlots(true);
     try {
-      const response = await fetch('/api/tour-slots', { cache: 'no-store' });
+      const query = date ? `?date=${encodeURIComponent(date)}` : '';
+      const response = await fetch(`/api/tour-slots${query}`, { cache: 'no-store' });
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.error || 'Failed to load tour slots');
       }
       setSlots(data.slots || []);
+      setSelectedSlotId((current) => (data.slots || []).some((slot: TourSlot) => slot.id === current) ? current : '');
     } catch (error) {
       console.error('Error loading tour slots:', error);
       setStatus('❌ We could not load tour availability right now. Please try again shortly.');
@@ -217,10 +243,37 @@ export default function EnrollmentForm() {
             </h4>
             <button
               type="button"
-              onClick={fetchSlots}
+              onClick={() => fetchSlots(selectedDate || undefined)}
               className="text-[11px] font-black uppercase tracking-wider text-[#00A4EF] hover:underline"
             >
               Refresh
+            </button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row sm:items-end gap-3">
+            <div className="flex-1">
+              <label className="text-[11px] font-black uppercase tracking-wider text-[#1f2e57]/70 block mb-1">Change Date</label>
+              <input
+                type="date"
+                min={tomorrowCampusDate}
+                value={selectedDate}
+                onChange={async (event) => {
+                  const nextDate = event.target.value;
+                  setSelectedDate(nextDate);
+                  await fetchSlots(nextDate || undefined);
+                }}
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-[#1f2e57] focus:outline-none focus:border-[#00A4EF]"
+              />
+            </div>
+            <button
+              type="button"
+              onClick={async () => {
+                setSelectedDate('');
+                await fetchSlots();
+              }}
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-black uppercase tracking-wider text-[#1f2e57] hover:border-[#00A4EF]"
+            >
+              Show Nearest 5
             </button>
           </div>
 
@@ -230,7 +283,7 @@ export default function EnrollmentForm() {
             </div>
           ) : Object.keys(groupedSlots).length === 0 ? (
             <div className="rounded-2xl border border-slate-100 bg-[#FAF8F5] px-5 py-8 text-center text-sm font-semibold text-[#1f2e57]/70">
-              No tour slots are currently available. Please check back soon.
+              {selectedDate ? 'No slots available for the selected date. Please pick another date.' : 'No tour slots are currently available. Please check back soon.'}
             </div>
           ) : (
             <div className="space-y-5">
