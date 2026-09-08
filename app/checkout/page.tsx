@@ -13,18 +13,18 @@ function ScheduleTourContent() {
           </div>
           <h1 className="font-serif text-3xl md:text-4xl font-bold text-[#1a3a7a] mb-4">Schedule a Campus Tour</h1>
           <p className="text-gray-600 mb-8 max-w-lg mx-auto">
-            Visit our campus and see our programs in action! Schedule a personalized tour to explore our STEM labs, meet our instructors, and discover the right program for your child.
+            Visit our campus and see our programs in action! Schedule a personalized tour to explore our daycare and preschool classrooms, meet our team, and discover the right fit for your child.
           </p>
 
           <div className="grid sm:grid-cols-3 gap-6 mb-10 text-left">
             <div className="bg-blue-50 rounded-xl p-5">
               <div className="text-2xl mb-2">🔬</div>
-              <h3 className="font-bold text-[#1a3a7a] mb-1">Explore Labs</h3>
-              <p className="text-sm text-gray-600">See our state-of-the-art STEM labs and learning spaces.</p>
+              <h3 className="font-bold text-[#1a3a7a] mb-1">Explore Classrooms</h3>
+              <p className="text-sm text-gray-600">See our daycare and preschool classrooms in person.</p>
             </div>
             <div className="bg-green-50 rounded-xl p-5">
               <div className="text-2xl mb-2">👩‍🏫</div>
-              <h3 className="font-bold text-[#1a3a7a] mb-1">Meet Instructors</h3>
+              <h3 className="font-bold text-[#1a3a7a] mb-1">Meet Our Team</h3>
               <p className="text-sm text-gray-600">Connect with our experienced educators and staff.</p>
             </div>
             <div className="bg-orange-50 rounded-xl p-5">

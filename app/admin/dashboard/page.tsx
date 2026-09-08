@@ -211,6 +211,15 @@ export default function AdminDashboardPage() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-1">Interest Leads</h3>
                 <p className="text-gray-600 text-sm">View form submissions from the interest page</p>
               </Link>
+
+              <Link
+                href="/admin/tour-slots"
+                className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition"
+              >
+                <div className="text-3xl mb-2">📅</div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">Tour Calendar</h3>
+                <p className="text-gray-600 text-sm">Manage public 30-minute campus tour slots</p>
+              </Link>
             </div>
           </div>
         </div>
