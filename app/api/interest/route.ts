@@ -4,10 +4,24 @@ import { getDatabase } from '@/lib/db/mongodb';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, course, childName, childAge, message } = body;
+    const {
+      name,
+      email,
+      phone,
+      course,
+      childName,
+      childAge,
+      message,
+      source,
+    } = body;
+
+    const trimmedName = typeof name === 'string' ? name.trim() : '';
+    const trimmedEmail = typeof email === 'string' ? email.trim() : '';
+    const trimmedPhone = typeof phone === 'string' ? phone.trim() : '';
+    const trimmedCourse = typeof course === 'string' ? course.trim() : '';
 
     // Validate required fields
-    if (!name || !email || !phone || !course) {
+    if (!trimmedName || !trimmedEmail || !trimmedPhone || !trimmedCourse) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -19,16 +33,16 @@ export async function POST(request: NextRequest) {
 
     // Create interest record
     const interest = {
-      name,
-      email,
-      phone,
-      course,
-      childName: childName || null,
+      name: trimmedName,
+      email: trimmedEmail,
+      phone: trimmedPhone,
+      course: trimmedCourse,
+      childName: typeof childName === 'string' && childName.trim() ? childName.trim() : null,
       childAge: childAge ? parseInt(childAge) : null,
-      message: message || null,
+      message: typeof message === 'string' && message.trim() ? message.trim() : null,
       status: 'new',
       createdAt: new Date(),
-      source: 'marketing-flyer'
+      source: typeof source === 'string' && source.trim() ? source.trim() : 'marketing-flyer'
     };
 
     // Insert into database
