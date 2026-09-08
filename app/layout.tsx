@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileRouteGuard from "@/components/MobileRouteGuard";
+import ScheduleTourChatbot from "@/components/ScheduleTourChatbot";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nextzenacademy.com';
 
@@ -68,6 +69,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ScheduleTourChatbot />
       </body>
     </html>
   );
