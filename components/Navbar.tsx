@@ -440,7 +440,7 @@ export default function Navbar() {
 
           {/* Group 1: Primary Links */}
           <div className="mt-6">
-            <h3 className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">Main Navigation</h3>
+            <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">Main Navigation</p>
             <nav className="space-y-1">
               <Link
                 href="/"
@@ -498,7 +498,7 @@ export default function Navbar() {
 
           {/* Group 2: Utility Pages */}
           <div className="mt-6 border-t border-slate-100 pt-4">
-            <h3 className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">Resources &amp; Support</h3>
+            <p className="text-slate-400 text-[9px] font-black uppercase tracking-widest mb-2">Resources &amp; Support</p>
             <nav className="space-y-1">
               <Link
                 href="/#inquiry-form-section"

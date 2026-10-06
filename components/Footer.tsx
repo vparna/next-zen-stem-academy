@@ -90,9 +90,9 @@ export default function Footer() {
 
           {/* Column 2: Our Programs */}
           <div>
-            <h4 className="text-sm font-bold mb-6 text-white tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-8 after:h-0.5 after:bg-orange-500">
+            <h3 className="text-sm font-bold mb-6 text-white tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-8 after:h-0.5 after:bg-orange-500">
               Programs
-            </h4>
+            </h3>
             <ul className="space-y-3.5 text-sm">
               {[
                 { href: '/programs/little-blossoms', label: '👶 Infant Care' },
@@ -112,9 +112,9 @@ export default function Footer() {
 
           {/* Column 3: Quick Links */}
           <div>
-            <h4 className="text-sm font-bold mb-6 text-white tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-8 after:h-0.5 after:bg-orange-500">
+            <h3 className="text-sm font-bold mb-6 text-white tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-8 after:h-0.5 after:bg-orange-500">
               Quick Links
-            </h4>
+            </h3>
             <ul className="space-y-3.5 text-sm">
               {[
                 { href: '/', label: 'Home' },
@@ -135,9 +135,9 @@ export default function Footer() {
 
           {/* Column 4: Contact Us */}
           <div>
-            <h4 className="text-sm font-bold mb-6 text-white tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-8 after:h-0.5 after:bg-orange-500">
+            <h3 className="text-sm font-bold mb-6 text-white tracking-widest uppercase relative after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-8 after:h-0.5 after:bg-orange-500">
               Contact Us
-            </h4>
+            </h3>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all duration-300 flex-shrink-0">

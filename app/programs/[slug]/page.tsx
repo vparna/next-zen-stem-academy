@@ -13,9 +13,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const program = getProgramBySlug(slug);
   if (!program) return {};
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.nextzenacademy.com';
   return {
-    title: `${program.title} | NextZen Academy`,
+    title: `${program.title} | NextZen Academy Daycare & Preschool`,
     description: program.description,
+    alternates: {
+      canonical: `${baseUrl}/programs/${slug}`,
+    },
+    openGraph: {
+      title: `${program.title} | NextZen Academy Bothell`,
+      description: program.description,
+      url: `${baseUrl}/programs/${slug}`,
+      images: [{ url: program.image, alt: program.title }],
+    },
   };
 }
 

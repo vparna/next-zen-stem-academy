@@ -176,9 +176,9 @@ export default function EnrollmentForm() {
         <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">
           Schedule a Tour
         </span>
-        <h3 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
+        <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
           Schedule a Daycare or Preschool Campus Tour
-        </h3>
+        </h2>
         <p className="text-xs md:text-sm text-[#1f2e57]/70 font-semibold max-w-2xl mx-auto">
           Choose an available 30-minute tour slot and our team will confirm your visit by email.
         </p>
@@ -238,9 +238,9 @@ export default function EnrollmentForm() {
 
         <div className="space-y-4">
           <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-3">
-            <h4 className="text-xs font-black uppercase text-[#F25022] tracking-wider">
+            <h3 className="text-xs font-black uppercase text-[#F25022] tracking-wider">
               Available 30-Minute Tour Slots
-            </h4>
+            </h3>
             <button
               type="button"
               onClick={() => fetchSlots(selectedDate || undefined)}

@@ -79,6 +79,34 @@ const programExploreLabels: Record<string, ReactNode> = {
   'pre-k': <span className="whitespace-nowrap">Explore Pre&#8209;K</span>,
 };
 
+const programThemeStyles: Record<string, { badge: string; text: string }> = {
+  'little-blossoms': { badge: 'bg-[#F25022]', text: 'text-[#F25022]' },
+  'tiny-explorers': { badge: 'bg-[#7FBA00]', text: 'text-[#7FBA00]' },
+  'curious-cubs': { badge: 'bg-[#00A4EF]', text: 'text-[#00A4EF]' },
+  'little-discoverers': { badge: 'bg-[#FFB900]', text: 'text-[#FFB900]' },
+  'pre-k': { badge: 'bg-[#FFB900]', text: 'text-[#FFB900]' },
+};
+
+const faqThemeStyles = [
+  { border: 'border-l-[#F25022]', arrow: 'text-[#F25022]' },
+  { border: 'border-l-[#7FBA00]', arrow: 'text-[#7FBA00]' },
+  { border: 'border-l-[#00A4EF]', arrow: 'text-[#00A4EF]' },
+  { border: 'border-l-[#FFB900]', arrow: 'text-[#FFB900]' },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+
 export default function Home() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -129,6 +157,10 @@ export default function Home() {
 
   return (
     <div className="bg-[#FAF8F5] text-[#1f2e57] overflow-x-hidden font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <section className="bg-gradient-to-r from-[#1a3a7a] to-[#2563eb] text-white py-4 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-sm md:text-base font-bold flex flex-col sm:block">
@@ -185,9 +217,9 @@ export default function Home() {
 
             <div className="mx-auto sm:mr-auto sm:ml-0 w-full max-w-[420px] bg-white/95 backdrop-blur-sm text-[#1f2e57] rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20 select-none">
               <div className="flex items-center gap-1.5 mb-2.5 sm:mb-3">
-                <h2 className="font-sans font-black text-sm sm:text-base text-[#1f2e57] tracking-tight">
+                <p className="font-sans font-black text-sm sm:text-base text-[#1f2e57] tracking-tight">
                   NextZen Academy of Bothell
-                </h2>
+                </p>
               </div>
 
               <div className="flex flex-row gap-2.5 sm:gap-3.5 items-start">
@@ -251,47 +283,49 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {programs.map((program) => (
-              <div key={program.slug} className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                <div className="relative h-60">
-                  <Image src={program.image} alt={program.title} fill className="object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <span className="absolute top-4 left-4 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white" style={{ backgroundColor: program.color }}>
-                    {program.age}
-                  </span>
-                </div>
-                <div className="p-8 space-y-4 flex flex-col flex-1">
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest" style={{ color: program.color }}>{program.tagline}</p>
-                    <h3 className="font-serif text-2xl font-bold text-[#1f2e57] mt-2">{program.title}</h3>
-                    <p className="text-sm text-[#1f2e57]/70 font-semibold leading-relaxed mt-3">{program.description}</p>
+            {programs.map((program) => {
+              const theme = programThemeStyles[program.slug] || { badge: 'bg-[#F25022]', text: 'text-[#F25022]' };
+              return (
+                <div key={program.slug} className="bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                  <div className="relative h-60">
+                    <Image src={program.image} alt={program.title} fill className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <span className={`absolute top-4 left-4 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white ${theme.badge}`}>
+                      {program.age}
+                    </span>
                   </div>
-                  <ul className="space-y-2 text-sm font-bold text-[#1f2e57]/80 pt-2 border-t border-slate-100">
-                    {program.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-2">
-                        <span style={{ color: program.color }}>✓</span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="pt-2 mt-auto flex flex-col sm:flex-row gap-3">
-                    <Link
-                      href={`/programs/${program.slug}`}
-                      className="w-full text-center py-3 px-4 rounded-full font-black text-xs uppercase tracking-wider text-white transition-all duration-300 hover:opacity-90 flex items-center justify-center"
-                      style={{ backgroundColor: program.color }}
-                    >
-                      {programExploreLabels[program.slug] || 'Learn More'}
-                    </Link>
-                    <button
-                      onClick={() => scrollToSection('inquiry-form-section')}
-                      className="w-full text-center py-3 px-4 rounded-full font-black text-xs uppercase tracking-wider border border-slate-200 text-[#1f2e57] hover:bg-slate-50 transition-all duration-300 cursor-pointer flex items-center justify-center"
-                    >
-                      Schedule Tour
-                    </button>
+                  <div className="p-8 space-y-4 flex flex-col flex-1">
+                    <div>
+                      <p className={`text-xs font-black uppercase tracking-widest ${theme.text}`}>{program.tagline}</p>
+                      <h3 className="font-serif text-2xl font-bold text-[#1f2e57] mt-2">{program.title}</h3>
+                      <p className="text-sm text-[#1f2e57]/70 font-semibold leading-relaxed mt-3">{program.description}</p>
+                    </div>
+                    <ul className="space-y-2 text-sm font-bold text-[#1f2e57]/80 pt-2 border-t border-slate-100">
+                      {program.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-2">
+                          <span className={theme.text}>✓</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="pt-2 mt-auto flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href={`/programs/${program.slug}`}
+                        className={`w-full text-center py-3 px-4 rounded-full font-black text-xs uppercase tracking-wider text-white transition-all duration-300 hover:opacity-90 flex items-center justify-center ${theme.badge}`}
+                      >
+                        {programExploreLabels[program.slug] || 'Learn More'}
+                      </Link>
+                      <button
+                        onClick={() => scrollToSection('inquiry-form-section')}
+                        className="w-full text-center py-3 px-4 rounded-full font-black text-xs uppercase tracking-wider border border-slate-200 text-[#1f2e57] hover:bg-slate-50 transition-all duration-300 cursor-pointer flex items-center justify-center"
+                      >
+                        Schedule Tour
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -300,9 +334,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-6">
-              <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary leading-tight">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary leading-tight">
                 Why Families Love NextZen Academy
-              </h3>
+              </h2>
               <div className="relative aspect-[4/5] w-full max-w-[400px] mx-auto rounded-[3rem] overflow-hidden border-8 border-brand-light shadow-xl">
                 <Image src="/hero_img.png" alt="Children smiling at NextZen Academy" fill className="object-cover" />
                 <div className="absolute inset-0 bg-primary/10" />
@@ -320,7 +354,7 @@ export default function Home() {
                     <Image src={item.image} alt={item.title} fill className="object-cover" />
                   </div>
                   <div className="flex-grow space-y-3 text-left">
-                    <h4 className="font-serif text-lg md:text-xl font-bold text-[#1f2e57]">{item.title}</h4>
+                    <h3 className="font-serif text-lg md:text-xl font-bold text-[#1f2e57]">{item.title}</h3>
                     <p className="text-sm text-[#1f2e57]/70 font-semibold leading-relaxed">{item.description}</p>
                     <Link href={item.href} className="inline-flex items-center gap-1.5 text-xs font-black text-[#00A4EF] hover:underline uppercase tracking-wider pt-1">
                       {item.btnText} <span className="font-sans font-bold">→</span>
@@ -385,12 +419,12 @@ export default function Home() {
           <div className="space-y-4">
             {faqs.map((faq, index) => {
               const isOpen = activeFaqIndex === index;
-              const faqColor = ['#F25022', '#7FBA00', '#00A4EF', '#FFB900'][index % 4];
+              const theme = faqThemeStyles[index % faqThemeStyles.length];
               return (
-                <div key={faq.question} className="rounded-2xl border-l-4 border border-slate-200 transition-all duration-200 overflow-hidden bg-white" style={{ borderLeftColor: faqColor }}>
+                <div key={faq.question} className={`rounded-2xl border-l-4 border border-slate-200 transition-all duration-200 overflow-hidden bg-white ${theme.border}`}>
                   <button onClick={() => setActiveFaqIndex(isOpen ? null : index)} className="w-full text-left px-6 py-5 font-black text-[#1f2e57] flex items-center justify-between gap-4 cursor-pointer text-sm md:text-base">
                     <span>{faq.question}</span>
-                    <span className={`text-xs transform transition-transform duration-200 ${isOpen ? 'rotate-180' : 'text-slate-400'}`} style={isOpen ? { color: faqColor } : undefined}>▼</span>
+                    <span className={`text-xs transform transition-transform duration-200 ${isOpen ? `rotate-180 ${theme.arrow}` : 'text-slate-400'}`}>▼</span>
                   </button>
                   <div className={`${isOpen ? 'max-h-[240px] border-t border-slate-100' : 'max-h-0 overflow-hidden'} transition-all duration-300 ease-in-out`}>
                     <div className="px-6 py-5 text-sm md:text-base text-[#1f2e57]/75 leading-relaxed font-semibold bg-[#FAF8F5]/30">{faq.answer}</div>
