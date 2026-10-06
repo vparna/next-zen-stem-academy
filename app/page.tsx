@@ -195,7 +195,7 @@ export default function Home() {
                 Thoughtful Preschool Learning
               </span>
               <span className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md text-center sm:text-left w-full sm:w-auto">
-                For Every Early Childhood Stage
+                For Every Child's Early Learning
               </span>
               <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4 mx-auto sm:mx-0" />
             </h1>
@@ -306,7 +306,7 @@ export default function Home() {
           <div className="text-right max-w-6xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">Childcare &amp; Preschool</span>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1f2e57] tracking-tight">
-              Programs for Every Early Learner
+              Daycare &amp; Preschool Programs for Every Child
             </h2>
           </div>
 

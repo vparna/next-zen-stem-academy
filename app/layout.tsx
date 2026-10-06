@@ -10,10 +10,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.nextzenacademy.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "NextZen Academy | Daycare & Preschool in Bothell, WA",
+    default: "NextZen Academy | Daycare & Preschool Programs in Bothell",
     template: "%s | NextZen Academy Bothell",
   },
-  description: "NextZen Academy offers premier infant daycare, toddler care, and preschool in Bothell, WA. Schedule a campus tour to explore our nurturing classrooms.",
+  description: "NextZen Academy offers premier infant daycare and preschool programs. Schedule a tour to meet our team and choose the best classroom for your child.",
   keywords: [
     "Daycare Bothell WA",
     "Preschool Bothell WA",
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   openGraph: {
-    title: "NextZen Academy | Daycare & Preschool in Bothell, WA",
-    description: "Premier infant daycare, toddler care, and preschool programs in Bothell, WA. Schedule a campus tour to discover our nurturing classrooms.",
+    title: "NextZen Academy | Daycare & Preschool Programs in Bothell",
+    description: "NextZen Academy offers premier infant daycare and preschool programs. Schedule a tour to meet our team and choose the best classroom for your child.",
     url: siteUrl,
     siteName: "NextZen Academy",
     images: [
@@ -61,8 +61,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "NextZen Academy | Daycare & Preschool in Bothell, WA",
-    description: "Premier infant daycare, toddler care, and preschool programs in Bothell, WA. Schedule a campus tour to discover our nurturing classrooms.",
+    title: "NextZen Academy | Daycare & Preschool Programs in Bothell",
+    description: "NextZen Academy offers premier infant daycare and preschool programs. Schedule a tour to meet our team and choose the best classroom for your child.",
     images: ['/opengraph-image.png'],
   },
 };

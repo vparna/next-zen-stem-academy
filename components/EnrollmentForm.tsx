@@ -177,7 +177,7 @@ export default function EnrollmentForm() {
           Schedule a Tour
         </span>
         <h2 className="font-serif text-2xl md:text-3xl font-bold text-[#1f2e57]">
-          Schedule a Daycare or Preschool Campus Tour
+          Schedule a Tour – Meet Our Team
         </h2>
         <p className="text-xs md:text-sm text-[#1f2e57]/70 font-semibold max-w-2xl mx-auto">
           Choose an available 30-minute tour slot and our team will confirm your visit by email.
