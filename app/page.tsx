@@ -261,6 +261,34 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trust & Credential Badges */}
+      <section className="bg-white border-b border-slate-100 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="space-y-1">
+              <span className="text-2xl">🏛️</span>
+              <p className="text-xs font-black text-[#1f2e57] uppercase tracking-wider">WA DCYF Licensed</p>
+              <p className="text-[11px] text-slate-500 font-semibold">State Child Care Standards Compliant</p>
+            </div>
+            <div className="space-y-1">
+              <span className="text-2xl">👩‍🏫</span>
+              <p className="text-xs font-black text-[#1f2e57] uppercase tracking-wider">Certified Educators</p>
+              <p className="text-[11px] text-slate-500 font-semibold">CPR &amp; First-Aid Certified Staff</p>
+            </div>
+            <div className="space-y-1">
+              <span className="text-2xl">🛡️</span>
+              <p className="text-xs font-black text-[#1f2e57] uppercase tracking-wider">Secure Bothell Campus</p>
+              <p className="text-[11px] text-slate-500 font-semibold">Keycard Access &amp; Covered Play Area</p>
+            </div>
+            <div className="space-y-1">
+              <span className="text-2xl">⭐</span>
+              <p className="text-xs font-black text-[#1f2e57] uppercase tracking-wider">5.0 Star Parent Rating</p>
+              <p className="text-[11px] text-slate-500 font-semibold">Verified Family Community Reviews</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-white" id="nextzen-way">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <span className="text-xs font-black tracking-widest text-[#F25022] uppercase">The NextZen Way</span>
