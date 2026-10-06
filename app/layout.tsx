@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: "NextZen Academy | Daycare & Preschool in Bothell, WA",
     template: "%s | NextZen Academy Bothell",
   },
-  description: "NextZen Academy provides premier infant daycare, toddler care, and preschool programs in Bothell, WA. Schedule a campus tour to explore our nurturing classrooms.",
+  description: "NextZen Academy offers premier infant daycare, toddler care, and preschool in Bothell, WA. Schedule a campus tour to explore our nurturing classrooms.",
   keywords: [
     "Daycare Bothell WA",
     "Preschool Bothell WA",

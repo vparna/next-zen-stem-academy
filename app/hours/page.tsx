@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Center Hours - NextZen Academy',
@@ -87,8 +88,8 @@ export default function HoursPage() {
                 Contact
               </h3>
               <p className="text-gray-700">
-                Phone: +1 (425) 325-0431<br />
-                Email: info@nextzenacademy.com
+                Phone: <a href="tel:+14253250431" className="text-blue-600 hover:underline">+1 (425) 325-0431</a><br />
+                Email: <Link href="/support" className="text-blue-600 hover:underline">Contact Support Team</Link>
               </p>
             </div>
           </div>

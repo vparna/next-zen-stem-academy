@@ -9,7 +9,10 @@ export default function Footer() {
   const [isNative, setIsNative] = useState(false);
   const pathname = usePathname();
 
+  const [contactEmail, setContactEmail] = useState('');
+
   useEffect(() => {
+    setContactEmail(['info', 'nextzenacademy.com'].join('@'));
     import('@capacitor/core').then(({ Capacitor }) => {
       setIsNative(Capacitor.isNativePlatform());
     }).catch(() => {});
@@ -148,9 +151,13 @@ export default function Footer() {
                 </div>
                 <div className="flex-1 text-slate-400 group-hover:text-slate-200 transition-colors">
                   <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Us</p>
-                  <a href="mailto:info@nextzenacademy.com" className="hover:text-orange-400 transition-colors">
-                    info@nextzenacademy.com
-                  </a>
+                  {contactEmail ? (
+                    <a href={`mailto:${contactEmail}`} className="hover:text-orange-400 transition-colors">
+                      {contactEmail}
+                    </a>
+                  ) : (
+                    <span className="text-slate-400">info [at] nextzenacademy.com</span>
+                  )}
                 </div>
               </li>
 

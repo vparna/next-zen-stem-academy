@@ -35,7 +35,7 @@ export default function ScheduleTourPage() {
             <ul className="space-y-2 text-sm font-semibold text-[#1f2e57]/75">
               <li>• Choose your preferred available tour slot.</li>
               <li>• Receive an automatic confirmation email.</li>
-              <li>• Our admissions team receives the same tour details at info@nextzenacademy.com.</li>
+              <li>• Our admissions team receives the same tour details to prepare for your arrival.</li>
             </ul>
             <Link href="/courses" className="inline-flex mt-5 text-sm font-black uppercase tracking-wider text-[#00A4EF] hover:underline">
               Explore daycare & preschool programs →
