@@ -71,6 +71,14 @@ const faqs = [
   },
 ];
 
+const programExploreLabels: Record<string, string> = {
+  'little-blossoms': 'Explore Little Blossoms',
+  'tiny-explorers': 'Explore Tiny Explorers',
+  'curious-cubs': 'Explore Curious Cubs',
+  'little-discoverers': 'Explore Little Discoverers',
+  'pre-k': 'Explore Pre-K',
+};
+
 export default function Home() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -268,7 +276,7 @@ export default function Home() {
                   </ul>
                   <div className="pt-2 mt-auto flex flex-col sm:flex-row gap-3">
                     <Link href={`/programs/${program.slug}`} className="w-full text-center py-3 px-6 rounded-full font-black text-xs uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90" style={{ backgroundColor: program.color }}>
-                      Learn More
+                      {programExploreLabels[program.slug] || 'Learn More'}
                     </Link>
                     <button onClick={() => scrollToSection('inquiry-form-section')} className="w-full text-center py-3 px-6 rounded-full font-black text-xs uppercase tracking-widest border border-slate-200 text-[#1f2e57] hover:bg-slate-50 transition-all duration-300 cursor-pointer">
                       Schedule Tour
