@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import EnrollmentForm from '@/components/EnrollmentForm';
 import { childcarePrograms } from '@/lib/childcarePrograms';
@@ -71,12 +71,12 @@ const faqs = [
   },
 ];
 
-const programExploreLabels: Record<string, string> = {
+const programExploreLabels: Record<string, ReactNode> = {
   'little-blossoms': 'Explore Little Blossoms',
   'tiny-explorers': 'Explore Tiny Explorers',
   'curious-cubs': 'Explore Curious Cubs',
   'little-discoverers': 'Explore Little Discoverers',
-  'pre-k': 'Explore Pre-K',
+  'pre-k': <span className="whitespace-nowrap">Explore Pre&#8209;K</span>,
 };
 
 export default function Home() {
@@ -275,10 +275,17 @@ export default function Home() {
                     ))}
                   </ul>
                   <div className="pt-2 mt-auto flex flex-col sm:flex-row gap-3">
-                    <Link href={`/programs/${program.slug}`} className="w-full text-center py-3 px-6 rounded-full font-black text-xs uppercase tracking-widest text-white transition-all duration-300 hover:opacity-90" style={{ backgroundColor: program.color }}>
+                    <Link
+                      href={`/programs/${program.slug}`}
+                      className="w-full text-center py-3 px-4 rounded-full font-black text-xs uppercase tracking-wider text-white transition-all duration-300 hover:opacity-90 flex items-center justify-center"
+                      style={{ backgroundColor: program.color }}
+                    >
                       {programExploreLabels[program.slug] || 'Learn More'}
                     </Link>
-                    <button onClick={() => scrollToSection('inquiry-form-section')} className="w-full text-center py-3 px-6 rounded-full font-black text-xs uppercase tracking-widest border border-slate-200 text-[#1f2e57] hover:bg-slate-50 transition-all duration-300 cursor-pointer">
+                    <button
+                      onClick={() => scrollToSection('inquiry-form-section')}
+                      className="w-full text-center py-3 px-4 rounded-full font-black text-xs uppercase tracking-wider border border-slate-200 text-[#1f2e57] hover:bg-slate-50 transition-all duration-300 cursor-pointer flex items-center justify-center"
+                    >
                       Schedule Tour
                     </button>
                   </div>
