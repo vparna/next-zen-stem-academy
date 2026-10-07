@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileRouteGuard from "@/components/MobileRouteGuard";
 import ScheduleTourChatbot from "@/components/ScheduleTourChatbot";
+import FoundationPromotionModal from "@/components/FoundationPromotionModal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.nextzenacademy.com';
 
@@ -129,6 +130,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ScheduleTourChatbot />
+        <FoundationPromotionModal />
       </body>
     </html>
   );
