@@ -170,6 +170,19 @@ Required if you want to send email notifications:
 
 ---
 
+### Google Analytics 4 (GA4)
+
+Tracks website traffic, page views, and tour booking conversion events:
+
+#### NEXT_PUBLIC_GA_MEASUREMENT_ID
+**Description:** Google Analytics 4 Data Stream Measurement ID  
+**Format:** `G-XXXXXXXXXX`  
+**Value for nextzenacademy:** `G-S9N9L6815D`  
+**Where to get:** Google Analytics → Admin → Data Streams → Web → Measurement ID  
+
+---
+
+
 ## How to Add Environment Variables in Vercel
 
 ### During Initial Deployment:

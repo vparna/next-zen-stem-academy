@@ -86,6 +86,12 @@ const optionalEnvVars: EnvVariable[] = [
     name: 'EMAIL_PASSWORD',
     required: false,
     description: 'SMTP password for email notifications'
+  },
+  {
+    name: 'NEXT_PUBLIC_GA_MEASUREMENT_ID',
+    required: false,
+    description: 'Google Analytics 4 Measurement ID (e.g., G-S9N9L6815D)',
+    validationFn: (value: string) => /^G-[A-Z0-9]+$/i.test(value)
   }
 ];
 

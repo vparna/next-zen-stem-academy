@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -7,6 +8,8 @@ import ScheduleTourChatbot from "@/components/ScheduleTourChatbot";
 import FoundationPromotionModal from "@/components/FoundationPromotionModal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.nextzenacademy.com';
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-S9N9L6815D';
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -132,6 +135,7 @@ export default function RootLayout({
         <ScheduleTourChatbot />
         <FoundationPromotionModal />
       </body>
+      <GoogleAnalytics gaId={gaMeasurementId} />
     </html>
   );
 }

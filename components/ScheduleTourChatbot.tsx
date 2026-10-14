@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { trackTourScheduled } from '@/lib/analytics';
+
 
 type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -65,6 +67,11 @@ export default function ScheduleTourChatbot() {
       if (!response.ok) {
         throw new Error('Failed to submit');
       }
+
+      trackTourScheduled({
+        source: 'chatbot',
+        course: 'Campus Tour',
+      });
 
       setStatus('success');
       setFormData({

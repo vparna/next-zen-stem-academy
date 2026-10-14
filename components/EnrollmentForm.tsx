@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { trackTourScheduled } from '@/lib/analytics';
+
 
 interface TourSlot {
   id: string;
@@ -155,6 +157,11 @@ export default function EnrollmentForm() {
       if (!response.ok) {
         throw new Error(data.error || 'Failed to schedule the tour');
       }
+
+      trackTourScheduled({
+        source: 'enrollment_page',
+        slotId: selectedSlotId,
+      });
 
       setStatus(data.emailWarning || '✓ Tour scheduled successfully. A confirmation email has been sent to you and our admissions team.');
       resetForm();
