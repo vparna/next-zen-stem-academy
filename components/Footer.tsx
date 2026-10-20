@@ -122,9 +122,11 @@ export default function Footer() {
               {[
                 { href: '/', label: 'Home' },
                 { href: '/about', label: 'Our Story' },
+                { href: '/schedule-tour', label: 'Book a Tour' },
                 { href: '/careers', label: 'Careers' },
                 { href: '/hours', label: 'Class Hours' },
                 { href: '/support', label: 'Support' },
+                { href: '/contact', label: 'Contact Us' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-slate-400 hover:text-orange-400 transition-colors duration-200 flex items-center gap-2 group">

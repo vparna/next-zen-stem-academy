@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import EnrollmentForm from '@/components/EnrollmentForm';
+import LeadConnectorBooking from '@/components/LeadConnectorBooking';
 import { childcarePrograms } from '@/lib/childcarePrograms';
 
 const highlights = [
@@ -195,7 +195,7 @@ export default function Home() {
                 Thoughtful Preschool Learning
               </span>
               <span className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#00A4EF] via-[#00E5FF] to-[#3B82F6] drop-shadow-md text-center sm:text-left w-full sm:w-auto">
-                For Every Child's Early Learning
+                For Every Child&apos;s Early Learning
               </span>
               <div className="w-24 h-1 bg-gradient-to-r from-[#F25022] via-[#FFB900] to-[#00A4EF] rounded-full mt-4 mx-auto sm:mx-0" />
             </h1>
@@ -397,7 +397,7 @@ export default function Home() {
 
       <section className="py-20 bg-[#f5f1ec]" id="inquiry-form-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <EnrollmentForm />
+          <LeadConnectorBooking />
 
           <div className="text-center space-y-3 pt-4">
             <p className="text-xs font-bold text-[#1f2e57]/70">Want to review policies before your visit?</p>

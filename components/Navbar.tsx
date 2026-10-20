@@ -196,7 +196,8 @@ export default function Navbar() {
                 <Link href="/" className="text-slate-500 hover:text-[#00A4EF] transition-colors">Home</Link>
                 <Link href="/#parent-resources" className="text-slate-500 hover:text-[#00A4EF] transition-colors">Parent Resources</Link>
                 <Link href="/careers" className="text-slate-500 hover:text-[#00A4EF] transition-colors">Careers</Link>
-                <Link href="/support" className="text-slate-500 hover:text-[#00A4EF] transition-colors">Contact Us</Link>
+                <Link href="/support" className="text-slate-500 hover:text-[#00A4EF] transition-colors">Support</Link>
+                <Link href="/contact" className="text-slate-500 hover:text-[#00A4EF] transition-colors">Contact Us</Link>
 
                 <span className="text-slate-200">|</span>
 
@@ -526,6 +527,15 @@ export default function Navbar() {
                 href="/support"
                 onClick={() => setIsMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${isActive('/support') ? 'text-[#F25022] font-bold bg-[#F25022]/5' : 'text-slate-600 hover:bg-slate-50 hover:text-[#F25022]'
+                  }`}
+              >
+                <span>💬</span> <span className="text-xs uppercase tracking-wider">Support Center</span>
+              </Link>
+
+              <Link
+                href="/contact"
+                onClick={() => setIsMenuOpen(false)}
+                className={`flex items-center gap-3 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 ${isActive('/contact') ? 'text-[#F25022] font-bold bg-[#F25022]/5' : 'text-slate-600 hover:bg-slate-50 hover:text-[#F25022]'
                   }`}
               >
                 <span>📞</span> <span className="text-xs uppercase tracking-wider">Contact Us</span>

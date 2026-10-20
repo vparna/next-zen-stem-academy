@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileRouteGuard from "@/components/MobileRouteGuard";
-import ScheduleTourChatbot from "@/components/ScheduleTourChatbot";
+import LeadConnectorChatbot from "@/components/LeadConnectorChatbot";
 import FoundationPromotionModal from "@/components/FoundationPromotionModal";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.nextzenacademy.com';
@@ -132,7 +132,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <ScheduleTourChatbot />
+        <LeadConnectorChatbot />
         <FoundationPromotionModal />
       </body>
       <GoogleAnalytics gaId={gaMeasurementId} />

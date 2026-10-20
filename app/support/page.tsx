@@ -169,6 +169,16 @@ export default function SupportPage() {
                 </p>
                 <p className="text-slate-500 text-xs mt-1">Mon–Fri, 9am–6pm PST</p>
               </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-left min-w-52">
+                <h3 className="font-bold text-lg mb-2">💬 Online Form</h3>
+                <p className="text-slate-300 text-sm">Submit via Simple CRM form</p>
+                <Link
+                  href="/contact"
+                  className="inline-flex mt-2 text-xs font-black uppercase tracking-wider text-orange-400 hover:text-orange-300"
+                >
+                  Contact Us Form →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
