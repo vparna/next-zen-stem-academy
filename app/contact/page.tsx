@@ -123,22 +123,20 @@ export default function ContactPage() {
           </div>
 
           {/* Right Column: Simple CRM Contact Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xl space-y-5">
-              <div>
-                <span className="text-xs font-black uppercase tracking-widest text-[#F25022]">
-                  Send a Message
-                </span>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1f2e57] mt-1">
-                  Connect With Admissions
-                </h2>
-                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-                  Fill in your details below and a member of our admissions team will contact you promptly.
-                </p>
-              </div>
-
-              <LeadConnectorContactForm minHeight="720px" />
+          <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-1.5">
+              <span className="text-xs font-black uppercase tracking-widest text-[#F25022]">
+                Send a Message
+              </span>
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#1f2e57]">
+                Connect With Admissions
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium">
+                Fill in your details below and a member of our admissions team will contact you promptly.
+              </p>
             </div>
+
+            <LeadConnectorContactForm minHeight="720px" />
           </div>
         </div>
       </div>

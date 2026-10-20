@@ -25,7 +25,7 @@ export default function LeadConnectorContactForm({
   }, []);
 
   return (
-    <div className={`w-full overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-100 ${className}`}>
+    <div className={`w-full overflow-hidden ${className}`}>
       <iframe
         src="https://api.leadconnectorhq.com/widget/form/1uqMuse7xl8di6vpx8UD"
         style={{
