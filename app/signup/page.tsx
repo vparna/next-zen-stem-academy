@@ -215,6 +215,18 @@ export default function SignupPage() {
             </div>
           </div>
 
+          <div className="text-xs text-center text-slate-500 leading-relaxed">
+            By creating an account, you agree to NextZen Academy&apos;s{' '}
+            <Link href="/terms" className="font-semibold text-orange-500 hover:text-orange-600 underline">
+              Terms &amp; Conditions
+            </Link>{' '}
+            and{' '}
+            <Link href="/privacy" className="font-semibold text-orange-500 hover:text-orange-600 underline">
+              Privacy Policy
+            </Link>
+            .
+          </div>
+
           <div>
             <button
               type="submit"

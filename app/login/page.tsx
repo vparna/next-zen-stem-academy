@@ -139,6 +139,18 @@ export default function LoginPage() {
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </div>
+
+          <div className="text-xs text-center text-slate-500 pt-2 border-t border-slate-100">
+            By signing in, you agree to our{' '}
+            <Link href="/terms" className="font-semibold text-orange-500 hover:text-orange-600 underline">
+              Terms &amp; Conditions
+            </Link>{' '}
+            and{' '}
+            <Link href="/privacy" className="font-semibold text-orange-500 hover:text-orange-600 underline">
+              Privacy Policy
+            </Link>
+            .
+          </div>
         </form>
       </div>
     </div>

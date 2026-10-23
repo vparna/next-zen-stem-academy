@@ -199,10 +199,10 @@ export default function Footer() {
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>&copy; {new Date().getFullYear()} NextZen Academy. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/support" className="hover:text-orange-400 transition-colors duration-200">
+            <Link href="/privacy" className="hover:text-orange-400 transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="/support" className="hover:text-orange-400 transition-colors duration-200">
+            <Link href="/terms" className="hover:text-orange-400 transition-colors duration-200">
               Terms of Service
             </Link>
           </div>
