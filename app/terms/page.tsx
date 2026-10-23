@@ -23,7 +23,7 @@ export default function TermsAndConditionsPage() {
   const sections = [
     { id: 'agreement', title: '1. Agreement to Terms' },
     { id: 'services', title: '2. Educational & Childcare Services' },
-    { id: 'accounts-auth', title: '3. User Accounts & Google Sign-In' },
+    { id: 'accounts-auth', title: '3. User Accounts & Authentication' },
     { id: 'tours-inquiries', title: '4. Campus Tours & Inquiries' },
     { id: 'tuition-billing', title: '5. Tuition, Fees & Payment Processing' },
     { id: 'cancellation-refunds', title: '6. Cancellations, Withdrawals & Refunds' },
@@ -155,7 +155,7 @@ export default function TermsAndConditionsPage() {
                   These Terms &amp; Conditions (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Parent,&quot; &quot;Guardian,&quot; &quot;Student,&quot; &quot;User,&quot; or &quot;you&quot;) and <strong>NextZen Academy</strong> (operating as NextZen Academy of Bothell and NextZen STEM Academy, &quot;NextZen,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
                 </p>
                 <p>
-                  By creating an account, authenticating via Google Sign-In, booking a campus tour, or registering for our daycare, preschool, or STEM enrichment academy, you acknowledge that you have read, understood, and agree to be bound by these Terms and our companion{' '}
+                  By creating an account, booking a campus tour, logging in, or registering for our daycare, preschool, or STEM enrichment academy, you acknowledge that you have read, understood, and agree to be bound by these Terms and our companion{' '}
                   <Link href="/privacy" className="text-[#00A4EF] font-semibold hover:underline">
                     Privacy Policy
                   </Link>
@@ -192,13 +192,13 @@ export default function TermsAndConditionsPage() {
               </div>
             </section>
 
-            {/* Section 3 - Accounts & Google Auth */}
+            {/* Section 3 - Accounts & Authentication */}
             <section id="accounts-auth" className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-blue-200 scroll-mt-28">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-xs mb-3">
-                <span>🔐</span> Account Governance &amp; Social Sign-In
+                <span>🔐</span> Account Governance &amp; Security
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                <span className="text-[#00A4EF]">3.</span> User Accounts &amp; Google Sign-In
+                <span className="text-[#00A4EF]">3.</span> User Accounts &amp; Authentication
               </h2>
               <div className="space-y-4 text-sm sm:text-base leading-relaxed text-slate-700">
                 <div className="space-y-2">
@@ -216,12 +216,12 @@ export default function TermsAndConditionsPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="font-bold text-slate-900 text-sm">C. Google Sign-In &amp; Third-Party Authentication</h3>
+                  <h3 className="font-bold text-slate-900 text-sm">C. Account Authentication &amp; Third-Party Social Sign-In</h3>
                   <p>
-                    When registering or authenticating via <strong>Google Sign-In</strong> or other OAuth providers:
+                    User accounts are currently authenticated using verified email credentials and secure passwords. In the event you choose to authenticate via single sign-on (such as <strong>Google Sign-In</strong>) when enabled:
                   </p>
                   <ul className="list-disc list-inside text-slate-600 space-y-1 text-sm pl-2">
-                    <li>You authorize NextZen Academy to access your basic verified profile information (name, email address, profile picture) to authenticate and manage your account.</li>
+                    <li>You authorize NextZen Academy to access your basic verified profile information (name, email address, profile picture) solely to authenticate and manage your account.</li>
                     <li>NextZen Academy adheres strictly to the Google API Services User Data Policy, ensuring your Google user data is protected and never sold or shared with advertisers.</li>
                     <li>You remain responsible for maintaining the security of your Google account credentials and two-factor authentication settings.</li>
                   </ul>

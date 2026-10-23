@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
   const sections = [
     { id: 'introduction', title: '1. Introduction & Overview' },
     { id: 'information-we-collect', title: '2. Information We Collect' },
-    { id: 'google-oauth', title: '3. Google User Data & OAuth Policy' },
+    { id: 'auth-data-policy', title: '3. Authentication & Third-Party Sign-In (Google OAuth)' },
     { id: 'coppa', title: '4. Children\'s Privacy (COPPA & FERPA)' },
     { id: 'how-we-use-info', title: '5. How We Use Your Information' },
     { id: 'sharing-disclosure', title: '6. Data Sharing & Third Parties' },
@@ -61,7 +61,7 @@ export default function PrivacyPolicyPage() {
             </div>
             <span className="hidden sm:inline text-slate-600">•</span>
             <div>
-              <span className="text-slate-200 font-semibold">Compliance:</span> COPPA, FERPA, Google OAuth Limited Use &amp; WA Privacy
+              <span className="text-slate-200 font-semibold">Compliance:</span> COPPA, FERPA, Google OAuth Standards &amp; WA Privacy
             </div>
           </div>
         </div>
@@ -85,8 +85,8 @@ export default function PrivacyPolicyPage() {
               🔐
             </div>
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">Google Limited Use</h4>
-              <p className="text-xs text-slate-500 mt-0.5">Strict adherence to Google API Services User Data Policy.</p>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">Secure Auth</h4>
+              <p className="text-xs text-slate-500 mt-0.5">Salted bcrypt password hashing &amp; verified email logins.</p>
             </div>
           </div>
 
@@ -210,23 +210,26 @@ export default function PrivacyPolicyPage() {
               </div>
             </section>
 
-            {/* Section 3 - Google OAuth Policy */}
-            <section id="google-oauth" className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-blue-200 scroll-mt-28">
+            {/* Section 3 - Authentication & OAuth Policy */}
+            <section id="auth-data-policy" className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border-2 border-blue-200 scroll-mt-28">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-bold text-xs mb-3">
-                <span>🌐</span> Verified OAuth 2.0 Integration
+                <span>🔐</span> Authentication &amp; OAuth Governance
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
-                <span className="text-[#00A4EF]">3.</span> Google User Data &amp; OAuth 2.0 Policy
+                <span className="text-[#00A4EF]">3.</span> User Authentication &amp; Third-Party Sign-In (Google OAuth Policy)
               </h2>
               <div className="space-y-4 text-sm sm:text-base leading-relaxed text-slate-700">
                 <p>
-                  NextZen Academy provides optional Google Sign-In (&quot;Sign in with Google&quot;) to give parents and educators a secure, seamless authentication experience without having to remember separate credentials.
+                  NextZen Academy accounts are currently authenticated using verified email credentials protected with salted cryptographic hash algorithms (bcrypt) and stateless JWT session tokens.
+                </p>
+                <p>
+                  To provide future streamlined access for parents and educators, NextZen Academy is preparing optional single sign-on integrations, including <strong>Google Sign-In (&quot;Sign in with Google&quot;)</strong>. When single sign-on is enabled and selected by the user, the following strict privacy and data governance standards apply:
                 </p>
 
                 <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
-                  <h3 className="font-bold text-slate-900 text-sm">Google Scopes We Request:</h3>
+                  <h3 className="font-bold text-slate-900 text-sm">Google Scopes We Request Upon Integration:</h3>
                   <p className="text-xs text-slate-600">
-                    We request only the minimum required basic identity scopes:
+                    We request strictly the minimum required basic identity scopes:
                   </p>
                   <ul className="list-disc list-inside text-xs text-slate-700 space-y-1 pl-2">
                     <li><code>openid</code>: To verify your identity securely via the OpenID Connect standard.</li>
@@ -239,7 +242,7 @@ export default function PrivacyPolicyPage() {
                   <h3 className="font-bold text-slate-900 text-base">How We Use Google User Data:</h3>
                   <ul className="list-disc list-inside text-slate-600 space-y-1 text-sm pl-2">
                     <li>Authenticating your identity and creating or linking your NextZen parent/teacher account.</li>
-                    <li>Sending transactional emails (enrollment receipts, tour confirmations, passwordless recovery).</li>
+                    <li>Sending essential transactional emails (enrollment receipts, tour confirmations, passwordless recovery).</li>
                     <li>Personalizing your user dashboard with your preferred display name.</li>
                   </ul>
                 </div>
